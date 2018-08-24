@@ -11,14 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import io.github.dunwu.springboot.service.BlogProperties;
 
-
-/**
- *
- * @author Zhang Peng
- * @version 1.0.0
- * @blog http://blog.didispace.com
- *
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ApplicationTests {
