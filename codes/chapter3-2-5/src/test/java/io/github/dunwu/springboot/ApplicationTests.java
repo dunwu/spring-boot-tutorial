@@ -29,7 +29,7 @@ public class ApplicationTests {
     public void test() {
 
         // 创建三个User，并验证User总数
-        userRepository.save(new User(1L, "didi", 30));
+        userRepository.save(new User(1L, "zp", 30));
         userRepository.save(new User(2L, "mama", 40));
         userRepository.save(new User(3L, "kaka", 50));
         Assert.assertEquals(3, userRepository.findAll().size());
