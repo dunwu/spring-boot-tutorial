@@ -3,22 +3,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.dunwu</groupId>
-  <artifactId>spring-boot-tutorial-chapter4-2-4</artifactId>
+  <groupId>io.github.dunwu.springboot</groupId>
+  <artifactId>spring-boot-integration-log4j</artifactId>
+  <name>spring-boot-integration-log4j</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-
-  <name>SpringBootTutorial :: Chapter4-2-4</name>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.0.4.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
   </properties>
 
@@ -66,4 +65,25 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>prod</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <log4j.debug.level>error</log4j.debug.level>
+      </properties>
+    </profile>
+    <profile>
+      <id>dev</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <log4j.debug.level>debug</log4j.debug.level>
+      </properties>
+    </profile>
+  </profiles>
 </project>

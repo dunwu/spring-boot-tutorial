@@ -7,17 +7,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ApplicationTests {
+public class IntegrationLog4JApplicationTests {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Test
-    public void test() throws Exception {
+    public void test() {
+        logger.trace("输出trace");
         logger.info("输出info");
         logger.debug("输出debug");
+        logger.warn("输出warn");
         logger.error("输出error");
     }
 }
