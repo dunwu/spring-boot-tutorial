@@ -1,7 +1,6 @@
 package io.github.dunwu.springboot;
 
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -20,9 +19,9 @@ public class DataSourceConfig {
         return DataSourceBuilder.create().build();
     }
 
+    @Primary
     @Bean(name = "secondaryDataSource")
     @Qualifier("secondaryDataSource")
-    @Primary
     @ConfigurationProperties(prefix = "spring.datasource.secondary")
     public DataSource secondaryDataSource() {
         return DataSourceBuilder.create().build();
@@ -34,8 +33,7 @@ public class DataSourceConfig {
     }
 
     @Bean(name = "secondaryJdbcTemplate")
-    public JdbcTemplate secondaryJdbcTemplate(
-            @Qualifier("secondaryDataSource") DataSource dataSource) {
+    public JdbcTemplate secondaryJdbcTemplate(@Qualifier("secondaryDataSource") DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
 

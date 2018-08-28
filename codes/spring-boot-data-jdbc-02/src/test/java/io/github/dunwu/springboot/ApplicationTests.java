@@ -25,13 +25,13 @@ public class ApplicationTests {
     protected JdbcTemplate jdbcTemplate2;
 
     @Before
-    public void setUp() {
+    public void before() {
         jdbcTemplate1.update("DELETE  FROM  USER ");
         jdbcTemplate2.update("DELETE  FROM  USER ");
     }
 
     @Test
-    public void test() throws Exception {
+    public void test() {
 
         // 往第一个数据源中插入两条数据
         jdbcTemplate1.update("insert into user(id,name,age) values(?, ?, ?)", 1, "aaa", 20);
@@ -41,12 +41,10 @@ public class ApplicationTests {
         jdbcTemplate2.update("insert into user(id,name,age) values(?, ?, ?)", 1, "aaa", 20);
 
         // 查一下第一个数据源中是否有两条数据，验证插入是否成功
-        Assert.assertEquals("2",
-                jdbcTemplate1.queryForObject("select count(1) from user", String.class));
+        Assert.assertEquals("2", jdbcTemplate1.queryForObject("select count(1) from user", String.class));
 
         // 查一下第一个数据源中是否有两条数据，验证插入是否成功
-        Assert.assertEquals("1",
-                jdbcTemplate2.queryForObject("select count(1) from user", String.class));
+        Assert.assertEquals("1", jdbcTemplate2.queryForObject("select count(1) from user", String.class));
 
     }
 }
