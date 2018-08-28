@@ -1,6 +1,6 @@
-package io.github.dunwu.springboot.service;
+package io.github.dunwu.springboot.dao;
 
-public interface UserService {
+public interface UserDAO {
 
     /**
      * 新增一个用户
@@ -26,6 +26,4 @@ public interface UserService {
      * 删除所有用户
      */
     void deleteAllUsers();
-
-
 }
