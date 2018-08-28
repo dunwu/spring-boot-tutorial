@@ -1,11 +1,11 @@
-package io.github.dunwu.springboot.service;
+package io.github.dunwu.springboot.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserDAOImpl implements UserDAO {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
