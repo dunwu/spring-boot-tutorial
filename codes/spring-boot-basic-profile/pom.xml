@@ -3,22 +3,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.dunwu</groupId>
-  <artifactId>spring-boot-tutorial-chapter2-1-1</artifactId>
+  <groupId>io.github.dunwu.springboot</groupId>
+  <artifactId>spring-boot-basic-profile</artifactId>
+  <name>spring-boot-basic-profile</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-
-  <name>SpringBootTutorial :: Chapter2-1-1</name>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.0.4.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
   </properties>
 
@@ -29,12 +28,12 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
