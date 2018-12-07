@@ -1,12 +1,12 @@
-package io.github.dunwu.springboot;
+package io.github.dunwu.springboot.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Chapter1Application {
+public class WebHelloworldApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Chapter1Application.class, args);
+        SpringApplication.run(WebHelloworldApplication.class, args);
     }
 }

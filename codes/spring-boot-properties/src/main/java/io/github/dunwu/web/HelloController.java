@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.web;
+package io.github.dunwu.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,5 +10,4 @@ public class HelloController {
     public String index() {
         return "Hello World";
     }
-
 }

@@ -1,9 +1,6 @@
-package io.github.dunwu.springboot;
+package io.github.dunwu.springboot.springboot;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+import io.github.dunwu.springboot.springboot.web.HelloController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,11 +11,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import io.github.dunwu.springboot.web.HelloController;
+import static org.hamcrest.Matchers.equalTo;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Chapter1ApplicationTests {
+public class WebHelloworldApplicationTests {
 
     private MockMvc mvc;
 
@@ -29,8 +28,8 @@ public class Chapter1ApplicationTests {
 
     @Test
     public void getHello() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk()).andExpect(content().string(equalTo("Hello World")));
+        mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+            .andExpect(content().string(equalTo("Hello World")));
     }
 
 }
