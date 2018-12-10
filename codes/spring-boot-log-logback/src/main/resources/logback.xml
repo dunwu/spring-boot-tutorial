@@ -4,11 +4,13 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 
   <property name="DIR_NAME" value="spring-boot-log-logback"/>
+  <property name="PATTERN"
+            value="%d{HH:mm:ss.SSS} [%boldYellow(%thread)] [%highlight(%-5level)] %boldGreen(%c{36}.%M) - %boldBlue(%m%n)"/>
 
   <!-- APPENDER BEGIN -->
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>%d{HH:mm:ss.SSS} [%thread] [%-5p] %c{36}.%M - %m%n</pattern>
+      <pattern>${PATTERN}</pattern>
     </encoder>
   </appender>
   <appender name="ALL" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -24,24 +26,7 @@
     </triggeringPolicy>
 
     <encoder>
-      <pattern>%d{HH:mm:ss.SSS} [%thread] [%-5p] %c{36}.%M - %m%n</pattern>
-    </encoder>
-  </appender>
-  <appender name="SPRING" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <!-- 根据时间来制定滚动策略 -->
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>${user.dir}/logs/${DIR_NAME}/spring.%d{yyyy-MM-dd}.log
-      </fileNamePattern>
-      <maxHistory>30</maxHistory>
-    </rollingPolicy>
-
-    <!-- 根据文件大小来制定滚动策略 -->
-    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-      <maxFileSize>10MB</maxFileSize>
-    </triggeringPolicy>
-
-    <encoder>
-      <pattern>%d{HH:mm:ss.SSS} [%thread] [%-5p] %c{36}.%M - %m%n</pattern>
+      <pattern>${PATTERN}</pattern>
     </encoder>
   </appender>
   <!-- APPENDER END -->
@@ -59,12 +44,7 @@
     </logger>
   </springProfile>
 
-  <!-- SPRING框架日志 -->
-  <logger name="org.springframework" level="TRACE" additivity="false">
-    <appender-ref ref="SPRING"/>
-  </logger>
-
-  <root level="WARN">
+  <root level="ALL">
     <appender-ref ref="STDOUT"/>
   </root>
   <!-- LOGGER END -->

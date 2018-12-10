@@ -14,8 +14,11 @@ public class LogbackApplication {
 
     @PostConstruct
     public void logSomething() {
-        logger.debug("Sample Debug Message");
         logger.trace("Sample Trace Message");
+        logger.debug("Sample Debug Message");
+        logger.info("Sample Info Message");
+        logger.warn("Sample Warn Message");
+        logger.error("Sample Error Message");
     }
 
     public static void main(String[] args) {
