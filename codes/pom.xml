@@ -16,6 +16,7 @@
     <module>spring-boot-log-logback</module>
     <module>spring-boot-properties</module>
     <module>spring-boot-schedule</module>
+    <module>spring-boot-web-consuming-rest</module>
     <module>spring-boot-web-helloworld</module>
   </modules>
 </project>

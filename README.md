@@ -6,5 +6,6 @@
 - [spring-boot-log-logback](codes/spring-boot-log-logback)
 - [spring-boot-properties](codes/spring-boot-properties)
 - [spring-boot-schedule](codes/spring-boot-schedule)
+- [spring-boot-web-consuming-rest](codes/spring-boot-web-consuming-rest)
 - [spring-boot-web-helloworld](codes/spring-boot-web-helloworld)
 
