@@ -1,4 +1,4 @@
-package io.github.dunwu.web;
+package io.github.dunwu.springboot.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

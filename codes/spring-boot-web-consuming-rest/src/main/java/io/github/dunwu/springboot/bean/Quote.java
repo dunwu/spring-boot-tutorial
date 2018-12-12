@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.springboot.bean;
+package io.github.dunwu.springboot.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

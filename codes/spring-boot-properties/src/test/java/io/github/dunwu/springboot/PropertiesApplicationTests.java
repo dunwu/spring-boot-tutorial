@@ -1,6 +1,6 @@
-package io.github.dunwu;
+package io.github.dunwu.springboot;
 
-import io.github.dunwu.service.BlogProperties;
+import io.github.dunwu.springboot.service.BlogProperties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Assert;

@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.msg;
+package io.github.dunwu.springboot;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +15,9 @@ import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import java.util.concurrent.CountDownLatch;
 
 @SpringBootApplication
-public class RedisMsgApplication {
+public class MsgRedisApplication {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RedisMsgApplication.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MsgRedisApplication.class);
 
     @Bean
     RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
@@ -52,7 +52,7 @@ public class RedisMsgApplication {
 
     public static void main(String[] args) throws InterruptedException {
 
-        ApplicationContext ctx = SpringApplication.run(RedisMsgApplication.class, args);
+        ApplicationContext ctx = SpringApplication.run(MsgRedisApplication.class, args);
 
         StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
         CountDownLatch latch = ctx.getBean(CountDownLatch.class);

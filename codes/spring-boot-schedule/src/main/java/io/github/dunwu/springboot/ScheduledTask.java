@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.schedule;
+package io.github.dunwu.springboot;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
