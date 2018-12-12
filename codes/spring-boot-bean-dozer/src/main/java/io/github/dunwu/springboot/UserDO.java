@@ -1,18 +1,18 @@
-package io.github.dunwu.springboot.dozer;
+package io.github.dunwu.springboot;
 
 /**
  * @author Zhang Peng
  * @date 2018-11-02
  */
-public class UserBO {
-    private long id;
+public class UserDO {
+    private Long id;
     private String name;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -26,6 +26,6 @@ public class UserBO {
 
     @Override
     public String toString() {
-        return String.format("[UserBO] id = %d, name = %s", id, name);
+        return String.format("[UserDO] id = %d, name = %s", id, name);
     }
 }

@@ -1,6 +1,6 @@
-package io.github.dunwu.springboot.dozer;
+package io.github.dunwu.springboot;
 
-public class Info {
+public class InfoDTO {
     private String content;
 
     public String getContent() {
@@ -9,5 +9,10 @@ public class Info {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public String toString() {
+        return "InfoDTO{" + "content='" + content + '\'' + '}';
     }
 }

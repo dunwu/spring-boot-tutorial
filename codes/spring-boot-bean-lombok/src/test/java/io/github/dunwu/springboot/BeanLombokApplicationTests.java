@@ -1,21 +1,17 @@
 package io.github.dunwu.springboot;
 
+import lombok.Cleanup;
+import org.junit.Assert;
+import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import lombok.Cleanup;
-
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class IntegrationLombokApplicationTests {
+public class BeanLombokApplicationTests {
     @Test
     public void testData() {
         Person huangshiren = new Person();
@@ -50,8 +46,7 @@ public class IntegrationLombokApplicationTests {
     @Test
     public void testCleanUp() {
         try {
-            @Cleanup
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            @Cleanup ByteArrayOutputStream baos = new ByteArrayOutputStream();
             baos.write(new byte[] {'Y', 'e', 's'});
             System.out.println(baos.toString());
         } catch (IOException e) {

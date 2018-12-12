@@ -6,9 +6,8 @@ import lombok.ToString;
 
 /**
  * Lombok 示例
- * 
- * @see http://jnb.ociweb.com/jnb/jnbJan2010.html
  * @author Zhang Peng
+ * @see <a href="http://jnb.ociweb.com/jnb/jnbJan2010.html">http://jnb.ociweb.com/jnb/jnbJan2010.html</a>
  */
 @Data
 @ToString(exclude = "age")

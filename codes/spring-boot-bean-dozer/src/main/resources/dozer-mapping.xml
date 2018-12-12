@@ -2,14 +2,18 @@
 <mappings xmlns="http://dozermapper.github.io/schema/bean-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://dozermapper.github.io/schema/bean-mapping
           https://dozermapper.github.io/schema/bean-mapping.xsd">
+  <configuration>
+    <stop-on-errors>true</stop-on-errors>
+    <date-format>yyyy-MM-dd HH:mm:ss</date-format>
+    <wildcard>true</wildcard>
+  </configuration>
 
-  <mapping map-id="RuleBO2RuleDMO">
-    <class-a>io.github.dunwu.springboot.dozer.PersonDO</class-a>
-    <class-b>io.github.dunwu.springboot.dozer.PersonBO</class-b>
+  <mapping>
+    <class-a>io.github.dunwu.springboot.PersonDO</class-a>
+    <class-b>io.github.dunwu.springboot.PersonDTO</class-b>
     <field>
       <a>info</a>
-      <b>info.content</b>
+      <b>infoDTO.content</b>
     </field>
   </mapping>
-
 </mappings>

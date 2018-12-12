@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class IntegrationLombokApplication {
+public class BeanLombokApplication {
     public static void main(String[] args) {
-        SpringApplication.run(IntegrationLombokApplication.class, args);
+        SpringApplication.run(BeanLombokApplication.class, args);
     }
 }

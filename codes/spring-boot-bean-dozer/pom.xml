@@ -3,17 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>spring-boot-bean-dozer</artifactId>
-  <name>spring-boot-bean-dozer</name>
-  <version>1.0.0</version>
-  <packaging>jar</packaging>
-
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.1.1.RELEASE</version>
   </parent>
+
+  <groupId>io.github.dunwu.springboot</groupId>
+  <artifactId>spring-boot-bean-dozer</artifactId>
+  <name>SpringBootTutorial :: Bean :: Dozer</name>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -33,12 +33,7 @@
     </dependency>
     <dependency>
       <groupId>com.github.dozermapper</groupId>
-      <artifactId>dozer-core</artifactId>
-      <version>6.4.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.github.dozermapper</groupId>
-      <artifactId>dozer-spring4</artifactId>
+      <artifactId>dozer-spring-boot-starter</artifactId>
       <version>6.4.0</version>
     </dependency>
   </dependencies>

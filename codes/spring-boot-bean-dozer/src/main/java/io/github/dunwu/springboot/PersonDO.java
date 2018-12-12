@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.dozer;
+package io.github.dunwu.springboot;
 
 /**
  * @author Zhang Peng

@@ -1,15 +1,13 @@
 package io.github.dunwu.springboot;
 
-import java.util.List;
-
-import io.github.dunwu.springboot.Person;
 import lombok.Data;
-import lombok.NonNull;
+
+import java.util.List;
 
 /**
  * Lombok 示例
- * @see http://jnb.ociweb.com/jnb/jnbJan2010.html
  * @author Zhang Peng
+ * @see <a href="http://jnb.ociweb.com/jnb/jnbJan2010.html">http://jnb.ociweb.com/jnb/jnbJan2010.html</a>
  */
 @Data(staticConstructor = "of")
 public class Company {

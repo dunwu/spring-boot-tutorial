@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.dozer;
+package io.github.dunwu.springboot;
 
 import com.github.dozermapper.spring.DozerBeanMapperFactoryBean;
 import org.springframework.context.annotation.Bean;
