@@ -1,5 +1,6 @@
 # spring-boot-tutorial
 
+- [spring-boot-data-redis](codes/spring-boot-data-redis)
 - [spring-boot-docker](codes/spring-boot-docker)
 - [spring-boot-log-log4j](codes/spring-boot-log-log4j)
 - [spring-boot-log-log4j2](codes/spring-boot-log-log4j2)

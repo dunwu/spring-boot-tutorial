@@ -10,6 +10,7 @@
   <name>SpringBootTutorial</name>
 
   <modules>
+    <module>spring-boot-data-redis</module>
     <module>spring-boot-docker</module>
     <module>spring-boot-log-log4j</module>
     <module>spring-boot-log-log4j2</module>
