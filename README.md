@@ -8,4 +8,5 @@
 - [spring-boot-schedule](codes/spring-boot-schedule)
 - [spring-boot-web-consuming-rest](codes/spring-boot-web-consuming-rest)
 - [spring-boot-web-helloworld](codes/spring-boot-web-helloworld)
+- [spring-boot-web-uploading](codes/spring-boot-web-uploading)
 

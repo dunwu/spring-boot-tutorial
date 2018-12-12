@@ -18,5 +18,6 @@
     <module>spring-boot-schedule</module>
     <module>spring-boot-web-consuming-rest</module>
     <module>spring-boot-web-helloworld</module>
+    <module>spring-boot-web-uploading</module>
   </modules>
 </project>
