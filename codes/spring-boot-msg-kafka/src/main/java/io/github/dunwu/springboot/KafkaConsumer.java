@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.kafka;
+package io.github.dunwu.springboot;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaConsumer {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumer.class);
+    private final Logger log = LoggerFactory.getLogger(KafkaConsumer.class);
 
     @KafkaListener(topics = "test")
     public void processMessage(String data) {
-        LOGGER.info("收到kafka消息：{}", data);
+        log.info("收到kafka消息：{}", data);
     }
 }

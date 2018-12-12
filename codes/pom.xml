@@ -15,6 +15,7 @@
     <module>spring-boot-log-log4j</module>
     <module>spring-boot-log-log4j2</module>
     <module>spring-boot-log-logback</module>
+    <module>spring-boot-msg-kafka</module>
     <module>spring-boot-msg-redis</module>
     <module>spring-boot-properties</module>
     <module>spring-boot-schedule</module>
