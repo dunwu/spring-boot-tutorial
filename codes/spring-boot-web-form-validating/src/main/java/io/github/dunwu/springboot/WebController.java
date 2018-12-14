@@ -1,4 +1,4 @@
-package hello;
+package io.github.dunwu.springboot;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

@@ -1,4 +1,4 @@
-package hello;
+package io.github.dunwu.springboot;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
