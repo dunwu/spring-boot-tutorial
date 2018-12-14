@@ -12,6 +12,7 @@
 - [spring-boot-properties](codes/spring-boot-properties)
 - [spring-boot-schedule](codes/spring-boot-schedule)
 - [spring-boot-web-consuming-rest](codes/spring-boot-web-consuming-rest)
+- [spring-boot-web-form-submission](codes/spring-boot-web-form-submission)
 - [spring-boot-web-form-validating](codes/spring-boot-web-form-validating)
 - [spring-boot-web-helloworld](codes/spring-boot-web-helloworld)
 - [spring-boot-web-uploading](codes/spring-boot-web-uploading)
