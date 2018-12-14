@@ -2,6 +2,7 @@
 
 - [spring-boot-bean-dozer](codes/spring-boot-bean-dozer)
 - [spring-boot-bean-lombok](codes/spring-boot-bean-lombok)
+- [spring-boot-data-jpa](codes/spring-boot-data-jpa)
 - [spring-boot-data-redis](codes/spring-boot-data-redis)
 - [spring-boot-docker](codes/spring-boot-docker)
 - [spring-boot-log-log4j](codes/spring-boot-log-log4j)

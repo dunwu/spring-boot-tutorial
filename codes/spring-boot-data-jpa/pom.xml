@@ -3,17 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>spring-boot-data-jpa</artifactId>
-  <name>spring-boot-data-jpa</name>
-  <version>1.0.0</version>
-  <packaging>jar</packaging>
-
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.1.1.RELEASE</version>
   </parent>
+
+  <groupId>io.github.dunwu.springboot</groupId>
+  <artifactId>spring-boot-data-jpa</artifactId>
+  <name>SpringBootTutorial :: Data :: JPA</name>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,21 +24,16 @@
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter</artifactId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.12</version>
     </dependency>
   </dependencies>
 
