@@ -1,12 +1,12 @@
 package io.github.dunwu.springboot;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.springframework.boot.test.rule.OutputCapture;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SampleAopApplicationTests {
 
@@ -31,14 +31,14 @@ public class SampleAopApplicationTests {
 
     @Test
     public void testDefaultSettings() {
-        BasicAopApplication.main(new String[0]);
+        CoreAopApplication.main(new String[0]);
         String output = this.outputCapture.toString();
         assertThat(output).contains("Hello Zhang Peng");
     }
 
     @Test
     public void testCommandLineOverrides() {
-        BasicAopApplication.main(new String[] {"--name=Github"});
+        CoreAopApplication.main(new String[] {"--name=Github"});
         String output = this.outputCapture.toString();
         assertThat(output).contains("Hello Github");
     }

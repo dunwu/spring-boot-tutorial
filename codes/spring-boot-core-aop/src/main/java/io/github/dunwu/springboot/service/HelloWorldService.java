@@ -16,9 +16,7 @@ public class HelloWorldService {
         return "Hello " + this.name;
     }
 
-    // 放开下面方法的注释，会触发 io.github.dunwu.springboot.monitor.ServiceMonitor.afterThrowing
-    // public String makeException() {
-    // String str = null;
-    // return str.toLowerCase();
-    // }
+    public String makeException(String str) {
+        return str.toLowerCase();
+    }
 }
