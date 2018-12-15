@@ -4,45 +4,45 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>spring-boot-tutorial</artifactId>
+  <artifactId>sbe</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
-  <name>SpringBootTutorial</name>
+  <name>SpringBootExamples</name>
 
   <modules>
-    <module>spring-boot-bean-dozer</module>
-    <module>spring-boot-actuator</module>
-    <module>spring-boot-bean-lombok</module>
-    <module>spring-boot-cache</module>
-    <module>spring-boot-core-aop</module>
-    <module>spring-boot-core-profile</module>
-    <module>spring-boot-data-flyway</module>
-    <module>spring-boot-data-jdbc</module>
-    <module>spring-boot-data-jdbc-multi-connectors</module>
-    <module>spring-boot-data-jpa</module>
-    <module>spring-boot-data-jpa-rest</module>
-    <module>spring-boot-data-mongodb</module>
-    <module>spring-boot-data-mysql</module>
-    <module>spring-boot-data-orm-mybatis</module>
-    <module>spring-boot-data-redis</module>
-    <module>spring-boot-docker</module>
-    <module>spring-boot-jetty-websocket</module>
-    <module>spring-boot-log-log4j</module>
-    <module>spring-boot-log-log4j2</module>
-    <module>spring-boot-log-logback</module>
-    <module>spring-boot-msg-kafka</module>
-    <module>spring-boot-msg-redis</module>
-    <module>spring-boot-properties</module>
-    <module>spring-boot-schedule</module>
-    <module>spring-boot-tmpl-freemark</module>
-    <module>spring-boot-tmpl-thymeleaf</module>
-    <module>spring-boot-tomcat-multi-connectors</module>
-    <module>spring-boot-tomcat-servlet</module>
-    <module>spring-boot-tomcat-websocket</module>
-    <module>spring-boot-web-consuming-rest</module>
-    <module>spring-boot-web-form-submission</module>
-    <module>spring-boot-web-form-validating</module>
-    <module>spring-boot-web-helloworld</module>
-    <module>spring-boot-web-uploading</module>
+    <module>sbe-bean-dozer</module>
+    <module>sbe-actuator</module>
+    <module>sbe-bean-lombok</module>
+    <module>sbe-cache</module>
+    <module>sbe-core-aop</module>
+    <module>sbe-core-profile</module>
+    <module>sbe-data-flyway</module>
+    <module>sbe-data-jdbc</module>
+    <module>sbe-data-jdbc-multi-connectors</module>
+    <module>sbe-data-jpa</module>
+    <module>sbe-data-jpa-rest</module>
+    <module>sbe-data-mongodb</module>
+    <module>sbe-data-mysql</module>
+    <module>sbe-data-orm-mybatis</module>
+    <module>sbe-data-redis</module>
+    <module>sbe-docker</module>
+    <module>sbe-jetty-websocket</module>
+    <module>sbe-log-log4j</module>
+    <module>sbe-log-log4j2</module>
+    <module>sbe-log-logback</module>
+    <module>sbe-msg-kafka</module>
+    <module>sbe-msg-redis</module>
+    <module>sbe-properties</module>
+    <module>sbe-schedule</module>
+    <module>sbe-tmpl-freemark</module>
+    <module>sbe-tmpl-thymeleaf</module>
+    <module>sbe-tomcat-multi-connectors</module>
+    <module>sbe-tomcat-servlet</module>
+    <module>sbe-tomcat-websocket</module>
+    <module>sbe-web-consuming-rest</module>
+    <module>sbe-web-form-submission</module>
+    <module>sbe-web-form-validating</module>
+    <module>sbe-web-helloworld</module>
+    <module>sbe-web-uploading</module>
   </modules>
 </project>
