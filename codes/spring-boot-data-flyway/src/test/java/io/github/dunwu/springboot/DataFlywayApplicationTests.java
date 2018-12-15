@@ -8,11 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import io.github.dunwu.springboot.dao.UserDAO;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class ApplicationTests {
+public class DataFlywayApplicationTests {
 
     @Autowired
     private UserDAO userDAO;

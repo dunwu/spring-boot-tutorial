@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.dao;
+package io.github.dunwu.springboot;
 
 public interface UserDAO {
 
