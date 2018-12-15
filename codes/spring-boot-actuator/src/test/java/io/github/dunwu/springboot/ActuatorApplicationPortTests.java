@@ -1,9 +1,5 @@
 package io.github.dunwu.springboot;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Map;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.actuate.autoconfigure.web.server.LocalManagementPort;
@@ -15,9 +11,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = {"management.server.port:0"})
-public class ActuatorUiApplicationPortTests {
+public class ActuatorApplicationPortTests {
 
     @LocalServerPort
     private int port = 9010;
