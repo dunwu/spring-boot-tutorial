@@ -13,6 +13,7 @@
     <module>spring-boot-bean-dozer</module>
     <module>spring-boot-bean-lombok</module>
     <module>spring-boot-data-jpa</module>
+    <module>spring-boot-data-mongodb</module>
     <module>spring-boot-data-mysql</module>
     <module>spring-boot-data-redis</module>
     <module>spring-boot-docker</module>
