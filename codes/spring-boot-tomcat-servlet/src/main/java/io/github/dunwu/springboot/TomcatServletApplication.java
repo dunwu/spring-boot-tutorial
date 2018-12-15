@@ -13,13 +13,6 @@
 
 package io.github.dunwu.springboot;
 
-import java.io.IOException;
-
-import javax.servlet.GenericServlet;
-import javax.servlet.Servlet;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -27,9 +20,15 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
+import javax.servlet.GenericServlet;
+import javax.servlet.Servlet;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import java.io.IOException;
+
 @SpringBootConfiguration
 @EnableAutoConfiguration
-public class WebServletApplication extends SpringBootServletInitializer {
+public class TomcatServletApplication extends SpringBootServletInitializer {
 
     @Bean
     @SuppressWarnings("serial")
@@ -45,11 +44,11 @@ public class WebServletApplication extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(WebServletApplication.class);
+        return application.sources(TomcatServletApplication.class);
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(WebServletApplication.class, args);
+        SpringApplication.run(TomcatServletApplication.class, args);
     }
 
 }
