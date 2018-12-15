@@ -1,8 +1,11 @@
-package io.github.dunwu.springboot.dao;
+package io.github.dunwu.springboot;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserDAOImpl implements UserDAO {
@@ -21,8 +24,8 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public Integer getAllUsers() {
-        return jdbcTemplate.queryForObject("select count(1) from USER", Integer.class);
+    public List<User> list() {
+        return jdbcTemplate.query("select * from USER", new BeanPropertyRowMapper(User.class));
     }
 
     @Override

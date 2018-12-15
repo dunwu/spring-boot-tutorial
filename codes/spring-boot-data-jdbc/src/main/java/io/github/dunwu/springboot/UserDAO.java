@@ -1,10 +1,11 @@
-package io.github.dunwu.springboot.dao;
+package io.github.dunwu.springboot;
+
+import java.util.List;
 
 public interface UserDAO {
 
     /**
      * 新增一个用户
-     * 
      * @param name
      * @param age
      */
@@ -12,7 +13,6 @@ public interface UserDAO {
 
     /**
      * 根据name删除一个用户高
-     * 
      * @param name
      */
     void deleteByName(String name);
@@ -20,7 +20,7 @@ public interface UserDAO {
     /**
      * 获取用户总量
      */
-    Integer getAllUsers();
+    List<User> list();
 
     /**
      * 删除所有用户
