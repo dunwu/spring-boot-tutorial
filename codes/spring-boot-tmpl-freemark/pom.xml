@@ -9,7 +9,7 @@
     <version>2.1.1.RELEASE</version>
   </parent>
 
-  <groupId>io.github.dunwu</groupId>
+  <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>spring-boot-tmpl-freemark</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
