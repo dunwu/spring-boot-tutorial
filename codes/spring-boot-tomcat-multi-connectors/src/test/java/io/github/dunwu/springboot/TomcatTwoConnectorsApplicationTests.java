@@ -1,7 +1,6 @@
 package io.github.dunwu.springboot;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
+import io.github.dunwu.springboot.TomcatTwoConnectorsApplicationTests.Ports;
 import org.apache.catalina.Service;
 import org.apache.catalina.connector.Connector;
 import org.junit.Test;
@@ -21,7 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import io.github.dunwu.springboot.TomcatTwoConnectorsApplicationTests.Ports;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -50,11 +49,11 @@ public class TomcatTwoConnectorsApplicationTests {
         assertThat(this.ports.getHttpsPort()).isEqualTo(this.port);
         assertThat(this.ports.getHttpPort()).isNotEqualTo(this.port);
         ResponseEntity<String> entity =
-                this.restTemplate.getForEntity("http://localhost:" + this.ports.getHttpPort() + "/hello", String.class);
+            this.restTemplate.getForEntity("http://localhost:" + this.ports.getHttpPort() + "/hello", String.class);
         assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(entity.getBody()).isEqualTo("hello");
         ResponseEntity<String> httpsEntity =
-                this.restTemplate.getForEntity("https://localhost:" + this.port + "/hello", String.class);
+            this.restTemplate.getForEntity("https://localhost:" + this.port + "/hello", String.class);
         assertThat(httpsEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(httpsEntity.getBody()).isEqualTo("hello");
     }

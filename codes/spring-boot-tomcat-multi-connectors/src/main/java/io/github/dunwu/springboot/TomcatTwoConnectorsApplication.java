@@ -9,10 +9,13 @@ import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 
 /**
- * 同时启动HTTP和HTTPS服务<br>
- * 可访问链接：<br>
- * http://localhost:84081/hello<br>
- * https://localhost:8443/hello
+ * 同时启动HTTP和HTTPS服务
+ * <p>
+ * 启动应用后，可访问链接：
+ * <ul>
+ * <li><a href="http://localhost:8081/hello">http://localhost:8081/hello</a></li>
+ * <li><a href="https://localhost:8443/hello">https://localhost:8443/hello</a></li>
+ * </ul>
  */
 @SpringBootApplication
 public class TomcatTwoConnectorsApplication {
