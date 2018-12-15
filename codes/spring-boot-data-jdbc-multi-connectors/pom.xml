@@ -3,17 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>spring-boot-data-jdbc-02</artifactId>
-  <name>spring-boot-data-jdbc-02</name>
-  <version>1.0.0</version>
-  <packaging>jar</packaging>
-
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.1.1.RELEASE</version>
   </parent>
+
+  <groupId>io.github.dunwu.springboot</groupId>
+  <artifactId>spring-boot-data-jdbc-multi-connectors</artifactId>
+  <name>SpringBootTutorial :: Data :: JDBC :: Multi Connectors</name>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,7 +38,6 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.12</version>
     </dependency>
   </dependencies>
 
