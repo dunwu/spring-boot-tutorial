@@ -1,6 +1,0 @@
-org.springframework.context.ApplicationListener=io.github.dunwu.springboot.ApplicationEnvironmentPreparedEventListener,\
-  io.github.dunwu.springboot.ApplicationFailedEventListener,\
-  io.github.dunwu.springboot.ApplicationPreparedEventListener,\
-  io.github.dunwu.springboot.ApplicationReadyEventListener,\
-  io.github.dunwu.springboot.ApplicationStartedEventListener,\
-  io.github.dunwu.springboot.ApplicationStartingEventListener
