@@ -22,6 +22,7 @@
     <module>spring-boot-data-orm-mybatis</module>
     <module>spring-boot-data-redis</module>
     <module>spring-boot-docker</module>
+    <module>spring-boot-jetty-websocket</module>
     <module>spring-boot-log-log4j</module>
     <module>spring-boot-log-log4j2</module>
     <module>spring-boot-log-logback</module>
@@ -33,6 +34,7 @@
     <module>spring-boot-tmpl-thymeleaf</module>
     <module>spring-boot-tomcat-multi-connectors</module>
     <module>spring-boot-tomcat-servlet</module>
+    <module>spring-boot-tomcat-websocket</module>
     <module>spring-boot-web-consuming-rest</module>
     <module>spring-boot-web-form-submission</module>
     <module>spring-boot-web-form-validating</module>
