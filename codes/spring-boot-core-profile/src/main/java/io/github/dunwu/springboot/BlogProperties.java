@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.service;
+package io.github.dunwu.springboot;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
