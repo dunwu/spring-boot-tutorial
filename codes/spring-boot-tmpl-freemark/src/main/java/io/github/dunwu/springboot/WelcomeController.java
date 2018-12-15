@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.freemarker;
+package io.github.dunwu.springboot;
 
 import java.util.Date;
 import java.util.Map;

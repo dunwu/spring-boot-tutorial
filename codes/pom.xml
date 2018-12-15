@@ -29,6 +29,7 @@
     <module>spring-boot-msg-redis</module>
     <module>spring-boot-properties</module>
     <module>spring-boot-schedule</module>
+    <module>spring-boot-tmpl-freemark</module>
     <module>spring-boot-web-consuming-rest</module>
     <module>spring-boot-web-form-submission</module>
     <module>spring-boot-web-form-validating</module>

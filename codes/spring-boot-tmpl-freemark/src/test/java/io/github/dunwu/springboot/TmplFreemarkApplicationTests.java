@@ -1,9 +1,5 @@
 package io.github.dunwu.springboot;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Arrays;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +8,13 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class TemplateFreemarkApplicationTests {
+public class TmplFreemarkApplicationTests {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
@@ -32,8 +32,8 @@ public class TemplateFreemarkApplicationTests {
         headers.setAccept(Arrays.asList(MediaType.TEXT_HTML));
         HttpEntity<String> requestEntity = new HttpEntity<>(headers);
 
-        ResponseEntity<String> responseEntity = this.testRestTemplate.exchange("/does-not-exist",
-                HttpMethod.GET, requestEntity, String.class);
+        ResponseEntity<String> responseEntity =
+            this.testRestTemplate.exchange("/does-not-exist", HttpMethod.GET, requestEntity, String.class);
 
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         assertThat(responseEntity.getBody()).contains("Something went wrong: 404 Not Found");

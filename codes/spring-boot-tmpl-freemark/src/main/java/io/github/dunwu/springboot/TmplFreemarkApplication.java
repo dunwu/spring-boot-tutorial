@@ -1,13 +1,13 @@
-package io.github.dunwu.springboot.freemarker;
+package io.github.dunwu.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TemplateFreemarkApplication {
+public class TmplFreemarkApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TemplateFreemarkApplication.class, args);
+        SpringApplication.run(TmplFreemarkApplication.class, args);
     }
 
 }
