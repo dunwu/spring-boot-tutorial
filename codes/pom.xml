@@ -5,44 +5,19 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe</artifactId>
+  <name>SpringBootExamples</name>
   <version>1.0.0</version>
   <packaging>pom</packaging>
-  <name>SpringBootExamples</name>
 
   <modules>
-    <module>sbe-bean-dozer</module>
-    <module>sbe-actuator</module>
-    <module>sbe-bean-lombok</module>
-    <module>sbe-cache</module>
-    <module>sbe-core-aop</module>
-    <module>sbe-core-profile</module>
-    <module>sbe-data-flyway</module>
-    <module>sbe-data-jdbc</module>
-    <module>sbe-data-jdbc-multi-connectors</module>
-    <module>sbe-data-jpa</module>
-    <module>sbe-data-jpa-rest</module>
-    <module>sbe-data-mongodb</module>
-    <module>sbe-data-mysql</module>
-    <module>sbe-data-orm-mybatis</module>
-    <module>sbe-data-redis</module>
-    <module>sbe-docker</module>
-    <module>sbe-jetty-websocket</module>
-    <module>sbe-log-log4j</module>
-    <module>sbe-log-log4j2</module>
-    <module>sbe-log-logback</module>
-    <module>sbe-msg-kafka</module>
-    <module>sbe-msg-redis</module>
-    <module>sbe-properties</module>
-    <module>sbe-schedule</module>
-    <module>sbe-tmpl-freemark</module>
-    <module>sbe-tmpl-thymeleaf</module>
-    <module>sbe-tomcat-multi-connectors</module>
-    <module>sbe-tomcat-servlet</module>
-    <module>sbe-tomcat-websocket</module>
-    <module>sbe-web-consuming-rest</module>
-    <module>sbe-web-form-submission</module>
-    <module>sbe-web-form-validating</module>
-    <module>sbe-web-helloworld</module>
-    <module>sbe-web-uploading</module>
+    <module>core</module>
+    <module>data</module>
+    <module>deploy</module>
+    <module>io</module>
+    <module>log</module>
+    <module>message</module>
+    <module>template</module>
+    <module>ui</module>
+    <module>web</module>
   </modules>
 </project>
