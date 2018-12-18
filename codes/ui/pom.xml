@@ -17,5 +17,6 @@
 
   <modules>
     <module>sbe-ui-actuator</module>
+    <module>sbe-ui-bootstrap</module>
   </modules>
 </project>
