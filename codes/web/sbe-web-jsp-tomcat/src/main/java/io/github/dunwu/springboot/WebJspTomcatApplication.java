@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebJspApplication {
+public class WebJspTomcatApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WebJspApplication.class, args);
+        SpringApplication.run(WebJspTomcatApplication.class, args);
     }
 }
