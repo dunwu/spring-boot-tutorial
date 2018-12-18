@@ -26,5 +26,7 @@
     <module>sbe-web-jsp-tomcat</module>
     <module>sbe-web-session</module>
     <module>sbe-web-uploading</module>
+    <module>sbe-web-websocket-jetty</module>
+    <module>sbe-web-websocket-tomcat</module>
   </modules>
 </project>

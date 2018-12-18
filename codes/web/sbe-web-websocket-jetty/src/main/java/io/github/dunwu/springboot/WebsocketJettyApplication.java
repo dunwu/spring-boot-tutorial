@@ -23,10 +23,10 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 @Configuration
 @EnableAutoConfiguration
 @EnableWebSocket
-public class JettyWebSocketsApplication extends SpringBootServletInitializer implements WebSocketConfigurer {
+public class WebsocketJettyApplication extends SpringBootServletInitializer implements WebSocketConfigurer {
 
     public static void main(String[] args) {
-        SpringApplication.run(JettyWebSocketsApplication.class, args);
+        SpringApplication.run(WebsocketJettyApplication.class, args);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class JettyWebSocketsApplication extends SpringBootServletInitializer imp
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(JettyWebSocketsApplication.class);
+        return application.sources(WebsocketJettyApplication.class);
     }
 
     @Bean
