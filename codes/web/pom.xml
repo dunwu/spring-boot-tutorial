@@ -16,16 +16,15 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>sbe-jetty-websocket</module>
     <module>sbe-tomcat-multi-connectors</module>
     <module>sbe-tomcat-servlet</module>
-    <module>sbe-tomcat-websocket</module>
     <module>sbe-web-consuming-rest</module>
     <module>sbe-web-form-submission</module>
     <module>sbe-web-form-validating</module>
     <module>sbe-web-helloworld</module>
     <module>sbe-web-jsp-jetty</module>
     <module>sbe-web-jsp-tomcat</module>
+    <module>sbe-web-session</module>
     <module>sbe-web-uploading</module>
   </modules>
 </project>
