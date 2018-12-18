@@ -3,10 +3,10 @@ package io.github.dunwu.springboot;
 import io.github.dunwu.springboot.client.GreetingService;
 import io.github.dunwu.springboot.client.SimpleClientWebSocketHandler;
 import io.github.dunwu.springboot.client.SimpleGreetingService;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration;
@@ -28,10 +28,10 @@ import java.util.concurrent.atomic.AtomicReference;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WebsocketJettyApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-public class WebsocketJettyApplicationTests {
+@SpringBootTest(classes = WebSocketApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
+public class WebSocketApplicationTests {
 
-    private static Log logger = LogFactory.getLog(WebsocketJettyApplicationTests.class);
+    private static Logger logger = LoggerFactory.getLogger(WebSocketApplicationTests.class);
 
     @LocalServerPort
     private int port = 1234;

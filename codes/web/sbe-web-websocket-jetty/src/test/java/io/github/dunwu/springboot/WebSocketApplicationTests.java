@@ -28,10 +28,10 @@ import java.util.concurrent.atomic.AtomicReference;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TomcatWebSocketApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-public class TomcatSocketsApplicationTests {
+@SpringBootTest(classes = WebSocketApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
+public class WebSocketApplicationTests {
 
-    private static Logger logger = LoggerFactory.getLogger(TomcatSocketsApplicationTests.class);
+    private static Logger logger = LoggerFactory.getLogger(WebSocketApplicationTests.class);
 
     @LocalServerPort
     private int port = 1234;

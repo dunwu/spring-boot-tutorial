@@ -1,10 +1,8 @@
-package io.github.dunwu.springboot.echo;
+package io.github.dunwu.springboot;
 
-import io.github.dunwu.springboot.WebSocketApplication;
 import io.github.dunwu.springboot.client.GreetingService;
 import io.github.dunwu.springboot.client.SimpleClientWebSocketHandler;
 import io.github.dunwu.springboot.client.SimpleGreetingService;
-import io.github.dunwu.springboot.echo.CustomContainerWebSocketsApplicationTests.CustomContainerConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -15,9 +13,7 @@ import org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoCon
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,20 +28,19 @@ import java.util.concurrent.atomic.AtomicReference;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {WebSocketApplication.class,
-    CustomContainerConfiguration.class}, webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CustomContainerWebSocketsApplicationTests {
+@SpringBootTest(classes = WebSocketApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
+public class WebSocketApplicationTests {
 
-    private static Logger logger = LoggerFactory.getLogger(CustomContainerWebSocketsApplicationTests.class);
+    private static Logger logger = LoggerFactory.getLogger(WebSocketApplicationTests.class);
 
     @LocalServerPort
-    private int port;
+    private int port = 1234;
 
     @Test
     public void echoEndpoint() {
         ConfigurableApplicationContext context =
             new SpringApplicationBuilder(ClientConfiguration.class, PropertyPlaceholderAutoConfiguration.class)
-                .properties("websocket.uri:ws://localhost:" + this.port + "/ws/echo/websocket")
+                .properties("websocket.uri:ws://localhost:" + this.port + "/echo/websocket")
                 .run("--spring.main.web-application-type=none");
         long count = context.getBean(ClientConfiguration.class).latch.getCount();
         AtomicReference<String> messagePayloadReference = context.getBean(ClientConfiguration.class).messagePayload;
@@ -58,7 +53,7 @@ public class CustomContainerWebSocketsApplicationTests {
     public void reverseEndpoint() {
         ConfigurableApplicationContext context =
             new SpringApplicationBuilder(ClientConfiguration.class, PropertyPlaceholderAutoConfiguration.class)
-                .properties("websocket.uri:ws://localhost:" + this.port + "/ws/reverse")
+                .properties("websocket.uri:ws://localhost:" + this.port + "/reverse")
                 .run("--spring.main.web-application-type=none");
         long count = context.getBean(ClientConfiguration.class).latch.getCount();
         AtomicReference<String> messagePayloadReference = context.getBean(ClientConfiguration.class).messagePayload;
@@ -66,17 +61,6 @@ public class CustomContainerWebSocketsApplicationTests {
         assertThat(count).isEqualTo(0);
         assertThat(messagePayloadReference.get()).isEqualTo("Reversed: !dlrow olleH");
     }
-
-    @Configuration
-    protected static class CustomContainerConfiguration {
-
-        @Bean
-        public ServletWebServerFactory webServerFactory() {
-            return new TomcatServletWebServerFactory("/ws", 0);
-        }
-
-    }
-
 
     @Configuration
     static class ClientConfiguration implements CommandLineRunner {

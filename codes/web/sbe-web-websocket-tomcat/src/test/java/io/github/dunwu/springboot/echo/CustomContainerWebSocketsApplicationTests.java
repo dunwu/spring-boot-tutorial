@@ -1,6 +1,6 @@
 package io.github.dunwu.springboot.echo;
 
-import io.github.dunwu.springboot.TomcatWebSocketApplication;
+import io.github.dunwu.springboot.WebSocketApplication;
 import io.github.dunwu.springboot.client.GreetingService;
 import io.github.dunwu.springboot.client.SimpleClientWebSocketHandler;
 import io.github.dunwu.springboot.client.SimpleGreetingService;
@@ -32,7 +32,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {TomcatWebSocketApplication.class,
+@SpringBootTest(classes = {WebSocketApplication.class,
     CustomContainerConfiguration.class}, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CustomContainerWebSocketsApplicationTests {
 

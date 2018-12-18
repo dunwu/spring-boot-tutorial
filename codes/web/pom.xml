@@ -28,5 +28,6 @@
     <module>sbe-web-uploading</module>
     <module>sbe-web-websocket-jetty</module>
     <module>sbe-web-websocket-tomcat</module>
+    <module>sbe-web-websocket-undertow</module>
   </modules>
 </project>
