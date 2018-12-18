@@ -24,6 +24,7 @@
     <module>sbe-web-form-submission</module>
     <module>sbe-web-form-validating</module>
     <module>sbe-web-helloworld</module>
+    <module>sbe-web-jsp</module>
     <module>sbe-web-uploading</module>
   </modules>
 </project>
