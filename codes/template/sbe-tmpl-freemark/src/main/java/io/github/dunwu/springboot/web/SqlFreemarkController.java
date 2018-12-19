@@ -16,7 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/sql")
-public class SqlController {
+public class SqlFreemarkController {
 
     @Autowired
     private UserDAO userDAO;
