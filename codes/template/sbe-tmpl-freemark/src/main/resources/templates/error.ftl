@@ -3,7 +3,8 @@
 <html lang="en">
 
 <body>
-<h1>Something went wrong: ${status} ${error}</h1>
+<h1>HTTP Request Status: ${status}</h1>
+<p>${info}</p>
 </body>
 
 </html>
