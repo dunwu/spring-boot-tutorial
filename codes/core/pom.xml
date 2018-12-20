@@ -21,6 +21,6 @@
     <module>sbe-core-aop</module>
     <module>sbe-core-cache</module>
     <module>sbe-core-profile</module>
-    <module>sbe-core-properties</module>
+    <module>sbe-core-property</module>
   </modules>
 </project>
