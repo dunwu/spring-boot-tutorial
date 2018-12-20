@@ -1,33 +1,64 @@
 package io.github.dunwu.springboot;
 
-import org.junit.Assert;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.test.rule.OutputCapture;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class CoreProfileApplicationTests {
-    private static final Logger log = LoggerFactory.getLogger(CoreProfileApplicationTests.class);
 
-    @Autowired
-    private BlogProperties blogProperties;
+    @Rule
+    public final OutputCapture output = new OutputCapture();
+    private String profiles;
+
+    @Before
+    public void before() {
+        this.profiles = System.getProperty("spring.profiles.active");
+    }
+
+    @After
+    public void after() {
+        if (this.profiles != null) {
+            System.setProperty("spring.profiles.active", this.profiles);
+        } else {
+            System.clearProperty("spring.profiles.active");
+        }
+    }
 
     @Test
-    public void test1() {
-        Assert.assertEquals("Zhang Peng", blogProperties.getName());
-        Assert.assertEquals("Spring Boot 教程", blogProperties.getTitle());
-        Assert.assertEquals("Zhang Peng 正在努力写 《Spring Boot 教程》", blogProperties.getDesc());
+    public void testDefaultProfile() {
+        System.setProperty("spring.profiles.active", "default");
+        CoreProfileApplication.main(new String[0]);
+        assertThat(this.output.toString()).contains("Development Begin!");
+    }
 
-        log.info("随机数测试输出：");
-        log.info("随机字符串 : " + blogProperties.getValue());
-        log.info("随机int : " + blogProperties.getNumber());
-        log.info("随机long : " + blogProperties.getBignumber());
-        log.info("随机10以下 : " + blogProperties.getTest1());
-        log.info("随机10-20 : " + blogProperties.getTest2());
+    @Test
+    public void testDevProfile() {
+        System.setProperty("spring.profiles.active", "dev");
+        CoreProfileApplication.main(new String[0]);
+        assertThat(this.output.toString()).contains("The app is running on profile dev.");
+    }
+
+    @Test
+    public void testTestProfile() {
+        System.setProperty("spring.profiles.active", "test");
+        CoreProfileApplication.main(new String[0]);
+        assertThat(this.output.toString()).contains("The app is running on profile test.");
+    }
+
+    @Test
+    public void testProdProfile() {
+        System.setProperty("spring.profiles.active", "prod");
+        CoreProfileApplication.main(new String[0]);
+        assertThat(this.output.toString()).contains("The app is running on profile prod.");
+    }
+
+    @Test
+    public void testProdProfileFromCommandline() {
+        CoreProfileApplication.main(new String[] {"--spring.profiles.active=prod"});
+        assertThat(this.output.toString()).contains("The app is running on profile prod.");
     }
 }
