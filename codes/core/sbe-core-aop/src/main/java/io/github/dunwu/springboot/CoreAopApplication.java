@@ -17,11 +17,9 @@ public class CoreAopApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) {
+    public void run(String... args) throws Exception {
         System.out.println(this.helloWorldService.getHelloMessage());
-
-        // 放开下面的注释，会触发 io.github.dunwu.springboot.monitor.ServiceMonitor.afterThrowing
-        // System.out.println(this.helloWorldService.makeException(null));
+        this.helloWorldService.getException();
     }
 
 }

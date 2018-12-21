@@ -9,14 +9,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class HelloWorldService {
 
-    @Value("${name:World}")
+    public static final String EXPECT_EXCEPTION_MSG = "Get a exception";
+
+    @Value("${author.name:Unknow}")
     private String name;
+
+    @Value("${throw.exception:false}")
+    private boolean throwException;
 
     public String getHelloMessage() {
         return "Hello " + this.name;
     }
 
-    public String makeException(String str) {
-        return str.toLowerCase();
+    public void getException() throws Exception {
+        if (throwException) {
+            throw new Exception(EXPECT_EXCEPTION_MSG);
+        }
     }
 }
