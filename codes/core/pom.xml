@@ -19,6 +19,7 @@
     <module>sbe-bean-dozer</module>
     <module>sbe-bean-lombok</module>
     <module>sbe-core-aop</module>
+    <module>sbe-core-banner</module>
     <module>sbe-core-cache</module>
     <module>sbe-core-profile</module>
     <module>sbe-core-property</module>
