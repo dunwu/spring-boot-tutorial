@@ -41,9 +41,8 @@ public class CorePropertyApplication implements CommandLineRunner {
         log.info("validator.port: {}", validatorProperties.getPort());
         log.info("io.github.dunwu.name: {}", myProperties.getName());
         log.info("io.github.dunwu.age: {}", myProperties.getAge());
+        log.info("io.github.dunwu.sex: {}", myProperties.getSex());
         log.info("custom.topic1: {}", topics.getTopic1());
         log.info("custom.topic2: {}", topics.getTopic2());
-
     }
-
 }
