@@ -1,4 +1,4 @@
-SpringBootTutorial :: Core :: Property
+# SpringBootTutorial :: Core :: Property
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
@@ -9,14 +9,14 @@ SpringBootTutorial :: Core :: Property
 - [Profile 特定属性](#profile-特定属性)
 - [属性中的占位符](#属性中的占位符)
 - [YAML 属性](#yaml-属性)
-  - [访问属性](#访问属性)
-  - [多 profile 配置](#多-profile-配置)
-  - [YAML 的缺点](#yaml-的缺点)
+    - [访问属性](#访问属性)
+    - [多 profile 配置](#多-profile-配置)
+    - [YAML 的缺点](#yaml-的缺点)
 - [属性前缀](#属性前缀)
 - [属性松散绑定规则](#属性松散绑定规则)
 - [属性转换](#属性转换)
-  - [时间单位转换](#时间单位转换)
-  - [数据大小转换](#数据大小转换)
+    - [时间单位转换](#时间单位转换)
+    - [数据大小转换](#数据大小转换)
 - [校验属性](#校验属性)
 - [源码](#源码)
 - [引申和引用](#引申和引用)
@@ -25,23 +25,25 @@ SpringBootTutorial :: Core :: Property
 
 ## 加载 property 顺序
 
-1. [Devtools global settings properties](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#using-boot-devtools-globalsettings) on your home directory (`~/.spring-boot-devtools.properties` when devtools is active).
-2. [`@TestPropertySource`](https://docs.spring.io/spring/docs/5.1.3.RELEASE/javadoc-api/org/springframework/test/context/TestPropertySource.html) annotations on your tests.
-3. `properties` attribute on your tests. Available on [`@SpringBootTest`](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/api/org/springframework/boot/test/context/SpringBootTest.html) and the [test annotations for testing a particular slice of your application](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-tests).
-4. Command line arguments.
-5. Properties from `SPRING_APPLICATION_JSON` (inline JSON embedded in an environment variable or system property).
-6. `ServletConfig` init parameters.
-7. `ServletContext` init parameters.
-8. JNDI attributes from `java:comp/env`.
-9. Java System properties (`System.getProperties()`).
-10. OS environment variables.
-11. A `RandomValuePropertySource` that has properties only in `random.*`.
-12. [Profile-specific application properties](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#boot-features-external-config-profile-specific-properties) outside of your packaged jar (`application-{profile}.properties` and YAML variants).
-13. [Profile-specific application properties](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#boot-features-external-config-profile-specific-properties) packaged inside your jar (`application-{profile}.properties` and YAML variants).
-14. Application properties outside of your packaged jar (`application.properties` and YAML variants).
-15. Application properties packaged inside your jar (`application.properties` and YAML variants).
-16. [`@PropertySource`](https://docs.spring.io/spring/docs/5.1.3.RELEASE/javadoc-api/org/springframework/context/annotation/PropertySource.html) annotations on your `@Configuration` classes.
-17. Default properties (specified by setting `SpringApplication.setDefaultProperties`).
+Spring Boot 加载 property 顺序如下：
+
+1. [Devtools 全局配置](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#using-boot-devtools-globalsettings) (当 devtools 被激活 `~/.spring-boot-devtools.properties`).
+2. [测试环境中的 `@TestPropertySource` 注解配置](https://docs.spring.io/spring/docs/5.1.3.RELEASE/javadoc-api/org/springframework/test/context/TestPropertySource.html)
+3. 测试环境中的属性 `properties`：[`@SpringBootTest`](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/api/org/springframework/boot/test/context/SpringBootTest.html) 和 [测试注解](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-tests).
+4. 命令行参数
+5. `SPRING_APPLICATION_JSON` 属性
+6. `ServletConfig` 初始化参数
+7. `ServletContext` 初始化参数
+8. JNDI attributes from 通过 `java:comp/env` 配置的 JNDI 属性
+9. Java 系统属性 (`System.getProperties()`)
+10. 操作系统环境比那里
+11. `RandomValuePropertySource` 加载 `random.*` 形式的属性
+12. jar 包外的 `application-{profile}.properties` 或 `application-{profile}.yml` 配置
+13. jar 包内的 `application-{profile}.properties` 或 `application-{profile}.yml` 配置
+14. jar 包外的 `application.properties` 或 `application.yml` 配置
+15. jar 包内的 `application.properties` 或 `application.yml` 配置
+16. `@PropertySource` 绑定的配置
+17. 默认属性 (通过 `SpringApplication.setDefaultProperties` 指定)
 
 ## 随机属性
 
