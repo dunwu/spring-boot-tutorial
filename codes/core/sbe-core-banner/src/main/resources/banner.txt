@@ -1,10 +1,11 @@
-${AnsiColor.BRIGHT_YELLOW}
+${AnsiColor.BRIGHT_YELLOW}${AnsiStyle.BOLD}
  ________  ___  ___  ________   ___       __   ___  ___
-|\   ___ \|\  \|\  \|\   ___  \|\  \     |\  \|\  \|\  \
-\ \  \_|\ \ \  \\\  \ \  \\ \  \ \  \    \ \  \ \  \\\  \
- \ \  \ \\ \ \  \\\  \ \  \\ \  \ \  \  __\ \  \ \  \\\  \
-  \ \  \_\\ \ \  \\\  \ \  \\ \  \ \  \|\__\_\  \ \  \\\  \
+|\   ___ \|\  \|\  \|\   ___  \|\  \     |\  \|\  \|\  \    
+\ \  \_|\ \ \  \\\  \ \  \\ \  \ \  \    \ \  \ \  \\\  \   
+ \ \  \ \\ \ \  \\\  \ \  \\ \  \ \  \  __\ \  \ \  \\\  \  
+  \ \  \_\\ \ \  \\\  \ \  \\ \  \ \  \|\__\_\  \ \  \\\  \ 
    \ \_______\ \_______\ \__\\ \__\ \____________\ \_______\
     \|_______|\|_______|\|__| \|__|\|____________|\|_______|
-${AnsiColor.BRIGHT_BLUE}
-::: Spring Boot Tutorial (version:1.0.0) ::: ＼(^O^)／ Spring-Boot ${spring-boot.version}
+${AnsiBackground.WHITE}${AnsiColor.RED}${AnsiStyle.UNDERLINE}
+:: Spring Boot ::             (v${spring-boot.version})
+:: Spring Boot Tutorial ::    (v1.0.0)
