@@ -16,6 +16,7 @@
     <module>io</module>
     <module>log</module>
     <module>message</module>
+    <module>security</module>
     <module>template</module>
     <module>ui</module>
     <module>web</module>
