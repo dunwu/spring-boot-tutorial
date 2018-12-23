@@ -16,6 +16,7 @@
   <packaging>pom</packaging>
 
   <modules>
+    <module>sbe-msg-activemq</module>
     <module>sbe-msg-kafka</module>
     <module>sbe-msg-redis</module>
   </modules>
