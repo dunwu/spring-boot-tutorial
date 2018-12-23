@@ -10,7 +10,7 @@
   </parent>
 
   <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>sbe-log-log4j2</artifactId>
+  <artifactId>sbe-log-logback</artifactId>
   <name>SpringBootExamples :: Log :: Logback</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
