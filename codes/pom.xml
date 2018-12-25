@@ -17,8 +17,8 @@
     <module>log</module>
     <module>message</module>
     <module>security</module>
-    <module>template</module>
     <module>test</module>
+    <module>tmpl</module>
     <module>ui</module>
     <module>web</module>
   </modules>
