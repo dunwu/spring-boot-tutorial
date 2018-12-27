@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-ui-bootstrap</artifactId>
-  <name>SpringBootExamples :: UI :: Bootstrap</name>
+  <name>SBE :: UI :: Bootstrap</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

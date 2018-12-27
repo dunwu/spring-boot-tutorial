@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-data-mongodb</artifactId>
-  <name>SpringBootExamples :: Data :: MongoDB</name>
+  <name>SBE :: Data :: MongoDB</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

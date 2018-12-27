@@ -5,7 +5,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-log</artifactId>
-  <name>SpringBootExamples :: Log</name>
+  <name>SBE :: Log</name>
   <version>1.0.0</version>
   <packaging>pom</packaging>
 

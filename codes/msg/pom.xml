@@ -5,7 +5,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-msg</artifactId>
-  <name>SpringBootExamples :: Message</name>
+  <name>SBE :: Msg</name>
   <version>1.0.0</version>
   <packaging>pom</packaging>
 

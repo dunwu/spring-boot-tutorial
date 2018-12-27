@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-data-jpa-rest</artifactId>
-  <name>SpringBootExamples :: Data :: JPA :: Rest</name>
+  <name>SBE :: Data :: JPA :: Rest</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

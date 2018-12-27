@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-data-flyway</artifactId>
-  <name>SpringBootExamples :: Data :: Flyway</name>
+  <name>SBE :: Data :: Flyway</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

@@ -13,7 +13,7 @@
   <artifactId>sbe-tmpl-freemark</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-  <name>SpringBootExamples :: Tmpl :: Freemark</name>
+  <name>SBE :: Tmpl :: Freemark</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

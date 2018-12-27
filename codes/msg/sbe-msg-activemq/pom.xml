@@ -10,8 +10,8 @@
   </parent>
 
   <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>sbe-msg-kafka</artifactId>
-  <name>SpringBootExamples :: Message :: Kafka</name>
+  <artifactId>sbe-msg-activemq</artifactId>
+  <name>SBE :: Msg :: ActiveMQ</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
@@ -24,30 +24,17 @@
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <artifactId>spring-boot-starter-activemq</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-
-    <dependency>
-      <groupId>org.springframework.kafka</groupId>
-      <artifactId>spring-kafka</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.kafka</groupId>
-      <artifactId>spring-kafka-test</artifactId>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
   <build>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>

@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-web-websocket-tomcat</artifactId>
-  <name>SpringBootExamples :: Web :: Websocket :: Tomcat</name>
+  <name>SBE :: Web :: Websocket :: Tomcat</name>
   <version>1.0.0</version>
   <packaging>war</packaging>
 

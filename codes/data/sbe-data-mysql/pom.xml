@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-data-mysql</artifactId>
-  <name>SpringBootExamples :: Data :: Mysql</name>
+  <name>SBE :: Data :: Mysql</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-core-banner</artifactId>
-  <name>SpringBootExamples :: Core :: Banner</name>
+  <name>SBE :: Core :: Banner</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-data-jdbc-multi-connectors</artifactId>
-  <name>SpringBootExamples :: Data :: JDBC :: Multi Connectors</name>
+  <name>SBE :: Data :: JDBC :: Multi Connectors</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-io-schedule</artifactId>
-  <name>SpringBootExamples :: I/O :: Schedule</name>
+  <name>SBE :: I/O :: Schedule</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

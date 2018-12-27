@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-data-elasticsearch</artifactId>
-  <name>SpringBootExamples :: Data :: Elasticsearch</name>
+  <name>SBE :: Data :: Elasticsearch</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-ui-actuator</artifactId>
-  <name>SpringBootExamples :: UI :: Actuator</name>
+  <name>SBE :: UI :: Actuator</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

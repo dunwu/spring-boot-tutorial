@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-docker</artifactId>
-  <name>SpringBootExamples :: Deploy :: Docker</name>
+  <name>SBE :: Deploy :: Docker</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

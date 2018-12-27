@@ -12,7 +12,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-data-orm-mybatis</artifactId>
-  <name>SpringBootExamples :: Data :: ORM :: Mybatis</name>
+  <name>SBE :: Data :: ORM :: Mybatis</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

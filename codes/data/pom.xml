@@ -5,7 +5,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-data</artifactId>
-  <name>SpringBootExamples :: Data</name>
+  <name>SBE :: Data</name>
   <version>1.0.0</version>
   <packaging>pom</packaging>
 

@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-web-websocket-undertow</artifactId>
-  <name>SpringBootExamples :: Web :: Websocket :: Undertow</name>
+  <name>SBE :: Web :: Websocket :: Undertow</name>
   <version>1.0.0</version>
   <packaging>war</packaging>
 

@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-data-redis</artifactId>
-  <name>SpringBootExamples :: Data :: Redis</name>
+  <name>SBE :: Data :: Redis</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

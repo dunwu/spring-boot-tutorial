@@ -5,7 +5,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-ui</artifactId>
-  <name>SpringBootExamples :: UI</name>
+  <name>SBE :: UI</name>
   <version>1.0.0</version>
   <packaging>pom</packaging>
 

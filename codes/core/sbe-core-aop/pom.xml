@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-core-aop</artifactId>
-  <name>SpringBootExamples :: Core :: AOP</name>
+  <name>SBE :: Core :: AOP</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-msg-redis</artifactId>
-  <name>SpringBootExamples :: Message :: Redis</name>
+  <name>SBE :: Msg :: Redis</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

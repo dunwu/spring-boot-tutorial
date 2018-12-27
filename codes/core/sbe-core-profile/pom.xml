@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-core-profile</artifactId>
-  <name>SpringBootExamples :: Core :: Profile</name>
+  <name>SBE :: Core :: Profile</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

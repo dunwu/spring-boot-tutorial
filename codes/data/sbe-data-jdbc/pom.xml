@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-data-jdbc</artifactId>
-  <name>SpringBootExamples :: Data :: JDBC</name>
+  <name>SBE :: Data :: JDBC</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

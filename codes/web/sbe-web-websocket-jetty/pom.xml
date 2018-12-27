@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-web-websocket-jetty</artifactId>
-  <name>SpringBootExamples :: Web :: Websocket :: Jetty</name>
+  <name>SBE :: Web :: Websocket :: Jetty</name>
   <version>1.0.0</version>
   <packaging>war</packaging>
 

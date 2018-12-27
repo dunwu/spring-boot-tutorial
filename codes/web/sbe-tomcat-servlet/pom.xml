@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-tomcat-servlet</artifactId>
-  <name>SpringBootExamples :: Web :: Tomcat :: Servlet</name>
+  <name>SBE :: Web :: Tomcat :: Servlet</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

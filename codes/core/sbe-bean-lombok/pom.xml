@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-bean-lombok</artifactId>
-  <name>SpringBootExamples :: Core :: Bean :: Lombok</name>
+  <name>SBE :: Core :: Bean :: Lombok</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

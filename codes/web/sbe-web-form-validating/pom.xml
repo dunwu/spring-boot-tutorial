@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-web-form-validating</artifactId>
-  <name>SpringBootExamples :: Web :: Form Validating</name>
+  <name>SBE :: Web :: Form Validating</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

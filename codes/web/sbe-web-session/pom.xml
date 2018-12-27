@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-web-session</artifactId>
-  <name>SpringBootExamples :: Web :: Session</name>
+  <name>SBE :: Web :: Session</name>
   <version>1.0.0</version>
   <packaging>war</packaging>
 

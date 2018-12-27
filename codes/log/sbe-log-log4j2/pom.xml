@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-log-log4j2</artifactId>
-  <name>SpringBootExamples :: Log :: Log4j2</name>
+  <name>SBE :: Log :: Log4j2</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

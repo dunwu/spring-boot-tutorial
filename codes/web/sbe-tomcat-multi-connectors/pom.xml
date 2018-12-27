@@ -13,7 +13,7 @@
   <artifactId>sbe-tomcat-multi-connectors</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-  <name>SpringBootExamples :: Web :: Tomcat :: Multi Connectors</name>
+  <name>SBE :: Web :: Tomcat :: Multi Connectors</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

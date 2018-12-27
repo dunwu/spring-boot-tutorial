@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-core-property</artifactId>
-  <name>SpringBootExamples :: Core :: Property</name>
+  <name>SBE :: Core :: Property</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

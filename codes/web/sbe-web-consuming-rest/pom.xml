@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-web-consuming-rest</artifactId>
-  <name>SpringBootExamples :: Web :: Consuming Rest</name>
+  <name>SBE :: Web :: Consuming Rest</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

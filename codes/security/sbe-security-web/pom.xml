@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-security-web</artifactId>
-  <name>SpringBootExamples :: Security :: Web</name>
+  <name>SBE :: Security :: Web</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

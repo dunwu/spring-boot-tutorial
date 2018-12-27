@@ -11,7 +11,7 @@
 
   <groupId>io.github.dunwu.springboot</groupId>
   <artifactId>sbe-web-form-submission</artifactId>
-  <name>SpringBootExamples :: Web :: Form Submission</name>
+  <name>SBE :: Web :: Form Submission</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
