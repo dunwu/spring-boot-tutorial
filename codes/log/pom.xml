@@ -13,5 +13,6 @@
     <module>sbe-log-log4j</module>
     <module>sbe-log-log4j2</module>
     <module>sbe-log-logback</module>
+    <module>sbe-log-simple</module>
   </modules>
 </project>

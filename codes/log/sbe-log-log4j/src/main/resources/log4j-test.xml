@@ -24,7 +24,7 @@
   </appender>
 
   <logger name="io.github.dunwu.springboot" additivity="false">
-    <level value="INFO"/>
+    <level value="DEBUG"/>
     <appender-ref ref="CONSOLE"/>
   </logger>
 
