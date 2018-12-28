@@ -34,11 +34,16 @@
 
 - [sbe-io-schedule](codes/io/sbe-io-schedule) - Spring Boot 中使用 Spring 内置调度器
 
-## Log
+## [Log](codes/log)
 
-- [sbe-log-log4j](codes/log/sbe-log-log4j) - Spring Boot 中使用 Log4j 记录日志
-- [sbe-log-log4j2](codes/log/sbe-log-log4j2) - Spring Boot 中使用 Log4j2 记录日志
-- [sbe-log-logback](codes/log/sbe-log-logback) - Spring Boot 中使用 Logback 记录日志
+Spring Boot 默认使用 Logback 记录日志。建议使用 Slf4j + Loback 作为日志记录方案。
+
+| 示例项目                                     | 说明                                                           |
+| -------------------------------------------- | -------------------------------------------------------------- |
+| [sbe-log-simple](codes/log/sbe-log-simple)   | 无需 xml 配置，使用 Spring Boot 中的日志相关属性定义日志配置。 |
+| [sbe-log-logback](codes/log/sbe-log-logback) | Spring Boot 中使用 Logback 记录日志。                          |
+| [sbe-log-log4j2](codes/log/sbe-log-log4j2)   | Spring Boot 中使用 Log4j2 记录日志。                           |
+| [sbe-log-log4j](codes/log/sbe-log-log4j)     | Spring Boot 中使用 Log4j 记录日志。                            |
 
 ## Message
 
