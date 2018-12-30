@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import io.github.dunwu.springboot.dto.ResponseDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 本类仅为展示如何使用 Fastjson 替换 Spring Boot 默认使用的 Jackson
  * @author Zhang Peng
  * @date 2018-12-29
  */
@@ -32,7 +34,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     /**
-     * 自定义消息转换器
+     * 自定义消息转换器：使用 Fastjson 替换 Spring Boot 默认使用的 Jackson
      * @param converters
      */
     @Override
@@ -43,8 +45,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // 配置 FastJson
         FastJsonConfig config = new FastJsonConfig();
         config.setSerializerFeatures(SerializerFeature.QuoteFieldNames, SerializerFeature.WriteEnumUsingToString,
-            SerializerFeature.WriteMapNullValue, SerializerFeature.WriteDateUseDateFormat,
-            SerializerFeature.DisableCircularReferenceDetect);
+            SerializerFeature.WriteMapNullValue, SerializerFeature.WriteDateUseDateFormat);
 
         // 添加 FastJsonHttpMessageConverter
         FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
@@ -55,7 +56,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         converters.add(fastJsonHttpMessageConverter);
 
         // 添加 StringHttpMessageConverter，解决中文乱码问题
-        StringHttpMessageConverter stringHttpMessageConverter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+        StringHttpMessageConverter stringHttpMessageConverter =
+            new StringHttpMessageConverter(Charset.forName("UTF-8"));
         converters.add(stringHttpMessageConverter);
     }
 
