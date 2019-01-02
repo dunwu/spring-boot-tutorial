@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -10,8 +10,8 @@
   </parent>
 
   <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>sbe-web-websocket-undertow</artifactId>
-  <name>SBE :: Web :: Websocket :: Undertow</name>
+  <artifactId>sbe-web-websocket-tomcat</artifactId>
+  <name>SBE :: Web :: WebSocket :: Tomcat</name>
   <version>1.0.0</version>
   <packaging>war</packaging>
 
@@ -25,16 +25,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-websocket</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-undertow</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
