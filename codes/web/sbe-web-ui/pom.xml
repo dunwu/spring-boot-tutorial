@@ -4,12 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>sbe-ui</artifactId>
-  <name>SBE :: UI</name>
+  <artifactId>sbe-web-ui</artifactId>
+  <name>SBE :: Web :: UI</name>
   <version>1.0.0</version>
   <packaging>pom</packaging>
 
   <modules>
-    <module>sbe-ui-actuator</module>
+    <module>sbe-web-ui-bootstrap</module>
   </modules>
 </project>

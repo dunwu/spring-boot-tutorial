@@ -18,6 +18,7 @@
     <module>sbe-web-json</module>
     <module>sbe-web-jsp</module>
     <module>sbe-web-session</module>
+    <module>sbe-web-ui</module>
     <module>sbe-web-uploading</module>
     <module>sbe-web-websocket</module>
   </modules>

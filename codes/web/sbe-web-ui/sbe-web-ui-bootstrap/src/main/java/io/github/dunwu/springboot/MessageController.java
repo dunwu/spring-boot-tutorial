@@ -1,5 +1,7 @@
 package io.github.dunwu.springboot;
 
+import io.github.dunwu.springboot.Message;
+import io.github.dunwu.springboot.MessageRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
