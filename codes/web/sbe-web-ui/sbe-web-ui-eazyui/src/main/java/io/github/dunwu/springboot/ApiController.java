@@ -1,5 +1,7 @@
 package io.github.dunwu.springboot;
 
+import org.apache.commons.collections.IteratorUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +15,8 @@ import java.util.UUID;
  */
 @RestController
 public class ApiController {
+
+
     @RequestMapping(value = "/api/model")
     public ResponseDTO<Model> index() {
 
@@ -31,4 +35,6 @@ public class ApiController {
 
         return new ResponseDTO<>(list.size(), list);
     }
+
+
 }
