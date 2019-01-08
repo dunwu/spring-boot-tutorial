@@ -10,8 +10,6 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>sbe-lib-bean-dozer</module>
-    <module>sbe-lib-bean-lombok</module>
     <module>sbe-core-aop</module>
     <module>sbe-core-banner</module>
     <module>sbe-core-cache</module>
