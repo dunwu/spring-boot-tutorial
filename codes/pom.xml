@@ -12,12 +12,10 @@
   <modules>
     <module>core</module>
     <module>data</module>
-    <module>deploy</module>
-    <module>io</module>
-    <module>log</module>
+    <module>lib</module>
     <module>msg</module>
+    <module>others</module>
     <module>security</module>
-    <module>test</module>
     <module>tmpl</module>
     <module>ui</module>
     <module>web</module>

@@ -4,18 +4,18 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>sbe-core</artifactId>
-  <name>SBE :: Core</name>
+  <artifactId>sbe-lib</artifactId>
+  <name>SBE :: Lib</name>
   <version>1.0.0</version>
   <packaging>pom</packaging>
 
   <modules>
     <module>sbe-lib-bean-dozer</module>
     <module>sbe-lib-bean-lombok</module>
-    <module>sbe-core-aop</module>
-    <module>sbe-core-banner</module>
-    <module>sbe-core-cache</module>
-    <module>sbe-core-profile</module>
-    <module>sbe-core-property</module>
+    <module>sbe-lib-log-log4j</module>
+    <module>sbe-lib-log-log4j2</module>
+    <module>sbe-lib-log-logback</module>
+    <module>sbe-lib-log-simple</module>
+    <module>sbe-lib-test-junit5</module>
   </modules>
 </project>
