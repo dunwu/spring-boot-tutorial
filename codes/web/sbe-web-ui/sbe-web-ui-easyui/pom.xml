@@ -10,8 +10,8 @@
   </parent>
 
   <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>sbe-web-ui-eazyui</artifactId>
-  <name>SBE :: Web :: UI :: EazyUI</name>
+  <artifactId>sbe-web-ui-easyui</artifactId>
+  <name>SBE :: Web :: UI :: EasyUI</name>
   <version>1.0.0</version>
   <packaging>war</packaging>
 

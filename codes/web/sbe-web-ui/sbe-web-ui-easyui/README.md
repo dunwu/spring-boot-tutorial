@@ -1,12 +1,29 @@
-# SpringBootTutorial :: Web :: UI :: EazyUI
+# SpringBootTutorial :: Web :: UI :: EasyUI
 
-> EazyUI 是一个简单的用户界面组件的集合。由于 EazyUI 已经封装好大部分 UI 基本功能，能帮用户减少大量的 js 和 css 代码。所以，EazyUI 非常适合用于开发简单的系统或原型系统。
+> EasyUI 是一个简单的用户界面组件的集合。由于 EasyUI 已经封装好大部分 UI 基本功能，能帮用户减少大量的 js 和 css 代码。所以，EasyUI 非常适合用于开发简单的系统或原型系统。
 >
 > 本文示例使用技术点：
 >
 > - Spring Boot：主要使用了 spring-boot-starter-web、spring-boot-starter-data-jpa
-> - EazyUI：按需加载，并没有引入所有的 EazyUI 特性
+> - EasyUI：按需加载，并没有引入所有的 EasyUI 特性
 > - 数据库：为了测试方便，使用 H2
+
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [简介](#简介)
+    - [什么是 EasyUI？](#什么是-easyui)
+- [Spring Boot 整合 EasyUI](#spring-boot-整合-easyui)
+    - [配置](#配置)
+    - [引入 easyui](#引入-easyui)
+- [实战](#实战)
+    - [引入 maven 依赖](#引入-maven-依赖)
+    - [使用 JPA](#使用-jpa)
+    - [使用 Web](#使用-web)
+    - [使用 EasyUI](#使用-easyui)
+- [完整示例](#完整示例)
+- [引用和引申](#引用和引申)
+
+<!-- /TOC -->
 
 ![](http://www.jeasyui.cn/images/easyui.png)
 
@@ -21,7 +38,7 @@
 - 使用 easyui 开发你的产品时可以大量节省你的时间和规模。
 - easyui 使用非常简单但功能非常强大。
 
-## Spring Boot 整合 EazyUI
+## Spring Boot 整合 EasyUI
 
 ### 配置
 
@@ -32,11 +49,11 @@ spring.mvc.view.prefix = /views/
 spring.mvc.view.suffix = .html
 ```
 
-### 引入 eazyui
+### 引入 easyui
 
-EazyUI 下载地址：http://www.jeasyui.cn/download.html
+EasyUI 下载地址：http://www.jeasyui.cn/download.html
 
-在 `src/main/resources/static` 目录下引入 eazyui。
+在 `src/main/resources/static` 目录下引入 easyui。
 
 然后在 html 中引用：
 
@@ -76,7 +93,7 @@ EazyUI 下载地址：http://www.jeasyui.cn/download.html
 </html>
 ```
 
-引入 eazyui 后，需要使用哪种组件，可以查看相关文档或 API，十分简单，此处不一一赘述。
+引入 easyui 后，需要使用哪种组件，可以查看相关文档或 API，十分简单，此处不一一赘述。
 
 ## 实战
 
@@ -226,9 +243,9 @@ public class UserController {
 }
 ```
 
-### 使用 EazyUI
+### 使用 EasyUI
 
-接下来，我们要使用前面定义的后台接口，仅需要在 EazyUI API 中指定 `url` 即可。
+接下来，我们要使用前面定义的后台接口，仅需要在 EasyUI API 中指定 `url` 即可。
 
 请留意下面示例中的 url 字段，和实际接口是一一对应的。
 
@@ -474,7 +491,7 @@ public class UserController {
 
 ## 完整示例
 
-请参考 [源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/sbe-web-ui/sbe-web-ui-eazyui)
+请参考 [源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/sbe-web-ui/sbe-web-ui-easyui)
 
 运行方式：
 
@@ -488,4 +505,4 @@ java -jar target/
 ## 引用和引申
 
 - [EasyUI 官网](http://www.jeasyui.com/)
-- [EazyUI 中文网](http://www.jeasyui.cn/)
+- [EasyUI 中文网](http://www.jeasyui.cn/)

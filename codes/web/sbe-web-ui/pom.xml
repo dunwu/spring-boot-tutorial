@@ -11,6 +11,6 @@
 
   <modules>
     <module>sbe-web-ui-bootstrap</module>
-    <module>sbe-web-ui-eazyui</module>
+    <module>sbe-web-ui-easyui</module>
   </modules>
 </project>
