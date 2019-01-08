@@ -11,8 +11,4 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value = "/crud")
-    public String crud() {
-        return "crud";
-    }
 }

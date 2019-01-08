@@ -1,5 +1,9 @@
 # spring-boot-tutorial
 
+> 这是一个 Spring Boot 实战教程，通过大量丰富的示例，展示 Spring Boot 在各个应用领域的应用。本项目旨在覆盖 Java 应用的各领域。
+>
+> 正在不断完善、丰富示例中。
+
 ## Core
 
 - [sbe-bean-dozer](codes/core/sbe-bean-dozer) - Spring Boot 中应用 Dozer， 映射 JavaBean
@@ -54,23 +58,26 @@ Spring Boot 默认使用 Logback 记录日志。建议使用 Slf4j + Loback 作�
 
 ## Template
 
-- [sbe-tmpl-freemark](codes/tmpl/sbe-tmpl-freemark) - Spring Boot 中使用 freemark 模板引擎
-- [sbe-tmpl-thymeleaf](codes/tmpl/sbe-tmpl-thymeleaf) - Spring Boot 中使用 Thymeleaf 模板引擎
+> 本章节展示 Spring Boot 如何整合模板引擎。
+
+| 示例项目                                            | 说明                                    |
+| --------------------------------------------------- | --------------------------------------- |
+| [sbe-tmpl-freemark](codes/tmpl/sbe-tmpl-freemark)   | Spring Boot 中使用 Freemark 模板引擎。  |
+| [sbe-tmpl-thymeleaf](codes/tmpl/sbe-tmpl-thymeleaf) | Spring Boot 中使用 Thymeleaf 模板引擎。 |
 
 ## Test
 
 - [sbe-test-junit5](codes/test/sbe-test-junit5) - Spring Boot 中使用 JUnit5 进行单元测试
 
-## Web
+## [Web](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web)
 
-- [sbe-web-consuming-rest](codes/web/sbe-web-consuming-rest) - Spring Boot 中访问 rest 接口
-- [sbe-web-form-submission](codes/web/sbe-web-form-submission) - Spring Boot 表单提交
-- [sbe-web-form-validating](codes/web/sbe-web-form-validating) - Spring Boot 表单校验
-- [sbe-web-helloworld](codes/web/sbe-web-helloworld) - Spring Boot 的 web 应用 Hello World 示例
-- [sbe-web-jsp-jetty](codes/web/sbe-web-jsp-jetty) - Spring Boot 中使用 JSP，运行在 Jetty 服务器上
-- [sbe-web-jsp-tomcat](codes/web/sbe-web-jsp-tomcat) - Spring Boot 中使用 JSP，运行在 Tomcat 服务器上
-- [sbe-web-session](codes/web/sbe-web-session) - Spring Boot 中通过 redis 缓存管理 session
-- [sbe-web-uploading](codes/web/sbe-web-uploading) - Spring Boot 中上传文件
-- [sbe-web-websocket-jetty](codes/web/sbe-web-websocket-jetty) - Spring Boot 中使用 WebSocket，运行在 Jetty 服务器上
-- [sbe-web-websocket-tomcat](codes/web/sbe-web-websocket-tomcat) - Spring Boot 中使用 WebSocket，运行在 Tomcat 服务器上
-- [sbe-web-websocket-undertow](codes/web/sbe-web-websocket-undertow) - Spring Boot 中使用 WebSocket，运行在 Undertow 服务器上
+> 本章节展示 Spring Boot 在 Java Web 开发的各个领域的应用。
+
+| 示例项目                                           | 说明                                                         |
+| -------------------------------------------------- | ------------------------------------------------------------ |
+| [sbe-web-helloworld](codes/web/sbe-web-helloworld) | Spring Boot Web 应用的 Hello World 示例。                    |
+| [sbe-web-form](codes/web/sbe-web-form)             | 展示 Spring Boot Web 应用中表单如何提交、校验。              |
+| [sbe-web-json](codes/web/sbe-web-json)             | 展示 Spring Boot Web 应用中如何使用 json 序列化、反序列化。  |
+| [sbe-web-jsp](codes/web/sbe-web-jsp)               | 展示 Spring Boot Web 应用中如何运行 JSP，提供 2 种服务器的整合示例：Tomcat、 Jetty。 |
+| [sbe-web-websocket](codes/web/sbe-web-websocket)   | 展示 Spring Boot Web 应用中如何运行 WebSocket，提供 3 种服务器的整合示例：Tomcat、Jetty、Undertow。 |
+| [sbe-web-ui](codes/web/sbe-web-ui)                 | 展示 Spring Boot Web 应用中如何整合前端 UI。目前已完成的示例有：[整合 Bootstrap](codes/web/sbe-web-ui/sbe-web-ui-bootstrap)、[整合 Eazyui](codes/web/sbe-web-ui/sbe-web-ui-eazyui) |
