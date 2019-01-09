@@ -11,6 +11,7 @@
 
   <modules>
     <module>sbe-docker</module>
+    <module>sbe-mail</module>
     <module>sbe-schedule</module>
   </modules>
 </project>
