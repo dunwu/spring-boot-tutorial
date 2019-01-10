@@ -12,14 +12,14 @@
 
 ## [Core](codes/core)
 
-| 示例项目                                          | 说明                                                         |
-| ------------------------------------------------- | ------------------------------------------------------------ |
-| [sbe-core-property](codes/core/sbe-core-property) | 展示 Spring Boot 中如何读写 Spring Boot 配置属性。           |
+| 示例项目                                          | 说明                                                                           |
+| ------------------------------------------------- | ------------------------------------------------------------------------------ |
+| [sbe-core-property](codes/core/sbe-core-property) | 展示 Spring Boot 中如何读写 Spring Boot 配置属性。                             |
 | [sbe-core-profile](codes/core/sbe-core-profile)   | 展示 Spring Boot 中如何配置 Profile 来使得应用能在不同运行环境使用各自的配置。 |
-| [sbe-core-aop](codes/core/sbe-core-aop)           | 展示 Spring Boot 中如何使用 AOP 进行切面编程。               |
-| [sbe-core-cache](codes/core/sbe-core-cache)       | 展示 Spring Boot 中如何使用简单的应用缓存。                  |
-| [sbe-core-asyn](codes/core/sbe-core-asyn)         | 展示 Spring Boot 中如何支持异步方法。                        |
-| [sbe-core-banner](codes/core/sbe-core-banner)     | 展示 Spring Boot 中如何定制 Banner。                         |
+| [sbe-core-aop](codes/core/sbe-core-aop)           | 展示 Spring Boot 中如何使用 AOP 进行切面编程。                                 |
+| [sbe-core-cache](codes/core/sbe-core-cache)       | 展示 Spring Boot 中如何使用简单的应用缓存。                                    |
+| [sbe-core-asyn](codes/core/sbe-core-asyn)         | 展示 Spring Boot 中如何支持异步方法。                                          |
+| [sbe-core-banner](codes/core/sbe-core-banner)     | 展示 Spring Boot 中如何定制 Banner。                                           |
 
 ## [Web](codes/web)
 
@@ -102,7 +102,8 @@
 
 > 本章节的内容由于不好分类，所以并为一章节。
 
-| 示例项目                                  | 说明                                        |
-| ----------------------------------------- | ------------------------------------------- |
-| [sbe-docker](codes/others/sbe-docker)     | 展示 Spring Boot 如何通过 Docker 部署应用。 |
-| [sbe-schedule](codes/others/sbe-schedule) | 展示 Spring Boot 如何使用简单的调度器。     |
+| 示例项目                                          | 说明                                        |
+| ------------------------------------------------- | ------------------------------------------- |
+| [sbe-docker](codes/others/sbe-docker)             | 展示 Spring Boot 如何通过 Docker 部署应用。 |
+| [sbe-schedule](codes/others/sbe-schedule)         | 展示 Spring Boot 如何使用简单的调度器。     |
+| [sbe-statemachine](codes/others/sbe-statemachine) | 展示 Spring Boot 如何使用状态机控制工作流。 |
