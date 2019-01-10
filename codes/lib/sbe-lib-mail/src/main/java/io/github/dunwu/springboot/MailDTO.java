@@ -1,8 +1,6 @@
 package io.github.dunwu.springboot;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Data;
-import org.springframework.lang.Nullable;
 
 import java.util.Date;
 
