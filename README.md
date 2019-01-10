@@ -77,6 +77,12 @@
 | [sbe-lib-log-log4j2](codes/log/sbe-lib-log-log4j2)   | 展示 Spring Boot 中使用 Log4j2 记录日志。                          |
 | [sbe-lib-log-log4j](codes/log/sbe-lib-log-log4j)     | 展示 Spring Boot 中使用 Log4j 记录日志。                           |
 
+### 邮件
+
+| 示例项目                               | 说明                              |
+| -------------------------------------- | --------------------------------- |
+| [sbe-lib-mail](codes/lib/sbe-lib-mail) | 展示 Spring Boot 中如何收发邮件。 |
+
 ### 测试
 
 | 示例项目                                              | 说明                                          |

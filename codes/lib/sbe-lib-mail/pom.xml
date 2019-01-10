@@ -10,8 +10,8 @@
   </parent>
 
   <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>sbe-mail</artifactId>
-  <name>SBE :: Mail</name>
+  <artifactId>sbe-lib-mail</artifactId>
+  <name>SBE :: Lib :: Mail</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
