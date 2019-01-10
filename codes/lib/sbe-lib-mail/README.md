@@ -1,442 +1,286 @@
-# JavaMail 使用小结
+# SpringBootTutorial :: Lib :: Mail
 
-## 概述
+<!-- TOC depthFrom:2 depthTo:3 -->
 
-### 邮件相关的标准
+- [简介](#简介)
+- [API](#api)
+- [配置](#配置)
+- [实战](#实战)
+    - [引入依赖](#引入依赖)
+    - [配置邮件属性](#配置邮件属性)
+    - [Java 代码](#java-代码)
+- [完整示例](#完整示例)
+- [引申和引用](#引申和引用)
 
-厂商所提供的 JavaMail 服务程序可以有选择地实现某些邮件协议，常见的邮件协议包括：
+<!-- /TOC -->
 
-- `SMTP(Simple Mail Transfer Protocol)` ：即简单邮件传输协议，它是一组用于由源地址到目的地址传送邮件的规则，由它来控制信件的中转方式。
-- `POP3(Post Office Protocol - Version 3)` ：即邮局协议版本 3 ，用于接收电子邮件的标准协议。
-- `IMAP(Internet Mail Access Protocol)` ：即 Internet 邮件访问协议。是 POP3 的替代协议。
+## 简介
 
-这三种协议都有对应 SSL 加密传输的协议，分别是  **SMTPS **， **POP3S **和  **IMAPS **。
+Spring Boot 收发邮件最简便方式是通过 `spring-boot-starter-mail`。
 
-`MIME(Multipurpose Internet Mail Extensions)` ：即多用途因特网邮件扩展标准。它不是邮件传输协议。但对传输内容的消息、附件及其它的内容定义了格式。
-
-### JavaMail 简介
-
-JavaMail 是由 Sun 发布的用来处理 email 的 API 。它并没有包含在 Java SE 中，而是作为 Java EE 的一部分。
-
-- `mail.jar` ：此 JAR 文件包含 JavaMail API 和 Sun 提供的 SMTP 、 IMAP 和 POP3 服务提供程序；
-- `activation.jar` ：此 JAR 文件包含 JAF API 和 Sun 的实现。
-
-JavaMail 包中用于处理电子邮件的核心类是： `Properties` 、 `Session` 、 `Message` 、 `Address` 、 `Authenticator` 、 `Transport` 、 `Store` 等。
-
-### 邮件传输过程
-
-如上图，电子邮件的处理步骤如下：
-
-1. 创建一个 Session 对象。
-2. Session 对象创建一个 Transport 对象 /Store 对象，用来发送 / 保存邮件。
-3. Transport 对象 /Store 对象连接邮件服务器。
-4. Transport 对象 /Store 对象创建一个 Message 对象 ( 也就是邮件内容 ) 。
-5. Transport 对象发送邮件； Store 对象获取邮箱的邮件。
-
-### Message 结构
-
-- `MimeMessage` 类：代表整封邮件。
-- `MimeBodyPart` 类：代表邮件的一个 MIME 信息。
-- `MimeMultipart` 类：代表一个由多个 MIME 信息组合成的组合 MIME 信息。
-
-![使用JavaMail收发邮件0](http://upload-images.jianshu.io/upload_images/3101171-948230d2f5c7a620.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-## JavaMail 的核心类
-
-JavaMail 对收发邮件进行了高级的抽象，形成了一些关键的的接口和类，它们构成了程序的基础，下面我们分别来了解一下这些最常见的对象。
-
-### java.util.Properties 类（属性对象）
-
-java.util.Properties 类代表一组属性集合。
-
-它的每一个键和值都是 String **类型。**
-
-由于 JavaMail 需要和邮件服务器进行通信，这就要求程序提供许多诸如服务器地址、端口、用户名、密码等信息， JavaMail 通过 Properties 对象封装这些属性信息。
-
-例： 如下面的代码封装了几个属性信息：
-
-```java
-Properties prop = new Properties();
-prop.setProperty("mail.debug", "true");
-prop.setProperty("mail.host", "[email protected]");
-prop.setProperty("mail.transport.protocol", "smtp");
-prop.setProperty("mail.smtp.auth", "true");
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-mail</artifactId>
+</dependency>
 ```
 
-针对不同的的邮件协议， JavaMail 规定了服务提供者必须支持一系列属性，
+spring-boot-starter-mail 本质上是使用 JavaMail(javax.mail)。如果想对 JavaMail 有进一步了解，可以参考：[JavaMail 使用小结](https://github.com/dunwu/notes/blob/master/编程语言/Java/javastack/javalib/javamail.md)
 
-下表是一些常见属性（属性值都以 String 类型进行设置，属性类型栏仅表示属性是如何被解析的）：
+## API
 
-| 关键词                  | 类型    | 描述                                          |
-| ----------------------- | ------- | --------------------------------------------- |
-| mail.debug              | boolean | debug 开关。                                  |
-| mail.host               | String  | 指定发送、接收邮件的默认邮箱服务器。          |
-| mail.store.protocol     | String  | 指定接收邮件的协议。                          |
-| mail.transport.protocol | String  | 指定发送邮件的协议。                          |
-| mail.debug.auth         | boolean | debug 输出中是否包含认证命令。默认是 false 。 |
+Spring Framework 提供了一个使用 `JavaMailSender` 接口发送电子邮件的简单抽象，这是发送邮件的核心 API。
 
-详情请参考官方 API 文档：
+`JavaMailSender` 接口提供的 API 如下：
 
-https://javamail.java.net/nonav/docs/api/ 。
+![](http://dunwu.test.upcdn.net/snap/20190110111102.png)
 
-### javax.mail.Session 类（会话对象）
+## 配置
 
-`Session` 表示一个邮件会话。
+Spring Boot 为 `JavaMailSender` 提供了自动配置以及启动器模块。
 
-Session 的主要作用包括两个方面：
+如果 `spring.mail.host` 和相关库（由 spring-boot-starter-mail 定义）可用，则 Spring Boot 会创建默认 `JavaMailSender`（如果不存在）。可以通过 `spring.mail` 命名空间中的配置项进一步自定义发件人。
+特别是，某些默认超时值是无限的，您可能希望更改它以避免线程被无响应的邮件服务器阻塞，如以下示例所示：
 
-- 接收各种配置属性信息：通过 Properties 对象设置的属性信息；
-- 初始化 JavaMail 环境：根据 JavaMail 的配置文件，初始化 JavaMail 环境，以便通过 Session 对象创建其他重要类的实例。
-
-JavaMail 在 Jar 包的 META-INF 目录下，通过以下文件提供了基本配置信息，以便 session 能够根据这个配置文件加载提供者的实现类：
-
-- javamail.default.providers
-- javamail.default.address.map
-
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-b59382c69385df45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-**例：**
-
-```java
-Properties props = new Properties();
-props.setProperty("mail.transport.protocol", "smtp");
-Session session = Session.getInstance(props);
+```properties
+spring.mail.properties.mail.smtp.connectiontimeout=5000
+spring.mail.properties.mail.smtp.timeout=3000
+spring.mail.properties.mail.smtp.writetimeout=5000
 ```
 
-### javax.mail.Transport 类（邮件传输）
+也可以使用 JNDI 中的现有会话配置 `JavaMailSender`：
 
-邮件操作只有发送或接收两种处理方式。
-
-JavaMail 将这两种不同操作描述为传输（ javax.mail.Transport ）和存储（ javax.mail.Store ），传输对应邮件的发送，而存储对应邮件的接收。
-
-- `getTransport` - Session 类中的 getTransport **() **有多个重载方法，可以用来创建 Transport 对象。
-- `connect` - 如果设置了认证命令—— mail.smtp.auth ，那么使用 Transport 类的 connect 方法连接服务器时，则必须加上用户名和密码。
-- `sendMessage` - Transport 类的 sendMessage 方法用来发送邮件消息。
-- `close` - Transport 类的 close 方法用来关闭和邮件服务器的连接。
-
-### javax.mail.Store 类（邮件存储 ）
-
-- `getStore` - Session 类中的 getStore ()  有多个重载方法，可以用来创建 Store 对象。
-- `connect` - 如果设置了认证命令—— mail.smtp.auth ，那么使用 Store 类的 connect 方法连接服务器时，则必须加上用户名和密码。
-- `getFolder` - Store 类的 getFolder 方法可以 获取邮箱内的邮件夹 Folder 对象
-- `close` - Store 类的 close 方法用来关闭和邮件服务器的连接。
-
-### javax.mail.Message 类（消息对象）
-
-- `javax.mail.Message` - 是个抽象类，只能用子类去实例化，多数情况下为  `javax.mail.internet.MimeMessage`。
-- `MimeMessage` - 代表 MIME 类型的电子邮件消息。
-
-要创建一个 Message ，需要将 Session 对象传递给 `MimeMessage` 构造器：
-
-```java
-MimeMessage message = new MimeMessage(session);
+```
+spring.mail.jndi-name=mail/Session
 ```
 
-注意：还存在其它构造器，如用按 RFC822 格式的输入流来创建消息。
+以下为 Spring Boot 关于 Mail 的配置：
 
-- setFrom - 设置邮件的发件人
-- setRecipient - 设置邮件的发送人、抄送人、密送人
+有关更多详细信息，请参阅 [`MailProperties`](https://github.com/spring-projects/spring-boot/tree/v2.1.1.RELEASE/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/mail/MailProperties.java)。
 
-三种预定义的地址类型是：
-
-- `Message.RecipientType.TO` - 收件人
-- `Message.RecipientType.CC` - 抄送人
-- `Message.RecipientType.BCC` - 密送人
-- `setSubject` - 设置邮件的主题
-- `setContent` - 设置邮件内容
-- `setText` - 如果邮件内容是纯文本，可以使用此接口设置文本内容。
-
-### javax.mail.Address 类（地址）
-
-一旦您创建了 Session 和 Message ，并将内容填入消息后，就可以用 Address 确定信件地址了。和 Message 一样， Address 也是个抽象类。您用的是 javax.mail.internet.InternetAddress 类。
-
-若创建的地址只包含电子邮件地址，只要传递电子邮件地址到构造器就行了。
-
-**例：**
-
-```java
-Address address = new InternetAddress("[email protected]");
+```properties
+# Email (MailProperties)
+spring.mail.default-encoding=UTF-8 # Default MimeMessage encoding.
+spring.mail.host= # SMTP server host. For instance, `smtp.example.com`.
+spring.mail.jndi-name= # Session JNDI name. When set, takes precedence over other Session settings.
+spring.mail.password= # Login password of the SMTP server.
+spring.mail.port= # SMTP server port.
+spring.mail.properties.*= # Additional JavaMail Session properties.
+spring.mail.protocol=smtp # Protocol used by the SMTP server.
+spring.mail.test-connection=false # Whether to test that the mail server is available on startup.
+spring.mail.username= # Login user of the SMTP server.
 ```
 
-### Authenticator 类（认证者）
+## 实战
 
-与 java.net 类一样， JavaMail API 也可以利用 `Authenticator` 通过用户名和密码访问受保护的资源。对于 JavaMail API 来说，这些资源就是邮件服务器。`Authenticator` 在 javax.mail 包中，而且它和 java.net 中同名的类 Authenticator 不同。两者并不共享同一个 Authenticator ，因为 JavaMail API 用于 Java 1.1 ，它没有 java.net 类别。
+### 引入依赖
 
-要使用 Authenticator ，先创建一个抽象类的子类，并从 `getPasswordAuthentication()` 方法中返回 `PasswordAuthentication` 实例。创建完成后，您必需向 session 注册 `Authenticator` 。然后，在需要认证的时候，就会通知 `Authenticator` 。您可以弹出窗口，也可以从配置文件中（虽然没有加密是不安全的）读取用户名和密码，将它们作为 `PasswordAuthentication` 对象返回给调用程序。
+```xml
+<dependencies>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-mail</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+  </dependency>
 
-**例：**
-
-```java
-Properties props = new Properties();
-Authenticator auth = new MyAuthenticator();
-Session session = Session.getDefaultInstance(props, auth);
+  <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>com.github.dozermapper</groupId>
+    <artifactId>dozer-spring-boot-starter</artifactId>
+    <version>6.4.0</version>
+  </dependency>
+</dependencies>
 ```
 
-## 实例
+### 配置邮件属性
 
-### 发送文本邮件
+在 `src/main/resources` 目录下添加 `application-163.properties` 配置文件，内容如下：
+
+```properties
+spring.mail.host = smtp.163.com
+spring.mail.username = xxxxxx
+spring.mail.password = xxxxxx
+spring.mail.properties.mail.smtp.auth = true
+spring.mail.properties.mail.smtp.starttls.enable = true
+spring.mail.properties.mail.smtp.starttls.required = true
+spring.mail.default-encoding = UTF-8
+
+mail.domain = 163.com
+mail.from = ${spring.mail.username}@${mail.domain}
+```
+
+注：需替换有效的 `spring.mail.username`、`spring.mail.password`。
+
+`application-163.properties` 配置文件表示使用 163 邮箱时的配置，为了使之生效，需要通过 `spring.profiles.active = 163` 来激活它。
+
+在 `src/main/resources` 目录下添加 `application.properties` 配置文件，内容如下：
+
+```properties
+spring.profiles.active = 163
+```
+
+### Java 代码
+
+首先，需要读取部分配置属性，方法如下：
 
 ```java
-public static void main(String[] args) throws Exception {
-    Properties prop = new Properties();
-    prop.setProperty("mail.debug", "true");
-    prop.setProperty("mail.host", MAIL_SERVER_HOST);
-    prop.setProperty("mail.transport.protocol", "smtp");
-    prop.setProperty("mail.smtp.auth", "true");
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
-    // 1、创建session
-    Session session = Session.getInstance(prop);
-    Transport ts = null;
+@Validated
+@Component
+@ConfigurationProperties(prefix = "mail")
+public class MailProperties {
+    private String domain;
+    private String from;
 
-    // 2、通过session得到transport对象
-    ts = session.getTransport();
+    public String getDomain() {
+        return domain;
+    }
 
-    // 3、连上邮件服务器
-    ts.connect(MAIL_SERVER_HOST, USER, PASSWORD);
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
 
-    // 4、创建邮件
-    MimeMessage message = new MimeMessage(session);
+    public String getFrom() {
+        return from;
+    }
 
-    // 邮件消息头
-    message.setFrom(new InternetAddress(MAIL_FROM)); // 邮件的发件人
-    message.setRecipient(Message.RecipientType.TO, new InternetAddress(MAIL_TO)); // 邮件的收件人
-    message.setRecipient(Message.RecipientType.CC, new InternetAddress(MAIL_CC)); // 邮件的抄送人
-    message.setRecipient(Message.RecipientType.BCC, new InternetAddress(MAIL_BCC)); // 邮件的密送人
-    message.setSubject("测试文本邮件"); // 邮件的标题
-
-    // 邮件消息体
-    message.setText("天下无双。");
-
-    // 5、发送邮件
-    ts.sendMessage(message, message.getAllRecipients());
-    ts.close();
+    public void setFrom(String from) {
+        this.from = from;
+    }
 }
 ```
 
-### 发送 HTML 格式的邮件
+接着，定义一个邮件参数实体类（使用 lombok 简化了 getter、setter）：
 
 ```java
-public static void main(String[] args) throws Exception {
-    Properties prop = new Properties();
-    prop.setProperty("mail.debug", "true");
-    prop.setProperty("mail.host", MAIL_SERVER_HOST);
-    prop.setProperty("mail.transport.protocol", "smtp");
-    prop.setProperty("mail.smtp.auth", "true");
+import lombok.Data;
+import java.util.Date;
 
-    // 1、创建session
-    Session session = Session.getInstance(prop);
-    Transport ts = null;
-
-    // 2、通过session得到transport对象
-    ts = session.getTransport();
-
-    // 3、连上邮件服务器
-    ts.connect(MAIL_SERVER_HOST, USER, PASSWORD);
-
-    // 4、创建邮件
-    MimeMessage message = new MimeMessage(session);
-
-    // 邮件消息头
-    message.setFrom(new InternetAddress(MAIL_FROM)); // 邮件的发件人
-    message.setRecipient(Message.RecipientType.TO, new InternetAddress(MAIL_TO)); // 邮件的收件人
-    message.setRecipient(Message.RecipientType.CC, new InternetAddress(MAIL_CC)); // 邮件的抄送人
-    message.setRecipient(Message.RecipientType.BCC, new InternetAddress(MAIL_BCC)); // 邮件的密送人
-    message.setSubject("测试HTML邮件"); // 邮件的标题
-
-    String htmlContent = "<h1>Hello</h1>" + "<p>显示图片<img src='cid:abc.jpg'>1.jpg</p>";
-    MimeBodyPart text = new MimeBodyPart();
-    text.setContent(htmlContent, "text/html;charset=UTF-8");
-    MimeBodyPart image = new MimeBodyPart();
-    DataHandler dh = new DataHandler(new FileDataSource("D:\\05_Datas\\图库\\吉他少年背影.png"));
-    image.setDataHandler(dh);
-    image.setContentID("abc.jpg");
-
-    // 描述数据关系
-    MimeMultipart mm = new MimeMultipart();
-    mm.addBodyPart(text);
-    mm.addBodyPart(image);
-    mm.setSubType("related");
-    message.setContent(mm);
-    message.saveChanges();
-
-    // 5、发送邮件
-    ts.sendMessage(message, message.getAllRecipients());
-    ts.close();
+@Data
+public class MailDTO {
+    private String from;
+    private String replyTo;
+    private String[] to;
+    private String[] cc;
+    private String[] bcc;
+    private Date sentDate;
+    private String subject;
+    private String text;
+    private String[] filenames;
 }
 ```
 
-### 发送带附件的邮件
+接着，实现发送邮件的功能接口：
 
 ```java
-public static void main(String[] args) throws Exception {
-    Properties prop = new Properties();
-    prop.setProperty("mail.debug", "true");
-    prop.setProperty("mail.host", MAIL_SERVER_HOST);
-    prop.setProperty("mail.transport.protocol", "smtp");
-    prop.setProperty("mail.smtp.auth", "true");
+import com.github.dozermapper.core.Mapper;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 
-    // 1、创建session
-    Session session = Session.getInstance(prop);
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import java.io.IOException;
 
-    // 2、通过session得到transport对象
-    Transport ts = session.getTransport();
+@Service
+public class MailService {
 
-    // 3、连上邮件服务器
-    ts.connect(MAIL_SERVER_HOST, USER, PASSWORD);
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    // 4、创建邮件
-    MimeMessage message = new MimeMessage(session);
+    @Autowired
+    private MailProperties mailProperties;
 
-    // 邮件消息头
-    message.setFrom(new InternetAddress(MAIL_FROM)); // 邮件的发件人
-    message.setRecipient(Message.RecipientType.TO, new InternetAddress(MAIL_TO)); // 邮件的收件人
-    message.setRecipient(Message.RecipientType.CC, new InternetAddress(MAIL_CC)); // 邮件的抄送人
-    message.setRecipient(Message.RecipientType.BCC, new InternetAddress(MAIL_BCC)); // 邮件的密送人
-    message.setSubject("测试带附件邮件"); // 邮件的标题
+    @Autowired
+    private JavaMailSender javaMailSender;
 
-    MimeBodyPart text = new MimeBodyPart();
-    text.setContent("邮件中有两个附件。", "text/html;charset=UTF-8");
+    @Autowired
+    private Mapper mapper;
 
-    // 描述数据关系
-    MimeMultipart mm = new MimeMultipart();
-    mm.setSubType("related");
-    mm.addBodyPart(text);
-    String[] files = {
-            "D:\\00_Temp\\temp\\1.jpg", "D:\\00_Temp\\temp\\2.png"
-    };
-
-    // 添加邮件附件
-    for (String filename : files) {
-        MimeBodyPart attachPart = new MimeBodyPart();
-        attachPart.attachFile(filename);
-        mm.addBodyPart(attachPart);
+    public void sendSimpleMailMessage(MailDTO mailDTO) {
+        SimpleMailMessage simpleMailMessage = mapper.map(mailDTO, SimpleMailMessage.class);
+        if (StringUtils.isEmpty(mailDTO.getFrom())) {
+            mailDTO.setFrom(mailProperties.getFrom());
+        }
+        javaMailSender.send(simpleMailMessage);
     }
 
-    message.setContent(mm);
-    message.saveChanges();
+    public void sendMimeMessage(MailDTO mailDTO) {
 
-    // 5、发送邮件
-    ts.sendMessage(message, message.getAllRecipients());
-    ts.close();
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper messageHelper;
+        try {
+            messageHelper = new MimeMessageHelper(mimeMessage, true);
+
+            if (StringUtils.isEmpty(mailDTO.getFrom())) {
+                messageHelper.setFrom(mailProperties.getFrom());
+            }
+            messageHelper.setTo(mailDTO.getTo());
+            messageHelper.setSubject(mailDTO.getSubject());
+
+            mimeMessage = messageHelper.getMimeMessage();
+            MimeBodyPart mimeBodyPart = new MimeBodyPart();
+            mimeBodyPart.setContent(mailDTO.getText(), "text/html;charset=UTF-8");
+
+            // 描述数据关系
+            MimeMultipart mm = new MimeMultipart();
+            mm.setSubType("related");
+            mm.addBodyPart(mimeBodyPart);
+
+            // 添加邮件附件
+            for (String filename : mailDTO.getFilenames()) {
+                MimeBodyPart attachPart = new MimeBodyPart();
+                try {
+                    attachPart.attachFile(filename);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mm.addBodyPart(attachPart);
+            }
+            mimeMessage.setContent(mm);
+            mimeMessage.saveChanges();
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+        javaMailSender.send(mimeMessage);
+    }
 }
 ```
 
-### 获取邮箱中的邮件  
+## 完整示例
 
-```java
- public static void main(String[] args) throws Exception {
+完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/lib/sbe-lib-mail)
 
-    // 创建一个有具体连接信息的Properties对象
-    Properties prop = new Properties();
-    prop.setProperty("mail.debug", "true");
-    prop.setProperty("mail.store.protocol", "pop3");
-    prop.setProperty("mail.pop3.host", MAIL_SERVER_HOST);
+使用方法：
 
-    // 1、创建session
-    Session session = Session.getInstance(prop);
+1. 先替换配置 `application-${profile}.properties` 中的 `spring.mail.username(发件人邮箱)` 、`spring.mail.password(发件人邮箱密码)`
+2. 然后在 `io.github.dunwu.springboot.MailServiceTests` 中替换 `TO(收件人)`、`CC(抄送人)`。
+3. 运行 `io.github.dunwu.springboot.MailServiceTests` 以测试邮件收发。
 
-    // 2、通过session得到Store对象
-    Store store = session.getStore();
+## 引申和引用
 
-    // 3、连上邮件服务器
-    store.connect(MAIL_SERVER_HOST, USER, PASSWORD);
+**引申**
 
-    // 4、获得邮箱内的邮件夹
-    Folder folder = store.getFolder("inbox");
-    folder.open(Folder.READ_ONLY);
+- [Spring Boot 教程](https://github.com/dunwu/spring-boot-tutorial)
 
-    // 获得邮件夹Folder内的所有邮件Message对象
-    Message[] messages = folder.getMessages();
-    for (int i = 0; i < messages.length; i++) {
-        String subject = messages[i].getSubject();
-        String from = (messages[i].getFrom()[0]).toString();
-        System.out.println("第 " + (i + 1) + "封邮件的主题：" + subject);
-        System.out.println("第 " + (i + 1) + "封邮件的发件人地址：" + from);
-    }
+**参考**
 
-    // 5、关闭
-    folder.close(false);
-    store.close();
-}
-```
-
-### 转发邮件
-
-例：获取指定邮件夹下的第一封邮件并转发
-
-```java
- public static void main(String[] args) throws Exception {
-    Properties prop = new Properties();
-    prop.put("mail.store.protocol", "pop3");
-    prop.put("mail.pop3.host", MAIL_SERVER_POP3);
-    prop.put("mail.pop3.starttls.enable", "true");
-    prop.put("mail.smtp.auth", "true");
-    prop.put("mail.smtp.host", MAIL_SERVER_SMTP);
-
-    // 1、创建session
-    Session session = Session.getDefaultInstance(prop);
-
-    // 2、读取邮件夹
-    Store store = session.getStore("pop3");
-    store.connect(MAIL_SERVER_POP3, USER, PASSWORD);
-    Folder folder = store.getFolder("inbox");
-    folder.open(Folder.READ_ONLY);
-
-    // 获取邮件夹中第1封邮件信息
-    Message[] messages = folder.getMessages();
-    if (messages.length <= 0) {
-        return;
-    }
-    Message message = messages[0];
-
-    // 打印邮件关键信息
-    String from = InternetAddress.toString(message.getFrom());
-    if (from != null) {
-        System.out.println("From: " + from);
-    }
-
-    String replyTo = InternetAddress.toString(message.getReplyTo());
-    if (replyTo != null) {
-        System.out.println("Reply-to: " + replyTo);
-    }
-
-    String to = InternetAddress.toString(message.getRecipients(Message.RecipientType.TO));
-    if (to != null) {
-        System.out.println("To: " + to);
-    }
-
-    String subject = message.getSubject();
-    if (subject != null) {
-        System.out.println("Subject: " + subject);
-    }
-
-    Date sent = message.getSentDate();
-    if (sent != null) {
-        System.out.println("Sent: " + sent);
-    }
-
-    // 设置转发邮件信息头
-    Message forward = new MimeMessage(session);
-    forward.setFrom(new InternetAddress(MAIL_FROM));
-    forward.setRecipient(Message.RecipientType.TO, new InternetAddress(MAIL_TO));
-    forward.setSubject("Fwd: " + message.getSubject());
-
-    // 设置转发邮件内容
-    MimeBodyPart bodyPart = new MimeBodyPart();
-    bodyPart.setContent(message, "message/rfc822");
-
-    Multipart multipart = new MimeMultipart();
-    multipart.addBodyPart(bodyPart);
-    forward.setContent(multipart);
-    forward.saveChanges();
-
-    Transport ts = session.getTransport("smtp");
-    ts.connect(USER, PASSWORD);
-    ts.sendMessage(forward, forward.getAllRecipients());
-
-    folder.close(false);
-    store.close();
-    ts.close();
-    System.out.println("message forwarded successfully....");
-}
-```
+- [Spring Boot 官方文档之 Sending Email](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-email)

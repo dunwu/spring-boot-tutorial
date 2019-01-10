@@ -213,4 +213,4 @@ java -jar -Dspring.profiles.active=prod sbe-core-profile.jar
 **参考**
 
 - [Bean Definition Profiles](https://docs.spring.io/spring/docs/5.1.3.RELEASE/spring-framework-reference/core.html#beans-definition-profiles)
-- [boot-features-profiles](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#boot-features-profiles)
+- [boot-features-profiles](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-profiles)

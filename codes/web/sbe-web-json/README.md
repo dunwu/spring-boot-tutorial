@@ -109,7 +109,7 @@ public class Example {
 
 `ApplicationContext` 中的所有 `@JsonComponent` bean 都会自动注册到 Jackson。因为 `@JsonComponent` 是使用 `@Component` 进行元注释的，所以通常的组件扫描规则适用。
 
-Spring Boot 还提供了 [`JsonObjectSerializer`](https://github.com/spring-projects/spring-boot/tree/v2.1.1.RELEASE/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/jackson/JsonObjectSerializer.java) 和 [`JsonObjectDeserializer`](https://github.com/spring-projects/spring-boot/tree/v2.1.1.RELEASE/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/jackson/JsonObjectDeserializer.java) 基类，它们在序列化对象时提供了标准 Jackson 版本的有用替代方法。有关详细信息，请参阅 Javadoc 中的 [`JsonObjectSerializer`](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/api/org/springframework/boot/jackson/JsonObjectSerializer.html) 和 [`JsonObjectDeserializer`](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/api/org/springframework/boot/jackson/JsonObjectDeserializer.html)。
+Spring Boot 还提供了 [`JsonObjectSerializer`](https://github.com/spring-projects/spring-boot/tree/v2.1.1.RELEASE/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/jackson/JsonObjectSerializer.java) 和 [`JsonObjectDeserializer`](https://github.com/spring-projects/spring-boot/tree/v2.1.1.RELEASE/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/jackson/JsonObjectDeserializer.java) 基类，它们在序列化对象时提供了标准 Jackson 版本的有用替代方法。有关详细信息，请参阅 Javadoc 中的 [`JsonObjectSerializer`](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/jackson/JsonObjectSerializer.html) 和 [`JsonObjectDeserializer`](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/jackson/JsonObjectDeserializer.html)。
 
 ## @JsonTest
 

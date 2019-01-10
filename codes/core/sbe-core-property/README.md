@@ -27,9 +27,9 @@
 
 Spring Boot 加载 property 顺序如下：
 
-1. [Devtools 全局配置](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#using-boot-devtools-globalsettings) (当 devtools 被激活 `~/.spring-boot-devtools.properties`).
+1. [Devtools 全局配置](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-devtools-globalsettings) (当 devtools 被激活 `~/.spring-boot-devtools.properties`).
 2. [测试环境中的 `@TestPropertySource` 注解配置](https://docs.spring.io/spring/docs/5.1.3.RELEASE/javadoc-api/org/springframework/test/context/TestPropertySource.html)
-3. 测试环境中的属性 `properties`：[`@SpringBootTest`](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/api/org/springframework/boot/test/context/SpringBootTest.html) 和 [测试注解](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-tests).
+3. 测试环境中的属性 `properties`：[`@SpringBootTest`](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/context/SpringBootTest.html) 和 [测试注解](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-tests).
 4. 命令行参数
 5. `SPRING_APPLICATION_JSON` 属性
 6. `ServletConfig` 初始化参数
@@ -79,7 +79,7 @@ my.number.in.range=${random.int[1024,65536]}
 >
 > 以上列表的配置文件会根据顺序，后序的配置会覆盖前序的配置。
 >
-> 你可以选择 [YAML(yml)](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#boot-features-external-config-yaml) 配置文件替换 properties 配置文件。
+> 你可以选择 [YAML(yml)](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config-yaml) 配置文件替换 properties 配置文件。
 
 如果不喜欢 `application.properties` 作为配置文件名，可以使用 `spring.config.name` 环境变量替换：
 
@@ -108,7 +108,7 @@ app.name=MyApp
 app.description=${app.name} is a Spring Boot application
 ```
 
-> 注：你可以使用此技术来创建 Spring Boot 属性变量。请参考： [Section 77.4, “Use ‘Short’ Command Line Arguments](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#howto-use-short-command-line-arguments)
+> 注：你可以使用此技术来创建 Spring Boot 属性变量。请参考： [Section 77.4, “Use ‘Short’ Command Line Arguments](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-use-short-command-line-arguments)
 
 ## YAML 属性
 
@@ -406,4 +406,4 @@ java -jar sbe-core-property.jar
 
 **参考**
 
-- [Spring Boot 官方文档之 boot-features-external-config](https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#boot-features-external-config)
+- [Spring Boot 官方文档之 boot-features-external-config](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config)
