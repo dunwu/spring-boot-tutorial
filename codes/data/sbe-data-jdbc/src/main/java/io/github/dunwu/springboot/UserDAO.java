@@ -4,28 +4,19 @@ import java.util.List;
 
 public interface UserDAO {
 
-    /**
-     * 新增一个用户
-     * @param name
-     * @param age
-     */
-    void create(String name, Integer age);
+    void recreateTable();
 
-    /**
-     * 根据name删除一个用户高
-     * @param name
-     */
-    void deleteByName(String name);
+    void batchInsert(List<User> users);
 
-    /**
-     * 获取用户总量
-     */
+    void insert(String name, Integer age);
+
+    void delete(String name);
+
+    void update(User user);
+
+    Integer count();
+
+    User queryByName(String name);
+
     List<User> list();
-
-    /**
-     * 删除所有用户
-     */
-    void deleteAllUsers();
-
-
 }
