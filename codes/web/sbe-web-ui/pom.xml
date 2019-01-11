@@ -12,5 +12,6 @@
   <modules>
     <module>sbe-web-ui-bootstrap</module>
     <module>sbe-web-ui-easyui</module>
+    <module>sbe-web-ui-swagger</module>
   </modules>
 </project>
