@@ -171,10 +171,6 @@ spring.datasource.driver-class-name = com.mysql.cj.jdbc.Driver
 
 请参考：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/data/sbe-data-jdbc)
 
-使用方法：
-
-运行应用或单元测试例前，请先执行 `codes/data/sbe-data-jdbc/sql/ddl.sql`
-
 ## 引申和引用
 
 **引申**
