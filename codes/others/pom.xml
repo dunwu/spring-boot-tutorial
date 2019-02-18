@@ -10,7 +10,7 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>sbe-docker</module>
+    <!--<module>sbe-docker</module>-->
     <module>sbe-schedule</module>
     <module>sbe-statemachine</module>
   </modules>

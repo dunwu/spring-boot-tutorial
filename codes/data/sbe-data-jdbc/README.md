@@ -7,12 +7,10 @@
     - [execute](#execute)
     - [update](#update)
     - [query](#query)
-    - [call](#call)
 - [实战](#实战)
     - [配置数据源](#配置数据源)
-    - [DB 接口](#db-接口)
-    - [DB 接口实现类](#db-接口实现类)
-- [完整示例](#完整示例)
+    - [注入 JdbcTemplate](#注入-jdbctemplate)
+    - [完整示例](#完整示例)
 - [引申和引用](#引申和引用)
 
 <!-- /TOC -->
@@ -167,6 +165,23 @@ spring.datasource.driver-class-name = com.mysql.cj.jdbc.Driver
 
 需要根据实际情况，替换 `url`、`username`、`password`。
 
+### 注入 JdbcTemplate
+
+```java
+@Service
+public class UserDAOImpl implements UserDAO {
+
+    private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public UserDAOImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    // ...
+}
+```
+
 ### 完整示例
 
 请参考：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/data/sbe-data-jdbc)
@@ -179,4 +194,4 @@ spring.datasource.driver-class-name = com.mysql.cj.jdbc.Driver
 
 **参考**
 
-- [boot-features-profiles](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-data-jdbc)
+- [Spring Boot 官方文档之 boot-features-data-jdbc](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-data-jdbc)

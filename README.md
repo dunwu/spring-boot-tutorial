@@ -1,5 +1,7 @@
 # spring-boot-tutorial
 
+[![Build Status](https://travis-ci.com/dunwu/spring-boot-tutorial.svg?branch=master)](https://travis-ci.com/dunwu/spring-boot-tutorial)
+
 > 这是一个 Spring Boot 实战教程，通过大量丰富的示例，展示 Spring Boot 在各个应用领域的应用。本项目旨在覆盖 Java 应用的各领域。
 >
 > 本项目的源码使用 maven 进行构建管理，任意 maven module 都可以独立运行。
@@ -36,6 +38,16 @@
 
 ## [Data](codes/data)
 
+### 关系型数据库
+
+| 示例项目                                  | 说明                                    |
+| ----------------------------------------- | --------------------------------------- |
+| [sbe-data-jdbc](codes/data/sbe-data-jdbc) | 展示在 Spring Boot 中，如何使用 `JdbcTemplate` 访问数据。 |
+| [sbe-data-jpa](codes/data/sbe-data-jpa)   | 展示 Spring Boot 中使用 JPA 访问数据。  |
+|                                           |                                         |
+
+
+
 - **Sql**
   - [sbe-data-mysql](codes/data/sbe-data-mysql) - Spring Boot 中访问 mysql 数据
 - **NoSql**
@@ -44,9 +56,7 @@
   - [sbe-data-redis](codes/data/sbe-data-redis) - Spring Boot 中访问 redis 数据
 - **其他**
   - [sbe-data-flyway](codes/data/sbe-data-flyway) - Spring Boot 中通过 flyway 控制 sql 版本
-  - [sbe-data-jdbc](codes/data/sbe-data-jdbc) - Spring Boot 中使用 JDBC
   - [sbe-data-jdbc-multi-connectors](codes/data/sbe-data-jdbc-multi-connectors) - Spring Boot 中使用 JDBC 多连接
-  - [sbe-data-jpa](codes/data/sbe-data-jpa) - Spring Boot 中使用 JPA
   - [sbe-data-jpa-rest](codes/data/sbe-data-jpa-rest) - Spring Boot 中使用 JPA REST
   - [sbe-data-orm-mybatis](codes/data/sbe-data-orm-mybatis) - Spring Boot 中使用 Mybatis
 
