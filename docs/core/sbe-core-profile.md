@@ -1,4 +1,4 @@
-# SpringBootTutorial :: Core :: Profile
+# SpringBoot 教程之 profile
 
 > 一个应用为了在不同的环境下工作，常常会有不同的配置，代码逻辑处理。Spring Boot 对此提供了简便的支持。
 >

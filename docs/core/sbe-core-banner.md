@@ -1,4 +1,4 @@
-# SpringBootTutorial :: Core :: Banner
+# SpringBoot 教程之 banner 定制
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 

@@ -1,4 +1,4 @@
-# SpringBootTutorial :: Core :: Property
+# SpringBoot 教程之属性加载详解
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
