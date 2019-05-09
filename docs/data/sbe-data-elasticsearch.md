@@ -1,4 +1,4 @@
-# SpringBootTutorial :: Data :: Elasticsearch
+# SpringBoot 教程之访问 Elasticsearch
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 

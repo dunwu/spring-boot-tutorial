@@ -1,5 +1,4 @@
-# SpringBootTutorial :: Data :: Jdbc
-
+# SpringBoot 教程之通过 JDBC 访问数据
 <!-- TOC depthFrom:2 depthTo:3 -->
 
 - [简介](#简介)

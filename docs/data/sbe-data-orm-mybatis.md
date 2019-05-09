@@ -1,4 +1,4 @@
-# Spring Boot 集成 MyBatis, 分页插件 PageHelper, 通用 Mapper 
+# SpringBoot 教程之集成 MyBatis, 分页插件 PageHelper, 通用 Mapper 
 
 - [Spring Boot 1.5.1.RELEASE](https://github.com/spring-projects/spring-boot)
 - [mybatis-spring-boot-starter](https://github.com/mybatis/spring-boot-starter)
@@ -109,13 +109,10 @@ pagehelper:
 ## MyBatis工具 http://www.mybatis.tk
 
 - 推荐使用 Mybatis 通用 Mapper3 https://github.com/abel533/Mapper
-
 - 推荐使用 Mybatis 分页插件 PageHelper https://github.com/pagehelper/Mybatis-PageHelper
 
 ## 作者信息
 
 - 作者博客：http://blog.csdn.net/isea533
-
 - 作者邮箱：abel533@gmail.com
-
 - 如需加群，请通过 http://mybatis.tk 首页按钮加群。

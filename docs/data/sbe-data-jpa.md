@@ -1,4 +1,4 @@
-# SpringBootTutorial :: Data :: JPA
+# SpringBoot 教程之通过 JPA 访问数据
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
