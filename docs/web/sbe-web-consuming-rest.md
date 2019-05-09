@@ -1,4 +1,4 @@
-# SpringBootTutorial :: Web :: Consuming Rest
+# SpringBoot 教程之消费 Rest 接口
 
 > 目标：
 >

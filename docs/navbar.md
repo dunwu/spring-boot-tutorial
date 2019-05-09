@@ -2,7 +2,12 @@
   - [SpringBoot 教程之属性加载详解](core/sbe-core-property.md)
   - [SpringBoot 教程之 profile](core/sbe-core-profile.md)
   - [SpringBoot 教程之 banner 定制](core/sbe-core-banner.md)
-  - [Spring Boot 教程之处理异步请求](core/sbe-core-asyn.md)
+  - [SpringBoot 教程之处理异步请求](core/sbe-core-asyn.md)
+- Web 篇
+  - [SpringBoot 教程之第一个 Web 工程](web/sbe-web-helloworld.md)
+  - [SpringBoot 教程之消费 Rest 接口](web/sbe-web-consuming-rest.md)
+  - [SpringBoot 教程之 json](web/sbe-web-json.md)
+  - [SpringBoot 教程之应用 EasyUI](web/sbe-web-ui-easyui.md)
 - 数据篇
   - [SpringBoot 教程之通过 JDBC 访问数据](data/sbe-data-jdbc.md)
   - [SpringBoot 教程之通过 JPA 访问数据](data/sbe-data-jpa.md)

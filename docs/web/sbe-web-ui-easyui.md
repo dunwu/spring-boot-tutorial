@@ -1,4 +1,4 @@
-# SpringBootTutorial :: Web :: UI :: EasyUI
+# SpringBoot 教程之应用 EasyUI
 
 > EasyUI 是一个简单的用户界面组件的集合。由于 EasyUI 已经封装好大部分 UI 基本功能，能帮用户减少大量的 js 和 css 代码。所以，EasyUI 非常适合用于开发简单的系统或原型系统。
 >
