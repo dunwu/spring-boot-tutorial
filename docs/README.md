@@ -19,12 +19,12 @@
 
 | 章节                                           | 说明                                                                                                                                                                               |
 | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [sbe-web-helloworld](codes/web/sbe-web-helloworld) | 展示 Spring Boot Web 应用的 Hello World 示例。                                                                                                                                     |
-| [sbe-web-form](codes/web/sbe-web-form)             | 展示 Spring Boot Web 应用中表单如何提交、校验。                                                                                                                                    |
-| [sbe-web-json](codes/web/sbe-web-json)             | 展示 Spring Boot Web 应用中如何使用 json 序列化、反序列化。                                                                                                                        |
-| [sbe-web-jsp](codes/web/sbe-web-jsp)               | 展示 Spring Boot Web 应用中如何运行 JSP，提供 2 种服务器的整合示例：Tomcat、 Jetty。                                                                                               |
-| [sbe-web-websocket](codes/web/sbe-web-websocket)   | 展示 Spring Boot Web 应用中如何运行 WebSocket，提供 3 种服务器的整合示例：Tomcat、Jetty、Undertow。                                                                                |
-| [sbe-web-ui](codes/web/sbe-web-ui)                 | 展示 Spring Boot Web 应用中如何整合前端 UI。目前已完成的示例有：[整合 Bootstrap](codes/web/sbe-web-ui/sbe-web-ui-bootstrap)、[整合 EasyUI](codes/web/sbe-web-ui/sbe-web-ui-easyui) |
+| [sbe-web-helloworld](../codes/web/sbe-web-helloworld) | 展示 Spring Boot Web 应用的 Hello World 示例。                                                                                                                                     |
+| [sbe-web-form](../codes/web/sbe-web-form)             | 展示 Spring Boot Web 应用中表单如何提交、校验。                                                                                                                                    |
+| [sbe-web-json](../codes/web/sbe-web-json)             | 展示 Spring Boot Web 应用中如何使用 json 序列化、反序列化。                                                                                                                        |
+| [sbe-web-jsp](../codes/web/sbe-web-jsp)               | 展示 Spring Boot Web 应用中如何运行 JSP，提供 2 种服务器的整合示例：Tomcat、 Jetty。                                                                                               |
+| [sbe-web-websocket](../codes/web/sbe-web-websocket)   | 展示 Spring Boot Web 应用中如何运行 WebSocket，提供 3 种服务器的整合示例：Tomcat、Jetty、Undertow。                                                                                |
+| [sbe-web-ui](../codes/web/sbe-web-ui)                 | 展示 Spring Boot Web 应用中如何整合前端 UI。目前已完成的示例有：[整合 Bootstrap](../codes/web/sbe-web-ui/sbe-web-ui-bootstrap)、[整合 EasyUI](../codes/web/sbe-web-ui/sbe-web-ui-easyui) |
 
 ## [数据篇](data)
 

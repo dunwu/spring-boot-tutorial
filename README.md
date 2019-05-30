@@ -4,7 +4,8 @@
 >
 > 本项目的源码使用 maven 进行构建管理，任意 maven module 都可以独立运行。
 >
-> :construction: 正在不断完善、丰富示例中。。。
+> - :repeat: 项目同步维护：[Github](https://github.com/dunwu/spring-boot-tutorial/) | [Gitee](https://gitee.com/turnon/spring-boot-tutorial/)
+> - :book: 电子书阅读：[Github Pages](https://dunwu.github.io/spring-boot-tutorial/) | [Gitee Pages](http://turnon.gitee.io/spring-boot-tutorial/)
 
 |         :gem:          |    :spider_web:     |       :package:        |       :phone:       |       :link:        |        :bento:        | :heavy_plus_sign: |
 | :--------------------: | :-----------------: | :--------------------: | :-----------------: | :-----------------: | :-------------------: | ----------------- |
