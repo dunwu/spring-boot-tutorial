@@ -33,7 +33,7 @@ Spring Framework 提供了一个使用 `JavaMailSender` 接口发送电子邮件
 
 `JavaMailSender` 接口提供的 API 如下：
 
-![](http://dunwu.test.upcdn.net/snap/20190110111102.png)
+![](https://gitee.com/turnon/images/raw/master/snap/20190110111102.png)
 
 ## 配置
 
