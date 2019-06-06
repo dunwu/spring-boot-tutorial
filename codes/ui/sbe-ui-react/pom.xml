@@ -4,13 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>sbe-ui</artifactId>
-  <name>SBE :: UI</name>
+  <artifactId>sbe-ui-react</artifactId>
+  <name>SBE :: UI :: React</name>
   <version>1.0.0</version>
   <packaging>pom</packaging>
 
   <modules>
-    <module>sbe-ui-actuator</module>
-    <module>sbe-ui-react</module>
+    <module>sbe-ui-react-backend</module>
   </modules>
 </project>
