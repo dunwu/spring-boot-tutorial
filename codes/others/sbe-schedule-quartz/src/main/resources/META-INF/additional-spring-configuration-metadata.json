@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "quartz.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Description for quartz.enabled."
+  }
+] }
