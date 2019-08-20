@@ -25,7 +25,7 @@
 
 <!-- /TOC -->
 
-![](http://www.jeasyui.cn/images/easyui.png)
+<div align="center"><img src="http://www.jeasyui.cn/images/easyui.png"/></div>
 
 ## 简介
 
