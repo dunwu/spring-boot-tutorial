@@ -20,5 +20,6 @@
     <module>sbe-data-mysql</module>
     <module>sbe-data-orm-mybatis</module>
     <module>sbe-data-redis</module>
+    <module>sbe-data-redis-cluster</module>
   </modules>
 </project>
