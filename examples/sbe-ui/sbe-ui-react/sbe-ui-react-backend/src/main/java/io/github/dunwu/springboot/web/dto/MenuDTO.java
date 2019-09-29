@@ -10,10 +10,15 @@ import java.util.TreeSet;
 public class MenuDTO implements Cloneable, Comparable<MenuDTO> {
 
 	private final Set<MenuDTO> children = new TreeSet<MenuDTO>();
+
 	private String key;
+
 	private String title;
+
 	private String icon;
+
 	private String type;
+
 	private String url;
 
 	public MenuDTO() {

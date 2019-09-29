@@ -10,16 +10,10 @@
   </parent>
 
   <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>sbe-ui-react-backend</artifactId>
-  <name>SBE :: UI :: React :: Backend</name>
+  <artifactId>sbe-security-start</artifactId>
+  <name>SBE :: Security :: Start</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
-  </properties>
 
   <dependencies>
     <dependency>
@@ -28,13 +22,12 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
+      <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.github.dunwu</groupId>
-      <artifactId>dunwu-common</artifactId>
-      <version>0.4.7</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 

@@ -7,7 +7,9 @@ import java.util.List;
 public class BaseResponseDTO<T> {
 
 	private final List<String> messages = new ArrayList<>();
+
 	private Integer code = DEFAULT_RESPONSE_RESULT.SUCCESS.value();
+
 	private T data;
 
 	public BaseResponseDTO() {

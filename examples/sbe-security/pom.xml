@@ -10,6 +10,8 @@
   <packaging>pom</packaging>
 
   <modules>
+    <module>sbe-security-start</module>
+    <module>sbe-security-authentication</module>
     <module>sbe-security-simple</module>
     <module>sbe-security-web</module>
   </modules>
