@@ -1,4 +1,4 @@
-import React, {PropTypes} from "react";
+import React from "react";
 import {Alert, Button, Col, Input, Row, Select, Table} from "antd";
 import "./User.less";
 

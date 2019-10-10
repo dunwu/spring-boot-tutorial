@@ -1,15 +1,14 @@
 package io.github.dunwu.springboot.support.redis;
 
+import net.oschina.j2cache.cluster.ClusterPolicy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
 
-import net.oschina.j2cache.cluster.ClusterPolicy;
-
 /**
  * 监听二缓key失效，主动清除本地缓存
- * 
+ *
  * @author zhangsaizz
  *
  */
@@ -20,7 +19,7 @@ public class SpringRedisActiveMessageListener implements MessageListener {
 	private ClusterPolicy clusterPolicy;
 
 	private String namespace;
-	
+
 	SpringRedisActiveMessageListener(ClusterPolicy clusterPolicy, String namespace) {
 		this.clusterPolicy = clusterPolicy;
 		this.namespace = namespace;

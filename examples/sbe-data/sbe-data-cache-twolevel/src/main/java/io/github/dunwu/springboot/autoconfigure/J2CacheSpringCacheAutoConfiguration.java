@@ -1,20 +1,18 @@
 package io.github.dunwu.springboot.autoconfigure;
 
-import java.util.List;
-
+import io.github.dunwu.springboot.support.J2CacheCacheManger;
+import net.oschina.j2cache.CacheChannel;
+import net.oschina.j2cache.J2Cache;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import net.oschina.j2cache.CacheChannel;
-import net.oschina.j2cache.J2Cache;
-import io.github.dunwu.springboot.support.J2CacheCacheManger;
+import java.util.List;
 
 /**
  * 开启对spring cache支持的配置入口
@@ -29,7 +27,7 @@ import io.github.dunwu.springboot.support.J2CacheCacheManger;
 public class J2CacheSpringCacheAutoConfiguration {
 
 	private final CacheProperties cacheProperties;
-	
+
 	private final J2CacheProperties j2CacheProperties;
 
 	J2CacheSpringCacheAutoConfiguration(CacheProperties cacheProperties, J2CacheProperties j2CacheProperties) {

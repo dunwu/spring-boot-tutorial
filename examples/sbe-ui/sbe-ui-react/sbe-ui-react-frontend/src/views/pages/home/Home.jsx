@@ -2,7 +2,6 @@
  * Created by Zhang Peng on 2017/7/21.
  */
 import React from 'react';
-import {Carousel, Col, Row} from 'antd';
 import './Home.less';
 
 import logo from './logo.svg';

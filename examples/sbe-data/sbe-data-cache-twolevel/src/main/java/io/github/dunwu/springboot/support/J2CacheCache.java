@@ -1,14 +1,13 @@
 package io.github.dunwu.springboot.support;
 
-import java.util.concurrent.Callable;
-
+import net.oschina.j2cache.CacheChannel;
+import net.oschina.j2cache.CacheObject;
+import net.oschina.j2cache.NullObject;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.support.AbstractValueAdaptingCache;
 import org.springframework.cache.support.NullValue;
 
-import net.oschina.j2cache.CacheChannel;
-import net.oschina.j2cache.CacheObject;
-import net.oschina.j2cache.NullObject;
+import java.util.concurrent.Callable;
 
 /**
  * {@link CacheManager} implementation for J2Cache.

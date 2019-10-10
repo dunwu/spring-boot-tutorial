@@ -1,20 +1,19 @@
 package io.github.dunwu.springboot.support.redis;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-
 import io.github.dunwu.springboot.autoconfigure.J2CacheProperties;
+import io.github.dunwu.springboot.support.util.SpringUtil;
+import net.oschina.j2cache.CacheProviderHolder;
+import net.oschina.j2cache.Command;
+import net.oschina.j2cache.J2CacheConfig;
+import net.oschina.j2cache.cluster.ClusterPolicy;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 
-import net.oschina.j2cache.CacheProviderHolder;
-import net.oschina.j2cache.Command;
-import net.oschina.j2cache.J2CacheConfig;
-import io.github.dunwu.springboot.support.util.SpringUtil;
-import net.oschina.j2cache.cluster.ClusterPolicy;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * 使用spring redis实现订阅功能
@@ -23,18 +22,18 @@ import net.oschina.j2cache.cluster.ClusterPolicy;
 public class SpringRedisPubSubPolicy implements ClusterPolicy {
 
 	private int LOCAL_COMMAND_ID = Command.genRandomSrc(); //命令源标识，随机生成，每个节点都有唯一标识
-	
+
 	private RedisTemplate<String, Serializable> redisTemplate;
-	
+
 	private J2CacheProperties config;
-	
+
 	private CacheProviderHolder holder;
-	
+
 	/**
 	 * 是否是主动模式
 	 */
 	private static boolean isActive = false;
-	
+
 	private String channel = "j2cache_channel";
 
 	@Override
@@ -64,7 +63,7 @@ public class SpringRedisPubSubPolicy implements ClusterPolicy {
 		List<PatternTopic> topics = new ArrayList<>();
 		topics.add(new PatternTopic(expired));
 		topics.add(new PatternTopic(del));
-		
+
 		if("active".equals(config.getCacheCleanMode())) {
 			isActive = true;
 			//设置键值回调 需要redis支持键值回调

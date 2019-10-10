@@ -1,17 +1,16 @@
 package io.github.dunwu.springboot.support.util;
 
-import java.io.IOException;
-
+import net.oschina.j2cache.util.SerializationUtils;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;
 
-import net.oschina.j2cache.util.SerializationUtils;
+import java.io.IOException;
 
 
 public class J2CacheSerializer implements RedisSerializer<Object>{
 
 	@Override
-	public byte[] serialize(Object t) throws SerializationException {	
+	public byte[] serialize(Object t) throws SerializationException {
 		try {
 			return SerializationUtils.serialize(t);
 		} catch (IOException e) {

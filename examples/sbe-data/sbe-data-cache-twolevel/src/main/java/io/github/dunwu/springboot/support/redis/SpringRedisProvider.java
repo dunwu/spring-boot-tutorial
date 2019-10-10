@@ -1,21 +1,15 @@
 package io.github.dunwu.springboot.support.redis;
 
+import io.github.dunwu.springboot.autoconfigure.J2CacheProperties;
+import io.github.dunwu.springboot.support.util.SpringUtil;
+import net.oschina.j2cache.*;
+import org.springframework.data.redis.core.RedisTemplate;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
-
-import io.github.dunwu.springboot.autoconfigure.J2CacheProperties;
-import org.springframework.data.redis.core.RedisTemplate;
-
-import net.oschina.j2cache.Cache;
-import net.oschina.j2cache.CacheChannel;
-import net.oschina.j2cache.CacheExpiredListener;
-import net.oschina.j2cache.CacheObject;
-import net.oschina.j2cache.CacheProvider;
-import net.oschina.j2cache.NullCache;
-import io.github.dunwu.springboot.support.util.SpringUtil;
 
 /**
  * spring redis缓存
@@ -25,13 +19,13 @@ import io.github.dunwu.springboot.support.util.SpringUtil;
 public class SpringRedisProvider implements CacheProvider {
 
 	private RedisTemplate<String, Serializable> redisTemplate;
-	
+
 	private J2CacheProperties config;
 
 	private String namespace;
 
 	private String storage;
-	
+
 	protected ConcurrentHashMap<String, Cache> caches = new ConcurrentHashMap<>();
 
 	@Override

@@ -1,9 +1,9 @@
 package io.github.dunwu.springboot.support.redis;
 
-import java.util.Properties;
-
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.redis.connection.RedisConnection;
+
+import java.util.Properties;
 
 /**
  * 设置redis键值回调

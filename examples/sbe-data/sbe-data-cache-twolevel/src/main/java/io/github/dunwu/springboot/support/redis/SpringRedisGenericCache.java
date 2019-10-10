@@ -1,18 +1,17 @@
 package io.github.dunwu.springboot.support.redis;
 
+import net.oschina.j2cache.Level2Cache;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.redis.core.RedisCallback;
+import org.springframework.data.redis.core.RedisTemplate;
+
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
-
-import net.oschina.j2cache.Level2Cache;
 
 public class SpringRedisGenericCache implements Level2Cache {
 
@@ -49,7 +48,7 @@ public class SpringRedisGenericCache implements Level2Cache {
 
 	@Override
 	public boolean exists(String key) {
-		return 	redisTemplate.execute((RedisCallback<Boolean>) redis -> {	
+		return 	redisTemplate.execute((RedisCallback<Boolean>) redis -> {
 			return redis.exists(_key(key));
 		});
 	}
@@ -57,7 +56,7 @@ public class SpringRedisGenericCache implements Level2Cache {
 	@Override
 	public void evict(String... keys) {
 		for (String k : keys) {
-			redisTemplate.execute((RedisCallback<Long>) redis -> {	
+			redisTemplate.execute((RedisCallback<Long>) redis -> {
 				return redis.del(_key(k));
 			});
 		}

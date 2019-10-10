@@ -22,8 +22,7 @@ insert_final_newline = true
 [*.bat]
 end_of_line = crlf
 
-[*.java]
-indent_style = space
+[*.{java, sh}]
 indent_size = 4
 
 [*.md]

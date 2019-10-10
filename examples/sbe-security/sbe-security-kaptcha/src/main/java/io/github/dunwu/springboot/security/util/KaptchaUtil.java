@@ -105,10 +105,10 @@ public class KaptchaUtil {
 
 	public static void toOutputStream(Kaptcha kaptcha, OutputStream output)
 			throws IOException {
-//        ImageUtil.ImageParam params = new ImageUtil.ImageParam();
-//        params.setFormat(ImageUtil.ImageTypeEnum.jpeg);
-//		ImageUtil.toOutputStream(kaptcha.getImage(), output, params);
-        ImageIO.write(kaptcha.getImage(), "jpeg", output);
+		// ImageUtil.ImageParam params = new ImageUtil.ImageParam();
+		// params.setFormat(ImageUtil.ImageTypeEnum.jpeg);
+		// ImageUtil.toOutputStream(kaptcha.getImage(), output, params);
+		ImageIO.write(kaptcha.getImage(), "jpeg", output);
 	}
 
 	@Data

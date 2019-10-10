@@ -1,13 +1,12 @@
 package io.github.dunwu.springboot.support.redis;
 
+import net.oschina.j2cache.Command;
+import net.oschina.j2cache.cluster.ClusterPolicy;
+import net.oschina.j2cache.util.SerializationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
-
-import net.oschina.j2cache.cluster.ClusterPolicy;
-import net.oschina.j2cache.Command;
-import net.oschina.j2cache.util.SerializationUtils;
 
 /**
  * spring redis 订阅消息监听
@@ -18,11 +17,11 @@ public class SpringRedisMessageListener implements MessageListener{
 
 	private static Logger logger = LoggerFactory.getLogger(SpringRedisMessageListener.class);
 	private int LOCAL_COMMAND_ID = Command.genRandomSrc(); //命令源标识，随机生成，每个节点都有唯一标识
-	
+
 	private ClusterPolicy clusterPolicy;
-	
+
 	private String channel;
-	
+
 	SpringRedisMessageListener(ClusterPolicy clusterPolicy, String channel){
 		this.clusterPolicy = clusterPolicy;
 		this.channel = channel;

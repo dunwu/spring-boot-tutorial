@@ -1,20 +1,15 @@
 package io.github.dunwu.springboot.support.redis;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import net.oschina.j2cache.Level2Cache;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import net.oschina.j2cache.Level2Cache;
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * 重新实现二级缓存
- * 
+ *
  * @author zhangsaizz
  *
  */
@@ -55,7 +50,7 @@ public class SpringRedisCache implements Level2Cache {
 	public void evict(String... keys) {
 		for (String k : keys) {
 			if (!k.equals("null")) {
-				redisTemplate.opsForHash().delete(region, k);		
+				redisTemplate.opsForHash().delete(region, k);
 			} else {
 				redisTemplate.delete(region);
 			}
@@ -74,7 +69,7 @@ public class SpringRedisCache implements Level2Cache {
 
 	@Override
 	public byte[] getBytes(String key) {
-		return redisTemplate.opsForHash().getOperations().execute((RedisCallback<byte[]>) redis -> redis.hGet(region.getBytes(), key.getBytes()));	
+		return redisTemplate.opsForHash().getOperations().execute((RedisCallback<byte[]>) redis -> redis.hGet(region.getBytes(), key.getBytes()));
 	}
 
 	@Override
@@ -113,9 +108,9 @@ public class SpringRedisCache implements Level2Cache {
 			setBytes(k, v);
 		});
 	}
-	
+
 	private String _key(String key) {
 		return this.region + ":" + key;
 	}
-	
+
 }

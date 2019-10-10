@@ -1,9 +1,8 @@
 package io.github.dunwu.springboot.support.util;
 
+import net.oschina.j2cache.J2CacheConfig;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.StandardEnvironment;
-
-import net.oschina.j2cache.J2CacheConfig;
 
 public class SpringJ2CacheConfigUtil {
 
@@ -30,7 +29,7 @@ public class SpringJ2CacheConfigUtil {
 					if (key.startsWith(config.getBroadcast() + ".")) {
 						config.getBroadcastProperties().setProperty(key.substring((config.getBroadcast() + ".").length()),
 								environment.getProperty(key));
-					}	
+					}
 					if (key.startsWith(config.getL1CacheName() + ".")) {
 						config.getL1CacheProperties().setProperty(key.substring((config.getL1CacheName() + ".").length()),
 								environment.getProperty(key));
