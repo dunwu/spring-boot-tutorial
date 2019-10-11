@@ -13,10 +13,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * spring redis缓存
+ *
  * @author zhangsaizz
  *
  */
 public class SpringRedisProvider implements CacheProvider {
+
+	protected ConcurrentHashMap<String, Cache> caches = new ConcurrentHashMap<>();
 
 	private RedisTemplate<String, Serializable> redisTemplate;
 
@@ -25,8 +28,6 @@ public class SpringRedisProvider implements CacheProvider {
 	private String namespace;
 
 	private String storage;
-
-	protected ConcurrentHashMap<String, Cache> caches = new ConcurrentHashMap<>();
 
 	@Override
 	public String name() {
@@ -45,7 +46,7 @@ public class SpringRedisProvider implements CacheProvider {
 
 	@Override
 	public Cache buildCache(String region, CacheExpiredListener listener) {
-		if(config.getL2CacheOpen() == false) {
+		if (config.getL2CacheOpen() == false) {
 			return new NullCache();
 		}
 		Cache cache = caches.get(region);
@@ -53,10 +54,10 @@ public class SpringRedisProvider implements CacheProvider {
 			synchronized (SpringRedisProvider.class) {
 				cache = caches.get(region);
 				if (cache == null) {
-	                if("hash".equalsIgnoreCase(this.storage))
-	                    cache = new SpringRedisCache(this.namespace, region, redisTemplate);
-	                else {
-	                	cache = new SpringRedisGenericCache(this.namespace, region, redisTemplate);
+					if ("hash".equalsIgnoreCase(this.storage))
+						cache = new SpringRedisCache(this.namespace, region, redisTemplate);
+					else {
+						cache = new SpringRedisGenericCache(this.namespace, region, redisTemplate);
 					}
 					caches.put(region, cache);
 				}
@@ -75,8 +76,8 @@ public class SpringRedisProvider implements CacheProvider {
 	public void start(Properties props) {
 		this.namespace = props.getProperty("namespace");
 		this.storage = props.getProperty("storage");
-		this.config =  SpringUtil.getBean(J2CacheProperties.class);
-		if(config.getL2CacheOpen() == false) {
+		this.config = SpringUtil.getBean(J2CacheProperties.class);
+		if (config.getL2CacheOpen() == false) {
 			return;
 		}
 		this.redisTemplate = SpringUtil.getBean("j2CacheRedisTemplate", RedisTemplate.class);

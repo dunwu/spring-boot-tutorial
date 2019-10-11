@@ -27,8 +27,7 @@ public class AopLogTests {
 	public void testAopLog() {
 		Map<String, Object> map = new HashMap<>();
 		map.put("name", "Tom");
-		String response = restTemplate.getForObject("/hello?name={name}", String.class,
-				map);
+		String response = restTemplate.getForObject("/hello?name={name}", String.class, map);
 		System.out.println("Response: " + response);
 		Assert.assertEquals("Hello Tom", response);
 

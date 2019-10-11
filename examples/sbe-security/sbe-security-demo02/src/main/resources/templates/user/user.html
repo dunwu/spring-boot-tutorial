@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <title>Spring Security</title>
   <link
     href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css"
@@ -15,18 +15,18 @@
 <div class="container" style="margin-top: 60px">
   <div style="text-align: center; margin-top: 10%">
     <img
-      src="http://dunwu.test.upcdn.net/images/others/zp_100_100.png"
       alt="avatar"
       class="img-circle"
+      src="http://dunwu.test.upcdn.net/images/others/zp_100_100.png"
       style="margin: 0 auto"
     />
     <p
-      th:text="${username}"
       style="margin-top: 25px; font-size: 20; color: crimson"
+      th:text="${username}"
     >
       Anoy
     </p>
-    <form th:action="@{/logout}" method="post">
+    <form method="post" th:action="@{/logout}">
       <button class="btn btn-danger" style="margin-top: 20px">
         退出登录
       </button>

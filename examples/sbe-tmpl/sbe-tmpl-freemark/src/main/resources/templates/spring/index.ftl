@@ -3,8 +3,8 @@
 <html>
 <head>
   <title>FreeMarker 模板引擎</title>
-  <#assign home><@spring.url relativeUrl="/"/></#assign>
-  <#assign bootstrap><@spring.url relativeUrl="/css/bootstrap.min.css"/></#assign>
+    <#assign home><@spring.url relativeUrl="/"/></#assign>
+    <#assign bootstrap><@spring.url relativeUrl="/css/bootstrap.min.css"/></#assign>
   <link rel="stylesheet" href="${bootstrap}"/>
 </head>
 <body>

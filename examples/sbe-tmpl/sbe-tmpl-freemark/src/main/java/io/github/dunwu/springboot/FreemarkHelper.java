@@ -28,8 +28,7 @@ public class FreemarkHelper {
 	@Autowired
 	private Configuration freemarkConfig;
 
-	public String getMergeContent(final String tmplName, Map params)
-			throws IOException, TemplateException {
+	public String getMergeContent(final String tmplName, Map params) throws IOException, TemplateException {
 		/* Get the template (uses cache internally) */
 		Template temp = freemarkConfig.getTemplate(tmplName);
 

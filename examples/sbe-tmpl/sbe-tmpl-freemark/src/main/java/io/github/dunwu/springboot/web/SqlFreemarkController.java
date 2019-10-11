@@ -27,8 +27,7 @@ public class SqlFreemarkController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public void create(@RequestParam("name") String name,
-			@RequestParam("age") Integer age) {
+	public void create(@RequestParam("name") String name, @RequestParam("age") Integer age) {
 		userDAO.create(name, age);
 	}
 

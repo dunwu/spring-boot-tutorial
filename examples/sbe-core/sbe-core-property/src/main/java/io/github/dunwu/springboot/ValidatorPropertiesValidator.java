@@ -23,8 +23,7 @@ public class ValidatorPropertiesValidator implements Validator {
 		ValidationUtils.rejectIfEmpty(errors, "port", "port.empty");
 		ValidatorProperties properties = (ValidatorProperties) o;
 
-		if (properties.getHost() != null
-				&& !this.pattern.matcher(properties.getHost()).matches()) {
+		if (properties.getHost() != null && !this.pattern.matcher(properties.getHost()).matches()) {
 			errors.rejectValue("host", "Invalid host");
 		}
 	}

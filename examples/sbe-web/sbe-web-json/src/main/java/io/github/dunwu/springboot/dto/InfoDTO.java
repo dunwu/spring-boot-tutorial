@@ -49,8 +49,7 @@ public class InfoDTO {
 
 	@Override
 	public String toString() {
-		return "InfoDTO{" + "appName='" + appName + '\'' + ", version='" + version + '\''
-				+ ", date=" + date + '}';
+		return "InfoDTO{" + "appName='" + appName + '\'' + ", version='" + version + '\'' + ", date=" + date + '}';
 	}
 
 }

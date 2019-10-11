@@ -41,35 +41,29 @@ public class DataJpaRestApplicationTests {
 	@Test
 	public void shouldCreateEntity() throws Exception {
 
-		mockMvc.perform(post("/people")
-				.content("{\"firstName\": \"Frodo\", \"lastName\":\"Baggins\"}"))
-				.andExpect(status().isCreated())
-				.andExpect(header().string("Location", containsString("people/")));
+		mockMvc.perform(post("/people").content("{\"firstName\": \"Frodo\", \"lastName\":\"Baggins\"}"))
+				.andExpect(status().isCreated()).andExpect(header().string("Location", containsString("people/")));
 	}
 
 	@Test
 	public void shouldRetrieveEntity() throws Exception {
 
 		MvcResult mvcResult = mockMvc
-				.perform(post("/people")
-						.content("{\"firstName\": \"Frodo\", \"lastName\":\"Baggins\"}"))
+				.perform(post("/people").content("{\"firstName\": \"Frodo\", \"lastName\":\"Baggins\"}"))
 				.andExpect(status().isCreated()).andReturn();
 
 		String location = mvcResult.getResponse().getHeader("Location");
-		mockMvc.perform(get(location)).andExpect(status().isOk())
-				.andExpect(jsonPath("$.firstName").value("Frodo"))
+		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.firstName").value("Frodo"))
 				.andExpect(jsonPath("$.lastName").value("Baggins"));
 	}
 
 	@Test
 	public void shouldQueryEntity() throws Exception {
 
-		mockMvc.perform(post("/people")
-				.content("{ \"firstName\": \"Frodo\", \"lastName\":\"Baggins\"}"))
+		mockMvc.perform(post("/people").content("{ \"firstName\": \"Frodo\", \"lastName\":\"Baggins\"}"))
 				.andExpect(status().isCreated());
 
-		mockMvc.perform(get("/people/search/findByLastName?name={name}", "Baggins"))
-				.andExpect(status().isOk())
+		mockMvc.perform(get("/people/search/findByLastName?name={name}", "Baggins")).andExpect(status().isOk())
 				.andExpect(jsonPath("$._embedded.people[0].firstName").value("Frodo"));
 	}
 
@@ -77,18 +71,15 @@ public class DataJpaRestApplicationTests {
 	public void shouldUpdateEntity() throws Exception {
 
 		MvcResult mvcResult = mockMvc
-				.perform(post("/people")
-						.content("{\"firstName\": \"Frodo\", \"lastName\":\"Baggins\"}"))
+				.perform(post("/people").content("{\"firstName\": \"Frodo\", \"lastName\":\"Baggins\"}"))
 				.andExpect(status().isCreated()).andReturn();
 
 		String location = mvcResult.getResponse().getHeader("Location");
 
-		mockMvc.perform(put(location)
-				.content("{\"firstName\": \"Bilbo\", \"lastName\":\"Baggins\"}"))
+		mockMvc.perform(put(location).content("{\"firstName\": \"Bilbo\", \"lastName\":\"Baggins\"}"))
 				.andExpect(status().isNoContent());
 
-		mockMvc.perform(get(location)).andExpect(status().isOk())
-				.andExpect(jsonPath("$.firstName").value("Bilbo"))
+		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.firstName").value("Bilbo"))
 				.andExpect(jsonPath("$.lastName").value("Baggins"));
 	}
 
@@ -96,17 +87,14 @@ public class DataJpaRestApplicationTests {
 	public void shouldPartiallyUpdateEntity() throws Exception {
 
 		MvcResult mvcResult = mockMvc
-				.perform(post("/people")
-						.content("{\"firstName\": \"Frodo\", \"lastName\":\"Baggins\"}"))
+				.perform(post("/people").content("{\"firstName\": \"Frodo\", \"lastName\":\"Baggins\"}"))
 				.andExpect(status().isCreated()).andReturn();
 
 		String location = mvcResult.getResponse().getHeader("Location");
 
-		mockMvc.perform(patch(location).content("{\"firstName\": \"Bilbo Jr.\"}"))
-				.andExpect(status().isNoContent());
+		mockMvc.perform(patch(location).content("{\"firstName\": \"Bilbo Jr.\"}")).andExpect(status().isNoContent());
 
-		mockMvc.perform(get(location)).andExpect(status().isOk())
-				.andExpect(jsonPath("$.firstName").value("Bilbo Jr."))
+		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.firstName").value("Bilbo Jr."))
 				.andExpect(jsonPath("$.lastName").value("Baggins"));
 	}
 
@@ -114,8 +102,7 @@ public class DataJpaRestApplicationTests {
 	public void shouldDeleteEntity() throws Exception {
 
 		MvcResult mvcResult = mockMvc
-				.perform(post("/people")
-						.content("{ \"firstName\": \"Bilbo\", \"lastName\":\"Baggins\"}"))
+				.perform(post("/people").content("{ \"firstName\": \"Bilbo\", \"lastName\":\"Baggins\"}"))
 				.andExpect(status().isCreated()).andReturn();
 
 		String location = mvcResult.getResponse().getHeader("Location");

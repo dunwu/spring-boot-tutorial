@@ -19,8 +19,7 @@ import java.util.List;
 @SpringBootTest(classes = { DataJdbcApplication.class })
 public class DataJdbcApplicationTests {
 
-	private static final Logger log = LoggerFactory
-			.getLogger(DataJdbcApplicationTests.class);
+	private static final Logger log = LoggerFactory.getLogger(DataJdbcApplicationTests.class);
 
 	@Autowired
 	private UserDAO userDAO;

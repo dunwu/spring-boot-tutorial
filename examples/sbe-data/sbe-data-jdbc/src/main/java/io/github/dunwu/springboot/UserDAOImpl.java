@@ -62,15 +62,13 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void update(User user) {
-		jdbcTemplate.update("UPDATE USER SET name=?, age=? WHERE id=?", user.getName(),
-				user.getAge(), user.getId());
+		jdbcTemplate.update("UPDATE USER SET name=?, age=? WHERE id=?", user.getName(), user.getAge(), user.getId());
 	}
 
 	@Override
 	public Integer count() {
 		try {
-			return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM user",
-					Integer.class);
+			return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM user", Integer.class);
 		}
 		catch (EmptyResultDataAccessException e) {
 			return null;
@@ -90,8 +88,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> list() {
-		return jdbcTemplate.query("select * from USER",
-				new BeanPropertyRowMapper(User.class));
+		return jdbcTemplate.query("select * from USER", new BeanPropertyRowMapper(User.class));
 	}
 
 }

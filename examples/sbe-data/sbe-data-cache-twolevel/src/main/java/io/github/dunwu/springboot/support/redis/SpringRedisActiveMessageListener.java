@@ -33,7 +33,7 @@ public class SpringRedisActiveMessageListener implements MessageListener {
 		}
 		if (key.startsWith(namespace + ":")) {
 			String[] k = key.replaceFirst(namespace + ":", "").split(":", 2);
-			if(k.length != 2) {
+			if (k.length != 2) {
 				return;
 			}
 			clusterPolicy.evict(k[0], k[1]);

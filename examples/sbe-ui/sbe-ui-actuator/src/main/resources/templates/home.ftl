@@ -3,8 +3,8 @@
 <html>
 <head>
   <title>${title}</title>
-<#assign home><@spring.url relativeUrl="/"/></#assign>
-<#assign bootstrap><@spring.url relativeUrl="/css/bootstrap.min.css"/></#assign>
+    <#assign home><@spring.url relativeUrl="/"/></#assign>
+    <#assign bootstrap><@spring.url relativeUrl="/css/bootstrap.min.css"/></#assign>
   <link rel="stylesheet" href="${bootstrap}"/>
 </head>
 <body>
@@ -15,7 +15,7 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse"
                   data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span><span
-            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
           <a class="navbar-brand" href="http://spring.io/"> Spring </a>
         </div>
 

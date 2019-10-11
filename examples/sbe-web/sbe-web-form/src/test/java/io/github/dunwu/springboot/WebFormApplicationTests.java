@@ -31,8 +31,7 @@ public class WebFormApplicationTests {
 
 	@Test
 	public void checkPersonInfoWhenNameTooShortThenFailure() throws Exception {
-		MockHttpServletRequestBuilder createPerson = post("/").param("name", "R")
-				.param("age", "20");
+		MockHttpServletRequestBuilder createPerson = post("/").param("name", "R").param("age", "20");
 		mockMvc.perform(createPerson).andExpect(model().hasErrors());
 	}
 
@@ -44,23 +43,20 @@ public class WebFormApplicationTests {
 
 	@Test
 	public void checkPersonInfoWhenAgeTooYoungThenFailure() throws Exception {
-		MockHttpServletRequestBuilder createPerson = post("/").param("age", "1")
-				.param("name", "Rob");
+		MockHttpServletRequestBuilder createPerson = post("/").param("age", "1").param("name", "Rob");
 
 		mockMvc.perform(createPerson).andExpect(model().hasErrors());
 	}
 
 	@Test
 	public void checkPersonInfoWhenValidRequestThenSuccess() throws Exception {
-		MockHttpServletRequestBuilder createPerson = post("/").param("name", "Rob")
-				.param("age", "20");
+		MockHttpServletRequestBuilder createPerson = post("/").param("name", "Rob").param("age", "20");
 		mockMvc.perform(createPerson).andExpect(model().hasNoErrors());
 	}
 
 	@Test
 	public void rendersForm() throws Exception {
-		mockMvc.perform(get("/greeting"))
-				.andExpect(content().string(containsString("Form")));
+		mockMvc.perform(get("/greeting")).andExpect(content().string(containsString("Form")));
 	}
 
 	@Test

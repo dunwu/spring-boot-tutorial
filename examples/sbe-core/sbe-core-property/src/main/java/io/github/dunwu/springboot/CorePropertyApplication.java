@@ -21,8 +21,7 @@ public class CorePropertyApplication implements CommandLineRunner {
 	@Autowired
 	private CustomConfig.Topics topics;
 
-	public CorePropertyApplication(MyProperties myProperties,
-			ValidatorProperties validatorProperties) {
+	public CorePropertyApplication(MyProperties myProperties, ValidatorProperties validatorProperties) {
 		this.myProperties = myProperties;
 		this.validatorProperties = validatorProperties;
 	}

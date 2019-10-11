@@ -19,22 +19,20 @@ public class WebUISwaggerApplicationTests {
 	@Test
 	public void generateAsciiDocs() throws Exception {
 		// 输出Ascii格式
-		Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
-				.withMarkupLanguage(MarkupLanguage.ASCIIDOC).build();
+		Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder().withMarkupLanguage(MarkupLanguage.ASCIIDOC)
+				.build();
 
-		Swagger2MarkupConverter.from(new URL("http://localhost:8080/v2/api-docs"))
-				.withConfig(config).build()
+		Swagger2MarkupConverter.from(new URL("http://localhost:8080/v2/api-docs")).withConfig(config).build()
 				.toFolder(Paths.get("src/docs/asciidoc/generated"));
 	}
 
 	@Test
 	public void generateMarkdownDocs() throws Exception {
 		// 输出Markdown格式
-		Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
-				.withMarkupLanguage(MarkupLanguage.MARKDOWN).build();
+		Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder().withMarkupLanguage(MarkupLanguage.MARKDOWN)
+				.build();
 
-		Swagger2MarkupConverter.from(new URL("http://localhost:8080/v2/api-docs"))
-				.withConfig(config).build()
+		Swagger2MarkupConverter.from(new URL("http://localhost:8080/v2/api-docs")).withConfig(config).build()
 				.toFolder(Paths.get("src/docs/markdown/generated"));
 	}
 
@@ -44,30 +42,27 @@ public class WebUISwaggerApplicationTests {
 		Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
 				.withMarkupLanguage(MarkupLanguage.CONFLUENCE_MARKUP).build();
 
-		Swagger2MarkupConverter.from(new URL("http://localhost:8080/v2/api-docs"))
-				.withConfig(config).build()
+		Swagger2MarkupConverter.from(new URL("http://localhost:8080/v2/api-docs")).withConfig(config).build()
 				.toFolder(Paths.get("src/docs/confluence/generated"));
 	}
 
 	@Test
 	public void generateAsciiDocsToFile() throws Exception {
 		// 输出Ascii到单文件
-		Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
-				.withMarkupLanguage(MarkupLanguage.ASCIIDOC).build();
+		Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder().withMarkupLanguage(MarkupLanguage.ASCIIDOC)
+				.build();
 
-		Swagger2MarkupConverter.from(new URL("http://localhost:8080/v2/api-docs"))
-				.withConfig(config).build()
+		Swagger2MarkupConverter.from(new URL("http://localhost:8080/v2/api-docs")).withConfig(config).build()
 				.toFile(Paths.get("src/docs/asciidoc/generated/all"));
 	}
 
 	@Test
 	public void generateMarkdownDocsToFile() throws Exception {
 		// 输出Markdown到单文件
-		Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
-				.withMarkupLanguage(MarkupLanguage.MARKDOWN).build();
+		Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder().withMarkupLanguage(MarkupLanguage.MARKDOWN)
+				.build();
 
-		Swagger2MarkupConverter.from(new URL("http://localhost:8080/v2/api-docs"))
-				.withConfig(config).build()
+		Swagger2MarkupConverter.from(new URL("http://localhost:8080/v2/api-docs")).withConfig(config).build()
 				.toFile(Paths.get("src/docs/markdown/generated/all"));
 	}
 

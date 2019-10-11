@@ -1,4 +1,4 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.springframework.boot.autoconfigure.EnableAutoConfiguration = \
 io.github.dunwu.springboot.autoconfigure.J2CacheAutoConfiguration,\
 io.github.dunwu.springboot.autoconfigure.J2CacheSpringCacheAutoConfiguration,\
 io.github.dunwu.springboot.autoconfigure.J2CacheSpringRedisAutoConfiguration

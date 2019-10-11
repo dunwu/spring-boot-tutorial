@@ -8,6 +8,10 @@ import org.springframework.core.convert.converter.Converter;
 @SpringBootApplication
 public class WebUiBootstrapApplication {
 
+	public static void main(String[] args) {
+		SpringApplication.run(WebUiBootstrapApplication.class, args);
+	}
+
 	@Bean
 	public MessageRepository messageRepository() {
 		return new InMemoryMessageRepository();
@@ -21,10 +25,6 @@ public class WebUiBootstrapApplication {
 				return messageRepository().findMessage(Long.valueOf(id));
 			}
 		};
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(WebUiBootstrapApplication.class, args);
 	}
 
 }

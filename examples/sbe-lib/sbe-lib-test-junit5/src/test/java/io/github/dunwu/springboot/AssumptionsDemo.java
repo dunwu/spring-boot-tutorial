@@ -16,8 +16,7 @@ class AssumptionsDemo {
 
 	@Test
 	void testOnlyOnDeveloperWorkstation() {
-		assumeTrue("DEV".equals(System.getenv("ENV")),
-				() -> "Aborting test: not on developer workstation");
+		assumeTrue("DEV".equals(System.getenv("ENV")), () -> "Aborting test: not on developer workstation");
 		// remainder of test
 	}
 

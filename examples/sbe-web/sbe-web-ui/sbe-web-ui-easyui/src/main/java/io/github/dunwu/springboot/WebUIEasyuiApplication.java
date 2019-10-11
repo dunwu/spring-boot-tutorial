@@ -24,8 +24,7 @@ public class WebUIEasyuiApplication {
 			repository.save(new User("Chloe", "O'Brian", "186xxxxxxxx", "xxx@163.com"));
 			repository.save(new User("Kim", "Bauer", "131xxxxxxxx", "xxx@163.com"));
 			repository.save(new User("David", "Palmer", "130xxxxxxxx", "xxx@163.com"));
-			repository
-					.save(new User("Michelle", "Dessler", "159xxxxxxxx", "xxx@163.com"));
+			repository.save(new User("Michelle", "Dessler", "159xxxxxxxx", "xxx@163.com"));
 
 			// fetch all customers
 			log.info("Customers found with findAll():");

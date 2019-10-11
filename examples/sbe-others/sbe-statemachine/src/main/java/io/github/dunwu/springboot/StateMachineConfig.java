@@ -15,12 +15,10 @@ import java.util.EnumSet;
 
 @Configuration
 @EnableStateMachine
-public class StateMachineConfig
-		extends EnumStateMachineConfigurerAdapter<States, Events> {
+public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<States, Events> {
 
 	@Override
-	public void configure(StateMachineConfigurationConfigurer<States, Events> config)
-			throws Exception {
+	public void configure(StateMachineConfigurationConfigurer<States, Events> config) throws Exception {
 		// @formatter:off
         config
             .withConfiguration()
@@ -30,8 +28,7 @@ public class StateMachineConfig
 	}
 
 	@Override
-	public void configure(StateMachineStateConfigurer<States, Events> states)
-			throws Exception {
+	public void configure(StateMachineStateConfigurer<States, Events> states) throws Exception {
 		// @formatter:off
         states
             .withStates()
@@ -41,8 +38,7 @@ public class StateMachineConfig
 	}
 
 	@Override
-	public void configure(StateMachineTransitionConfigurer<States, Events> transitions)
-			throws Exception {
+	public void configure(StateMachineTransitionConfigurer<States, Events> transitions) throws Exception {
 		// @formatter:off
         transitions
             .withExternal()
@@ -57,8 +53,7 @@ public class StateMachineConfig
 	public StateMachineListener<States, Events> listener() {
 		return new StateMachineListenerAdapter<States, Events>() {
 			@Override
-			public void stateChanged(State<States, Events> from,
-					State<States, Events> to) {
+			public void stateChanged(State<States, Events> from, State<States, Events> to) {
 				System.out.println("State change to " + to.getId());
 			}
 		};

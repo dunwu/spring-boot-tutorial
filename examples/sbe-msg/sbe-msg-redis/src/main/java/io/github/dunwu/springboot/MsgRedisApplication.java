@@ -17,8 +17,7 @@ import java.util.concurrent.CountDownLatch;
 @SpringBootApplication
 public class MsgRedisApplication {
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(MsgRedisApplication.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MsgRedisApplication.class);
 
 	public static void main(String[] args) throws InterruptedException {
 

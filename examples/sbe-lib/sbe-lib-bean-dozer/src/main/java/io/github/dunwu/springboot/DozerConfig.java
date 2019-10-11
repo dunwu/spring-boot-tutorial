@@ -11,11 +11,9 @@ import java.io.IOException;
 public class DozerConfig {
 
 	@Bean
-	public DozerBeanMapperFactoryBean dozerMapper(
-			ResourcePatternResolver resourcePatternResolver) throws IOException {
+	public DozerBeanMapperFactoryBean dozerMapper(ResourcePatternResolver resourcePatternResolver) throws IOException {
 		DozerBeanMapperFactoryBean factoryBean = new DozerBeanMapperFactoryBean();
-		factoryBean.setMappingFiles(
-				resourcePatternResolver.getResources("classpath*:/*mapping.xml"));
+		factoryBean.setMappingFiles(resourcePatternResolver.getResources("classpath*:/*mapping.xml"));
 		return factoryBean;
 	}
 

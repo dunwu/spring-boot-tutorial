@@ -1,16 +1,16 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <body>
-<form action="#" th:action="@{/}" th:object="${personForm}" method="post">
+<form action="#" method="post" th:action="@{/}" th:object="${personForm}">
   <table>
     <tr>
       <td>Name:</td>
-      <td><input type="text" th:field="*{name}"/></td>
-      <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+      <td><input th:field="*{name}" type="text"/></td>
+      <td th:errors="*{name}" th:if="${#fields.hasErrors('name')}">Name Error</td>
     </tr>
     <tr>
       <td>Age:</td>
-      <td><input type="text" th:field="*{age}"/></td>
-      <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>
+      <td><input th:field="*{age}" type="text"/></td>
+      <td th:errors="*{age}" th:if="${#fields.hasErrors('age')}">Age Error</td>
     </tr>
     <tr>
       <td>

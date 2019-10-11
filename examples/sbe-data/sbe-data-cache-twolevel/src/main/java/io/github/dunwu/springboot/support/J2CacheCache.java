@@ -11,6 +11,7 @@ import java.util.concurrent.Callable;
 
 /**
  * {@link CacheManager} implementation for J2Cache.
+ *
  * @author zhangsaizz
  *
  */
@@ -21,7 +22,7 @@ public class J2CacheCache extends AbstractValueAdaptingCache {
 	private String j2CacheName = "j2cache";
 
 	public J2CacheCache(String cacheName, CacheChannel cacheChannel) {
-		this(cacheName,cacheChannel, true);
+		this(cacheName, cacheChannel, true);
 	}
 
 	public J2CacheCache(String cacheName, CacheChannel cacheChannel, boolean allowNullValues) {
@@ -49,7 +50,8 @@ public class J2CacheCache extends AbstractValueAdaptingCache {
 		T value;
 		try {
 			value = valueLoader.call();
-		} catch (Exception ex) {
+		}
+		catch (Exception ex) {
 			throw new ValueRetrievalException(key, valueLoader, ex);
 		}
 		put(key, value);
@@ -82,7 +84,8 @@ public class J2CacheCache extends AbstractValueAdaptingCache {
 	@Override
 	protected Object lookup(Object key) {
 		CacheObject cacheObject = cacheChannel.get(j2CacheName, String.valueOf(key));
-		if(cacheObject.rawValue() != null && cacheObject.rawValue().getClass().equals(NullObject.class) && super.isAllowNullValues()) {
+		if (cacheObject.rawValue() != null && cacheObject.rawValue().getClass().equals(NullObject.class)
+				&& super.isAllowNullValues()) {
 			return NullValue.INSTANCE;
 		}
 		return cacheObject.getValue();

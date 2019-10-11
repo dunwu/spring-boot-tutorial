@@ -6,8 +6,9 @@
   margin: 0;
   padding: 0;
 }
+
 .validatebox-invalid {
-  border-color: #ffa8a8;
-  background-color: #fff3f3;
-  color: #000;
+  border-color: #FFA8A8;
+  background-color: #FFF3F3;
+  color: #000000;
 }

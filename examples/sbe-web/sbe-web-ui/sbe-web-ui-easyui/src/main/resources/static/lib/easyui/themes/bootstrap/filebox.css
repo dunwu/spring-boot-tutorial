@@ -4,6 +4,7 @@
   top: 0;
   left: -5000px;
 }
+
 .filebox-label {
   display: inline-block;
   position: absolute;
@@ -15,6 +16,7 @@
   z-index: 10;
   background: url('images/blank.gif') no-repeat;
 }
+
 .l-btn-disabled .filebox-label {
   cursor: default;
 }

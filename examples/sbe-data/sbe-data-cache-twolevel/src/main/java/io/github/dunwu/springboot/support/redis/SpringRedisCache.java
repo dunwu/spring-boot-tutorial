@@ -5,7 +5,6 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.io.Serializable;
-import java.util.*;
 
 /**
  * 重新实现二级缓存
@@ -51,7 +50,8 @@ public class SpringRedisCache implements Level2Cache {
 		for (String k : keys) {
 			if (!k.equals("null")) {
 				redisTemplate.opsForHash().delete(region, k);
-			} else {
+			}
+			else {
 				redisTemplate.delete(region);
 			}
 		}
@@ -69,7 +69,8 @@ public class SpringRedisCache implements Level2Cache {
 
 	@Override
 	public byte[] getBytes(String key) {
-		return redisTemplate.opsForHash().getOperations().execute((RedisCallback<byte[]>) redis -> redis.hGet(region.getBytes(), key.getBytes()));
+		return redisTemplate.opsForHash().getOperations()
+				.execute((RedisCallback<byte[]>) redis -> redis.hGet(region.getBytes(), key.getBytes()));
 	}
 
 	@Override
@@ -85,13 +86,13 @@ public class SpringRedisCache implements Level2Cache {
 		redisTemplate.opsForHash().put(region, key, value);
 	}
 
-    /**
-     * 设置缓存数据的有效期
-     */
+	/**
+	 * 设置缓存数据的有效期
+	 */
 	@Override
 	public void put(String key, Object value, long timeToLiveInSeconds) {
-        redisTemplate.opsForHash().put(region, key, value);
-    }
+		redisTemplate.opsForHash().put(region, key, value);
+	}
 
 	@Override
 	public void setBytes(String key, byte[] bytes) {

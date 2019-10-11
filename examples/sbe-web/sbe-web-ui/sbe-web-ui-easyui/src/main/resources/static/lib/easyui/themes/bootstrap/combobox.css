@@ -5,17 +5,21 @@
   padding: 6px 4px;
   line-height: 20px;
 }
+
 .combobox-item-disabled {
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
+
 .combobox-gitem {
   padding-left: 10px;
 }
+
 .combobox-group,
 .combobox-stick {
   font-weight: bold;
 }
+
 .combobox-stick {
   position: absolute;
   top: 1px;
@@ -23,14 +27,17 @@
   right: 1px;
   background: inherit;
 }
+
 .combobox-item-hover {
-  background-color: #e6e6e6;
-  color: #00438a;
+  background-color: #E6E6E6;
+  color: #00438A;
 }
+
 .combobox-item-selected {
-  background-color: #0081c2;
-  color: #fff;
+  background-color: #0081C2;
+  color: #FFFFFF;
 }
+
 .combobox-icon {
   display: inline-block;
   width: 16px;

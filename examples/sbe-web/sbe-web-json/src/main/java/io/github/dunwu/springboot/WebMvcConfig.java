@@ -41,15 +41,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		// 清除默认 Json 转换器
-		converters.removeIf(
-				converter -> converter instanceof MappingJackson2HttpMessageConverter);
+		converters.removeIf(converter -> converter instanceof MappingJackson2HttpMessageConverter);
 
 		// 配置 FastJson
 		FastJsonConfig config = new FastJsonConfig();
-		config.setSerializerFeatures(SerializerFeature.QuoteFieldNames,
-				SerializerFeature.WriteEnumUsingToString,
-				SerializerFeature.WriteMapNullValue,
-				SerializerFeature.WriteDateUseDateFormat);
+		config.setSerializerFeatures(SerializerFeature.QuoteFieldNames, SerializerFeature.WriteEnumUsingToString,
+				SerializerFeature.WriteMapNullValue, SerializerFeature.WriteDateUseDateFormat);
 
 		// 添加 FastJsonHttpMessageConverter
 		FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
@@ -70,28 +67,27 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	 * @param exceptionResolvers
 	 */
 	@Override
-	public void configureHandlerExceptionResolvers(
-			List<HandlerExceptionResolver> exceptionResolvers) {
-		exceptionResolvers.add((HttpServletRequest request, HttpServletResponse response,
-				Object handler, Exception e) -> {
-			ResponseDTO responseDTO = new ResponseDTO();
-			if (e instanceof AppException) {
-				responseDTO.setCode(CodeEn.APP_ERROR.code());
-				StringBuilder sb = new StringBuilder(CodeEn.APP_ERROR.message());
-				sb.append("，详细错误原因：");
-				sb.append(e.getMessage());
-				responseDTO.setMessage(sb.toString());
-			}
-			else {
-				responseDTO.setCode(CodeEn.OTHER_ERROR.code());
-				StringBuilder sb = new StringBuilder(CodeEn.OTHER_ERROR.message());
-				sb.append("，详细错误原因：");
-				sb.append(e);
-				responseDTO.setMessage(sb.toString());
-			}
-			responseResponse(response, responseDTO);
-			return new ModelAndView();
-		});
+	public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
+		exceptionResolvers
+				.add((HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) -> {
+					ResponseDTO responseDTO = new ResponseDTO();
+					if (e instanceof AppException) {
+						responseDTO.setCode(CodeEn.APP_ERROR.code());
+						StringBuilder sb = new StringBuilder(CodeEn.APP_ERROR.message());
+						sb.append("，详细错误原因：");
+						sb.append(e.getMessage());
+						responseDTO.setMessage(sb.toString());
+					}
+					else {
+						responseDTO.setCode(CodeEn.OTHER_ERROR.code());
+						StringBuilder sb = new StringBuilder(CodeEn.OTHER_ERROR.message());
+						sb.append("，详细错误原因：");
+						sb.append(e);
+						responseDTO.setMessage(sb.toString());
+					}
+					responseResponse(response, responseDTO);
+					return new ModelAndView();
+				});
 	}
 
 	private void responseResponse(HttpServletResponse response, ResponseDTO responseDTO) {

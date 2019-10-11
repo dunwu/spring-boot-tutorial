@@ -13,8 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class WebConsumingRestApplication {
 
-	private static final Logger log = LoggerFactory
-			.getLogger(WebConsumingRestApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(WebConsumingRestApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebConsumingRestApplication.class);
@@ -28,8 +27,7 @@ public class WebConsumingRestApplication {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) {
 		return args -> {
-			Quote quote = restTemplate.getForObject(
-					"http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+			Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
 			log.info(quote.toString());
 		};
 	}

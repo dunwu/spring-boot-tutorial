@@ -32,9 +32,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "Customer{" + "id=" + id + ", firstName='" + firstName + '\''
-				+ ", lastName='" + lastName + '\'' + ", phone='" + phone + '\''
-				+ ", email='" + email + '\'' + '}';
+		return "Customer{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\''
+				+ ", phone='" + phone + '\'' + ", email='" + email + '\'' + '}';
 	}
 
 	public Long getId() {

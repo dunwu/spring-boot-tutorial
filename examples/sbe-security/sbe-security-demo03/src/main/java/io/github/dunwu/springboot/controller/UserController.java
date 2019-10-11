@@ -20,72 +20,63 @@ import java.util.Map;
 @RequestMapping("/user")
 @RestController
 public class UserController {
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
-    public static final String TOKEN_KEY = "token";
 
-    @Autowired
-    private UserService userService;
+	public static final String TOKEN_KEY = "token";
 
-    @PostMapping("/login")
-    public DataResult<UserInfoDTO> login(HttpServletRequest request, HttpServletResponse response,
-                                         @RequestBody Map<String, String> map) {
-        String username = map.get("username");
-        String password = map.get("password");
-        UserDO userDO = userService.getByUsername(username);
-        if (userDO == null) {
-            return ResultUtil.failDataResult(DefaultAppCode.ERROR_AUTH);
-        }
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-        if (userDO.getPassword()
-                  .equals(password)) {
-            request.getSession()
-                   .setAttribute(TOKEN_KEY, request.getSession()
-                                                   .getId());
-            log.info("session token = {}", request.getSession()
-                                                  .getAttribute(TOKEN_KEY));
-            Cookie cookie = new Cookie(TOKEN_KEY, request.getSession()
-                                                         .getId());
-            cookie.setPath("/");
-            response.addCookie(cookie);
+	@Autowired
+	private UserService userService;
 
-            UserInfoDTO userInfoDTO = new UserInfoDTO();
-            userInfoDTO.setName("Super Admin");
-            userInfoDTO.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
-            userInfoDTO.setIntroduction("I am a super administrator");
-            userInfoDTO.getRoles()
-                       .add("admin");
-            userInfoDTO.setToken(request.getSession()
-                                        .getId());
-            return ResultUtil.successDataResult(userInfoDTO);
-        }
-        return ResultUtil.failDataResult(DefaultAppCode.ERROR_AUTH);
-    }
+	@PostMapping("/login")
+	public DataResult<UserInfoDTO> login(HttpServletRequest request, HttpServletResponse response,
+			@RequestBody Map<String, String> map) {
+		String username = map.get("username");
+		String password = map.get("password");
+		UserDO userDO = userService.getByUsername(username);
+		if (userDO == null) {
+			return ResultUtil.failDataResult(DefaultAppCode.ERROR_AUTH);
+		}
 
-    @PostMapping("/logout")
-    public BaseResult logout(HttpServletRequest request) {
-        request.getSession()
-               .removeAttribute(TOKEN_KEY);
-        return ResultUtil.successBaseResult();
-    }
+		if (userDO.getPassword().equals(password)) {
+			request.getSession().setAttribute(TOKEN_KEY, request.getSession().getId());
+			log.info("session token = {}", request.getSession().getAttribute(TOKEN_KEY));
+			Cookie cookie = new Cookie(TOKEN_KEY, request.getSession().getId());
+			cookie.setPath("/");
+			response.addCookie(cookie);
 
-    @GetMapping("/getInfo")
-    public DataResult<UserInfoDTO> getInfo(HttpServletRequest request) {
-        String token = (String) request.getSession()
-                                       .getAttribute(TOKEN_KEY);
-        log.info("session id = {}", request.getSession()
-                                           .getId());
-        log.info("session token = {}", token);
-        if (StringUtils.isBlank(token)) {
-            return ResultUtil.failDataResult(DefaultAppCode.ERROR_AUTH);
-        }
-        UserInfoDTO userInfoDTO = new UserInfoDTO();
-        userInfoDTO.setName("Super Admin");
-        userInfoDTO.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
-        userInfoDTO.setIntroduction("I am a super administrator");
-        userInfoDTO.getRoles()
-                   .add("admin");
-        userInfoDTO.setToken(request.getSession()
-                                    .getId());
-        return ResultUtil.successDataResult(userInfoDTO);
-    }
+			UserInfoDTO userInfoDTO = new UserInfoDTO();
+			userInfoDTO.setName("Super Admin");
+			userInfoDTO.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
+			userInfoDTO.setIntroduction("I am a super administrator");
+			userInfoDTO.getRoles().add("admin");
+			userInfoDTO.setToken(request.getSession().getId());
+			return ResultUtil.successDataResult(userInfoDTO);
+		}
+		return ResultUtil.failDataResult(DefaultAppCode.ERROR_AUTH);
+	}
+
+	@PostMapping("/logout")
+	public BaseResult logout(HttpServletRequest request) {
+		request.getSession().removeAttribute(TOKEN_KEY);
+		return ResultUtil.successBaseResult();
+	}
+
+	@GetMapping("/getInfo")
+	public DataResult<UserInfoDTO> getInfo(HttpServletRequest request) {
+		String token = (String) request.getSession().getAttribute(TOKEN_KEY);
+		log.info("session id = {}", request.getSession().getId());
+		log.info("session token = {}", token);
+		if (StringUtils.isBlank(token)) {
+			return ResultUtil.failDataResult(DefaultAppCode.ERROR_AUTH);
+		}
+		UserInfoDTO userInfoDTO = new UserInfoDTO();
+		userInfoDTO.setName("Super Admin");
+		userInfoDTO.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
+		userInfoDTO.setIntroduction("I am a super administrator");
+		userInfoDTO.getRoles().add("admin");
+		userInfoDTO.setToken(request.getSession().getId());
+		return ResultUtil.successDataResult(userInfoDTO);
+	}
+
 }

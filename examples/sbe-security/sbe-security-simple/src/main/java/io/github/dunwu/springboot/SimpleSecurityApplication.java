@@ -24,9 +24,8 @@ public class SimpleSecurityApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		SecurityContextHolder.getContext()
-				.setAuthentication(new UsernamePasswordAuthenticationToken("user", "N/A",
-						AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER")));
+		SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken("user", "N/A",
+				AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER")));
 		try {
 			System.out.println(this.service.secure());
 		}

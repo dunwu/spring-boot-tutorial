@@ -28,8 +28,7 @@ public class BeanUtil {
 			return targetList;
 		}
 
-		targetList = sourceList.stream().map(x -> (map(x, targetClz)))
-				.collect(Collectors.toList());
+		targetList = sourceList.stream().map(x -> (map(x, targetClz))).collect(Collectors.toList());
 
 		return targetList;
 	}

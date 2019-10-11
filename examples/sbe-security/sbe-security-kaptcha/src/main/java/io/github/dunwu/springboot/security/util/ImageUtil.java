@@ -17,71 +17,62 @@ import java.util.List;
  */
 public class ImageUtil {
 
-	public static void toFile(String input, String output, ImageParam params)
-			throws IOException {
+	public static void toFile(String input, String output, ImageParam params) throws IOException {
 		Thumbnails.Builder builder = Thumbnails.of(input);
 		fillBuilderWithParams(builder, params);
 		builder.toFile(output);
 	}
 
-	public static void toFile(File input, File output, ImageParam params)
-			throws IOException {
+	public static void toFile(File input, File output, ImageParam params) throws IOException {
 		Thumbnails.Builder builder = Thumbnails.of(input);
 		fillBuilderWithParams(builder, params);
 		builder.toFile(output);
 	}
 
-	public static void toFile(InputStream input, File output, ImageParam params)
-			throws IOException {
+	public static void toFile(InputStream input, File output, ImageParam params) throws IOException {
 		Thumbnails.Builder builder = Thumbnails.of(input);
 		fillBuilderWithParams(builder, params);
 		builder.toFile(output);
 	}
 
-	public static void toFile(BufferedImage input, File output, ImageParam params)
-			throws IOException {
+	public static void toFile(BufferedImage input, File output, ImageParam params) throws IOException {
 		Thumbnails.Builder builder = Thumbnails.of(input);
 		fillBuilderWithParams(builder, params);
 		builder.toFile(output);
 	}
 
-	public static void toFiles(List<File> input, List<File> output, ImageParam params)
-			throws IOException {
+	public static void toFiles(List<File> input, List<File> output, ImageParam params) throws IOException {
 		Thumbnails.Builder builder = Thumbnails.fromFiles(input);
 		fillBuilderWithParams(builder, params);
 		builder.toFiles(output);
 	}
 
-	public static void toOutputStream(String input, OutputStream output,
-			ImageParam params) throws IOException {
+	public static void toOutputStream(String input, OutputStream output, ImageParam params) throws IOException {
 		Thumbnails.Builder builder = Thumbnails.of(input);
 		fillBuilderWithParams(builder, params);
 		builder.toOutputStream(output);
 	}
 
-	public static void toOutputStream(File input, OutputStream output, ImageParam params)
+	public static void toOutputStream(File input, OutputStream output, ImageParam params) throws IOException {
+		Thumbnails.Builder builder = Thumbnails.of(input);
+		fillBuilderWithParams(builder, params);
+		builder.toOutputStream(output);
+	}
+
+	public static void toOutputStream(InputStream input, OutputStream output, ImageParam params) throws IOException {
+		Thumbnails.Builder builder = Thumbnails.of(input);
+		fillBuilderWithParams(builder, params);
+		builder.toOutputStream(output);
+	}
+
+	public static void toOutputStream(BufferedImage input, OutputStream output, ImageParam params) throws IOException {
+		Thumbnails.Builder builder = Thumbnails.of(input);
+		fillBuilderWithParams(builder, params);
+		builder.toOutputStream(output);
+	}
+
+	public static void toOutputStreams(List<InputStream> input, List<OutputStream> output, ImageParam params)
 			throws IOException {
-		Thumbnails.Builder builder = Thumbnails.of(input);
-		fillBuilderWithParams(builder, params);
-		builder.toOutputStream(output);
-	}
-
-	public static void toOutputStream(InputStream input, OutputStream output,
-			ImageParam params) throws IOException {
-		Thumbnails.Builder builder = Thumbnails.of(input);
-		fillBuilderWithParams(builder, params);
-		builder.toOutputStream(output);
-	}
-
-	public static void toOutputStream(BufferedImage input, OutputStream output,
-			ImageParam params) throws IOException {
-		Thumbnails.Builder builder = Thumbnails.of(input);
-		fillBuilderWithParams(builder, params);
-		builder.toOutputStream(output);
-	}
-
-	public static void toOutputStreams(List<InputStream> input, List<OutputStream> output,
-			ImageParam params) throws IOException {
 		Thumbnails.Builder builder = Thumbnails.fromInputStreams(input);
 		fillBuilderWithParams(builder, params);
 		builder.toOutputStreams(output);
@@ -91,8 +82,7 @@ public class ImageUtil {
 		return new ByteArrayInputStream(bytes);
 	}
 
-	public static byte[] bufferedImageToBytes(BufferedImage image, String format)
-			throws IOException {
+	public static byte[] bufferedImageToBytes(BufferedImage image, String format) throws IOException {
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		ImageIO.write(image, format, os);
 		byte[] bytes = os.toByteArray();
@@ -108,15 +98,13 @@ public class ImageUtil {
 		return image;
 	}
 
-	public static void outputStreamToBytes(OutputStream os, byte[] bytes)
-			throws IOException {
+	public static void outputStreamToBytes(OutputStream os, byte[] bytes) throws IOException {
 		os.write(bytes);
 		os.flush();
 		os.close();
 	}
 
-	private static void fillBuilderWithParams(Thumbnails.Builder builder,
-			ImageParam params) {
+	private static void fillBuilderWithParams(Thumbnails.Builder builder, ImageParam params) {
 		builder.scale(1.0);
 
 		if (params == null) {
@@ -151,8 +139,7 @@ public class ImageUtil {
 		// 设置水印
 		if (null != params.getWaterMark()) {
 			Positions pos = getPostionsByCode(params.getWaterMark().getPosition());
-			builder.watermark(pos, params.getWaterMark().getImage(),
-					params.getWaterMark().getOpacity());
+			builder.watermark(pos, params.getWaterMark().getImage(), params.getWaterMark().getOpacity());
 		}
 	}
 
@@ -184,6 +171,90 @@ public class ImageUtil {
 		default:
 			return null;
 		}
+	}
+
+	/**
+	 * 水印位置枚举
+	 */
+	public enum WaterMarkPositionsEnum {
+
+		/**
+		 * 左上
+		 */
+		TOP_LEFT,
+
+		/**
+		 * 上中
+		 */
+		TOP_CENTER,
+
+		/**
+		 * 上右
+		 */
+		TOP_RIGHT,
+
+		/**
+		 * 中左
+		 */
+		CENTER_LEFT,
+
+		/**
+		 * 正中
+		 */
+		CENTER,
+
+		/**
+		 * 中右
+		 */
+		CENTER_RIGHT,
+
+		/**
+		 * 底左
+		 */
+		BOTTOM_LEFT,
+
+		/**
+		 * 底中
+		 */
+		BOTTOM_CENTER,
+
+		/**
+		 * 底右
+		 */
+		BOTTOM_RIGHT
+
+	}
+
+	/**
+	 * 文件类型枚举
+	 */
+	public enum ImageTypeEnum {
+
+		/**
+		 * png
+		 */
+		png,
+
+		/**
+		 * jpg
+		 */
+		jpg,
+
+		/**
+		 * jpeg
+		 */
+		jpeg,
+
+		/**
+		 * bmp
+		 */
+		bmp,
+
+		/**
+		 * gif
+		 */
+		gif
+
 	}
 
 	/**
@@ -241,8 +312,8 @@ public class ImageUtil {
 		public ImageParam() {
 		}
 
-		public ImageParam(Integer width, Integer height, Double scale, Double rotate,
-				Double quality, ImageTypeEnum format, WaterMark waterMark) {
+		public ImageParam(Integer width, Integer height, Double scale, Double rotate, Double quality,
+				ImageTypeEnum format, WaterMark waterMark) {
 			this.width = width;
 			this.height = height;
 			this.scale = scale;
@@ -252,9 +323,8 @@ public class ImageUtil {
 			this.waterMark = waterMark;
 		}
 
-		public ImageParam(Integer width, Integer height, Double xscale, Double yscale,
-				Double rotate, Double quality, ImageTypeEnum format,
-				WaterMark waterMark) {
+		public ImageParam(Integer width, Integer height, Double xscale, Double yscale, Double rotate, Double quality,
+				ImageTypeEnum format, WaterMark waterMark) {
 			this.width = width;
 			this.height = height;
 			this.xscale = xscale;
@@ -360,8 +430,7 @@ public class ImageUtil {
 			public WaterMark() {
 			}
 
-			public WaterMark(WaterMarkPositionsEnum position, BufferedImage image,
-					Float opacity) {
+			public WaterMark(WaterMarkPositionsEnum position, BufferedImage image, Float opacity) {
 				this.position = position;
 				this.image = image;
 				this.opacity = opacity;
@@ -392,90 +461,6 @@ public class ImageUtil {
 			}
 
 		}
-
-	}
-
-	/**
-	 * 水印位置枚举
-	 */
-	public enum WaterMarkPositionsEnum {
-
-		/**
-		 * 左上
-		 */
-		TOP_LEFT,
-
-		/**
-		 * 上中
-		 */
-		TOP_CENTER,
-
-		/**
-		 * 上右
-		 */
-		TOP_RIGHT,
-
-		/**
-		 * 中左
-		 */
-		CENTER_LEFT,
-
-		/**
-		 * 正中
-		 */
-		CENTER,
-
-		/**
-		 * 中右
-		 */
-		CENTER_RIGHT,
-
-		/**
-		 * 底左
-		 */
-		BOTTOM_LEFT,
-
-		/**
-		 * 底中
-		 */
-		BOTTOM_CENTER,
-
-		/**
-		 * 底右
-		 */
-		BOTTOM_RIGHT
-
-	}
-
-	/**
-	 * 文件类型枚举
-	 */
-	public enum ImageTypeEnum {
-
-		/**
-		 * png
-		 */
-		png,
-
-		/**
-		 * jpg
-		 */
-		jpg,
-
-		/**
-		 * jpeg
-		 */
-		jpeg,
-
-		/**
-		 * bmp
-		 */
-		bmp,
-
-		/**
-		 * gif
-		 */
-		gif
 
 	}
 

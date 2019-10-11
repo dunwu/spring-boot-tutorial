@@ -35,14 +35,13 @@ public class KafkaProducer {
 		// 消息发送的监听器，用于回调返回信息
 		kafkaTemplate.setProducerListener(new ProducerListener<String, String>() {
 			@Override
-			public void onSuccess(String topic, Integer partition, String key,
-					String value, RecordMetadata recordMetadata) {
+			public void onSuccess(String topic, Integer partition, String key, String value,
+					RecordMetadata recordMetadata) {
 				log.info("发送数据完成");
 			}
 
 			@Override
-			public void onError(String topic, Integer partition, String key, String value,
-					Exception exception) {
+			public void onError(String topic, Integer partition, String key, String value, Exception exception) {
 				log.error("发送数据出错！！！{}{}", topic);
 				log.error("发送数据出错=====>", exception);
 			}

@@ -3,10 +3,11 @@
 .s-btn-plain-active .m-btn-line {
   display: inline-block;
 }
+
 .l-btn:hover .s-btn-downarrow,
 .s-btn-active .s-btn-downarrow,
 .s-btn-plain-active .s-btn-downarrow {
   border-style: solid;
-  border-color: #bbb;
+  border-color: #BBBBBB;
   border-width: 0 0 0 1px;
 }

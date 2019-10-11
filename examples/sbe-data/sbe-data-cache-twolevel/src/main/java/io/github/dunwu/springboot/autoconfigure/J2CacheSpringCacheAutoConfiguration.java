@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * 开启对spring cache支持的配置入口
+ *
  * @author zhangsaizz
  *
  */
@@ -44,6 +45,5 @@ public class J2CacheSpringCacheAutoConfiguration {
 		cacheCacheManger.setCacheNames(cacheNames);
 		return cacheCacheManger;
 	}
-
 
 }

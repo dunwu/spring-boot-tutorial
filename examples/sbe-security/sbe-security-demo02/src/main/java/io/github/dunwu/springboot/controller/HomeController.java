@@ -12,35 +12,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 @AllArgsConstructor
 public class HomeController {
 
-    private final UserService userService;
+	private final UserService userService;
 
-    @GetMapping({"/", "/index", "/home"})
-    public String root() {
-        return "index";
-    }
+	@GetMapping({ "/", "/index", "/home" })
+	public String root() {
+		return "index";
+	}
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
 
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
+	@GetMapping("/register")
+	public String register() {
+		return "register";
+	}
 
-    @PostMapping("/register")
-    public String doRegister(UserDO userDO) {
-        userService.insert(encryptPassword(userDO));
-        return "redirect:register?success";
-    }
+	@PostMapping("/register")
+	public String doRegister(UserDO userDO) {
+		userService.insert(encryptPassword(userDO));
+		return "redirect:register?success";
+	}
 
-    /**
-     * 对注册密码进行加密
-     */
-    private UserDO encryptPassword(UserDO userDO) {
-        String password = new BCryptPasswordEncoder().encode(userDO.getPassword());
-        userDO.setPassword(password);
-        return userDO;
-    }
+	/**
+	 * 对注册密码进行加密
+	 */
+	private UserDO encryptPassword(UserDO userDO) {
+		String password = new BCryptPasswordEncoder().encode(userDO.getPassword());
+		userDO.setPassword(password);
+		return userDO;
+	}
+
 }

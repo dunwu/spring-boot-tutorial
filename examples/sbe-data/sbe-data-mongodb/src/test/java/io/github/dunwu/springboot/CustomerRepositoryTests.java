@@ -45,8 +45,7 @@ public class CustomerRepositoryTests {
 
 		List<Customer> result = repository.findByLastName("Beauford");
 
-		Assertions.assertThat(result).hasSize(1).extracting("firstName")
-				.contains("Carter");
+		Assertions.assertThat(result).hasSize(1).extracting("firstName").contains("Carter");
 	}
 
 	@Test
@@ -56,8 +55,7 @@ public class CustomerRepositoryTests {
 
 		List<Customer> result = repository.findAll(Example.of(probe));
 
-		Assertions.assertThat(result).hasSize(2).extracting("firstName").contains("Dave",
-				"Oliver August");
+		Assertions.assertThat(result).hasSize(2).extracting("firstName").contains("Dave", "Oliver August");
 	}
 
 }

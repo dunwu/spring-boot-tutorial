@@ -60,8 +60,8 @@ public class ResponseDTO<T> {
 
 	@Override
 	public String toString() {
-		return "ResponseDTO{" + "code=" + code + ", message='" + message + '\''
-				+ ", receiveTime=" + receiveTime + ", data=" + data + '}';
+		return "ResponseDTO{" + "code=" + code + ", message='" + message + '\'' + ", receiveTime=" + receiveTime
+				+ ", data=" + data + '}';
 	}
 
 }

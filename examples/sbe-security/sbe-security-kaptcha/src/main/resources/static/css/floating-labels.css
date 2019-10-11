@@ -10,7 +10,7 @@ body {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #f5f5f5;
+  background-color: #F5F5F5;
 }
 
 .form-signin {
@@ -76,7 +76,7 @@ body {
   padding-top: .25rem;
   padding-bottom: .25rem;
   font-size: 12px;
-  color: #777;
+  color: #777777;
 }
 
 /* Fallback for Edge
@@ -85,8 +85,9 @@ body {
   .form-label-group > label {
     display: none;
   }
+
   .form-label-group input::-ms-input-placeholder {
-    color: #777;
+    color: #777777;
   }
 }
 
@@ -96,7 +97,8 @@ body {
   .form-label-group > label {
     display: none;
   }
+
   .form-label-group input:-ms-input-placeholder {
-    color: #777;
+    color: #777777;
   }
 }

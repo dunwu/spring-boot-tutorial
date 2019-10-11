@@ -48,23 +48,20 @@ public class CoreProfileApplicationTests {
 	public void testTestProfile() {
 		System.setProperty("spring.profiles.active", "test");
 		CoreProfileApplication.main(new String[0]);
-		assertThat(this.output.toString())
-				.contains("The app is running on profile test.");
+		assertThat(this.output.toString()).contains("The app is running on profile test.");
 	}
 
 	@Test
 	public void testProdProfile() {
 		System.setProperty("spring.profiles.active", "prod");
 		CoreProfileApplication.main(new String[0]);
-		assertThat(this.output.toString())
-				.contains("The app is running on profile prod.");
+		assertThat(this.output.toString()).contains("The app is running on profile prod.");
 	}
 
 	@Test
 	public void testProdProfileFromCommandline() {
 		CoreProfileApplication.main(new String[] { "--spring.profiles.active=prod" });
-		assertThat(this.output.toString())
-				.contains("The app is running on profile prod.");
+		assertThat(this.output.toString()).contains("The app is running on profile prod.");
 	}
 
 }

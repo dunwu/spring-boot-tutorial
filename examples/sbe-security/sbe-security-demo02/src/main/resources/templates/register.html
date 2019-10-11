@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <title>Spring Security</title>
   <link
     href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css"
@@ -21,18 +21,18 @@
           </h3>
         </div>
         <div class="panel-body">
-          <form th:action="@{/register}" method="post">
+          <form method="post" th:action="@{/register}">
             <div class="form-group" style="margin-top: 30px">
               <div class="input-group col-md-6 col-md-offset-3">
                 <div class="input-group-addon">
                   <span class="glyphicon glyphicon-user"></span>
                 </div>
                 <input
-                  type="text"
                   class="form-control"
-                  name="username"
                   id="username"
+                  name="username"
                   placeholder="账号"
+                  type="text"
                 />
               </div>
             </div>
@@ -42,11 +42,11 @@
                   <span class="glyphicon glyphicon-lock"></span>
                 </div>
                 <input
-                  type="password"
                   class="form-control"
-                  name="password"
                   id="password"
+                  name="password"
                   placeholder="密码"
+                  type="password"
                 />
               </div>
             </div>
@@ -56,28 +56,28 @@
                   <span class="glyphicon glyphicon-pencil"/>
                 </div>
                 <input
-                  type="text"
                   class="form-control"
-                  name="nickname"
                   id="nickname"
+                  name="nickname"
                   placeholder="昵称"
+                  type="text"
                 />
               </div>
             </div>
             <br/>
             <div th:if="${param.error}">
-              <p style="text-align: center" class="text-danger">
+              <p class="text-danger" style="text-align: center">
                 注册失败，账号已存在！
               </p>
             </div>
             <div th:if="${param.success}">
-              <p style="text-align: center" class="text-success">
+              <p class="text-success" style="text-align: center">
                 注册成功，可以登录了！
               </p>
             </div>
             <div class="form-group">
               <div class="input-group col-md-6 col-md-offset-3 col-xs-12 ">
-                <button type="submit" class="btn btn-primary btn-block">
+                <button class="btn btn-primary btn-block" type="submit">
                   注册
                 </button>
               </div>

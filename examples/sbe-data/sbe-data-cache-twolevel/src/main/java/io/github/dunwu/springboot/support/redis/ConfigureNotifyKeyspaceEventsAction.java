@@ -12,7 +12,6 @@ public class ConfigureNotifyKeyspaceEventsAction {
 
 	static final String CONFIG_NOTIFY_KEYSPACE_EVENTS = "notify-keyspace-events";
 
-
 	public void config(RedisConnection connection) {
 		String notifyOptions = getNotifyOptions(connection);
 		String customizedNotifyOptions = notifyOptions;
@@ -45,4 +44,5 @@ public class ConfigureNotifyKeyspaceEventsAction {
 					e);
 		}
 	}
+
 }

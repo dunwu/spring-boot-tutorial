@@ -24,8 +24,7 @@ public class DataElasticsearchApplicationTests {
 			}
 			throw ex;
 		}
-		assertThat(this.output.toString())
-				.contains("firstName='Alice', lastName='Smith'");
+		assertThat(this.output.toString()).contains("firstName='Alice', lastName='Smith'");
 	}
 
 	private boolean elasticsearchRunning(Exception ex) {

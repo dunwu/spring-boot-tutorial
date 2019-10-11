@@ -41,12 +41,10 @@ public class FileUploadIntegrationTests {
 
 		MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
 		map.add("file", resource);
-		ResponseEntity<String> response = this.restTemplate.postForEntity("/", map,
-				String.class);
+		ResponseEntity<String> response = this.restTemplate.postForEntity("/", map, String.class);
 
 		assertThat(response.getStatusCode()).isEqualByComparingTo(HttpStatus.FOUND);
-		assertThat(response.getHeaders().getLocation().toString())
-				.startsWith("http://localhost:" + this.port + "/");
+		assertThat(response.getHeaders().getLocation().toString()).startsWith("http://localhost:" + this.port + "/");
 		then(storageService).should().store(any(MultipartFile.class));
 	}
 
@@ -55,8 +53,8 @@ public class FileUploadIntegrationTests {
 		ClassPathResource resource = new ClassPathResource("testupload.txt", getClass());
 		given(this.storageService.loadAsResource("testupload.txt")).willReturn(resource);
 
-		ResponseEntity<String> response = this.restTemplate
-				.getForEntity("/files/{filename}", String.class, "testupload.txt");
+		ResponseEntity<String> response = this.restTemplate.getForEntity("/files/{filename}", String.class,
+				"testupload.txt");
 
 		assertThat(response.getStatusCodeValue()).isEqualTo(200);
 		assertThat(response.getHeaders().getFirst(HttpHeaders.CONTENT_DISPOSITION))

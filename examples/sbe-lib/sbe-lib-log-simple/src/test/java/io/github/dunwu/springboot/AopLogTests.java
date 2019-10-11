@@ -29,14 +29,12 @@ public class AopLogTests {
 	public void testAopLog() {
 		Map<String, Object> map = new HashMap<>();
 		map.put("name", "Tom");
-		String response = restTemplate.getForObject("/hello?name={name}", String.class,
-				map);
+		String response = restTemplate.getForObject("/hello?name={name}", String.class, map);
 		System.out.println("Response: " + response);
 		Assert.assertEquals("Hello Tom", response);
 
 		this.output.expect(containsString("HTTP_METHOD : GET"));
-		this.output.expect(containsString(
-				"CLASS_METHOD : io.github.dunwu.springboot.web.HelloController.hello"));
+		this.output.expect(containsString("CLASS_METHOD : io.github.dunwu.springboot.web.HelloController.hello"));
 		this.output.expect(containsString("ARGS : [Tom]"));
 		this.output.expect(containsString("RESPONSE : Hello Tom"));
 	}

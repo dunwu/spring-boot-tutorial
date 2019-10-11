@@ -23,8 +23,7 @@ public class JsonController {
 		InfoDTO systemInfoDTO = new InfoDTO();
 		systemInfoDTO.setAppName("JSON测试应用");
 		systemInfoDTO.setVersion("1.0.0");
-		return new ResponseDTO(CodeEn.SUCCESS.code(), CodeEn.SUCCESS.message(),
-				new Date(), systemInfoDTO);
+		return new ResponseDTO(CodeEn.SUCCESS.code(), CodeEn.SUCCESS.message(), new Date(), systemInfoDTO);
 	}
 
 	@RequestMapping("/exception")
@@ -35,8 +34,7 @@ public class JsonController {
 	@RequestMapping("/exception2")
 	public ResponseDTO exception2() {
 		int num = 10 / 0;
-		return new ResponseDTO(CodeEn.SUCCESS.code(), CodeEn.SUCCESS.message(),
-				new Date(), num);
+		return new ResponseDTO(CodeEn.SUCCESS.code(), CodeEn.SUCCESS.message(), new Date(), num);
 	}
 
 	@RequestMapping(name = "/getInfo", method = RequestMethod.GET)

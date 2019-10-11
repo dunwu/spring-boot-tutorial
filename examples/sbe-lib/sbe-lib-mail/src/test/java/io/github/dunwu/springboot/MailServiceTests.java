@@ -42,8 +42,7 @@ public class MailServiceTests {
 		MailDTO mailDTO = new MailDTO();
 
 		String text = new StringBuilder().append("<html>\n").append("<body>\n")
-				.append("<h3>This is a mime message email.</h3>\n").append("</body>\n")
-				.append("</html>").toString();
+				.append("<h3>This is a mime message email.</h3>\n").append("</body>\n").append("</html>").toString();
 		mailDTO.setTo(TO);
 		mailDTO.setCc(CC);
 		mailDTO.setSubject(SUBJECT);

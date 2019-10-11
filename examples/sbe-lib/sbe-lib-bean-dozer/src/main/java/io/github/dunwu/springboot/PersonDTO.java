@@ -28,8 +28,7 @@ public class PersonDTO {
 
 	@Override
 	public String toString() {
-		return String.format("[PersonBO] id = %d, infoDTO = %s", id,
-				infoDTO.getContent());
+		return String.format("[PersonBO] id = %d, infoDTO = %s", id, infoDTO.getContent());
 	}
 
 }

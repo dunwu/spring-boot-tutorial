@@ -4,15 +4,16 @@ import java.io.Serializable;
 
 public class TestBean implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private Integer num;
+	private Integer num;
 
-    public Integer getNum() {
-        return num;
-    }
+	public Integer getNum() {
+		return num;
+	}
 
-    public void setNum(Integer num) {
-        this.num = num;
-    }
+	public void setNum(Integer num) {
+		this.num = num;
+	}
+
 }

@@ -104,9 +104,8 @@ public class MenuDTO implements Cloneable, Comparable<MenuDTO> {
 
 	@Override
 	public String toString() {
-		return "MenuDTO{" + "key='" + key + '\'' + ", title='" + title + '\'' + ", icon='"
-				+ icon + '\'' + ", type='" + type + '\'' + ", url='" + url + '\''
-				+ ", children=" + children + '}';
+		return "MenuDTO{" + "key='" + key + '\'' + ", title='" + title + '\'' + ", icon='" + icon + '\'' + ", type='"
+				+ type + '\'' + ", url='" + url + '\'' + ", children=" + children + '}';
 	}
 
 	@Override
@@ -119,8 +118,8 @@ public class MenuDTO implements Cloneable, Comparable<MenuDTO> {
 		}
 		MenuDTO menuDTO = (MenuDTO) o;
 		return Objects.equals(key, menuDTO.key) && Objects.equals(title, menuDTO.title)
-				&& Objects.equals(icon, menuDTO.icon)
-				&& Objects.equals(type, menuDTO.type) && Objects.equals(url, menuDTO.url);
+				&& Objects.equals(icon, menuDTO.icon) && Objects.equals(type, menuDTO.type)
+				&& Objects.equals(url, menuDTO.url);
 	}
 
 	@Override
@@ -130,8 +129,8 @@ public class MenuDTO implements Cloneable, Comparable<MenuDTO> {
 
 	@Override
 	public int compareTo(MenuDTO otherMenuDTO) {
-		return new CompareToBuilder().append(key, otherMenuDTO.getKey())
-				.append(url, otherMenuDTO.getUrl()).toComparison();
+		return new CompareToBuilder().append(key, otherMenuDTO.getKey()).append(url, otherMenuDTO.getUrl())
+				.toComparison();
 	}
 
 }

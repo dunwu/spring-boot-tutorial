@@ -20,8 +20,7 @@ import java.io.OutputStream;
 public class KaptchaController {
 
 	@GetMapping(value = "image")
-	public void authImage(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
+	public void authImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setHeader("Pragma", "No-cache");
 		response.setHeader("Cache-Control", "no-cache");
 		response.setDateHeader("Expires", 0);

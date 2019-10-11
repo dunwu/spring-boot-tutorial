@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title th:text="${title}">Title</title>
-  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
-        href="../../css/bootstrap.min.css"/>
+  <link href="../../css/bootstrap.min.css" rel="stylesheet"
+        th:href="@{/css/bootstrap.min.css}"/>
 </head>
 <body>
 <div class="container">
@@ -12,7 +12,7 @@
       <a class="brand" href="http://www.thymeleaf.org"> Thymeleaf -
         Plain </a>
       <ul class="nav">
-        <li><a th:href="@{/}" href="home.html"> Home </a></li>
+        <li><a href="home.html" th:href="@{/}"> Home </a></li>
       </ul>
     </div>
   </div>
@@ -24,8 +24,8 @@
   <div>
     <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
   </div>
-  <form th:action="@{/logout}" method="post">
-    <input type="submit" class="btn btn-primary" value="Sign Out"/>
+  <form method="post" th:action="@{/logout}">
+    <input class="btn btn-primary" type="submit" value="Sign Out"/>
   </form>
 </div>
 </body>

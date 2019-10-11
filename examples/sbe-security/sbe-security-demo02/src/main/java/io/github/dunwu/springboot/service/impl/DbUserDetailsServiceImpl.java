@@ -20,22 +20,22 @@ import java.util.List;
 @Service
 public class DbUserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserService userService;
+	private final UserService userService;
 
-    @Autowired
-    DbUserDetailsServiceImpl(UserService userService) {
-        this.userService = userService;
-    }
+	@Autowired
+	DbUserDetailsServiceImpl(UserService userService) {
+		this.userService = userService;
+	}
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDO userDO = userService.getByUsername(username);
-        if (userDO == null) {
-            throw new UsernameNotFoundException("用户不存在！");
-        }
-        List<SimpleGrantedAuthority> simpleGrantedAuthorities = new ArrayList<>();
-        simpleGrantedAuthorities.add(new SimpleGrantedAuthority("USER"));
-        return new User(userDO.getUsername(), userDO.getPassword(), simpleGrantedAuthorities);
-    }
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		UserDO userDO = userService.getByUsername(username);
+		if (userDO == null) {
+			throw new UsernameNotFoundException("用户不存在！");
+		}
+		List<SimpleGrantedAuthority> simpleGrantedAuthorities = new ArrayList<>();
+		simpleGrantedAuthorities.add(new SimpleGrantedAuthority("USER"));
+		return new User(userDO.getUsername(), userDO.getPassword(), simpleGrantedAuthorities);
+	}
 
 }

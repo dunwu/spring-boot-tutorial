@@ -22,8 +22,7 @@ public class ScheduledTask {
 
 	private static final Logger log = LoggerFactory.getLogger(ScheduledTask.class);
 
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat(
-			"yyyy-mm-dd HH:mm:ss");
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
 
 	@Scheduled(cron = "0/10 * * * * ? ")
 	public void cron() {

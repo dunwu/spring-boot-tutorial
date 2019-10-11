@@ -10,7 +10,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <spring-javaformat.version>0.0.6</spring-javaformat.version>
+    <spring-javaformat.version>0.0.15</spring-javaformat.version>
   </properties>
 
   <modules>

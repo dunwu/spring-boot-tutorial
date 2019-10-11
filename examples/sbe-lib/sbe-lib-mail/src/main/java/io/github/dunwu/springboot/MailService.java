@@ -35,8 +35,7 @@ public class MailService {
 	private Mapper mapper;
 
 	public void sendSimpleMailMessage(MailDTO mailDTO) {
-		SimpleMailMessage simpleMailMessage = mapper.map(mailDTO,
-				SimpleMailMessage.class);
+		SimpleMailMessage simpleMailMessage = mapper.map(mailDTO, SimpleMailMessage.class);
 		if (StringUtils.isEmpty(mailDTO.getFrom())) {
 			mailDTO.setFrom(mailProperties.getFrom());
 		}

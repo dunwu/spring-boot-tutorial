@@ -27,8 +27,7 @@ public class BrowserSecurityController {
 
 	@GetMapping("/authentication/require")
 	@ResponseStatus(HttpStatus.UNAUTHORIZED)
-	public String requireAuthentication(HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+	public String requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
 		if (savedRequest != null) {
 			String targetUrl = savedRequest.getRedirectUrl();

@@ -28,8 +28,8 @@ public class DateJsonConvert {
 	public static class DateJsonSerializer extends JsonSerializer<Date> {
 
 		@Override
-		public void serialize(Date date, JsonGenerator jsonGenerator,
-				SerializerProvider serializerProvider) throws IOException {
+		public void serialize(Date date, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
+				throws IOException {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			jsonGenerator.writeObject(sdf.format(date));
 		}
@@ -42,8 +42,8 @@ public class DateJsonConvert {
 	public static class InfoDTOJsonDeserializer extends JsonDeserializer<InfoDTO> {
 
 		@Override
-		public InfoDTO deserialize(JsonParser jsonParser,
-				DeserializationContext deserializationContext) throws IOException {
+		public InfoDTO deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+				throws IOException {
 			InfoDTO infoDTO = new InfoDTO();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 

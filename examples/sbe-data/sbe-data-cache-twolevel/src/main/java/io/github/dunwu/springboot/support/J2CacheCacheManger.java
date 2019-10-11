@@ -5,15 +5,13 @@ import org.springframework.cache.Cache;
 import org.springframework.cache.transaction.AbstractTransactionSupportingCacheManager;
 import org.springframework.util.CollectionUtils;
 
-import java.util.*;
-
-
 /**
  * {@link Cache} implementation for J2Cache.
+ *
  * @author zhangsaizz
  *
  */
-public class J2CacheCacheManger extends AbstractTransactionSupportingCacheManager{
+public class J2CacheCacheManger extends AbstractTransactionSupportingCacheManager {
 
 	private boolean allowNullValues = true;
 
@@ -23,7 +21,7 @@ public class J2CacheCacheManger extends AbstractTransactionSupportingCacheManage
 
 	private CacheChannel cacheChannel;
 
-	public J2CacheCacheManger(CacheChannel cacheChannel){
+	public J2CacheCacheManger(CacheChannel cacheChannel) {
 		this.cacheChannel = cacheChannel;
 	}
 
@@ -36,7 +34,6 @@ public class J2CacheCacheManger extends AbstractTransactionSupportingCacheManage
 		}
 		return caches;
 	}
-
 
 	public boolean isAllowNullValues() {
 		return allowNullValues;
@@ -51,9 +48,8 @@ public class J2CacheCacheManger extends AbstractTransactionSupportingCacheManage
 		return this.dynamic ? new J2CacheCache(name, cacheChannel, allowNullValues) : null;
 	}
 
-
 	public void setCacheNames(Collection<String> cacheNames) {
-		Set<String> newCacheNames = CollectionUtils.isEmpty(cacheNames) ? Collections.<String> emptySet()
+		Set<String> newCacheNames = CollectionUtils.isEmpty(cacheNames) ? Collections.<String>emptySet()
 				: new HashSet<String>(cacheNames);
 		this.cacheNames = newCacheNames;
 		this.dynamic = newCacheNames.isEmpty();

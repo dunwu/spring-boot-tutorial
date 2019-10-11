@@ -47,21 +47,19 @@ public class FileSystemStorageServiceTests {
 
 	@Test
 	public void saveAndLoad() {
-		service.store(new MockMultipartFile("foo", "foo.txt", MediaType.TEXT_PLAIN_VALUE,
-				"Hello World".getBytes()));
+		service.store(new MockMultipartFile("foo", "foo.txt", MediaType.TEXT_PLAIN_VALUE, "Hello World".getBytes()));
 		assertThat(service.load("foo.txt")).exists();
 	}
 
 	@Test(expected = StorageException.class)
 	public void saveNotPermitted() {
-		service.store(new MockMultipartFile("foo", "../foo.txt",
-				MediaType.TEXT_PLAIN_VALUE, "Hello World".getBytes()));
+		service.store(new MockMultipartFile("foo", "../foo.txt", MediaType.TEXT_PLAIN_VALUE, "Hello World".getBytes()));
 	}
 
 	@Test
 	public void savePermitted() {
-		service.store(new MockMultipartFile("foo", "bar/../foo.txt",
-				MediaType.TEXT_PLAIN_VALUE, "Hello World".getBytes()));
+		service.store(
+				new MockMultipartFile("foo", "bar/../foo.txt", MediaType.TEXT_PLAIN_VALUE, "Hello World".getBytes()));
 	}
 
 }

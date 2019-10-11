@@ -1,6 +1,9 @@
 package io.github.dunwu.springboot.web.controller;
 
-import io.github.dunwu.core.*;
+import io.github.dunwu.core.BaseResult;
+import io.github.dunwu.core.DataListResult;
+import io.github.dunwu.core.DataResult;
+import io.github.dunwu.core.ResultUtil;
 import io.github.dunwu.springboot.web.dto.MenuDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -66,8 +69,7 @@ public class ApiController {
 	public DataResult<Map<String, String>> login(@RequestBody Map<String, String> map) {
 		String username = map.get("username");
 		String password = map.get("password");
-		if (StringUtils.equals(username, "admin")
-				&& StringUtils.equals(password, "123456")) {
+		if (StringUtils.equals(username, "admin") && StringUtils.equals(password, "123456")) {
 			Map<String, String> result = new HashMap<>(3);
 			result.put("name", "admin");
 			result.put("role", "ADMIN");

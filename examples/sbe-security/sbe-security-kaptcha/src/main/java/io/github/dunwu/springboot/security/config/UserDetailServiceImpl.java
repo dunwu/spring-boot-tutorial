@@ -19,8 +19,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username)
-			throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// 模拟一个用户，替代数据库获取逻辑
 		MyUser user = new MyUser();
 		user.setUserName(username);
@@ -28,9 +27,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
 		// 输出加密后的密码
 		System.out.println("加密后的密码：" + user.getPassword());
 
-		return new User(username, user.getPassword(), user.isEnabled(),
-				user.isAccountNonExpired(), user.isCredentialsNonExpired(),
-				user.isAccountNonLocked(),
+		return new User(username, user.getPassword(), user.isEnabled(), user.isAccountNonExpired(),
+				user.isCredentialsNonExpired(), user.isAccountNonLocked(),
 				AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
 	}
 

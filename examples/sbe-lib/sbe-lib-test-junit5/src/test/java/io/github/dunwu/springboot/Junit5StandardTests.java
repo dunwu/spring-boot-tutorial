@@ -6,8 +6,7 @@ import org.slf4j.LoggerFactory;
 
 class Junit5StandardTests {
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(Junit5StandardTests.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Junit5StandardTests.class);
 
 	@BeforeAll
 	static void beforeAll() {

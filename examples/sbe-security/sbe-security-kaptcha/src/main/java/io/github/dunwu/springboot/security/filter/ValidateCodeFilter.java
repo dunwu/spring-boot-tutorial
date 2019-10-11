@@ -25,9 +25,8 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
 	private AuthenticationFailureHandler authenticationFailureHandler;
 
 	@Override
-	protected void doFilterInternal(HttpServletRequest httpServletRequest,
-			HttpServletResponse httpServletResponse, FilterChain filterChain)
-			throws ServletException, IOException {
+	protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+			FilterChain filterChain) throws ServletException, IOException {
 		if (StringUtils.equalsIgnoreCase("/login", httpServletRequest.getRequestURI())
 				&& StringUtils.equalsIgnoreCase(httpServletRequest.getMethod(), "post")) {
 
@@ -35,8 +34,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
 				check(httpServletRequest);
 			}
 			catch (ValidateCodeException e) {
-				authenticationFailureHandler.onAuthenticationFailure(httpServletRequest,
-						httpServletResponse, e);
+				authenticationFailureHandler.onAuthenticationFailure(httpServletRequest, httpServletResponse, e);
 			}
 
 		}
@@ -44,8 +42,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
 		filterChain.doFilter(httpServletRequest, httpServletResponse);
 	}
 
-	private void check(HttpServletRequest httpServletRequest)
-			throws ValidateCodeException {
+	private void check(HttpServletRequest httpServletRequest) throws ValidateCodeException {
 
 		HttpSession session = httpServletRequest.getSession();
 		String code = (String) session.getAttribute("code");

@@ -39,8 +39,7 @@ public class TomcatServletApplication extends SpringBootServletInitializer {
 	public Servlet dispatcherServlet() {
 		return new GenericServlet() {
 			@Override
-			public void service(ServletRequest req, ServletResponse res)
-					throws IOException {
+			public void service(ServletRequest req, ServletResponse res) throws IOException {
 				res.setContentType("text/plain");
 				res.getWriter().append("Hello World");
 			}

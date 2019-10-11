@@ -7,27 +7,27 @@
 <div class="container">
   <div th:replace="fragments :: navbar"></div>
   <div class="float-right mt-2">
-    <a class="btn btn-primary btn-sm" th:href="@{/}" href="messages.html" th:text="#{form.messages}"> Messages </a>
+    <a class="btn btn-primary btn-sm" href="messages.html" th:href="@{/}" th:text="#{form.messages}"> Messages </a>
   </div>
   <h4 class="float-left mt-2" th:text="#{form.title}">Messages : Create</h4>
   <div class="clearfix"></div>
-  <form id="messageForm" th:action="@{/(form)}" th:object="${message}" action="#" method="post">
-    <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger" role="alert">
-      <p th:each="error : ${#fields.errors('*')}" class="m-0" th:text="${error}">Validation error</p>
+  <form action="#" id="messageForm" method="post" th:action="@{/(form)}" th:object="${message}">
+    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('*')}">
+      <p class="m-0" th:each="error : ${#fields.errors('*')}" th:text="${error}">Validation error</p>
     </div>
-    <input type="hidden" th:field="*{id}"
-           th:class="${'form-control' + (#fields.hasErrors('id') ? ' is-invalid' : '')}"/>
+    <input th:class="${'form-control' + (#fields.hasErrors('id') ? ' is-invalid' : '')}" th:field="*{id}"
+           type="hidden"/>
     <div class="form-group">
       <label for="summary" th:text="#{form.summary}">Summary</label>
-      <input type="text" th:field="*{summary}"
-             th:class="${'form-control' + (#fields.hasErrors('summary') ? ' is-invalid' : '')}">
+      <input th:class="${'form-control' + (#fields.hasErrors('summary') ? ' is-invalid' : '')}" th:field="*{summary}"
+             type="text">
     </div>
     <div class="form-group">
       <label for="text" th:text="#{form.message}">Message</label>
-      <textarea th:field="*{text}"
-                th:class="${'form-control' + (#fields.hasErrors('text') ? ' is-invalid' : '')}"></textarea>
+      <textarea th:class="${'form-control' + (#fields.hasErrors('text') ? ' is-invalid' : '')}"
+                th:field="*{text}"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary" th:text="#{form.submit}">Submit</button>
+    <button class="btn btn-primary" th:text="#{form.submit}" type="submit">Submit</button>
   </form>
 </div>
 </body>

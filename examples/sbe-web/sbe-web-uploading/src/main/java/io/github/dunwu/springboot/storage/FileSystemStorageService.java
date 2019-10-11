@@ -47,12 +47,10 @@ public class FileSystemStorageService implements StorageService {
 			if (filename.contains("..")) {
 				// This is a security check
 				throw new StorageException(
-						"Cannot store file with relative path outside current directory "
-								+ filename);
+						"Cannot store file with relative path outside current directory " + filename);
 			}
 			try (InputStream inputStream = file.getInputStream()) {
-				Files.copy(inputStream, this.rootLocation.resolve(filename),
-						StandardCopyOption.REPLACE_EXISTING);
+				Files.copy(inputStream, this.rootLocation.resolve(filename), StandardCopyOption.REPLACE_EXISTING);
 			}
 		}
 		catch (IOException e) {
@@ -63,8 +61,7 @@ public class FileSystemStorageService implements StorageService {
 	@Override
 	public Stream<Path> loadAll() {
 		try {
-			return Files.walk(this.rootLocation, 1)
-					.filter(path -> !path.equals(this.rootLocation))
+			return Files.walk(this.rootLocation, 1).filter(path -> !path.equals(this.rootLocation))
 					.map(this.rootLocation::relativize);
 		}
 		catch (IOException e) {
@@ -87,8 +84,7 @@ public class FileSystemStorageService implements StorageService {
 				return resource;
 			}
 			else {
-				throw new StorageFileNotFoundException(
-						"Could not read file: " + filename);
+				throw new StorageFileNotFoundException("Could not read file: " + filename);
 
 			}
 		}
