@@ -11,9 +11,10 @@
 
   <modules>
     <module>sbe-security-start</module>
+    <module>sbe-security-simple</module>
     <module>sbe-security-authentication</module>
     <module>sbe-security-kaptcha</module>
-    <module>sbe-security-simple</module>
+    <module>sbe-security-remember-me</module>
     <module>sbe-security-web</module>
   </modules>
 </project>
