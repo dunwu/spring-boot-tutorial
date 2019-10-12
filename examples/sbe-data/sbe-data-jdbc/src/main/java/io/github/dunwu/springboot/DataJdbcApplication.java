@@ -2,22 +2,22 @@ package io.github.dunwu.springboot;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 @SpringBootApplication
 public class DataJdbcApplication implements CommandLineRunner {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	private JdbcTemplate jdbcTemplate;
+	private final JdbcTemplate jdbcTemplate;
 
-	@Autowired
 	public DataJdbcApplication(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
@@ -28,10 +28,33 @@ public class DataJdbcApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		DataSource dataSource = jdbcTemplate.getDataSource();
-		if (dataSource != null && dataSource.getConnection() != null) {
-			log.info("Database is connected.");
+
+		if (jdbcTemplate != null) {
+			printDataSourceInfo(jdbcTemplate);
+			log.info("连接数据源成功！");
+		} else {
+			log.error("连接数据源失败！");
 		}
+	}
+
+	public void printDataSourceInfo(JdbcTemplate jdbcTemplate) throws SQLException {
+
+		DataSource dataSource = jdbcTemplate.getDataSource();
+
+		Connection connection;
+		if (dataSource != null) {
+			connection = dataSource.getConnection();
+		} else {
+			log.error("获取 DataSource 失败");
+			return;
+		}
+
+		if (connection != null) {
+			log.info("DB URL: {}", connection.getMetaData().getURL());
+		} else {
+			log.error("获取 Connection 失败");
+		}
+
 	}
 
 }

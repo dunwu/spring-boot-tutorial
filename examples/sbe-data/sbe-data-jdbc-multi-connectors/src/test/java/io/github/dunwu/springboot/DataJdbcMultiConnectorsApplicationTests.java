@@ -7,44 +7,45 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-@WebAppConfiguration
+@RunWith(SpringRunner.class)
 public class DataJdbcMultiConnectorsApplicationTests {
 
 	@Autowired
-	@Qualifier("primaryJdbcTemplate")
-	protected JdbcTemplate primaryJdbcTemplate;
+	@Qualifier("mysqlUserDao")
+	private UserDao mysqlUserDao;
 
 	@Autowired
-	@Qualifier("secondaryJdbcTemplate")
-	protected JdbcTemplate secondaryJdbcTemplate;
+	@Qualifier("h2UserDao")
+	private UserDao h2UserDao;
 
 	@Before
 	public void before() {
-		primaryJdbcTemplate.update("DELETE FROM USER");
-		secondaryJdbcTemplate.update("DELETE FROM USER");
+		mysqlUserDao.recreateTable();
+		h2UserDao.recreateTable();
 	}
 
 	@Test
 	public void test() {
 
-		// 往第一个数据源中插入两条数据
-		primaryJdbcTemplate.update("insert into user(id,name,age) values(?, ?, ?)", 1, "aaa", 20);
-		primaryJdbcTemplate.update("insert into user(id,name,age) values(?, ?, ?)", 2, "bbb", 30);
+		// 向主数据源插入记录
+		mysqlUserDao.insert(new User("张三", 21, "南京", "xxx@163.com"));
+		mysqlUserDao.insert(new User("李四", 28, "上海", "xxx@163.com"));
+		mysqlUserDao.insert(new User("王五", 24, "北京", "xxx@163.com"));
+		mysqlUserDao.insert(new User("赵六", 31, "广州", "xxx@163.com"));
 
-		// 往第二个数据源中插入一条数据，若插入的是第一个数据源，则会主键冲突报错
-		secondaryJdbcTemplate.update("insert into user(id,name,age) values(?, ?, ?)", 1, "aaa", 20);
+		// 验证主数据源插入记录数正确
+		int count = mysqlUserDao.count();
+		Assert.assertEquals(4, count);
 
-		// 查一下第一个数据源中是否有两条数据，验证插入是否成功
-		Assert.assertEquals("2", primaryJdbcTemplate.queryForObject("select count(1) from user", String.class));
+		// 向次数据源插入记录
+		h2UserDao.insert(new User("张三", 21, "南京", "xxx@163.com"));
 
-		// 查一下第一个数据源中是否有两条数据，验证插入是否成功
-		Assert.assertEquals("1", secondaryJdbcTemplate.queryForObject("select count(1) from user", String.class));
+		// 验证次数据源插入记录数正确
+		count = h2UserDao.count();
+		Assert.assertEquals(1, count);
 
 	}
 

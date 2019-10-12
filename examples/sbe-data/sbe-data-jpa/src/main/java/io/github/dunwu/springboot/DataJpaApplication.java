@@ -26,10 +26,10 @@ public class DataJpaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// save a couple of users
-		repository.save(new User(null, "张三", 21, "南京", "xxx@163.com"));
-		repository.save(new User(null, "李四", 28, "上海", "xxx@163.com"));
-		repository.save(new User(null, "王五", 24, "北京", "xxx@163.com"));
-		repository.save(new User(null, "赵六", 31, "广州", "xxx@163.com"));
+		repository.save(new User("张三", 21, "南京", "xxx@163.com"));
+		repository.save(new User("李四", 28, "上海", "xxx@163.com"));
+		repository.save(new User("王五", 24, "北京", "xxx@163.com"));
+		repository.save(new User("赵六", 31, "广州", "xxx@163.com"));
 
 		// fetch all users
 		log.info("Users found with findAll():");
@@ -37,22 +37,24 @@ public class DataJpaApplication implements CommandLineRunner {
 		for (User user : repository.findAll()) {
 			log.info(user.toString());
 		}
-		log.info("");
 
 		// fetch an individual customer by ID
 		repository.findById(1L).ifPresent(user -> {
 			log.info("User found with findById(1L):");
 			log.info("--------------------------------");
 			log.info(user.toString());
-			log.info("");
 		});
 
 		repository.findByName("李四").ifPresent(user -> {
-			log.info("User found with findByName(1L):");
+			log.info("User found with findByName(\"李四\"):");
 			log.info("--------------------------------");
 			log.info(user.toString());
-			log.info("");
 		});
+
+		User zhangsan = repository.findUser("张三");
+		log.info("User found with findUser(\"张三\"):");
+		log.info("--------------------------------");
+		log.info(zhangsan.toString());
 	}
 
 }

@@ -22,7 +22,7 @@ public class DataJdbcApplicationTests {
 	private static final Logger log = LoggerFactory.getLogger(DataJdbcApplicationTests.class);
 
 	@Autowired
-	private UserDAO userDAO;
+	private UserDao userDAO;
 
 	@Before
 	public void before() {
@@ -32,10 +32,11 @@ public class DataJdbcApplicationTests {
 	@Test
 	public void batchInsert() {
 		List<User> users = new ArrayList<>();
-		users.add(new User("Jack", 18));
-		users.add(new User("Tom", 19));
-		users.add(new User("Jone", 28));
-		users.add(new User("Bill", 20));
+		users.add(new User("张三", 21, "南京", "xxx@163.com"));
+		users.add(new User("李四", 28, "上海", "xxx@163.com"));
+		users.add(new User("王五", 24, "北京", "xxx@163.com"));
+		users.add(new User("赵六", 31, "广州", "xxx@163.com"));
+
 		userDAO.batchInsert(users);
 		int count = userDAO.count();
 		Assert.assertEquals(4, count);
@@ -50,26 +51,27 @@ public class DataJdbcApplicationTests {
 
 	@Test
 	public void insert() {
-		userDAO.insert("Linda", 19);
-		User linda = userDAO.queryByName("Linda");
+		userDAO.insert(new User("张三", 21, "南京", "xxx@163.com"));
+		User linda = userDAO.queryByName("张三");
 		Assert.assertNotNull(linda);
 	}
 
 	@Test
 	public void delete() {
-		userDAO.insert("Linda", 19);
-		userDAO.delete("Linda");
-		User linda = userDAO.queryByName("Linda");
-		Assert.assertNull(linda);
+		userDAO.insert(new User("张三", 21, "南京", "xxx@163.com"));
+		userDAO.deleteByName("张三");
+		User zhangsan = userDAO.queryByName("张三");
+		Assert.assertNull(zhangsan);
 	}
 
 	@Test
 	public void update() {
-		userDAO.insert("Linda", 19);
-		User linda = userDAO.queryByName("Linda");
-		linda.setName("Jack");
-		userDAO.update(linda);
-		User jack = userDAO.queryByName("Jack");
+		userDAO.insert(new User("张三", 21, "南京", "xxx@163.com"));
+		User zhangsan = userDAO.queryByName("张三");
+
+		zhangsan.setName("张三丰");
+		userDAO.update(zhangsan);
+		User jack = userDAO.queryByName("张三丰");
 		Assert.assertNotNull(jack);
 	}
 

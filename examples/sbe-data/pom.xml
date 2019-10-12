@@ -17,7 +17,6 @@
     <module>sbe-data-jpa</module>
     <module>sbe-data-jpa-rest</module>
     <module>sbe-data-mongodb</module>
-    <module>sbe-data-mysql</module>
     <module>sbe-data-orm-mybatis</module>
     <module>sbe-data-redis</module>
     <module>sbe-data-redis-cluster</module>
