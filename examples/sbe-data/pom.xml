@@ -21,5 +21,7 @@
     <module>sbe-data-redis</module>
     <module>sbe-data-redis-cluster</module>
     <module>sbe-data-cache</module>
+    <module>sbe-data-cache-j2cache</module>
+    <module>sbe-data-cache-jetcache</module>
   </modules>
 </project>
