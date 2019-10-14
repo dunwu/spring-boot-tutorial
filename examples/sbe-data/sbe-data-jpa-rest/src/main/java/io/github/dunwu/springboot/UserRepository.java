@@ -12,6 +12,7 @@ import java.util.Optional;
  * JPA Rest 接口示例
  * <p>
  * 启动 Application 后，直接访问：http://<host:ip>/user
+ *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @since 2019/10/12
  */

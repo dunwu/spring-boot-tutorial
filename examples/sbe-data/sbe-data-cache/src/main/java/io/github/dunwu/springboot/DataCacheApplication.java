@@ -5,26 +5,31 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
+/**
+ * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
+ * @since 2019/10/14
+ */
+@EnableCaching
 @SpringBootApplication
-public class DataJdbcApplication implements CommandLineRunner {
+public class DataCacheApplication implements CommandLineRunner {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private final UserDao userDao;
 
-	public DataJdbcApplication(UserDao userDao) {
+	public DataCacheApplication(UserDao userDao) {
 		this.userDao = userDao;
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(DataJdbcApplication.class, args);
+		SpringApplication.run(DataCacheApplication.class, args);
 	}
 
 	@Override
@@ -38,10 +43,24 @@ public class DataJdbcApplication implements CommandLineRunner {
 			return;
 		}
 
-		List<User> list = userDao.list();
-		list.forEach(item -> {
-			log.info(item.toString());
-		});
+		for (int i = 1; i <= 3; i++) {
+			User user = userDao.queryByName("张三");
+			log.info("第 {} 次查询 name = {}", i, user.toString());
+		}
+
+		for (int i = 1; i <= 3; i++) {
+			User user = userDao.queryByName("李四");
+			log.info("第 {} 次查询 name = {}", i, user.toString());
+		}
+
+		User result = userDao.queryByName("张三");
+		result.setAddress("深圳");
+		userDao.update(result);
+
+		for (int i = 1; i <= 3; i++) {
+			User user = userDao.queryByName("张三");
+			log.info("第 {} 次查询 name = {}", i, user.toString());
+		}
 	}
 
 	public void printDataSourceInfo(JdbcTemplate jdbcTemplate) throws SQLException {

@@ -7,7 +7,7 @@
     </encoder>
   </appender>
 
-  <logger name="io.github.dunwu" level="DEBUG"/>
+  <logger name="io.github.dunwu" level="INFO"/>
 
   <root level="WARN">
     <appender-ref ref="CONSOLE"/>
