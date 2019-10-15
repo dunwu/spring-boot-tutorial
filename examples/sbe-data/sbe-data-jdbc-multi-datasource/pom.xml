@@ -10,8 +10,8 @@
   </parent>
 
   <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>sbe-data-jdbc-multi-connectors</artifactId>
-  <name>SBE :: Data :: JDBC :: Multi Connectors</name>
+  <artifactId>sbe-data-jdbc-multi-datasource</artifactId>
+  <name>SBE :: Data :: JDBC :: Multi DataSource</name>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

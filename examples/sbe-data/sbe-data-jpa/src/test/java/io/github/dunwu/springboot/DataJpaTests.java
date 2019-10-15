@@ -16,14 +16,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/12
- */
 @DataJpaTest
-@ActiveProfiles({"test"})
+@ActiveProfiles({ "test" })
 @RunWith(SpringRunner.class)
-public class DataJpaApplicationTest {
+public class DataJpaTests {
 
 	@Autowired
 	private UserRepository repository;
@@ -85,7 +81,8 @@ public class DataJpaApplicationTest {
 		List<User> users = repository.findAll();
 		if (CollectionUtils.isEmpty(users) || users.size() != 4) {
 			Assert.fail();
-		} else {
+		}
+		else {
 			System.out.println("user list: ");
 			users.forEach(System.out::println);
 		}
@@ -102,7 +99,8 @@ public class DataJpaApplicationTest {
 		Page<User> page = repository.findAll(pageRequest);
 		if (page.isEmpty()) {
 			Assert.fail();
-		} else {
+		}
+		else {
 			page.getTotalElements();
 			Assert.assertEquals(4, page.getTotalElements());
 			Assert.assertEquals(2, page.getTotalPages());

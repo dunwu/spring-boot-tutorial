@@ -13,11 +13,10 @@
     <module>sbe-data-elasticsearch</module>
     <module>sbe-data-flyway</module>
     <module>sbe-data-jdbc</module>
-    <module>sbe-data-jdbc-multi-connectors</module>
     <module>sbe-data-jpa</module>
-    <module>sbe-data-jpa-rest</module>
+    <module>sbe-data-mybatis</module>
+    <module>sbe-data-jdbc-multi-datasource</module>
     <module>sbe-data-mongodb</module>
-    <module>sbe-data-orm-mybatis</module>
     <module>sbe-data-redis</module>
     <module>sbe-data-redis-cluster</module>
     <module>sbe-data-cache</module>

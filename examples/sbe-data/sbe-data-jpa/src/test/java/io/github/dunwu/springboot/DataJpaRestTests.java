@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles({"test"})
+@ActiveProfiles({ "test" })
 @RunWith(SpringRunner.class)
 public class DataJpaRestTests {
 
@@ -40,19 +40,16 @@ public class DataJpaRestTests {
 	@Test
 	public void shouldReturnRepositoryIndex() throws Exception {
 
-		mockMvc.perform(get("/"))
-			   .andDo(print())
-			   .andExpect(status().isOk())
-			   .andExpect(jsonPath("$._links.user").exists());
+		mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
+				.andExpect(jsonPath("$._links.user").exists());
 	}
 
 	@Test
 	public void shouldCreateEntity() throws Exception {
 
 		User user = new User("王五", 21, "南京", "xxx@163.com");
-		mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
-			   .andExpect(status().isCreated())
-			   .andExpect(header().string("Location", containsString("user/")));
+		mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user))).andExpect(status().isCreated())
+				.andExpect(header().string("Location", containsString("user/")));
 	}
 
 	@Test
@@ -60,14 +57,11 @@ public class DataJpaRestTests {
 
 		User user = new User("赵六", 21, "广州", "xxx@163.com");
 		MvcResult mvcResult = mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
-									 .andExpect(status().isCreated())
-									 .andReturn();
+				.andExpect(status().isCreated()).andReturn();
 
 		String location = mvcResult.getResponse().getHeader("Location");
-		mockMvc.perform(get(location))
-			   .andExpect(status().isOk())
-			   .andExpect(jsonPath("$.name").value("赵六"))
-			   .andExpect(jsonPath("$.address").value("广州"));
+		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.name").value("赵六"))
+				.andExpect(jsonPath("$.address").value("广州"));
 	}
 
 	@Test
@@ -85,18 +79,15 @@ public class DataJpaRestTests {
 		User user = new User("张三", 18, "北京", "xxx@163.com");
 		User user2 = new User("李四", 19, "上海", "xxx@163.com");
 		MvcResult mvcResult = mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
-									 .andExpect(status().isCreated())
-									 .andReturn();
+				.andExpect(status().isCreated()).andReturn();
 
 		String location = mvcResult.getResponse().getHeader("Location");
 
 		mockMvc.perform(put(location).content(objectMapper.writeValueAsString(user2)))
-			   .andExpect(status().isNoContent());
+				.andExpect(status().isNoContent());
 
-		mockMvc.perform(get(location))
-			   .andExpect(status().isOk())
-			   .andExpect(jsonPath("$.name").value("李四"))
-			   .andExpect(jsonPath("$.age").value(19));
+		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.name").value("李四"))
+				.andExpect(jsonPath("$.age").value(19));
 	}
 
 	@Test
@@ -106,18 +97,15 @@ public class DataJpaRestTests {
 		User user2 = new User("李四", 19, "上海", "xxx@163.com");
 
 		MvcResult mvcResult = mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
-									 .andExpect(status().isCreated())
-									 .andReturn();
+				.andExpect(status().isCreated()).andReturn();
 
 		String location = mvcResult.getResponse().getHeader("Location");
 
 		mockMvc.perform(patch(location).content(objectMapper.writeValueAsString(user2)))
-			   .andExpect(status().isNoContent());
+				.andExpect(status().isNoContent());
 
-		mockMvc.perform(get(location))
-			   .andExpect(status().isOk())
-			   .andExpect(jsonPath("$.name").value("李四"))
-			   .andExpect(jsonPath("$.age").value(19));
+		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.name").value("李四"))
+				.andExpect(jsonPath("$.age").value(19));
 	}
 
 	@Test
@@ -125,8 +113,7 @@ public class DataJpaRestTests {
 
 		User user = new User("张三", 18, "北京", "xxx@163.com");
 		MvcResult mvcResult = mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
-									 .andExpect(status().isCreated())
-									 .andReturn();
+				.andExpect(status().isCreated()).andReturn();
 
 		String location = mvcResult.getResponse().getHeader("Location");
 		mockMvc.perform(delete(location)).andExpect(status().isNoContent());
