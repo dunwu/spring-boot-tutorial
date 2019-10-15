@@ -16,6 +16,7 @@
     <module>sbe-data-jpa</module>
     <module>sbe-data-mybatis</module>
     <module>sbe-data-jdbc-multi-datasource</module>
+    <module>sbe-data-mybatis-multi-datasource</module>
     <module>sbe-data-mongodb</module>
     <module>sbe-data-redis</module>
     <module>sbe-data-redis-cluster</module>
