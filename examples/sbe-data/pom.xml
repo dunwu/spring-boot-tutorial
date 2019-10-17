@@ -10,16 +10,17 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>sbe-data-elasticsearch</module>
-    <module>sbe-data-flyway</module>
-    <module>sbe-data-jdbc</module>
     <module>sbe-data-jpa</module>
-    <module>sbe-data-mybatis</module>
+    <module>sbe-data-jdbc</module>
     <module>sbe-data-jdbc-multi-datasource</module>
+    <module>sbe-data-mybatis</module>
     <module>sbe-data-mybatis-multi-datasource</module>
-    <module>sbe-data-mongodb</module>
+    <module>sbe-data-mybatis-sharding</module>
     <module>sbe-data-redis</module>
     <module>sbe-data-redis-cluster</module>
+    <module>sbe-data-flyway</module>
+    <module>sbe-data-mongodb</module>
+    <module>sbe-data-elasticsearch</module>
     <module>sbe-data-cache</module>
     <module>sbe-data-cache-j2cache</module>
     <module>sbe-data-cache-jetcache</module>
