@@ -1,5 +1,7 @@
-# spring-boot-tutorial
+# Spring Boot Tutorial
 
+> Spring Boot 教程
+>
 > 这是一个 Spring Boot 实战教程，通过大量丰富的示例，展示 Spring Boot 在各个应用领域的应用。本项目旨在覆盖 Java 应用的各领域。
 >
 > 本项目的源码使用 maven 进行构建管理，任意 maven module 都可以独立运行。
@@ -44,20 +46,22 @@
 
 > 展示 Spring Boot 中访问关系型数据库的方式。注意：如果没有特殊说明，数据篇关系型数据库的配置为：普通 profile 使用 Mysql；单元测试中 profile 为 test， 使用 H2 数据库
 
-| 示例项目                                                                           | 说明                                                      |
-| ---------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| [sbe-data-jdbc](examples/sbe-data/sbe-data-jdbc)                                   | 展示在 Spring Boot 中，如何使用 `JdbcTemplate` 访问数据。 |
-| [sbe-data-jpa](examples/sbe-data/sbe-data-jpa)                                     | Spring Boot 中使用 JPA 访问数据。                         |
-| [sbe-data-mybatis](examples/sbe-data/sbe-data-mybatis)                             | Spring Boot + Mybatis Plus 访问数据。                     |
-| [sbe-data-flyway](examples/sbe-data/sbe-data-mybatis)                              | Spring Boot 中通过 flyway 控制 sql 版本。                 |
-| [sbe-data-jdbc-multi-connectors](examples/sbe-data/sbe-data-jdbc-multi-datasource) | Spring Boot 中使用 JDBC 访问多数据源。                    |
+| 示例项目                                                                              | 说明                                                                             |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| [sbe-data-jdbc](examples/sbe-data/sbe-data-jdbc)                                      | 展示在 Spring Boot 中，如何使用 JDBC 访问数据。                                  |
+| [sbe-data-jdbc-multi-datasource](examples/sbe-data/sbe-data-jdbc-multi-datasource)    | 展示在 Spring Boot 中，如何使用 JDBC 访问多数据源。                              |
+| [sbe-data-jpa](examples/sbe-data/sbe-data-jpa)                                        | Spring Boot 中使用 JPA 访问数据。                                                |
+| [sbe-data-mybatis](examples/sbe-data/sbe-data-mybatis)                                | Spring Boot + Mybatis Plus 访问数据。                                            |
+| [sbe-data-mybatis-multi-datasource](examples/sbe-data/sbe-data-jdbc-multi-datasource) | Spring Boot + Mybatis Plus 访问多数据源。                                        |
+| [sbe-data-mybatis-sharding](examples/sbe-data/sbe-data-mybatis-sharding)              | Spring Boot + Mybatis Plus + ShardingSphere (sharding-jdbc) 访问分库分表的数据。 |
+| [sbe-data-flyway](examples/sbe-data/sbe-data-mybatis)                                 | Spring Boot 中通过 flyway 控制 sql 版本。                                        |
 
 ### NoSql
 
 | 示例项目                                                           | 说明                                    |
 | ------------------------------------------------------------------ | --------------------------------------- |
-| [sbe-data-redis](examples/sbe-data/sbe-data-redis)                 | Spring Boot 中访问 redis 数据。         |
-| [sbe-data-redis-cluster](examples/sbe-data/sbe-data-redis-cluster) | Spring Boot 中访问 redis 集群数据。     |
+| [sbe-data-redis](examples/sbe-data/sbe-data-redis)                 | Spring Boot 中访问 redis。              |
+| [sbe-data-redis-cluster](examples/sbe-data/sbe-data-redis-cluster) | Spring Boot 中访问 redis 集群。         |
 | [sbe-data-mongodb](examples/sbe-data/sbe-data-mongodb)             | Spring Boot 中访问 mongodb 数据。       |
 | [sbe-data-elasticsearch](examples/sbe-data/sbe-data-elasticsearch) | Spring Boot 中访问 elasticsearch 数据。 |
 
@@ -122,8 +126,9 @@
 
 > 本章节的内容由于不好分类，所以并为一章节。
 
-| 示例项目                                                 | 说明                                        |
-| -------------------------------------------------------- | ------------------------------------------- |
-| [sbe-docker](examples/sbe-others/sbe-docker)             | 展示 Spring Boot 如何通过 Docker 部署应用。 |
-| [sbe-schedule](examples/sbe-others/sbe-schedule)         | 展示 Spring Boot 如何使用简单的调度器。     |
-| [sbe-statemachine](examples/sbe-others/sbe-statemachine) | 展示 Spring Boot 如何使用状态机控制工作流。 |
+| 示例项目                                                       | 说明                                           |
+| -------------------------------------------------------------- | ---------------------------------------------- |
+| [sbe-docker](examples/sbe-others/sbe-docker)                   | 展示 Spring Boot 如何通过 Docker 部署应用。    |
+| [sbe-schedule](examples/sbe-others/sbe-schedule)               | 展示 Spring Boot 如何使用简单的调度器。        |
+| [sbe-schedule-quartz](examples/sbe-others/sbe-schedule-quartz) | 展示 Spring Boot + Quartz 管理、使用调度任务。 |
+| [sbe-statemachine](examples/sbe-others/sbe-statemachine)       | 展示 Spring Boot 如何使用状态机控制工作流。    |
