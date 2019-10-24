@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WebSocket Examples: Reverse</title>
-  <style type="text/css">
-    #connect-container {
-      float: left;
-      width: 400px
-    }
+	<title>WebSocket Examples: Reverse</title>
+	<style type="text/css">
+		#connect-container {
+			float: left;
+			width: 400px
+		}
 
-    #connect-container div {
-      padding: 5px;
-    }
+		#connect-container div {
+			padding: 5px;
+		}
 
-    #console-container {
-      float: left;
-      margin-left: 15px;
-      width: 400px;
-    }
+		#console-container {
+			float: left;
+			margin-left: 15px;
+			width: 400px;
+		}
 
-    #console {
-      border: 1px solid #CCCCCC;
-      border-right-color: #999999;
-      border-bottom-color: #999999;
-      height: 170px;
-      overflow-y: scroll;
-      padding: 5px;
-      width: 100%;
-    }
+		#console {
+			border: 1px solid #CCCCCC;
+			border-right-color: #999999;
+			border-bottom-color: #999999;
+			height: 170px;
+			overflow-y: scroll;
+			padding: 5px;
+			width: 100%;
+		}
 
-    #console p {
-      padding: 0;
-      margin: 0;
-    }
-  </style>
-  <script type="text/javascript">
+		#console p {
+			padding: 0;
+			margin: 0;
+		}
+	</style>
+	<script type="text/javascript">
     var ws = null
 
     function setConnected(connected) {
@@ -45,14 +45,14 @@
     function connect() {
       var target = document.getElementById('target').value
       ws = new WebSocket(target)
-      ws.onopen = function() {
+      ws.onopen = function () {
         setConnected(true)
         log('Info: WebSocket connection opened.')
       }
-      ws.onmessage = function(event) {
+      ws.onmessage = function (event) {
         log('Received: ' + event.data)
       }
-      ws.onclose = function() {
+      ws.onclose = function () {
         setConnected(false)
         log('Info: WebSocket connection closed.')
       }
@@ -60,9 +60,13 @@
 
     function updateTarget() {
       if (window.location.protocol == 'http:') {
-        document.getElementById('target').value = 'ws://' + window.location.host + document.getElementById('target').value
+        document.getElementById('target').value = 'ws://'
+            + window.location.host
+            + document.getElementById('target').value
       } else {
-        document.getElementById('target').value = 'wss://' + window.location.host + document.getElementById('target').value
+        document.getElementById('target').value = 'wss://'
+            + window.location.host
+            + document.getElementById('target').value
       }
     }
 
@@ -95,31 +99,31 @@
       }
       console.scrollTop = console.scrollHeight
     }
-  </script>
+	</script>
 </head>
 <body onload="updateTarget()">
 <noscript><h2 style="color: #FF0000">Seems your browser doesn't support Javascript! Websockets rely on Javascript being
-  enabled. Please enable
-  Javascript and reload this page!</h2></noscript>
+	enabled. Please enable
+	Javascript and reload this page!</h2></noscript>
 <div>
-  <div id="connect-container">
-    <div>
-      <input id="target" size="40" style="width: 350px" type="text" value="/reverse"/>
-    </div>
-    <div>
-      <button id="connect" onclick="connect();">Connect</button>
-      <button disabled="disabled" id="disconnect" onclick="disconnect();">Disconnect</button>
-    </div>
-    <div>
-      <textarea id="message" style="width: 350px">Here is a message!</textarea>
-    </div>
-    <div>
-      <button disabled="disabled" id="reverse" onclick="reverse();">Reverse message</button>
-    </div>
-  </div>
-  <div id="console-container">
-    <div id="console"></div>
-  </div>
+	<div id="connect-container">
+		<div>
+			<input id="target" size="40" style="width: 350px" type="text" value="/reverse"/>
+		</div>
+		<div>
+			<button id="connect" onclick="connect();">Connect</button>
+			<button disabled="disabled" id="disconnect" onclick="disconnect();">Disconnect</button>
+		</div>
+		<div>
+			<textarea id="message" style="width: 350px">Here is a message!</textarea>
+		</div>
+		<div>
+			<button disabled="disabled" id="reverse" onclick="reverse();">Reverse message</button>
+		</div>
+	</div>
+	<div id="console-container">
+		<div id="console"></div>
+	</div>
 </div>
 </body>
 </html>

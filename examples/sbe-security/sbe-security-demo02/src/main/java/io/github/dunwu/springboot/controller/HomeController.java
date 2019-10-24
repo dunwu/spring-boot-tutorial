@@ -14,7 +14,7 @@ public class HomeController {
 
 	private final UserService userService;
 
-	@GetMapping({ "/", "/index", "/home" })
+	@GetMapping({"/", "/index", "/home"})
 	public String root() {
 		return "index";
 	}

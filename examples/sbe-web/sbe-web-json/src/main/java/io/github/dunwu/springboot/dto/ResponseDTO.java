@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * @author Zhang Peng
- * @date 2018-12-29
+ * @since 2018-12-29
  */
 public class ResponseDTO<T> {
 
@@ -61,7 +61,7 @@ public class ResponseDTO<T> {
 	@Override
 	public String toString() {
 		return "ResponseDTO{" + "code=" + code + ", message='" + message + '\'' + ", receiveTime=" + receiveTime
-				+ ", data=" + data + '}';
+			+ ", data=" + data + '}';
 	}
 
 }

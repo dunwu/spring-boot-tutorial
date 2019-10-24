@@ -33,14 +33,14 @@ public class CorePropertyApplicationTests {
 		this.context.register(CorePropertyApplication.class);
 		TestPropertyValues.of("validator.host:xxxxxx", "validator.port:9090").applyTo(this.context);
 		assertThatExceptionOfType(BeanCreationException.class).isThrownBy(() -> this.context.refresh())
-				.withMessageContaining("Failed to bind properties under 'validator'");
+			.withMessageContaining("Failed to bind properties under 'validator'");
 	}
 
 	@Test
 	public void bindNullHost() {
 		this.context.register(CorePropertyApplication.class);
 		assertThatExceptionOfType(BeanCreationException.class).isThrownBy(() -> this.context.refresh())
-				.withMessageContaining("Failed to bind properties under 'validator'");
+			.withMessageContaining("Failed to bind properties under 'validator'");
 	}
 
 }

@@ -17,7 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @DataJpaTest
-@ActiveProfiles({ "test" })
+@ActiveProfiles({"test"})
 @RunWith(SpringRunner.class)
 public class DataJpaTests {
 
@@ -81,8 +81,7 @@ public class DataJpaTests {
 		List<User> users = repository.findAll();
 		if (CollectionUtils.isEmpty(users) || users.size() != 4) {
 			Assert.fail();
-		}
-		else {
+		} else {
 			System.out.println("user list: ");
 			users.forEach(System.out::println);
 		}
@@ -99,8 +98,7 @@ public class DataJpaTests {
 		Page<User> page = repository.findAll(pageRequest);
 		if (page.isEmpty()) {
 			Assert.fail();
-		}
-		else {
+		} else {
 			page.getTotalElements();
 			Assert.assertEquals(4, page.getTotalElements());
 			Assert.assertEquals(2, page.getTotalPages());

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile({ "dev", "default" })
+@Profile({"dev", "default"})
 public class DevProfileService implements MessageService {
 
 	@Value("${dunwu.message:Development Begin!}")

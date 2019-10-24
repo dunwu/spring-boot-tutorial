@@ -43,7 +43,7 @@ public class TomcatServletApplication extends SpringBootServletInitializer {
 				res.setContentType("text/plain");
 				res.getWriter().append("Hello World");
 			}
-		};
+		}
 	}
 
 	@Override

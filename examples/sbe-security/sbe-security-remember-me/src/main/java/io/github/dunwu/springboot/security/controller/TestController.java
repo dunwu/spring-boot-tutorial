@@ -17,7 +17,7 @@ public class TestController {
 		return "hello spring security";
 	}
 
-	@GetMapping(value = { "/", "index" })
+	@GetMapping(value = {"/", "index"})
 	public ModelAndView index(Map<String, Object> model, Authentication authentication) {
 		return new ModelAndView("index", "messages", authentication);
 	}

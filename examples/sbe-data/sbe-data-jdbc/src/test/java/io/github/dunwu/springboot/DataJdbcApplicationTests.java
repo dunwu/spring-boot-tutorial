@@ -16,7 +16,7 @@ import java.util.List;
 
 @Rollback
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { DataJdbcApplication.class })
+@SpringBootTest(classes = {DataJdbcApplication.class})
 public class DataJdbcApplicationTests {
 
 	private static final Logger log = LoggerFactory.getLogger(DataJdbcApplicationTests.class);

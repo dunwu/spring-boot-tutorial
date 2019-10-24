@@ -62,8 +62,8 @@ public class WebFormApplicationTests {
 	@Test
 	public void submitsForm() throws Exception {
 		mockMvc.perform(post("/greeting").param("id", "12345").param("content", "Hello"))
-				.andExpect(content().string(containsString("Result")))
-				.andExpect(content().string(containsString("id: 12345")));
+			.andExpect(content().string(containsString("Result")))
+			.andExpect(content().string(containsString("id: 12345")));
 	}
 
 }

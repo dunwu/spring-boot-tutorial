@@ -32,14 +32,6 @@ public class MenuDTO implements Cloneable, Comparable<MenuDTO> {
 		this.url = url;
 	}
 
-	public String getKey() {
-		return key;
-	}
-
-	public void setKey(String key) {
-		this.key = key;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -62,18 +54,6 @@ public class MenuDTO implements Cloneable, Comparable<MenuDTO> {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	public Set<MenuDTO> getChildren() {
-		return children;
 	}
 
 	public void addChild(MenuDTO child) {
@@ -102,10 +82,31 @@ public class MenuDTO implements Cloneable, Comparable<MenuDTO> {
 		return menuDTO;
 	}
 
+	public Set<MenuDTO> getChildren() {
+		return children;
+	}
+
 	@Override
 	public String toString() {
-		return "MenuDTO{" + "key='" + key + '\'' + ", title='" + title + '\'' + ", icon='" + icon + '\'' + ", type='"
-				+ type + '\'' + ", url='" + url + '\'' + ", children=" + children + '}';
+		return "MenuDTO{"
+			+ "key='"
+			+ key
+			+ '\''
+			+ ", title='"
+			+ title
+			+ '\''
+			+ ", icon='"
+			+ icon
+			+ '\''
+			+ ", type='"
+			+ type
+			+ '\''
+			+ ", url='"
+			+ url
+			+ '\''
+			+ ", children="
+			+ children
+			+ '}';
 	}
 
 	@Override
@@ -118,8 +119,8 @@ public class MenuDTO implements Cloneable, Comparable<MenuDTO> {
 		}
 		MenuDTO menuDTO = (MenuDTO) o;
 		return Objects.equals(key, menuDTO.key) && Objects.equals(title, menuDTO.title)
-				&& Objects.equals(icon, menuDTO.icon) && Objects.equals(type, menuDTO.type)
-				&& Objects.equals(url, menuDTO.url);
+			&& Objects.equals(icon, menuDTO.icon) && Objects.equals(type, menuDTO.type)
+			&& Objects.equals(url, menuDTO.url);
 	}
 
 	@Override
@@ -129,8 +130,25 @@ public class MenuDTO implements Cloneable, Comparable<MenuDTO> {
 
 	@Override
 	public int compareTo(MenuDTO otherMenuDTO) {
-		return new CompareToBuilder().append(key, otherMenuDTO.getKey()).append(url, otherMenuDTO.getUrl())
-				.toComparison();
+		return new CompareToBuilder().append(key, otherMenuDTO.getKey())
+			.append(url, otherMenuDTO.getUrl())
+			.toComparison();
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

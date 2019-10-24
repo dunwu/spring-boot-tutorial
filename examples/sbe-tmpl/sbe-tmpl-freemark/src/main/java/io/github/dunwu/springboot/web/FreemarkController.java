@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * @author Zhang Peng
- * @date 2018-12-19
+ * @since 2018-12-19
  */
 @Controller
 public class FreemarkController {
@@ -61,11 +61,9 @@ public class FreemarkController {
 		String mergeContent = null;
 		try {
 			mergeContent = freemarkHelper.getMergeContent("web/exception.ftl", params);
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		catch (TemplateException e) {
+		} catch (TemplateException e) {
 			e.printStackTrace();
 		}
 

@@ -43,8 +43,7 @@ public class JsonController {
 		InfoDTO infoDTO = null;
 		try {
 			infoDTO = new InfoDTO("JSON测试应用", "1.0.0", sdf.parse("2019-01-01 12:00:00"));
-		}
-		catch (ParseException e) {
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		return infoDTO;

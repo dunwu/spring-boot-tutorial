@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.condition.JRE.*;
 
 /**
  * @author Zhang Peng
- * @date 2018-12-22
+ * @since 2018-12-22
  */
 public class JavaVersionTestsDemo {
 
@@ -19,7 +19,7 @@ public class JavaVersionTestsDemo {
 	}
 
 	@Test
-	@EnabledOnJre({ JAVA_9, JAVA_10 })
+	@EnabledOnJre({JAVA_9, JAVA_10})
 	void onJava9Or10() {
 		System.out.println("JAVA9, JAVA10 TEST");
 	}

@@ -59,7 +59,7 @@ public class MysqlUserDaoImpl implements UserDao {
 	@Override
 	public void insert(User user) {
 		jdbcTemplate.update("INSERT INTO user(name, age, address, email) VALUES(?, ?, ?, ?)", user.getName(),
-							user.getAge(), user.getAddress(), user.getEmail());
+			user.getAge(), user.getAddress(), user.getEmail());
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class MysqlUserDaoImpl implements UserDao {
 	@Override
 	public void update(User user) {
 		jdbcTemplate.update("UPDATE USER SET name=?, age=?, address=?, email=? WHERE id=?", user.getName(),
-							user.getAge(), user.getAddress(), user.getEmail(), user.getId());
+			user.getAge(), user.getAddress(), user.getEmail(), user.getId());
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class MysqlUserDaoImpl implements UserDao {
 	public User queryByName(String name) {
 		try {
 			return jdbcTemplate.queryForObject("SELECT * FROM user WHERE name = ?",
-											   new BeanPropertyRowMapper<>(User.class), name);
+				new BeanPropertyRowMapper<>(User.class), name);
 		} catch (EmptyResultDataAccessException e) {
 			return null;
 		}

@@ -2,7 +2,7 @@ package io.github.dunwu.springboot.data;
 
 /**
  * @author Zhang Peng
- * @date 2018-12-15
+ * @since 2018-12-15
  */
 public class User {
 

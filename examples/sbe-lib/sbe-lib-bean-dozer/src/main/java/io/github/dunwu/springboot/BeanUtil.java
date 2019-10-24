@@ -16,10 +16,11 @@ public class BeanUtil {
 
 	/**
 	 * JavaBean List 对象转换
+	 *
 	 * @param sourceList dmoList
-	 * @param targetClz dtoClz
-	 * @param <S> 源clz
-	 * @param <T> 目标clz
+	 * @param targetClz  dtoClz
+	 * @param <S>        源clz
+	 * @param <T>        目标clz
 	 * @return 转化后的list
 	 */
 	public <S, T> List<T> mapList(List<S> sourceList, Class<T> targetClz) {
@@ -35,10 +36,11 @@ public class BeanUtil {
 
 	/**
 	 * JavaBean 对象转换
+	 *
 	 * @param sourceObj 源对象
 	 * @param targetClz 目标对象
-	 * @param <S> 源对象clz
-	 * @param <T> 目标对象clz
+	 * @param <S>       源对象clz
+	 * @param <T>       目标对象clz
 	 * @return 目标对象
 	 */
 	public <S, T> T map(S sourceObj, Class<T> targetClz) {

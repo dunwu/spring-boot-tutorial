@@ -39,9 +39,9 @@ public class WebSocketApplicationTests {
 	@Test
 	public void echoEndpoint() {
 		ConfigurableApplicationContext context = new SpringApplicationBuilder(ClientConfiguration.class,
-				PropertyPlaceholderAutoConfiguration.class)
-						.properties("websocket.uri:ws://localhost:" + this.port + "/echo/websocket")
-						.run("--spring.main.web-application-type=none");
+			PropertyPlaceholderAutoConfiguration.class)
+			.properties("websocket.uri:ws://localhost:" + this.port + "/echo/websocket")
+			.run("--spring.main.web-application-type=none");
 		long count = context.getBean(ClientConfiguration.class).latch.getCount();
 		AtomicReference<String> messagePayloadReference = context.getBean(ClientConfiguration.class).messagePayload;
 		context.close();
@@ -52,9 +52,9 @@ public class WebSocketApplicationTests {
 	@Test
 	public void reverseEndpoint() {
 		ConfigurableApplicationContext context = new SpringApplicationBuilder(ClientConfiguration.class,
-				PropertyPlaceholderAutoConfiguration.class)
-						.properties("websocket.uri:ws://localhost:" + this.port + "/reverse")
-						.run("--spring.main.web-application-type=none");
+			PropertyPlaceholderAutoConfiguration.class)
+			.properties("websocket.uri:ws://localhost:" + this.port + "/reverse")
+			.run("--spring.main.web-application-type=none");
 		long count = context.getBean(ClientConfiguration.class).latch.getCount();
 		AtomicReference<String> messagePayloadReference = context.getBean(ClientConfiguration.class).messagePayload;
 		context.close();
@@ -77,8 +77,7 @@ public class WebSocketApplicationTests {
 			logger.info("Waiting for response: latch=" + this.latch.getCount());
 			if (this.latch.await(10, TimeUnit.SECONDS)) {
 				logger.info("Got response: " + this.messagePayload.get());
-			}
-			else {
+			} else {
 				logger.info("Response not received: latch=" + this.latch.getCount());
 			}
 		}

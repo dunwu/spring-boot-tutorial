@@ -49,10 +49,9 @@ public class BeanLombokApplicationTests {
 		try {
 			@Cleanup
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			baos.write(new byte[] { 'Y', 'e', 's' });
+			baos.write(new byte[] {'Y', 'e', 's'});
 			System.out.println(baos.toString());
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

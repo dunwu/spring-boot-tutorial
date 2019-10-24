@@ -2,7 +2,7 @@ package io.github.dunwu.springboot;
 
 /**
  * @author Zhang Peng
- * @date 2018-11-01
+ * @since 2018-11-01
  */
 public class PersonDTO {
 

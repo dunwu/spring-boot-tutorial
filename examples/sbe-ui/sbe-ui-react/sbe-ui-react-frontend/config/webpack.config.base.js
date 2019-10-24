@@ -5,7 +5,6 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-
 module.exports = {
 
   // 这里应用程序开始执行
@@ -36,8 +35,7 @@ module.exports = {
   module: {
 
     // 模块规则（配置 loader、解析器等选项）
-    rules: [
-      // 这里是匹配条件，每个选项都接收一个正则表达式或字符串
+    rules: [// 这里是匹配条件，每个选项都接收一个正则表达式或字符串
       // test 和 include 具有相同的作用，都是必须匹配选项
       // exclude 是必不匹配选项（优先于 test 和 include）
       // 最佳实践：
@@ -46,9 +44,7 @@ module.exports = {
       // - 尽量避免 exclude，更倾向于使用 include
       {
         // 语义解释器，将 js/jsx 文件中的 es2015/react 语法自动转为浏览器可识别的 Javascript 语法
-        test: /\.jsx?$/,
-        include: path.resolve(__dirname, '../src'),
-        exclude: /node_modules/,
+        test: /\.jsx?$/, include: path.resolve(__dirname, '../src'), exclude: /node_modules/,
 
         // 应该应用的 loader，它相对上下文解析
         // 为了更清晰，`-loader` 后缀在 webpack 2 中不再是可选的
@@ -58,26 +54,20 @@ module.exports = {
 
       {
         // css 加载
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        test: /\.css$/, use: ['style-loader', 'css-loader']
       },
 
       {
         // less 加载
-        test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
+        test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']
       },
 
       {
         // 字体加载
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: 'static/fonts/[name].[hash:8].[ext]'
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/, loader: 'url-loader', options: {
+          limit: 10000, name: 'static/fonts/[name].[hash:8].[ext]'
         }
-      }
-    ]
+      }]
   },
 
   // 解析模块请求的选项
@@ -99,15 +89,11 @@ module.exports = {
      * 用于简化 HTML 文件（index.html）的创建，提供访问 bundle 的服务
      */
     new HtmlWebpackPlugin({
-      title: 'reactapp',
-      template: 'public/index.html',
-      favicon: 'public/favicon.ico'
+      title: 'reactapp', template: 'public/index.html', favicon: 'public/favicon.ico'
     }),
-
 
     // 将多个入口起点之间共享的公共模块，生成为一些 chunk，并且分离到单独的 bundle 中
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor' // 指定公共 bundle 的名字
-    })
-  ]
+    })]
 }

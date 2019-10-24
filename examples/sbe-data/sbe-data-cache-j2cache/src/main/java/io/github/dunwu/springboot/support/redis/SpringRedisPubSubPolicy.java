@@ -57,7 +57,7 @@ public class SpringRedisPubSubPolicy implements ClusterPolicy {
 			this.channel = channel_name;
 		}
 		RedisMessageListenerContainer listenerContainer = SpringUtil.getBean("j2CacheRedisMessageListenerContainer",
-				RedisMessageListenerContainer.class);
+			RedisMessageListenerContainer.class);
 		String namespace = j2config.getL2CacheProperties().getProperty("namespace");
 		String database = j2config.getL2CacheProperties().getProperty("database");
 		String expired = "__keyevent@" + (database == null || "".equals(database) ? "0" : database) + "__:expired";
@@ -72,26 +72,24 @@ public class SpringRedisPubSubPolicy implements ClusterPolicy {
 			ConfigureNotifyKeyspaceEventsAction action = new ConfigureNotifyKeyspaceEventsAction();
 			action.config(listenerContainer.getConnectionFactory().getConnection());
 			listenerContainer.addMessageListener(new SpringRedisActiveMessageListener(this, namespace), topics);
-		}
-		else if ("blend".equals(config.getCacheCleanMode())) {
+		} else if ("blend".equals(config.getCacheCleanMode())) {
 			// 设置键值回调 需要redis支持键值回调
 			ConfigureNotifyKeyspaceEventsAction action = new ConfigureNotifyKeyspaceEventsAction();
 			action.config(listenerContainer.getConnectionFactory().getConnection());
 			listenerContainer.addMessageListener(new SpringRedisActiveMessageListener(this, namespace), topics);
 			listenerContainer.addMessageListener(new SpringRedisMessageListener(this, this.channel),
-					new PatternTopic(this.channel));
-		}
-		else {
+				new PatternTopic(this.channel));
+		} else {
 			listenerContainer.addMessageListener(new SpringRedisMessageListener(this, this.channel),
-					new PatternTopic(this.channel));
+				new PatternTopic(this.channel));
 		}
-
 	}
 
 	/**
 	 * 删除本地某个缓存条目
+	 *
 	 * @param region 区域名称
-	 * @param keys 缓存键值
+	 * @param keys   缓存键值
 	 */
 	@Override
 	public void evict(String region, String... keys) {
@@ -100,6 +98,7 @@ public class SpringRedisPubSubPolicy implements ClusterPolicy {
 
 	/**
 	 * 清除本地整个缓存区域
+	 *
 	 * @param region 区域名称
 	 */
 	@Override

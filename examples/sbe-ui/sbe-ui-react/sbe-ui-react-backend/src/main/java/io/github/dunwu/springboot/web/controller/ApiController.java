@@ -20,12 +20,20 @@ import java.util.TreeSet;
  * 配合前端请求的 API 接口
  *
  * @author zhangpeng0913
- * @date 2017/8/23.
+ * @since 2017/8/23.
  */
 @RestController
 public class ApiController {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+	@ResponseBody
+	@RequestMapping(value = "/menu", method = RequestMethod.GET)
+	public DataListResult<MenuDTO> getAll(HttpServletRequest request) {
+		String data = request.getParameter("data");
+		log.debug("recv data = {}", data);
+		return ResultUtil.successDataListResult(getAll());
+	}
 
 	private static Set<MenuDTO> getAll() {
 		MenuDTO item0 = new MenuDTO("0", "首页", "home", "Item", "/pages/home");
@@ -57,14 +65,6 @@ public class ApiController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/menu", method = RequestMethod.GET)
-	public DataListResult<MenuDTO> getAll(HttpServletRequest request) {
-		String data = request.getParameter("data");
-		log.debug("recv data = {}", data);
-		return ResultUtil.successDataListResult(getAll());
-	}
-
-	@ResponseBody
 	@RequestMapping(value = "/login")
 	public DataResult<Map<String, String>> login(@RequestBody Map<String, String> map) {
 		String username = map.get("username");
@@ -75,8 +75,7 @@ public class ApiController {
 			result.put("role", "ADMIN");
 			result.put("uid", "1");
 			return ResultUtil.successDataResult(result);
-		}
-		else {
+		} else {
 			return ResultUtil.failDataResult(DefaultAppCode.FAIL);
 		}
 	}

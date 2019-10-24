@@ -12,7 +12,7 @@ mock.onPut('/login').reply(config => {
     console.info('[mock result]', result)
     return [200, result]
   } else {
-    return [500, { message: 'Incorrect user or password' }]
+    return [500, {message: 'Incorrect user or password'}]
   }
 })
 mock.onGet('/logout').reply(200, {})

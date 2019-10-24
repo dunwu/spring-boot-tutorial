@@ -17,7 +17,7 @@ public class SpringJ2CacheConfigUtil {
 		config.setL2CacheName(environment.getProperty("j2cache.L2.provider_class"));
 		config.setSyncTtlToRedis(!"false".equalsIgnoreCase(environment.getProperty("j2cache.sync_ttl_to_redis")));
 		config.setDefaultCacheNullObject(
-				"true".equalsIgnoreCase(environment.getProperty("j2cache.default_cache_null_object")));
+			"true".equalsIgnoreCase(environment.getProperty("j2cache.default_cache_null_object")));
 		String l2_config_section = environment.getProperty("j2cache.L2.config_section");
 		if (l2_config_section == null || l2_config_section.trim().equals("")) {
 			l2_config_section = config.getL2CacheName();
@@ -30,15 +30,15 @@ public class SpringJ2CacheConfigUtil {
 					String key = k;
 					if (key.startsWith(config.getBroadcast() + ".")) {
 						config.getBroadcastProperties().setProperty(
-								key.substring((config.getBroadcast() + ".").length()), environment.getProperty(key));
+							key.substring((config.getBroadcast() + ".").length()), environment.getProperty(key));
 					}
 					if (key.startsWith(config.getL1CacheName() + ".")) {
 						config.getL1CacheProperties().setProperty(
-								key.substring((config.getL1CacheName() + ".").length()), environment.getProperty(key));
+							key.substring((config.getL1CacheName() + ".").length()), environment.getProperty(key));
 					}
 					if (key.startsWith(l2_section + ".")) {
 						config.getL2CacheProperties().setProperty(key.substring((l2_section + ".").length()),
-								environment.getProperty(key));
+							environment.getProperty(key));
 					}
 				});
 			}

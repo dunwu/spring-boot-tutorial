@@ -2,7 +2,7 @@ package io.github.dunwu.springboot;
 
 /**
  * @author Zhang Peng
- * @date 2019-01-11
+ * @since 2019-01-11
  */
 public class ResponseDTO<T> {
 
@@ -80,7 +80,6 @@ public class ResponseDTO<T> {
 		public String message() {
 			return message;
 		}
-
 	}
 
 }

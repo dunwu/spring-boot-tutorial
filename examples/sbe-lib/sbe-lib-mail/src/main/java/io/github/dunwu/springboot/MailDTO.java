@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * @author Zhang Peng
- * @date 2019-01-09
+ * @since 2019-01-09
  */
 @Data
 public class MailDTO {

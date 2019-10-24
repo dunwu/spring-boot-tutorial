@@ -4,8 +4,8 @@
  * @see http://gaearon.github.io/react-hot-loader/getstarted/
  */
 import React from 'react'
-import { Provider } from 'react-redux'
-import { HashRouter as Router } from 'react-router-dom'
+import {Provider} from 'react-redux'
+import {HashRouter as Router} from 'react-router-dom'
 
 import Routes from '../../routes'
 import configureStore from '../../redux/store/configureStore'
@@ -19,11 +19,9 @@ const store = configureStore()
 class RootContainer extends React.PureComponent {
   render() {
     if (!this.routes) this.routes = Routes
-    return (
-      <Provider store={store}>
-        <Router children={this.routes}/>
-      </Provider>
-    )
+    return (<Provider store={store}>
+      <Router children={this.routes}/>
+    </Provider>)
   }
 }
 

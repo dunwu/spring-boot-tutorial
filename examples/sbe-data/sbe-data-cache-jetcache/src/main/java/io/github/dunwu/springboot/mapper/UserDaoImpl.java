@@ -59,7 +59,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void insert(User user) {
 		jdbcTemplate.update("INSERT INTO user(name, age, address, email) VALUES(?, ?, ?, ?)", user.getName(),
-							user.getAge(), user.getAddress(), user.getEmail());
+			user.getAge(), user.getAddress(), user.getEmail());
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User update(User user) {
 		jdbcTemplate.update("UPDATE USER SET name=?, age=?, address=?, email=? WHERE id=?", user.getName(),
-							user.getAge(), user.getAddress(), user.getEmail(), user.getId());
+			user.getAge(), user.getAddress(), user.getEmail(), user.getId());
 		return user;
 	}
 
@@ -90,7 +90,7 @@ public class UserDaoImpl implements UserDao {
 
 		try {
 			User user = jdbcTemplate.queryForObject("SELECT * FROM user WHERE name = ?",
-													new BeanPropertyRowMapper<>(User.class), name);
+				new BeanPropertyRowMapper<>(User.class), name);
 			log.info("[Query] name = {}, result = {}", name, user);
 			return user;
 		} catch (EmptyResultDataAccessException e) {

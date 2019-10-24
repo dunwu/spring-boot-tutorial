@@ -50,7 +50,6 @@ public class ShardingDatabasesTablesTests {
 		userList.forEach(user -> {
 			log.info(user.toString());
 		});
-
 	}
 
 }

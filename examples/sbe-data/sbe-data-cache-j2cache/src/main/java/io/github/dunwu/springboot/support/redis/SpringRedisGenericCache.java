@@ -33,8 +33,7 @@ public class SpringRedisGenericCache implements Level2Cache {
 	}
 
 	private String getRegionName(String region) {
-		if (namespace != null && !namespace.isEmpty())
-			region = namespace + ":" + region;
+		if (namespace != null && !namespace.isEmpty()) { region = namespace + ":" + region; }
 		return region;
 	}
 
@@ -47,10 +46,27 @@ public class SpringRedisGenericCache implements Level2Cache {
 	}
 
 	@Override
+	public Collection<String> keys() {
+		return redisTemplate.keys(this.region + ":*").stream().map(k -> k.substring(this.region.length() + 1))
+			.collect(Collectors.toSet());
+	}
+
+	@Override
 	public boolean exists(String key) {
 		return redisTemplate.execute((RedisCallback<Boolean>) redis -> {
 			return redis.exists(_key(key));
 		});
+	}
+
+	private byte[] _key(String key) {
+		byte[] k;
+		try {
+			k = (this.region + ":" + key).getBytes("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			k = (this.region + ":" + key).getBytes();
+		}
+		return k;
 	}
 
 	@Override
@@ -60,12 +76,6 @@ public class SpringRedisGenericCache implements Level2Cache {
 				return redis.del(_key(k));
 			});
 		}
-	}
-
-	@Override
-	public Collection<String> keys() {
-		return redisTemplate.keys(this.region + ":*").stream().map(k -> k.substring(this.region.length() + 1))
-				.collect(Collectors.toSet());
 	}
 
 	@Override
@@ -84,22 +94,21 @@ public class SpringRedisGenericCache implements Level2Cache {
 	}
 
 	@Override
+	public void setBytes(Map<String, byte[]> bytes, long timeToLiveInSeconds) {
+		bytes.forEach((k, v) -> setBytes(k, v, timeToLiveInSeconds));
+	}
+
+	@Override
 	public void setBytes(String key, byte[] bytes, long timeToLiveInSeconds) {
 		if (timeToLiveInSeconds <= 0) {
 			log.debug(String.format("Invalid timeToLiveInSeconds value : %d , skipped it.", timeToLiveInSeconds));
 			setBytes(key, bytes);
-		}
-		else {
+		} else {
 			redisTemplate.execute((RedisCallback<List<byte[]>>) redis -> {
 				redis.setEx(_key(key), (int) timeToLiveInSeconds, bytes);
 				return null;
 			});
 		}
-	}
-
-	@Override
-	public void setBytes(Map<String, byte[]> bytes, long timeToLiveInSeconds) {
-		bytes.forEach((k, v) -> setBytes(k, v, timeToLiveInSeconds));
 	}
 
 	@Override
@@ -113,18 +122,6 @@ public class SpringRedisGenericCache implements Level2Cache {
 	@Override
 	public void setBytes(Map<String, byte[]> bytes) {
 		bytes.forEach((k, v) -> setBytes(k, v));
-	}
-
-	private byte[] _key(String key) {
-		byte[] k;
-		try {
-			k = (this.region + ":" + key).getBytes("utf-8");
-		}
-		catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-			k = (this.region + ":" + key).getBytes();
-		}
-		return k;
 	}
 
 }

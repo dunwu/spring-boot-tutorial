@@ -3,9 +3,9 @@ const createApi = fetchFunc => options => (...args) => {
   const argsName = ['options', 'successCallBack', 'errorCallBack', 'dispatch']
   // options 可以是 url，或完整的 options 对象
   if (typeof options === 'string') {
-    finalOpts = { url: options }
+    finalOpts = {url: options}
   } else {
-    finalOpts = { ...options }
+    finalOpts = {...options}
   }
 
   const temArgs = {}

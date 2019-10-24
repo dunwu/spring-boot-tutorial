@@ -21,7 +21,7 @@ public class IntegrationLogbackApplicationTests {
 
 	@Test
 	public void testProfile() {
-		BeanDozerApplication.main(new String[] { "--spring.profiles.active=staging" });
+		BeanDozerApplication.main(new String[] {"--spring.profiles.active=staging"});
 		this.outputCapture.expect(containsString("Sample Debug Message"));
 		this.outputCapture.expect(containsString("Sample Trace Message"));
 	}

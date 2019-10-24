@@ -2,7 +2,7 @@ package io.github.dunwu.springboot;
 
 /**
  * @author Zhang Peng
- * @date 2018-11-02
+ * @since 2018-11-02
  */
 public class UserDO {
 

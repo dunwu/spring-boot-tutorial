@@ -19,11 +19,11 @@ import java.util.Random;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-		classes = { TestService.class, J2CacheAutoConfiguration.class, J2CacheSpringCacheAutoConfiguration.class,
-				J2CacheSpringRedisAutoConfiguration.class },
-		properties = { "spring.cache.type=GENERIC", "j2cache.open-spring-cache=true",
-				"j2cache.j2CacheConfig.serialization=json", "j2cache.redis-client=jedis",
-				"j2cache.cache-clean-mode=active", "j2cache.allow-null-values=true", "j2cache.l2-cache-open=true" })
+	classes = {TestService.class, J2CacheAutoConfiguration.class, J2CacheSpringCacheAutoConfiguration.class,
+		J2CacheSpringRedisAutoConfiguration.class},
+	properties = {"spring.cache.type=GENERIC", "j2cache.open-spring-cache=true",
+		"j2cache.j2CacheConfig.serialization=json", "j2cache.redis-client=jedis",
+		"j2cache.cache-clean-mode=active", "j2cache.allow-null-values=true", "j2cache.l2-cache-open=true"})
 public class ApplicationTests {
 
 	@Autowired
@@ -45,8 +45,7 @@ public class ApplicationTests {
 					try {
 						Random r = new Random();
 						Thread.sleep(r.nextInt(100));
-					}
-					catch (InterruptedException e) {
+					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}

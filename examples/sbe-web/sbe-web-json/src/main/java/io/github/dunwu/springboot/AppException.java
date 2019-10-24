@@ -2,7 +2,7 @@ package io.github.dunwu.springboot;
 
 /**
  * @author Zhang Peng
- * @date 2018-12-29
+ * @since 2018-12-29
  */
 public class AppException extends RuntimeException {
 

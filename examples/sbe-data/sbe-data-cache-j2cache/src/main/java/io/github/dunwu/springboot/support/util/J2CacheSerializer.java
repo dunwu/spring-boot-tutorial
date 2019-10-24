@@ -12,8 +12,7 @@ public class J2CacheSerializer implements RedisSerializer<Object> {
 	public byte[] serialize(Object t) throws SerializationException {
 		try {
 			return SerializationUtils.serialize(t);
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -23,8 +22,7 @@ public class J2CacheSerializer implements RedisSerializer<Object> {
 	public Object deserialize(byte[] bytes) throws SerializationException {
 		try {
 			return SerializationUtils.deserialize(bytes);
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;

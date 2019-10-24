@@ -36,7 +36,7 @@ public class MsgRedisApplication {
 
 	@Bean
 	RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
-			MessageListenerAdapter listenerAdapter) {
+		MessageListenerAdapter listenerAdapter) {
 
 		RedisMessageListenerContainer container = new RedisMessageListenerContainer();
 		container.setConnectionFactory(connectionFactory);

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * Kafka生产者
  *
  * @author Zhang Peng
- * @date 2018-11-29
+ * @since 2018-11-29
  */
 @Component
 public class KafkaProducer {
@@ -26,8 +26,7 @@ public class KafkaProducer {
 		log.info("向kafka发送数据:[{}]", data);
 		try {
 			kafkaTemplate.send(topic, data);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("发送数据出错！！！{}{}", topic, data);
 			log.error("发送数据出错=====>", e);
 		}
@@ -36,7 +35,7 @@ public class KafkaProducer {
 		kafkaTemplate.setProducerListener(new ProducerListener<String, String>() {
 			@Override
 			public void onSuccess(String topic, Integer partition, String key, String value,
-					RecordMetadata recordMetadata) {
+				RecordMetadata recordMetadata) {
 				log.info("发送数据完成");
 			}
 

@@ -27,8 +27,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
 		System.out.println("加密后的密码：" + user.getPassword());
 
 		return new org.springframework.security.core.userdetails.User(username, user.getPassword(), user.isEnabled(),
-				user.isAccountNonExpired(), user.isCredentialsNonExpired(), user.isAccountNonLocked(),
-				AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+			user.isAccountNonExpired(), user.isCredentialsNonExpired(), user.isAccountNonLocked(),
+			AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
 	}
 
 }

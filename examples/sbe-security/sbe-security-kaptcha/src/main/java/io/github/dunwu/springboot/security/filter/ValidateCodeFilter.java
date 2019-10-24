@@ -26,17 +26,15 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
-			FilterChain filterChain) throws ServletException, IOException {
+		FilterChain filterChain) throws ServletException, IOException {
 		if (StringUtils.equalsIgnoreCase("/login", httpServletRequest.getRequestURI())
-				&& StringUtils.equalsIgnoreCase(httpServletRequest.getMethod(), "post")) {
+			&& StringUtils.equalsIgnoreCase(httpServletRequest.getMethod(), "post")) {
 
 			try {
 				check(httpServletRequest);
-			}
-			catch (ValidateCodeException e) {
+			} catch (ValidateCodeException e) {
 				authenticationFailureHandler.onAuthenticationFailure(httpServletRequest, httpServletResponse, e);
 			}
-
 		}
 
 		filterChain.doFilter(httpServletRequest, httpServletResponse);

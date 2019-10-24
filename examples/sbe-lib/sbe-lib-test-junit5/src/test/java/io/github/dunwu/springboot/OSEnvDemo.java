@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.condition.OS.*;
 
 /**
  * @author Zhang Peng
- * @date 2018-12-22
+ * @since 2018-12-22
  */
 public class OSEnvDemo {
 
@@ -24,7 +24,7 @@ public class OSEnvDemo {
 	}
 
 	@Test
-	@EnabledOnOs({ LINUX, MAC })
+	@EnabledOnOs({LINUX, MAC})
 	void onLinuxOrMac() {
 		// ...
 	}

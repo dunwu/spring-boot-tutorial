@@ -20,7 +20,7 @@ public class SimpleClientWebSocketHandler extends TextWebSocketHandler {
 	private Logger logger = LoggerFactory.getLogger(SimpleClientWebSocketHandler.class);
 
 	public SimpleClientWebSocketHandler(GreetingService greetingService, CountDownLatch latch,
-			AtomicReference<String> message) {
+		AtomicReference<String> message) {
 		this.greetingService = greetingService;
 		this.latch = latch;
 		this.messagePayload = message;

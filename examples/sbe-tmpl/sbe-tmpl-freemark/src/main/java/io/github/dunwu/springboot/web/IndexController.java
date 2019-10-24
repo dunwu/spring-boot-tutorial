@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * @author Zhang Peng
- * @date 2018-12-19
+ * @since 2018-12-19
  */
 @Controller
 public class IndexController {
@@ -18,7 +18,7 @@ public class IndexController {
 	@Value("${application.message:Hello World}")
 	private String message = "Hello World";
 
-	@GetMapping(value = { "/", "index" })
+	@GetMapping(value = {"/", "index"})
 	public String welcome(Map<String, Object> model) {
 		model.put("time", new Date());
 		model.put("message", this.message);

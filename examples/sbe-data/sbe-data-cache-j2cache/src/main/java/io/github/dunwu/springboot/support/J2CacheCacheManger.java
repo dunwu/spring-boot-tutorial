@@ -5,13 +5,10 @@ import org.springframework.cache.Cache;
 import org.springframework.cache.transaction.AbstractTransactionSupportingCacheManager;
 import org.springframework.util.CollectionUtils;
 
-import java.util.*;
-
 /**
  * {@link Cache} implementation for J2Cache.
  *
  * @author zhangsaizz
- *
  */
 public class J2CacheCacheManger extends AbstractTransactionSupportingCacheManager {
 

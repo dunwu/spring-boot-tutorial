@@ -6,7 +6,7 @@ import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
 
 /**
  * @author Zhang Peng
- * @date 2018-12-22
+ * @since 2018-12-22
  */
 public class SystemPropertyTestsDemo {
 

@@ -5,7 +5,7 @@
  * @see https://ant.design/components/breadcrumb-cn/
  * @see https://ant.design/components/icon-cn/
  */
-import { Breadcrumb, Icon } from 'antd'
+import {Breadcrumb, Icon} from 'antd'
 import PropTypes from 'prop-types'
 import React from 'react'
 import './Breadcrumb.less'
@@ -24,27 +24,23 @@ class CustomBreadcrumb extends React.PureComponent {
   }
 
   render() {
-    const { data } = this.props
+    const {data} = this.props
     const breadcrumbItems = data.map((item) => {
-      return (
-        <Breadcrumb.Item key={'bc-' + item.key}>
-          <Icon type={item.icon}/>
-          <span>{item.title}</span>
-        </Breadcrumb.Item>
-      )
+      return (<Breadcrumb.Item key={'bc-' + item.key}>
+        <Icon type={item.icon}/>
+        <span>{item.title}</span>
+      </Breadcrumb.Item>)
     })
 
-    return (
-      <div className="ant-layout-breadcrumb">
-        <Breadcrumb>
-          <Breadcrumb.Item key='bc-0'>
-            <Icon type="home"/>
-            <span>Home</span>
-          </Breadcrumb.Item>
-          {breadcrumbItems}
-        </Breadcrumb>
-      </div>
-    )
+    return (<div className="ant-layout-breadcrumb">
+      <Breadcrumb>
+        <Breadcrumb.Item key='bc-0'>
+          <Icon type="home"/>
+          <span>Home</span>
+        </Breadcrumb.Item>
+        {breadcrumbItems}
+      </Breadcrumb>
+    </div>)
   }
 }
 

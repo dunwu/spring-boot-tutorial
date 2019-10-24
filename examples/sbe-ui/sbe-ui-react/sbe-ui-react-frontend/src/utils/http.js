@@ -34,7 +34,7 @@ const defaultConfig = {
   //该选项只适用于以下请求方式：`put/post/patch`
   //数组里面的最后一个函数必须返回一个字符串、-一个`ArrayBuffer`或者`Stream`
 
-  transformRequest: [function(data) {
+  transformRequest: [function (data) {
     // 序列化
     if (data) {
       console.log('[request after stringify] data: ', JSON.stringify(data))
@@ -43,7 +43,7 @@ const defaultConfig = {
   }],
 
   //`transformResponse` 选项允许我们在数据传送到`then/catch`方法之前对数据进行改动
-  transformResponse: [function(data) {
+  transformResponse: [function (data) {
     // 反序列化
     if (data) {
       console.log('[response after parse] data: ', JSON.parse(data))
@@ -52,7 +52,7 @@ const defaultConfig = {
   }],
 
   //`headers`选项是需要被发送的自定义请求头信息
-  headers: { 'X-Requested-With': 'XMLHttpRequest' },
+  headers: {'X-Requested-With': 'XMLHttpRequest'},
 
   //`params`选项是要随请求一起发送的请求参数----一般链接在URL后面
   //他的类型必须是一个纯对象或者是URLSearchParams对象
@@ -62,8 +62,8 @@ const defaultConfig = {
 
   //`paramsSerializer`是一个可选的函数，起作用是让参数（params）序列化
   //例如(https://www.npmjs.com/package/qs,http://api.jquery.com/jquery.param)
-  paramsSerializer: function(params) {
-    const content = qs.stringify(params, { arrayFormat: 'brackets' })
+  paramsSerializer: function (params) {
+    const content = qs.stringify(params, {arrayFormat: 'brackets'})
     console.log('[http] params 序列化后：', content)
     return content
   },
@@ -107,11 +107,11 @@ const defaultConfig = {
   xsrfHeaderName: 'X-XSRF-TOKEN',//default
 
   //`onUploadProgress`上传进度事件
-  onUploadProgress: function(progressEvent) {
+  onUploadProgress: function (progressEvent) {
   },
 
   //下载进度的事件
-  onDownloadProgress: function(progressEvent) {
+  onDownloadProgress: function (progressEvent) {
   },
 
   //相应内容的最大值
@@ -119,7 +119,7 @@ const defaultConfig = {
 
   //`validateStatus`定义了是否根据http相应状态码，来resolve或者reject promise
   //如果`validateStatus`返回true(或者设置为`null`或者`undefined`),那么promise的状态将会是resolved,否则其状态就是rejected
-  validateStatus: function(status) {
+  validateStatus: function (status) {
     return status >= 200 && status < 300//default
   }
 

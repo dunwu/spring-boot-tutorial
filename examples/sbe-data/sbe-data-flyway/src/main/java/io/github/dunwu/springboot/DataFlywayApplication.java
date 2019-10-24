@@ -30,7 +30,6 @@ public class DataFlywayApplication implements CommandLineRunner {
 		list.forEach(user -> {
 			log.info(user.toString());
 		});
-
 	}
 
 }

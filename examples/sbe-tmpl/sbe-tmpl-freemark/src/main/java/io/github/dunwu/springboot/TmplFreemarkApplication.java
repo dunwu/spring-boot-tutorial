@@ -25,14 +25,13 @@ public class TmplFreemarkApplication {
 
 		/* Create and adjust the configuration singleton */
 		freemarker.template.Configuration cfg = new freemarker.template.Configuration(
-				freemarker.template.Configuration.VERSION_2_3_22);
+			freemarker.template.Configuration.VERSION_2_3_22);
 
 		File folder = null;
 		try {
 			folder = ResourceUtils.getFile("classpath:templates");
 			cfg.setDirectoryForTemplateLoading(folder);
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 

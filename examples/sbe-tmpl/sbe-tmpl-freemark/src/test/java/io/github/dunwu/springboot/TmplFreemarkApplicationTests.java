@@ -33,7 +33,7 @@ public class TmplFreemarkApplicationTests {
 		HttpEntity<String> requestEntity = new HttpEntity<>(headers);
 
 		ResponseEntity<String> responseEntity = this.testRestTemplate.exchange("/does-not-exist", HttpMethod.GET,
-				requestEntity, String.class);
+			requestEntity, String.class);
 
 		assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 		assertThat(responseEntity.getBody()).contains("Something went wrong: 404 Not Found");

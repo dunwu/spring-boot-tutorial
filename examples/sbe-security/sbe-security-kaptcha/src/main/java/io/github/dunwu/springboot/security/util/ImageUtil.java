@@ -5,7 +5,6 @@ import net.coobird.thumbnailator.geometry.Positions;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.*;
 import java.util.List;
 
 /**
@@ -21,6 +20,74 @@ public class ImageUtil {
 		Thumbnails.Builder builder = Thumbnails.of(input);
 		fillBuilderWithParams(builder, params);
 		builder.toFile(output);
+	}
+
+	private static void fillBuilderWithParams(Thumbnails.Builder builder, ImageParam params) {
+		builder.scale(1.0);
+
+		if (params == null) {
+			return;
+		}
+		// 按照一定规则改变原图尺寸
+		if (null != params.getWidth() && null != params.getHeight()) {
+			builder.size(params.getWidth(), params.getHeight());
+		} else if (null != params.getXscale() && null != params.getYscale()) {
+			builder.scale(params.getXscale(), params.getYscale());
+		} else if (null != params.getScale()) {
+			builder.scale(params.getScale(), params.getScale());
+		}
+
+		// 设置图片旋转角度
+		if (null != params.getRotate()) {
+			builder.rotate(params.getRotate());
+		}
+
+		// 设置图片压缩质量
+		if (null != params.getQuality()) {
+			builder.outputQuality(params.getQuality());
+		}
+
+		// 设置图片格式
+		if (null != params.getFormat()) {
+			builder.outputFormat(params.getFormat().name());
+		}
+
+		// 设置水印
+		if (null != params.getWaterMark()) {
+			Positions pos = getPostionsByCode(params.getWaterMark().getPosition());
+			builder.watermark(pos, params.getWaterMark().getImage(), params.getWaterMark().getOpacity());
+		}
+	}
+
+	/**
+	 * 将位置类型码转换为 thumbnailator 可以识别的位置类型
+	 *
+	 * @param positions PositionsEnum
+	 * @return Positions
+	 */
+	private static Positions getPostionsByCode(WaterMarkPositionsEnum positions) {
+		switch (positions) {
+			case TOP_LEFT:
+				return Positions.TOP_LEFT;
+			case TOP_CENTER:
+				return Positions.TOP_CENTER;
+			case TOP_RIGHT:
+				return Positions.TOP_RIGHT;
+			case CENTER_LEFT:
+				return Positions.CENTER_LEFT;
+			case CENTER:
+				return Positions.CENTER;
+			case CENTER_RIGHT:
+				return Positions.CENTER_RIGHT;
+			case BOTTOM_LEFT:
+				return Positions.BOTTOM_LEFT;
+			case BOTTOM_CENTER:
+				return Positions.BOTTOM_CENTER;
+			case BOTTOM_RIGHT:
+				return Positions.BOTTOM_RIGHT;
+			default:
+				return null;
+		}
 	}
 
 	public static void toFile(File input, File output, ImageParam params) throws IOException {
@@ -72,7 +139,7 @@ public class ImageUtil {
 	}
 
 	public static void toOutputStreams(List<InputStream> input, List<OutputStream> output, ImageParam params)
-			throws IOException {
+		throws IOException {
 		Thumbnails.Builder builder = Thumbnails.fromInputStreams(input);
 		fillBuilderWithParams(builder, params);
 		builder.toOutputStreams(output);
@@ -102,75 +169,6 @@ public class ImageUtil {
 		os.write(bytes);
 		os.flush();
 		os.close();
-	}
-
-	private static void fillBuilderWithParams(Thumbnails.Builder builder, ImageParam params) {
-		builder.scale(1.0);
-
-		if (params == null) {
-			return;
-		}
-		// 按照一定规则改变原图尺寸
-		if (null != params.getWidth() && null != params.getHeight()) {
-			builder.size(params.getWidth(), params.getHeight());
-		}
-		else if (null != params.getXscale() && null != params.getYscale()) {
-			builder.scale(params.getXscale(), params.getYscale());
-		}
-		else if (null != params.getScale()) {
-			builder.scale(params.getScale(), params.getScale());
-		}
-
-		// 设置图片旋转角度
-		if (null != params.getRotate()) {
-			builder.rotate(params.getRotate());
-		}
-
-		// 设置图片压缩质量
-		if (null != params.getQuality()) {
-			builder.outputQuality(params.getQuality());
-		}
-
-		// 设置图片格式
-		if (null != params.getFormat()) {
-			builder.outputFormat(params.getFormat().name());
-		}
-
-		// 设置水印
-		if (null != params.getWaterMark()) {
-			Positions pos = getPostionsByCode(params.getWaterMark().getPosition());
-			builder.watermark(pos, params.getWaterMark().getImage(), params.getWaterMark().getOpacity());
-		}
-	}
-
-	/**
-	 * 将位置类型码转换为 thumbnailator 可以识别的位置类型
-	 * @param positions PositionsEnum
-	 * @return Positions
-	 */
-	private static Positions getPostionsByCode(WaterMarkPositionsEnum positions) {
-		switch (positions) {
-		case TOP_LEFT:
-			return Positions.TOP_LEFT;
-		case TOP_CENTER:
-			return Positions.TOP_CENTER;
-		case TOP_RIGHT:
-			return Positions.TOP_RIGHT;
-		case CENTER_LEFT:
-			return Positions.CENTER_LEFT;
-		case CENTER:
-			return Positions.CENTER;
-		case CENTER_RIGHT:
-			return Positions.CENTER_RIGHT;
-		case BOTTOM_LEFT:
-			return Positions.BOTTOM_LEFT;
-		case BOTTOM_CENTER:
-			return Positions.BOTTOM_CENTER;
-		case BOTTOM_RIGHT:
-			return Positions.BOTTOM_RIGHT;
-		default:
-			return null;
-		}
 	}
 
 	/**
@@ -222,7 +220,6 @@ public class ImageUtil {
 		 * 底右
 		 */
 		BOTTOM_RIGHT
-
 	}
 
 	/**
@@ -254,7 +251,6 @@ public class ImageUtil {
 		 * gif
 		 */
 		gif
-
 	}
 
 	/**
@@ -313,7 +309,7 @@ public class ImageUtil {
 		}
 
 		public ImageParam(Integer width, Integer height, Double scale, Double rotate, Double quality,
-				ImageTypeEnum format, WaterMark waterMark) {
+			ImageTypeEnum format, WaterMark waterMark) {
 			this.width = width;
 			this.height = height;
 			this.scale = scale;
@@ -324,7 +320,7 @@ public class ImageUtil {
 		}
 
 		public ImageParam(Integer width, Integer height, Double xscale, Double yscale, Double rotate, Double quality,
-				ImageTypeEnum format, WaterMark waterMark) {
+			ImageTypeEnum format, WaterMark waterMark) {
 			this.width = width;
 			this.height = height;
 			this.xscale = xscale;

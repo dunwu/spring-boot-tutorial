@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.dunwu.springboot</groupId>
-  <artifactId>examples</artifactId>
-  <name>SBE</name>
-  <version>1.0.0</version>
-  <packaging>pom</packaging>
+	<groupId>io.github.dunwu.springboot</groupId>
+	<artifactId>examples</artifactId>
+	<name>SBE</name>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
 
-  <properties>
-    <spring-javaformat.version>0.0.15</spring-javaformat.version>
-  </properties>
+	<properties>
+		<spring-javaformat.version>0.0.15</spring-javaformat.version>
+	</properties>
 
-  <modules>
-    <module>sbe-core</module>
-    <module>sbe-data</module>
-    <module>sbe-lib</module>
-    <module>sbe-msg</module>
-    <module>sbe-others</module>
-    <module>sbe-security</module>
-    <module>sbe-tmpl</module>
-    <module>sbe-ui</module>
-    <module>sbe-web</module>
-  </modules>
+	<modules>
+		<module>sbe-core</module>
+		<module>sbe-data</module>
+		<module>sbe-lib</module>
+		<module>sbe-msg</module>
+		<module>sbe-others</module>
+		<module>sbe-security</module>
+		<module>sbe-tmpl</module>
+		<module>sbe-ui</module>
+		<module>sbe-web</module>
+	</modules>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>io.spring.javaformat</groupId>
-        <artifactId>spring-javaformat-maven-plugin</artifactId>
-        <version>${spring-javaformat.version}</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>apply</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>io.spring.javaformat</groupId>
+				<artifactId>spring-javaformat-maven-plugin</artifactId>
+				<version>${spring-javaformat.version}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>apply</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

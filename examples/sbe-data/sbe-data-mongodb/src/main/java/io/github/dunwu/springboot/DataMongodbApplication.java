@@ -42,7 +42,6 @@ public class DataMongodbApplication implements CommandLineRunner {
 		for (Customer customer : repository.findByLastName("Smith")) {
 			System.out.println(customer);
 		}
-
 	}
 
 }

@@ -12,8 +12,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
   // webpack 开始打包
   // 本例中 entry 为多入口
   entry: {
-    main: [
-      // App 入口
+    main: [// App 入口
       path.resolve(__dirname, '../src/index'),
 
       // 开启 React 代码的模块热替换(HMR)
@@ -25,8 +24,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
 
       // 为热替换(HMR)打包好代码
       // only- 意味着只有成功更新运行代码才会执行热替换(HMR)
-      'webpack/hot/only-dev-server'
-    ]
+      'webpack/hot/only-dev-server']
   },
 
   output: {
@@ -42,14 +40,10 @@ module.exports = webpackMerge(baseWebpackConfig, {
 
       {
         // 图片加载 + 图片压缩
-        test: /\.(png|svg|jpg|gif|ico)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: 'static/images/[name].[hash:8].[ext]'
+        test: /\.(png|svg|jpg|gif|ico)$/, loader: 'url-loader', options: {
+          limit: 10000, name: 'static/images/[name].[hash:8].[ext]'
         }
-      }
-    ]
+      }]
   },
 
   // 附加插件列表
@@ -69,8 +63,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
     // 自动打开浏览器
     new OpenBrowserPlugin({
       url: 'http://localhost:9000'
-    })
-  ],
+    })],
 
   // 通过在浏览器调试工具(browser devtools)中添加元信息(meta info)增强调试
   // devtool: "source-map", // 牺牲了构建速度的 `source-map' 是最详细的
@@ -82,12 +75,9 @@ module.exports = webpackMerge(baseWebpackConfig, {
   // devtool: "eval", // 没有模块映射，而是命名模块。以牺牲细节达到最快。
 
   devServer: {
-    contentBase: [path.join(__dirname, '../dist')],
-    compress: true,
-    port: 9000, // 启动端口号
+    contentBase: [path.join(__dirname, '../dist')], compress: true, port: 9000, // 启动端口号
     hot: true, // 启用 webpack 的模块热替换特性
-    inline: true,
-    publicPath: '/', // 和上文 output 的“publicPath”值保持一致
+    inline: true, publicPath: '/', // 和上文 output 的“publicPath”值保持一致
     historyApiFallback: true
   }
 })

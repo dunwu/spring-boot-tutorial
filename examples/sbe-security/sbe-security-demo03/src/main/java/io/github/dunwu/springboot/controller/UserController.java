@@ -30,7 +30,7 @@ public class UserController {
 
 	@PostMapping("/login")
 	public DataResult<UserInfoDTO> login(HttpServletRequest request, HttpServletResponse response,
-			@RequestBody Map<String, String> map) {
+		@RequestBody Map<String, String> map) {
 		String username = map.get("username");
 		String password = map.get("password");
 		UserDO userDO = userService.getByUsername(username);

@@ -46,7 +46,6 @@ public class DataJdbcMultiConnectorsApplicationTests {
 		// 验证次数据源插入记录数正确
 		count = h2UserDao.count();
 		Assert.assertEquals(1, count);
-
 	}
 
 }

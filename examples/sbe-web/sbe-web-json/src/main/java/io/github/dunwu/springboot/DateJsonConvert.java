@@ -29,7 +29,7 @@ public class DateJsonConvert {
 
 		@Override
 		public void serialize(Date date, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
-				throws IOException {
+			throws IOException {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			jsonGenerator.writeObject(sdf.format(date));
 		}
@@ -43,7 +43,7 @@ public class DateJsonConvert {
 
 		@Override
 		public InfoDTO deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
-				throws IOException {
+			throws IOException {
 			InfoDTO infoDTO = new InfoDTO();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -56,8 +56,7 @@ public class DateJsonConvert {
 			TextNode dateNode = (TextNode) treeNode.get("date");
 			try {
 				infoDTO.setDate(sdf.parse(dateNode.asText()));
-			}
-			catch (ParseException e) {
+			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 			return infoDTO;

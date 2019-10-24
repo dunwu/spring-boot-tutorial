@@ -17,8 +17,7 @@ public class DataElasticsearchApplicationTests {
 	public void testDefaultSettings() {
 		try {
 			new SpringApplicationBuilder(DataElasticsearchApplication.class).run();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			if (!elasticsearchRunning(ex)) {
 				return;
 			}

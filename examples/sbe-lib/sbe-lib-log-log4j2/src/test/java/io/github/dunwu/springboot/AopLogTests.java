@@ -34,7 +34,8 @@ public class AopLogTests {
 		Assert.assertEquals("Hello Tom", response);
 
 		this.output.expect(containsString("HTTP_METHOD : GET"));
-		this.output.expect(containsString("CLASS_METHOD : io.github.dunwu.springboot.web.HelloController.hello"));
+		this.output.expect(
+			containsString("CLASS_METHOD : io.github.dunwu.springboot.web.HelloController.hello"));
 		this.output.expect(containsString("ARGS : [Tom]"));
 		this.output.expect(containsString("RESPONSE : Hello Tom"));
 	}

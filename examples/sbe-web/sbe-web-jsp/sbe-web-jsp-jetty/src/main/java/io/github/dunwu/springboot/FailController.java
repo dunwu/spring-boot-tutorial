@@ -22,7 +22,8 @@ public class FailController {
 
 	@ExceptionHandler(MyException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public @ResponseBody MyRestResponse handleMyRuntimeException(MyException exception) {
+	public @ResponseBody
+	MyRestResponse handleMyRuntimeException(MyException exception) {
 		return new MyRestResponse("Some data I want to send back to the client.");
 	}
 

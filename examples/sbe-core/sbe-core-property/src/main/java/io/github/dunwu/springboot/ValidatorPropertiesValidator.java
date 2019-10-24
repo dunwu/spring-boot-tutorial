@@ -9,8 +9,8 @@ import java.util.regex.Pattern;
 public class ValidatorPropertiesValidator implements Validator {
 
 	final Pattern pattern = Pattern.compile(
-			"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
-					+ "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
+		"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+			+ "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
 
 	@Override
 	public boolean supports(Class<?> type) {

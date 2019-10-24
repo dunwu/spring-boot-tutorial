@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Kafka 消费者
  *
  * @author Zhang Peng
- * @date 2018-11-28
+ * @since 2018-11-28
  */
 @Component
 public class KafkaConsumer {

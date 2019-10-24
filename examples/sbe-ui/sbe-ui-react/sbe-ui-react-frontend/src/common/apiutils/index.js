@@ -1,8 +1,8 @@
 /**
  * export 一个 API，底层的实现可能会改（如，切换为 reqwest/superagent/fetch）
  */
-import { CACHE_TYPE, ERROR_HANDLER_TYPE, METHODS, REQ_TYPE } from './ajaxCommon'
-import { doBiJsonFetch, doFetch, doFetchJson } from './reqwestAJAX'
+import {CACHE_TYPE, ERROR_HANDLER_TYPE, METHODS, REQ_TYPE} from './ajaxCommon'
+import {doBiJsonFetch, doFetch, doFetchJson} from './reqwestAJAX'
 import createApi from './apiCreator'
 
 /**
@@ -28,7 +28,7 @@ const createBiJsonFetch = createApi(doBiJsonFetch)
  */
 const createPromiseAPI = api => (data) => {
   return new Promise((resolve) => {
-    api({ data }, rs => resolve(rs))
+    api({data}, rs => resolve(rs))
   })
 }
 

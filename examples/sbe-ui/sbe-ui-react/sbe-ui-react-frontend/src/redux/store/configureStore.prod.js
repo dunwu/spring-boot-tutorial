@@ -4,7 +4,7 @@
  * @see https://github.com/gaearon/redux-devtools/blob/master/docs/Walkthrough.md
  */
 
-import { applyMiddleware, createStore } from 'redux'
+import {applyMiddleware, createStore} from 'redux'
 import thunk from 'redux-thunk'
 
 import promise from '../middlewares/promiseMiddleware'

@@ -9,7 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * 相关的配置信息
  *
  * @author 小雨哥哥
- *
  */
 @Data
 @ToString

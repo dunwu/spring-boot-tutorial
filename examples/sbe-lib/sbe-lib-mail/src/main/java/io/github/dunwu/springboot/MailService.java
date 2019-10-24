@@ -18,7 +18,7 @@ import java.io.IOException;
 
 /**
  * @author Zhang Peng
- * @date 2019-01-09
+ * @since 2019-01-09
  */
 @Service
 public class MailService {
@@ -69,17 +69,14 @@ public class MailService {
 				MimeBodyPart attachPart = new MimeBodyPart();
 				try {
 					attachPart.attachFile(filename);
-				}
-				catch (IOException e) {
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				mm.addBodyPart(attachPart);
 			}
 			mimeMessage.setContent(mm);
 			mimeMessage.saveChanges();
-
-		}
-		catch (MessagingException e) {
+		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
 

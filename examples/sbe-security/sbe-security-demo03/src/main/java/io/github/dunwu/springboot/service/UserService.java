@@ -13,6 +13,7 @@ public interface UserService {
 
 	/**
 	 * 查询用户信息
+	 *
 	 * @param username 账号
 	 * @return UserEntity
 	 */

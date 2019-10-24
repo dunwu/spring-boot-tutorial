@@ -10,7 +10,6 @@ import org.springframework.data.redis.connection.MessageListener;
  * 监听二缓key失效，主动清除本地缓存
  *
  * @author zhangsaizz
- *
  */
 public class SpringRedisActiveMessageListener implements MessageListener {
 
@@ -38,7 +37,6 @@ public class SpringRedisActiveMessageListener implements MessageListener {
 			}
 			clusterPolicy.evict(k[0], k[1]);
 		}
-
 	}
 
 }

@@ -27,17 +27,17 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(userDO);
 	}
 
-	@Override
-	public UserDO getByUsername(String username) {
-		return userRepository.findByUsername(username);
-	}
-
 	/**
 	 * 判断用户是否存在
 	 */
 	private boolean exist(String username) {
 		UserDO userDO = userRepository.findByUsername(username);
 		return (userDO != null);
+	}
+
+	@Override
+	public UserDO getByUsername(String username) {
+		return userRepository.findByUsername(username);
 	}
 
 }

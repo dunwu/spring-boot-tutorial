@@ -39,7 +39,7 @@ public class WebLogAspect {
 		logger.info("HTTP_METHOD : " + request.getMethod());
 		logger.info("IP : " + request.getRemoteAddr());
 		logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "."
-				+ joinPoint.getSignature().getName());
+			+ joinPoint.getSignature().getName());
 		logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
 	}
 

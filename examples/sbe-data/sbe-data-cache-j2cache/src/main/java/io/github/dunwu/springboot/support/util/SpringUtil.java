@@ -8,11 +8,17 @@ import org.springframework.context.ApplicationContextAware;
  * spring 工具类
  *
  * @author zhangsaizz
- *
  */
 public class SpringUtil implements ApplicationContextAware {
 
 	private static ApplicationContext applicationContext;
+
+	/**
+	 * 通过name获取 Bean.
+	 */
+	public static Object getBean(String name) {
+		return getApplicationContext().getBean(name);
+	}
 
 	/**
 	 * 获取applicationContext
@@ -26,13 +32,6 @@ public class SpringUtil implements ApplicationContextAware {
 		if (SpringUtil.applicationContext == null) {
 			SpringUtil.applicationContext = applicationContext;
 		}
-	}
-
-	/**
-	 * 通过name获取 Bean.
-	 */
-	public static Object getBean(String name) {
-		return getApplicationContext().getBean(name);
 	}
 
 	/**

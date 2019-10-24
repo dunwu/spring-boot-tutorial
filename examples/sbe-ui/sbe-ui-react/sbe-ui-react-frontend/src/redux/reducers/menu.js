@@ -1,10 +1,9 @@
 import _ from 'lodash'
 
-import { REFRESH_MENU_SUCCESS, REFRESH_NAVPATH } from '../constants/menuActionType'
+import {REFRESH_MENU_SUCCESS, REFRESH_NAVPATH} from '../constants/menuActionType'
 
 const initialState = {
-  items: [],
-  navpath: []
+  items: [], navpath: []
 }
 
 const menu = (state = initialState, action = {}) => {
@@ -19,22 +18,18 @@ const menu = (state = initialState, action = {}) => {
         action.payload.data.reverse().map((item) => {
           if (item.indexOf('sub') !== -1) {
             tmpKey = item.replace('sub', '')
-            tmpOb = _.find(state.items, function(o) {
+            tmpOb = _.find(state.items, function (o) {
               return o.key == tmpKey
             })
             children = tmpOb.children
             navpath.push({
-              key: tmpOb.key,
-              title: tmpOb.title,
-              icon: tmpOb.icon,
-              type: tmpOb.type,
-              url: tmpOb.url
+              key: tmpOb.key, title: tmpOb.title, icon: tmpOb.icon, type: tmpOb.type, url: tmpOb.url
             })
           }
           if (item.indexOf('menu') !== -1) {
             tmpKey = item.replace('menu', '')
             if (children) {
-              tmpOb = _.find(children, function(o) {
+              tmpOb = _.find(children, function (o) {
                 return o.key == tmpKey
               })
               navpath.push({
@@ -49,8 +44,7 @@ const menu = (state = initialState, action = {}) => {
         })
       }
       return Object.assign({}, state, {
-        currentIndex: action.payload.key * 1,
-        navpath: navpath
+        currentIndex: action.payload.key * 1, navpath: navpath
       })
     default:
       return state

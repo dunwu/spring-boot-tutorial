@@ -54,11 +54,11 @@ public class FileUploadIntegrationTests {
 		given(this.storageService.loadAsResource("testupload.txt")).willReturn(resource);
 
 		ResponseEntity<String> response = this.restTemplate.getForEntity("/files/{filename}", String.class,
-				"testupload.txt");
+			"testupload.txt");
 
 		assertThat(response.getStatusCodeValue()).isEqualTo(200);
 		assertThat(response.getHeaders().getFirst(HttpHeaders.CONTENT_DISPOSITION))
-				.isEqualTo("attachment; filename=\"testupload.txt\"");
+			.isEqualTo("attachment; filename=\"testupload.txt\"");
 		assertThat(response.getBody()).isEqualTo("Spring Framework");
 	}
 

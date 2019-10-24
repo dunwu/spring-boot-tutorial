@@ -17,8 +17,8 @@ function createPromiseMiddleware(config = {}) {
         return next(action)
       }
 
-      const { type, payload, meta } = action
-      const { promise, data } = payload
+      const {type, payload, meta} = action
+      const {promise, data} = payload
       const [PENDING, FULFILLED, REJECTED] = (meta || {}).promiseTypeSuffixes || promiseTypeSuffixes
 
       /**
@@ -26,17 +26,13 @@ function createPromiseMiddleware(config = {}) {
        * reducer that an async action has been dispatched.
        */
       next({
-        type: `${type}_${PENDING}`,
-        ...!!data ? { payload: data } : {},
-        ...!!meta ? { meta } : {}
+        type: `${type}_${PENDING}`, ...!!data ? {payload: data} : {}, ...!!meta ? {meta} : {}
       })
 
       const isAction = resolved => resolved && (resolved.meta || resolved.payload)
       const isThunk = resolved => typeof resolved === 'function'
       const getResolveAction = isError => ({
-        type: `${type}_${isError ? REJECTED : FULFILLED}`,
-        ...!!meta ? { meta } : {},
-        ...!!isError ? { error: true } : {}
+        type: `${type}_${isError ? REJECTED : FULFILLED}`, ...!!meta ? {meta} : {}, ...!!isError ? {error: true} : {}
       })
 
       /**
@@ -45,31 +41,26 @@ function createPromiseMiddleware(config = {}) {
        *  2. the resolved/rejected object, if it looks like an action, merged into action
        *  3. a resolve/rejected action with the resolve/rejected object as a payload
        */
-      action.payload.promise = promise.then(
-        (resolved = {}) => {
-          const resolveAction = getResolveAction()
-          return dispatch(isThunk(resolved) ? resolved.bind(null, resolveAction) : {
-            ...resolveAction,
-            ...isAction(resolved) ? resolved : {
-              ...!!resolved && { payload: resolved }
-            }
-          })
-        },
-        (rejected = {}) => {
-          const resolveAction = getResolveAction(true)
-          return dispatch(isThunk(rejected) ? rejected.bind(null, resolveAction) : {
-            ...resolveAction,
-            ...isAction(rejected) ? rejected : {
-              ...!!rejected && { payload: rejected }
-            }
-          })
-        }
-      )
+      action.payload.promise = promise.then((resolved = {}) => {
+        const resolveAction = getResolveAction()
+        return dispatch(isThunk(resolved) ? resolved.bind(null, resolveAction) : {
+          ...resolveAction, ...isAction(resolved) ? resolved : {
+            ...!!resolved && {payload: resolved}
+          }
+        })
+      }, (rejected = {}) => {
+        const resolveAction = getResolveAction(true)
+        return dispatch(isThunk(rejected) ? rejected.bind(null, resolveAction) : {
+          ...resolveAction, ...isAction(rejected) ? rejected : {
+            ...!!rejected && {payload: rejected}
+          }
+        })
+      })
 
       return action
     }
   }
 }
 
-const promise = createPromiseMiddleware({ promiseTypeSuffixes: ['PENDING', 'SUCCESS', 'FAILED'] })
+const promise = createPromiseMiddleware({promiseTypeSuffixes: ['PENDING', 'SUCCESS', 'FAILED']})
 export default promise

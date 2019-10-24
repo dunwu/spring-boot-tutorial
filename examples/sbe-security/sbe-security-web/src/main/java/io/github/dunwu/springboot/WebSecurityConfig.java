@@ -19,18 +19,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// @formatter:off
-        http.authorizeRequests()
-                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .anyRequest().fullyAuthenticated()
-                .and()
-            .formLogin()
-                .loginPage("/login")
-                .failureUrl("/login?error")
-                .permitAll()
-                .and()
-            .logout()
-                .permitAll();
-           // @formatter:on
+		http.authorizeRequests()
+			.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+			.anyRequest().fullyAuthenticated()
+			.and()
+			.formLogin()
+			.loginPage("/login")
+			.failureUrl("/login?error")
+			.permitAll()
+			.and()
+			.logout()
+			.permitAll();
+		// @formatter:on
 	}
 
 }

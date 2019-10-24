@@ -16,7 +16,8 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = { "management.server.port:0" })
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = {
+	"management.server.port:0"})
 public class ActuatorApplicationPortTests {
 
 	@LocalServerPort
@@ -27,7 +28,8 @@ public class ActuatorApplicationPortTests {
 
 	@Test
 	public void testHome() {
-		ResponseEntity<String> entity = new TestRestTemplate().getForEntity("http://localhost:" + this.port,
+		ResponseEntity<String> entity =
+			new TestRestTemplate().getForEntity("http://localhost:" + this.port,
 				String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
@@ -36,14 +38,16 @@ public class ActuatorApplicationPortTests {
 	public void testMetrics() {
 		@SuppressWarnings("rawtypes")
 		ResponseEntity<Map> entity = new TestRestTemplate()
-				.getForEntity("http://localhost:" + this.managementPort + "/actuator/metrics", Map.class);
+			.getForEntity("http://localhost:" + this.managementPort + "/actuator/metrics",
+				Map.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED);
 	}
 
 	@Test
 	public void testHealth() {
 		ResponseEntity<String> entity = new TestRestTemplate().withBasicAuth("user", getPassword())
-				.getForEntity("http://localhost:" + this.managementPort + "/actuator/health", String.class);
+			.getForEntity("http://localhost:" + this.managementPort + "/actuator/health",
+				String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(entity.getBody()).contains("\"status\":\"UP\"");
 	}

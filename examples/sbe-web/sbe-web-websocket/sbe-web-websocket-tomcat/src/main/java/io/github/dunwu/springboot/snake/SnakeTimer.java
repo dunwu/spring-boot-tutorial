@@ -3,7 +3,6 @@ package io.github.dunwu.springboot.snake;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -41,8 +40,7 @@ public final class SnakeTimer {
 			public void run() {
 				try {
 					tick();
-				}
-				catch (Throwable ex) {
+				} catch (Throwable ex) {
 					log.error("Caught to prevent timer from shutting down", ex);
 				}
 			}
@@ -51,7 +49,7 @@ public final class SnakeTimer {
 
 	public static void tick() throws Exception {
 		StringBuilder sb = new StringBuilder();
-		for (Iterator<Snake> iterator = SnakeTimer.getSnakes().iterator(); iterator.hasNext();) {
+		for (Iterator<Snake> iterator = SnakeTimer.getSnakes().iterator(); iterator.hasNext(); ) {
 			Snake snake = iterator.next();
 			snake.update(SnakeTimer.getSnakes());
 			sb.append(snake.getLocationsJson());
@@ -71,8 +69,7 @@ public final class SnakeTimer {
 		for (Snake snake : snakes) {
 			try {
 				snake.sendMessage(message);
-			}
-			catch (Throwable ex) {
+			} catch (Throwable ex) {
 				// if Snake#sendMessage fails the client is removed
 				removeSnake(snake);
 			}

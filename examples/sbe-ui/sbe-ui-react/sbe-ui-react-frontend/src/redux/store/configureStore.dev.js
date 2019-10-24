@@ -4,8 +4,8 @@
  * @see https://github.com/gaearon/redux-devtools/blob/master/docs/Walkthrough.md
  */
 
-import { applyMiddleware, compose, createStore } from 'redux'
-import { persistState } from 'redux-devtools'
+import {applyMiddleware, compose, createStore} from 'redux'
+import {persistState} from 'redux-devtools'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
@@ -13,14 +13,12 @@ import DevTools from '../../containers/Root/ReduxDevTools'
 import promise from '../middlewares/promiseMiddleware'
 import reducers from '../reducers'
 
-const enhancer = compose(
-  // Middleware you want to use in development:
-  applyMiddleware(thunk, logger, promise),
-  // Required! Enable Redux DevTools with the monitors you chose
-  DevTools.instrument(),
-  // Optional. Lets you write ?debug_session=<key> in address bar to persist debug sessions
-  persistState(getDebugSessionKey())
-)
+const enhancer = compose(// Middleware you want to use in development:
+  applyMiddleware(thunk, logger, promise), // Required! Enable Redux DevTools with the monitors you
+  // chose
+  DevTools.instrument(), // Optional. Lets you write ?debug_session=<key> in address bar to persist
+  // debug sessions
+  persistState(getDebugSessionKey()))
 
 function getDebugSessionKey() {
   // You can write custom logic here!
@@ -41,9 +39,7 @@ function configureStore(initialState) {
 
   // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
   if (module.hot) {
-    module.hot.accept('../reducers', () =>
-      store.replaceReducer(require('../reducers'))
-    )
+    module.hot.accept('../reducers', () => store.replaceReducer(require('../reducers')))
   }
 
   return store

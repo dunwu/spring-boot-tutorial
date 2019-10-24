@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { SimpleSecurityApplication.class })
+@SpringBootTest(classes = {SimpleSecurityApplication.class})
 public class SimpleSecurityApplicationTests {
 
 	@Autowired
@@ -38,7 +38,7 @@ public class SimpleSecurityApplicationTests {
 	@Test
 	public void secure() {
 		assertThatExceptionOfType(AuthenticationException.class)
-				.isThrownBy(() -> SimpleSecurityApplicationTests.this.service.secure());
+			.isThrownBy(() -> SimpleSecurityApplicationTests.this.service.secure());
 	}
 
 	@Test
@@ -57,7 +57,7 @@ public class SimpleSecurityApplicationTests {
 	public void denied() {
 		SecurityContextHolder.getContext().setAuthentication(this.authentication);
 		assertThatExceptionOfType(AccessDeniedException.class)
-				.isThrownBy(() -> SimpleSecurityApplicationTests.this.service.denied());
+			.isThrownBy(() -> SimpleSecurityApplicationTests.this.service.denied());
 	}
 
 }

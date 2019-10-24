@@ -21,7 +21,7 @@ import org.springframework.core.env.StandardEnvironment;
  * @author zhangsaizz
  */
 @ConditionalOnClass(J2Cache.class)
-@EnableConfigurationProperties({ J2CacheProperties.class })
+@EnableConfigurationProperties({J2CacheProperties.class})
 @Configuration
 @PropertySource(value = "${j2cache.config-location}", encoding = "UTF-8", ignoreResourceNotFound = true)
 public class J2CacheAutoConfiguration {
@@ -35,7 +35,7 @@ public class J2CacheAutoConfiguration {
 	}
 
 	@Bean
-	@DependsOn({ "springUtil", "j2CacheConfig" })
+	@DependsOn({"springUtil", "j2CacheConfig"})
 	public CacheChannel cacheChannel(J2CacheConfig j2CacheConfig) {
 		J2CacheBuilder builder = J2CacheBuilder.init(j2CacheConfig);
 		return builder.getChannel();

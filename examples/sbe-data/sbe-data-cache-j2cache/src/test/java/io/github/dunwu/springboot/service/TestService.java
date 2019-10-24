@@ -24,7 +24,7 @@ public class TestService {
 		return bean;
 	}
 
-	@CacheEvict(cacheNames = { "test", "testBean" })
+	@CacheEvict(cacheNames = {"test", "testBean"})
 	public void evict() {
 
 	}

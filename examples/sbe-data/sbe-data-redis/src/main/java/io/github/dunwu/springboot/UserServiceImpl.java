@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
 	public static final String DEFAULT_KEY = "spring-boot:user";
+
 	private final RedisTemplate redisTemplate;
 
 	public UserServiceImpl(RedisTemplate redisTemplate) {

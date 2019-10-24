@@ -13,8 +13,7 @@ import java.util.Date;
  *
  * @author Zhang Peng
  * @see <a href="http://spring.io/guides/gs/scheduling-tasks/">scheduling-tasks</a>
- * @see <a href=
- * "https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#scheduling">Task
+ * @see <a href= "https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#scheduling">Task
  * Execution and Scheduling</a>
  */
 @Component

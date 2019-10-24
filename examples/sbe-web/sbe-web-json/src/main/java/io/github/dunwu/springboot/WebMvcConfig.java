@@ -27,7 +27,7 @@ import java.util.List;
  * 本类仅为展示如何使用 Fastjson 替换 Spring Boot 默认使用的 Jackson
  *
  * @author Zhang Peng
- * @date 2018-12-29
+ * @since 2018-12-29
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -36,6 +36,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 	/**
 	 * 自定义消息转换器：使用 Fastjson 替换 Spring Boot 默认使用的 Jackson
+	 *
 	 * @param converters
 	 */
 	@Override
@@ -46,7 +47,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		// 配置 FastJson
 		FastJsonConfig config = new FastJsonConfig();
 		config.setSerializerFeatures(SerializerFeature.QuoteFieldNames, SerializerFeature.WriteEnumUsingToString,
-				SerializerFeature.WriteMapNullValue, SerializerFeature.WriteDateUseDateFormat);
+			SerializerFeature.WriteMapNullValue, SerializerFeature.WriteDateUseDateFormat);
 
 		// 添加 FastJsonHttpMessageConverter
 		FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
@@ -58,36 +59,36 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 		// 添加 StringHttpMessageConverter，解决中文乱码问题
 		StringHttpMessageConverter stringHttpMessageConverter = new StringHttpMessageConverter(
-				Charset.forName("UTF-8"));
+			Charset.forName("UTF-8"));
 		converters.add(stringHttpMessageConverter);
 	}
 
 	/**
 	 * 自定义异常拦截处理器
+	 *
 	 * @param exceptionResolvers
 	 */
 	@Override
 	public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
 		exceptionResolvers
-				.add((HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) -> {
-					ResponseDTO responseDTO = new ResponseDTO();
-					if (e instanceof AppException) {
-						responseDTO.setCode(CodeEn.APP_ERROR.code());
-						StringBuilder sb = new StringBuilder(CodeEn.APP_ERROR.message());
-						sb.append("，详细错误原因：");
-						sb.append(e.getMessage());
-						responseDTO.setMessage(sb.toString());
-					}
-					else {
-						responseDTO.setCode(CodeEn.OTHER_ERROR.code());
-						StringBuilder sb = new StringBuilder(CodeEn.OTHER_ERROR.message());
-						sb.append("，详细错误原因：");
-						sb.append(e);
-						responseDTO.setMessage(sb.toString());
-					}
-					responseResponse(response, responseDTO);
-					return new ModelAndView();
-				});
+			.add((HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) -> {
+				ResponseDTO responseDTO = new ResponseDTO();
+				if (e instanceof AppException) {
+					responseDTO.setCode(CodeEn.APP_ERROR.code());
+					StringBuilder sb = new StringBuilder(CodeEn.APP_ERROR.message());
+					sb.append("，详细错误原因：");
+					sb.append(e.getMessage());
+					responseDTO.setMessage(sb.toString());
+				} else {
+					responseDTO.setCode(CodeEn.OTHER_ERROR.code());
+					StringBuilder sb = new StringBuilder(CodeEn.OTHER_ERROR.message());
+					sb.append("，详细错误原因：");
+					sb.append(e);
+					responseDTO.setMessage(sb.toString());
+				}
+				responseResponse(response, responseDTO);
+				return new ModelAndView();
+			});
 	}
 
 	private void responseResponse(HttpServletResponse response, ResponseDTO responseDTO) {
@@ -96,8 +97,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		response.setStatus(200);
 		try {
 			response.getWriter().write(JSON.toJSONString(responseDTO));
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			log.error(e.getMessage());
 		}
 	}

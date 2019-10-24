@@ -1,11 +1,13 @@
 import 'isomorphic-fetch'
-import { defaultJsonOptions, defaultOptions, getRealUrl, REQ_TYPE, wrapErrorHandler } from './ajaxCommon'
+import {
+  defaultJsonOptions, defaultOptions, getRealUrl, REQ_TYPE, wrapErrorHandler
+} from './ajaxCommon'
 
 function handleStatus(res) {
   if (res.ok) {
     return res
   }
-  throw new Error({ result: res.status })
+  throw new Error({result: res.status})
 }
 
 // json 有固定的格式，所以固定处理方法
@@ -19,9 +21,7 @@ function handleJson(data) {
 
 export function doFetch(options = {}, dispatch) {
   const opts = {
-    ...defaultOptions,
-    ...options,
-    onError: wrapErrorHandler(options.onError, dispatch)
+    ...defaultOptions, ...options, onError: wrapErrorHandler(options.onError, dispatch)
   }
 
   // 根据配置创建 Request 对象
@@ -48,6 +48,6 @@ export function doFetch(options = {}, dispatch) {
 }
 
 export function doFetchJson(options = {}, dispatch) {
-  const opts = { ...defaultJsonOptions, ...options }
+  const opts = {...defaultJsonOptions, ...options}
   doFetch(opts, dispatch)
 }

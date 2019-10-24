@@ -22,13 +22,13 @@ public class QuartzController {
 	public void create(String name) throws SchedulerException {
 
 		JobDetail jobDetail = JobBuilder.newJob(SampleJob.class).withIdentity(name).usingJobData("name", name)
-				.storeDurably().build();
+			.storeDurably().build();
 
 		SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(2)
-				.repeatForever();
+			.repeatForever();
 
 		Trigger trigger = TriggerBuilder.newTrigger().forJob(jobDetail).withIdentity(name).withSchedule(scheduleBuilder)
-				.build();
+			.build();
 
 		schedulerFactoryBean.getScheduler().scheduleJob(jobDetail, trigger);
 	}

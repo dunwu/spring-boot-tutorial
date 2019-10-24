@@ -32,8 +32,8 @@ import java.util.concurrent.atomic.AtomicReference;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { WebSocketApplication.class, CustomContainerConfiguration.class },
-		webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = {WebSocketApplication.class, CustomContainerConfiguration.class},
+	webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CustomContainerWebSocketsApplicationTests {
 
 	private static Logger logger = LoggerFactory.getLogger(CustomContainerWebSocketsApplicationTests.class);
@@ -44,9 +44,9 @@ public class CustomContainerWebSocketsApplicationTests {
 	@Test
 	public void echoEndpoint() {
 		ConfigurableApplicationContext context = new SpringApplicationBuilder(ClientConfiguration.class,
-				PropertyPlaceholderAutoConfiguration.class)
-						.properties("websocket.uri:ws://localhost:" + this.port + "/ws/echo/websocket")
-						.run("--spring.main.web-application-type=none");
+			PropertyPlaceholderAutoConfiguration.class)
+			.properties("websocket.uri:ws://localhost:" + this.port + "/ws/echo/websocket")
+			.run("--spring.main.web-application-type=none");
 		long count = context.getBean(ClientConfiguration.class).latch.getCount();
 		AtomicReference<String> messagePayloadReference = context.getBean(ClientConfiguration.class).messagePayload;
 		context.close();
@@ -57,9 +57,9 @@ public class CustomContainerWebSocketsApplicationTests {
 	@Test
 	public void reverseEndpoint() {
 		ConfigurableApplicationContext context = new SpringApplicationBuilder(ClientConfiguration.class,
-				PropertyPlaceholderAutoConfiguration.class)
-						.properties("websocket.uri:ws://localhost:" + this.port + "/ws/reverse")
-						.run("--spring.main.web-application-type=none");
+			PropertyPlaceholderAutoConfiguration.class)
+			.properties("websocket.uri:ws://localhost:" + this.port + "/ws/reverse")
+			.run("--spring.main.web-application-type=none");
 		long count = context.getBean(ClientConfiguration.class).latch.getCount();
 		AtomicReference<String> messagePayloadReference = context.getBean(ClientConfiguration.class).messagePayload;
 		context.close();
@@ -92,8 +92,7 @@ public class CustomContainerWebSocketsApplicationTests {
 			logger.info("Waiting for response: latch=" + this.latch.getCount());
 			if (this.latch.await(10, TimeUnit.SECONDS)) {
 				logger.info("Got response: " + this.messagePayload.get());
-			}
-			else {
+			} else {
 				logger.info("Response not received: latch=" + this.latch.getCount());
 			}
 		}

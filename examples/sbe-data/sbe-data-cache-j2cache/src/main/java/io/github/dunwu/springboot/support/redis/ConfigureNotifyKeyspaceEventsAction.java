@@ -37,11 +37,10 @@ public class ConfigureNotifyKeyspaceEventsAction {
 				return "";
 			}
 			return config.getProperty(config.stringPropertyNames().iterator().next());
-		}
-		catch (InvalidDataAccessApiUsageException e) {
+		} catch (InvalidDataAccessApiUsageException e) {
 			throw new IllegalStateException(
-					"Unable to configure Redis to keyspace notifications. See http://docs.spring.io/spring-session/docs/current/reference/html5/#api-redisoperationssessionrepository-sessiondestroyedevent",
-					e);
+				"Unable to configure Redis to keyspace notifications. See http://docs.spring.io/spring-session/docs/current/reference/html5/#api-redisoperationssessionrepository-sessiondestroyedevent",
+				e);
 		}
 	}
 

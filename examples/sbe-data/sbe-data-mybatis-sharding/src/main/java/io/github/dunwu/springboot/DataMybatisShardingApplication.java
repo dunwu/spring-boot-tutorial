@@ -37,7 +37,6 @@ public class DataMybatisShardingApplication implements CommandLineRunner {
 		} else {
 			log.info("连接数据源成功");
 		}
-
 	}
 
 }

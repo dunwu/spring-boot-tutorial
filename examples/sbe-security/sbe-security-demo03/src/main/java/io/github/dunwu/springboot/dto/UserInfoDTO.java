@@ -66,7 +66,7 @@ public class UserInfoDTO {
 	@Override
 	public String toString() {
 		return "UserInfoDTO{" + "name='" + name + '\'' + ", avatar='" + avatar + '\'' + ", introduction='"
-				+ introduction + '\'' + ", token='" + token + '\'' + ", roles=" + roles + '}';
+			+ introduction + '\'' + ", token='" + token + '\'' + ", roles=" + roles + '}';
 	}
 
 }

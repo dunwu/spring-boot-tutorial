@@ -17,7 +17,7 @@ public class CustomAuthenticationSucessHandler implements AuthenticationSuccessH
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-			Authentication authentication) throws IOException {
+		Authentication authentication) throws IOException {
 		redirectStrategy.sendRedirect(request, response, "/index");
 	}
 

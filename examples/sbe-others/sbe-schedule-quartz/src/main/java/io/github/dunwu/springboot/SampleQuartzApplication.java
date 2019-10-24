@@ -31,5 +31,4 @@ public class SampleQuartzApplication {
 	// .withSchedule(scheduleBuilder)
 	// .build();
 	// }
-
 }

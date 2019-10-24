@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @author Zhang Peng
- * @date 2018-12-15
+ * @since 2018-12-15
  */
 public interface UserDAO {
 

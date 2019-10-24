@@ -6,17 +6,14 @@
 import 'react-hot-loader/patch'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
+import {AppContainer} from 'react-hot-loader'
 
 import RootContainer from './containers/Root/RootContainer'
 
 const render = Component => {
-  ReactDOM.render(
-    <AppContainer>
-      <Component/>
-    </AppContainer>,
-    document.getElementById('root')
-  )
+  ReactDOM.render(<AppContainer>
+    <Component/>
+  </AppContainer>, document.getElementById('root'))
 }
 
 // 初次启动 App

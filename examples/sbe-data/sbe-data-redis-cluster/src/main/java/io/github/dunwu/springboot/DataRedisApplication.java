@@ -34,7 +34,6 @@ public class DataRedisApplication implements CommandLineRunner {
 
 		log.info(result.toString());
 		log.info(result2.toString());
-
 	}
 
 }

@@ -2,7 +2,7 @@ package io.github.dunwu.springboot;
 
 /**
  * @author Zhang Peng
- * @date 2018-12-29
+ * @since 2018-12-29
  */
 public enum CodeEn {
 
@@ -24,5 +24,4 @@ public enum CodeEn {
 	public String message() {
 		return message;
 	}
-
 }

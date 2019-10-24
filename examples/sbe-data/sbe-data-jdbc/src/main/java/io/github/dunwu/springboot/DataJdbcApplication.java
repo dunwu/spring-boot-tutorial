@@ -61,7 +61,6 @@ public class DataJdbcApplication implements CommandLineRunner {
 		} else {
 			log.error("获取 Connection 失败");
 		}
-
 	}
 
 }

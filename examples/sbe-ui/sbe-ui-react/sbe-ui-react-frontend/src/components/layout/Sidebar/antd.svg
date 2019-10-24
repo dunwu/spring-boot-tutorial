@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" width="160px" viewBox="0 0 102 102" version="1.1"
-     xmlns="http://www.w3.org/2000/svg">
+<svg xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" width="160px" viewBox="0 0 102 102"
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg">
   <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
   <title>a</title>
   <desc>Created with Sketch.</desc>
   <defs>
-    <linearGradient x1="121.870767%" y1="50.0000623%" x2="-8.13548721%" y2="50.0000623%" id="linearGradient-1">
+    <linearGradient x1="121.870767%" y1="50.0000623%" x2="-8.13548721%" y2="50.0000623%"
+      id="linearGradient-1">
       <stop stop-color="#47B4E0" offset="0%"></stop>
       <stop stop-color="#1588E0" offset="17.18%"></stop>
       <stop stop-color="#6EB4E0" offset="100%"></stop>
     </linearGradient>
-    <linearGradient x1="49.9981983%" y1="99.9981453%" x2="49.9981983%" y2="0.00156952896%" id="linearGradient-2">
+    <linearGradient x1="49.9981983%" y1="99.9981453%" x2="49.9981983%" y2="0.00156952896%"
+      id="linearGradient-2">
       <stop stop-color="#F0776F" offset="3.22%"></stop>
       <stop stop-color="#F0656F" offset="50.32%"></stop>
       <stop stop-color="#F0606F" offset="100%"></stop>
     </linearGradient>
-    <linearGradient x1="49.9999999%" y1="0.000675229319%" x2="49.9999999%" y2="99.9996626%" id="linearGradient-3">
+    <linearGradient x1="49.9999999%" y1="0.000675229319%" x2="49.9999999%" y2="99.9996626%"
+      id="linearGradient-3">
       <stop stop-color="#F0776F" offset="3.22%"></stop>
       <stop stop-color="#F0656F" offset="50.32%"></stop>
       <stop stop-color="#F0606F" offset="100%"></stop>
     </linearGradient>
   </defs>
-  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+    sketch:type="MSPage">
     <g id="a" sketch:type="MSLayerGroup">
       <g id="Group" sketch:type="MSShapeGroup">
         <path

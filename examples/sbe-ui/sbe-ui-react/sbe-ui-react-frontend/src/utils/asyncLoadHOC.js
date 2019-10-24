@@ -20,9 +20,7 @@ export const asyncLoadHOC = loadComponent => (
         return
       }
 
-      loadComponent().then(
-        module => module.default
-      ).then((comp) => {
+      loadComponent().then(module => module.default).then((comp) => {
         Component = comp
       }).catch((err) => {
         console.error(`Cannot load component in <AsyncComponent />`)
@@ -33,5 +31,4 @@ export const asyncLoadHOC = loadComponent => (
     render() {
       return (Component) ? <Component {...this.props} /> : null
     }
-  }
-)
+  })

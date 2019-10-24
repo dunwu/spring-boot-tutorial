@@ -52,7 +52,7 @@ public class WebUIEasyuiApplication {
 			// log.info(bauer.toString());
 			// }
 			log.info("");
-		};
+		}
 	}
 
 }

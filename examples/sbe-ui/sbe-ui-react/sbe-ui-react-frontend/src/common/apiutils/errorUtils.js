@@ -1,10 +1,10 @@
 /**
  * 错误处理帮助类
  */
-import { Message } from 'antd'
+import {Message} from 'antd'
 import _ from 'lodash'
 
-import { ERROR_HANDLER_TYPE } from './index'
+import {ERROR_HANDLER_TYPE} from './index'
 
 /**
  * 处理业务类型的错误(-3)，通过 message 的方式展现
@@ -20,7 +20,7 @@ export function messageBizError(e, callBack) {
     continueHandler = ERROR_HANDLER_TYPE.NO
   }
   if (_.isFunction(callBack)) {
-    callBack({ error: e })
+    callBack({error: e})
   }
   return continueHandler
 }

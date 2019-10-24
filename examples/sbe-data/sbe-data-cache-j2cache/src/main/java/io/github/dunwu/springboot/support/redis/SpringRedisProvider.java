@@ -15,7 +15,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * spring redis缓存
  *
  * @author zhangsaizz
- *
  */
 public class SpringRedisProvider implements CacheProvider {
 
@@ -45,6 +44,11 @@ public class SpringRedisProvider implements CacheProvider {
 	}
 
 	@Override
+	public Cache buildCache(String region, long timeToLiveInSeconds, CacheExpiredListener listener) {
+		return buildCache(region, listener);
+	}
+
+	@Override
 	public Cache buildCache(String region, CacheExpiredListener listener) {
 		if (config.isL2CacheOpen() == false) {
 			return new NullCache();
@@ -64,11 +68,6 @@ public class SpringRedisProvider implements CacheProvider {
 			}
 		}
 		return cache;
-	}
-
-	@Override
-	public Cache buildCache(String region, long timeToLiveInSeconds, CacheExpiredListener listener) {
-		return buildCache(region, listener);
 	}
 
 	@SuppressWarnings("unchecked")

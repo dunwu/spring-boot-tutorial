@@ -3,25 +3,23 @@
  * @author Zhang Peng
  * @see https://ant.design/components/layout-cn/
  */
-import { Icon, Layout, Menu } from 'antd'
+import {Icon, Layout, Menu} from 'antd'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { connect } from 'react-redux'
-import { matchPath, withRouter } from 'react-router'
-import { Link } from 'react-router-dom'
-import { bindActionCreators } from 'redux'
+import {connect} from 'react-redux'
+import {matchPath, withRouter} from 'react-router'
+import {Link} from 'react-router-dom'
+import {bindActionCreators} from 'redux'
 
 import './Sidebar.less'
 import logoImg from './antd.svg'
-import { refreshMenu, refreshNavPath } from '../../../redux/actions/menu'
+import {refreshMenu, refreshNavPath} from '../../../redux/actions/menu'
 
-const { Sider } = Layout
+const {Sider} = Layout
 
 const isActive = (path, history) => {
   return matchPath(path, {
-    path: history.location.pathname,
-    exact: true,
-    strict: false
+    path: history.location.pathname, exact: true, strict: false
   })
 }
 
@@ -38,9 +36,7 @@ class CustomSidebar extends React.PureComponent {
   }
 
   state = {
-    openKey: 'sub0',
-    activeKey: 'menu0',
-    mode: 'inline'
+    openKey: 'sub0', activeKey: 'menu0', mode: 'inline'
   }
 
   componentDidMount() {
@@ -52,8 +48,7 @@ class CustomSidebar extends React.PureComponent {
       Array.isArray(item.children) && item.children.map((node) => {
         if (node.url && isActive(node.url, this.props.history)) {
           this.menuClickHandle({
-            key: 'menu' + node.key,
-            keyPath: ['menu' + node.key, 'sub' + item.key]
+            key: 'menu' + node.key, keyPath: ['menu' + node.key, 'sub' + item.key]
           })
         }
       })
@@ -68,8 +63,8 @@ class CustomSidebar extends React.PureComponent {
   }
 
   render() {
-    const { items, history } = this.props
-    let { activeKey, openKey } = this.state
+    const {items, history} = this.props
+    let {activeKey, openKey} = this.state
 
     const _menuProcess = (nodes, pkey) => {
       return Array.isArray(nodes) && nodes.map((item, i) => {
@@ -82,37 +77,30 @@ class CustomSidebar extends React.PureComponent {
         switch (item.type) {
 
           case 'SubMenu':
-            return (
-              <Menu.SubMenu
-                key={item.key}
-                title={<span><Icon type={item.icon}/><span className="nav-text">{item.title}</span></span>}
-              >
-                {menu}
-              </Menu.SubMenu>
-            )
+            return (<Menu.SubMenu
+              key={item.key}
+              title={<span><Icon type={item.icon}/><span
+                className="nav-text">{item.title}</span></span>}
+            >
+              {menu}
+            </Menu.SubMenu>)
           case 'ItemGroup':
-            return (
-              <Menu.ItemGroup
-                key={item.key}
-                title={<span><Icon type={item.icon}/><span className="nav-text">{item.title}</span></span>}
-              >
-                {menu}
-              </Menu.ItemGroup>
-            )
+            return (<Menu.ItemGroup
+              key={item.key}
+              title={<span><Icon type={item.icon}/><span
+                className="nav-text">{item.title}</span></span>}
+            >
+              {menu}
+            </Menu.ItemGroup>)
           case 'Divider':
-            return (
-              <Menu.Divider key={item.key}/>
-            )
+            return (<Menu.Divider key={item.key}/>)
           case 'Item':
           default:
-            return (
-              <Menu.Item className="ant-menu-item" key={item.key}>
-                {
-                  item.url ? <Link to={item.url}>{item.icon && <Icon type={item.icon}/>}{item.title}</Link> :
-                    <span>{item.icon && <Icon type={item.icon}/>}{item.title}</span>
-                }
-              </Menu.Item>
-            )
+            return (<Menu.Item className="ant-menu-item" key={item.key}>
+              {item.url ? <Link to={item.url}>{item.icon && <Icon
+                type={item.icon}/>}{item.title}</Link> : <span>{item.icon && <Icon
+                type={item.icon}/>}{item.title}</span>}
+            </Menu.Item>)
             break
         }
       })
@@ -120,12 +108,11 @@ class CustomSidebar extends React.PureComponent {
 
     const menu = _menuProcess(items)
 
-    return (
-      /**
-       * 响应式布局
-       * 说明：配置 breakpoint 属性即生效，视窗宽度小于 breakpoint 时 Sider 缩小为 collapsedWidth 宽度，
-       * 若将 collapsedWidth 设置为零，会出现特殊 trigger。
-       */
+    return (/**
+     * 响应式布局
+     * 说明：配置 breakpoint 属性即生效，视窗宽度小于 breakpoint 时 Sider 缩小为 collapsedWidth 宽度，
+     * 若将 collapsedWidth 设置为零，会出现特殊 trigger。
+     */
       <Sider className="ant-layout-sider"
              breakpoint="lg"
              collapsedWidth="0"
@@ -144,8 +131,7 @@ class CustomSidebar extends React.PureComponent {
         >
           {menu}
         </Menu>
-      </Sider>
-    )
+      </Sider>)
   }
 }
 

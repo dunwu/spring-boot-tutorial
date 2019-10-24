@@ -24,8 +24,7 @@ public class CoreProfileApplicationTests {
 	public void after() {
 		if (this.profiles != null) {
 			System.setProperty("spring.profiles.active", this.profiles);
-		}
-		else {
+		} else {
 			System.clearProperty("spring.profiles.active");
 		}
 	}
@@ -60,7 +59,7 @@ public class CoreProfileApplicationTests {
 
 	@Test
 	public void testProdProfileFromCommandline() {
-		CoreProfileApplication.main(new String[] { "--spring.profiles.active=prod" });
+		CoreProfileApplication.main(new String[] {"--spring.profiles.active=prod"});
 		assertThat(this.output.toString()).contains("The app is running on profile prod.");
 	}
 

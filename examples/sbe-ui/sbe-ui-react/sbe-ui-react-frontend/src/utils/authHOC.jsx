@@ -6,7 +6,7 @@
  * @see https://segmentfault.com/a/1190000004598113
  */
 import React from 'react'
-import { withRouter } from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 /**
  * 校验方法
@@ -14,7 +14,7 @@ import { withRouter } from 'react-router-dom'
  * @param props {PropsType<S>} 组件的props
  */
 const validate = props => {
-  const { history } = props
+  const {history} = props
   const isLoggedIn = !!window.localStorage.getItem('uid')
   if (!isLoggedIn && history.location.pathname !== '/login') {
     history.replace('/login')

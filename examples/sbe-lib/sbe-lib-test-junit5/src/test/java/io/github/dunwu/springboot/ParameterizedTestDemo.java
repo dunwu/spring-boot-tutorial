@@ -7,12 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Zhang Peng
- * @date 2018-12-22
+ * @since 2018-12-22
  */
 public class ParameterizedTestDemo {
 
 	@ParameterizedTest
-	@ValueSource(strings = { "racecar", "radar", "able was I ere I saw elba" })
+	@ValueSource(strings = {"racecar", "radar", "able was I ere I saw elba"})
 	void palindromes(String candidate) {
 		assertTrue(isMoreThan7(candidate));
 	}
@@ -24,8 +24,7 @@ public class ParameterizedTestDemo {
 
 		if (str.length() > 7) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}

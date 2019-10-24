@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-  <include resource="org/springframework/boot/logging/logback/base.xml"/>
-  <logger name="io.github.dunwu" level="DEBUG"/>
-  <springProfile name="prod">
-    <logger name="io.github.dunwu" level="INFO"/>
-  </springProfile>
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+	<logger name="io.github.dunwu" level="DEBUG" />
+	<springProfile name="prod">
+		<logger name="io.github.dunwu" level="INFO" />
+	</springProfile>
 </configuration>

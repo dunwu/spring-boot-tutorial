@@ -54,7 +54,7 @@ public class SampleSecureApplicationTests {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.TEXT_HTML));
 		ResponseEntity<String> entity = this.restTemplate.exchange("/", HttpMethod.GET, new HttpEntity<Void>(headers),
-				String.class);
+			String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.FOUND);
 		assertThat(entity.getHeaders().getLocation().toString()).endsWith(this.port + "/login");
 	}
@@ -64,7 +64,7 @@ public class SampleSecureApplicationTests {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.TEXT_HTML));
 		ResponseEntity<String> entity = this.restTemplate.exchange("/login", HttpMethod.GET,
-				new HttpEntity<Void>(headers), String.class);
+			new HttpEntity<Void>(headers), String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(entity.getBody()).contains("_csrf");
 	}
@@ -78,7 +78,7 @@ public class SampleSecureApplicationTests {
 		form.set("username", "root");
 		form.set("password", "root");
 		ResponseEntity<String> entity = this.restTemplate.exchange("/login", HttpMethod.POST,
-				new HttpEntity<>(form, headers), String.class);
+			new HttpEntity<>(form, headers), String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.FOUND);
 		assertThat(entity.getHeaders().getLocation().toString()).endsWith(this.port + "/");
 		assertThat(entity.getHeaders().get("Set-Cookie")).isNotNull();

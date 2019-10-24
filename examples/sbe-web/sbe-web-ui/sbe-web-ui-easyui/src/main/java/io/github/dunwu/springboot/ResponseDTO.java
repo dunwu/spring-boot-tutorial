@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @author Zhang Peng
- * @date 2019-01-06
+ * @since 2019-01-06
  */
 public class ResponseDTO<T> {
 

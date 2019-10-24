@@ -1,25 +1,17 @@
 import React from 'react'
-import { Modal } from 'antd'
+import {Modal} from 'antd'
 import _ from 'lodash'
 
-import { COMMON_REQUEST_ERROR } from '../../redux/constants/commonActionTypes'
+import {COMMON_REQUEST_ERROR} from '../../redux/constants/commonActionTypes'
 
 export const REQ_BASE_URL = '/api'
 
 export const METHODS = {
-  GET: 'GET',
-  HEAD: 'HEAD',
-  POST: 'POST',
-  PUT: 'PUT',
-  DEL: 'DEL',
-  OPTIONS: 'OPTIONS',
-  PATCH: 'PATCH'
+  GET: 'GET', HEAD: 'HEAD', POST: 'POST', PUT: 'PUT', DEL: 'DEL', OPTIONS: 'OPTIONS', PATCH: 'PATCH'
 }
 
 export const REQ_TYPE = {
-  HTML: 'html',
-  JSON: 'json',
-  JSONP: 'jsonp'
+  HTML: 'html', JSON: 'json', JSONP: 'jsonp'
 }
 
 export const CACHE_TYPE = {
@@ -55,18 +47,15 @@ export const defaultOptions = {
 // 在 defaultOptions 基础上多出来的, request plan text，response json
 export const defaultJsonOptions = _.merge({}, defaultOptions, {
   headers: {
-    Accept: 'application/json, text/plain, */*',
-    'Cache-Control': 'no-cache'
-  },
-  type: REQ_TYPE.JSON
+    Accept: 'application/json, text/plain, */*', 'Cache-Control': 'no-cache'
+  }, type: REQ_TYPE.JSON
 })
 
 // 在 defaultJsonOptions 基础上多出来的, request response 皆是 json
 export const defaultBiJsonOptions = _.merge({}, defaultJsonOptions, {
   headers: {
     'Content-Type': 'application/json;charset=UTF-8'
-  },
-  reqType: REQ_TYPE.JSON
+  }, reqType: REQ_TYPE.JSON
 })
 
 // 获取真正请求的 URL
@@ -83,8 +72,7 @@ export function getRealUrl(url) {
  */
 function _showAuthError() {
   Modal.error({
-    title: '认证失败',
-    // eslint-disable-next-line react/jsx-filename-extension
+    title: '认证失败', // eslint-disable-next-line react/jsx-filename-extension
     content: (<p>您现在处于非认证状态！！！<br/>
       如果想保留本页状态，请在 <a href="/login" target="blank">新页面登陆</a> 。<br/>
       { /* 否则在 <Link to="/login" >当前页登陆</Link> 。 */}
@@ -97,8 +85,7 @@ function _showAuthError() {
  * @type {Function}
  */
 const showAuthError = _.debounce(_showAuthError, 500, {
-  leading: true,
-  trailing: false
+  leading: true, trailing: false
 })
 
 /**
@@ -107,8 +94,7 @@ const showAuthError = _.debounce(_showAuthError, 500, {
  */
 function _showServerError(e) {
   Modal.error({
-    title: '服务端错误！',
-    content: `服务端错误。服务端可能未正确部署或由于其他原因响应失败！请保留现场并联系开发人员。错误信息： ${e}`
+    title: '服务端错误！', content: `服务端错误。服务端可能未正确部署或由于其他原因响应失败！请保留现场并联系开发人员。错误信息： ${e}`
   })
 }
 
@@ -117,8 +103,7 @@ function _showServerError(e) {
  * @type {Function}
  */
 const showServerError = _.debounce(_showServerError, 500, {
-  leading: true,
-  trailing: false
+  leading: true, trailing: false
 })
 
 /**
@@ -146,7 +131,7 @@ export function wrapErrorHandler(errorHandler, dispatch) {
       // 认证失败，该登陆未登录
       showAuthError()
     } else if (handlerLevel > 100 && dispatch) {
-      dispatch({ type: COMMON_REQUEST_ERROR, payload: e })
+      dispatch({type: COMMON_REQUEST_ERROR, payload: e})
     } else if (handlerLevel > 100) {
       const msg = e.ret ? `[code]${e.ret}, [msg]${e.msg}` : JSON.stringify(e)
       // eslint-disable-next-line no-console

@@ -45,8 +45,8 @@ import java.util.Properties;
  * @author zhangsaizz
  */
 @Configuration
-@AutoConfigureAfter({ RedisAutoConfiguration.class })
-@AutoConfigureBefore({ J2CacheAutoConfiguration.class })
+@AutoConfigureAfter({RedisAutoConfiguration.class})
+@AutoConfigureBefore({J2CacheAutoConfiguration.class})
 @ConditionalOnProperty(value = "j2cache.l2-cache-open", havingValue = "true", matchIfMissing = true)
 public class J2CacheSpringRedisAutoConfiguration {
 
@@ -67,7 +67,7 @@ public class J2CacheSpringRedisAutoConfiguration {
 		String clusterName = l2CacheProperties.getProperty("cluster_name");
 		String password = l2CacheProperties.getProperty("password");
 		int database = l2CacheProperties.getProperty("database") == null ? 0
-				: Integer.parseInt(l2CacheProperties.getProperty("database"));
+			: Integer.parseInt(l2CacheProperties.getProperty("database"));
 		JedisConnectionFactory connectionFactory = null;
 		JedisPoolConfig config = RedisUtils.newPoolConfig(l2CacheProperties, null);
 		List<RedisNode> nodes = new ArrayList<>();
@@ -79,8 +79,7 @@ public class J2CacheSpringRedisAutoConfiguration {
 				RedisNode n = new RedisNode(host, port);
 				nodes.add(n);
 			}
-		}
-		else {
+		} else {
 			log.error("j2cache中的redis配置缺少hosts！！");
 			throw new IllegalArgumentException();
 		}
@@ -91,53 +90,51 @@ public class J2CacheSpringRedisAutoConfiguration {
 		}
 
 		switch (mode) {
-		case "sentinel":
-			RedisSentinelConfiguration sentinel = new RedisSentinelConfiguration();
-			sentinel.setDatabase(database);
-			sentinel.setPassword(paw);
-			sentinel.setMaster(clusterName);
-			sentinel.setSentinels(nodes);
-			connectionFactory = new JedisConnectionFactory(sentinel, config);
-			break;
-		case "cluster":
-			RedisClusterConfiguration cluster = new RedisClusterConfiguration();
-			cluster.setClusterNodes(nodes);
-			cluster.setMaxRedirects(MAX_ATTEMPTS);
-			cluster.setPassword(paw);
-			connectionFactory = new JedisConnectionFactory(cluster, config);
-			break;
-		case "sharded":
-			try {
-				for (String node : hosts.split(",")) {
-					connectionFactory = new JedisConnectionFactory(new JedisShardInfo(new URI(node)));
-					connectionFactory.setPoolConfig(config);
-					log.warn("Jedis mode [sharded] not recommended for use!!");
+			case "sentinel":
+				RedisSentinelConfiguration sentinel = new RedisSentinelConfiguration();
+				sentinel.setDatabase(database);
+				sentinel.setPassword(paw);
+				sentinel.setMaster(clusterName);
+				sentinel.setSentinels(nodes);
+				connectionFactory = new JedisConnectionFactory(sentinel, config);
+				break;
+			case "cluster":
+				RedisClusterConfiguration cluster = new RedisClusterConfiguration();
+				cluster.setClusterNodes(nodes);
+				cluster.setMaxRedirects(MAX_ATTEMPTS);
+				cluster.setPassword(paw);
+				connectionFactory = new JedisConnectionFactory(cluster, config);
+				break;
+			case "sharded":
+				try {
+					for (String node : hosts.split(",")) {
+						connectionFactory = new JedisConnectionFactory(new JedisShardInfo(new URI(node)));
+						connectionFactory.setPoolConfig(config);
+						log.warn("Jedis mode [sharded] not recommended for use!!");
+						break;
+					}
+				} catch (URISyntaxException e) {
+					throw new JedisConnectionException(e);
+				}
+				break;
+			default:
+				for (RedisNode node : nodes) {
+					String host = node.getHost();
+					int port = node.getPort();
+					RedisStandaloneConfiguration single = new RedisStandaloneConfiguration(host, port);
+					single.setDatabase(database);
+					single.setPassword(paw);
+					JedisClientConfigurationBuilder clientConfiguration = JedisClientConfiguration.builder();
+					clientConfiguration.usePooling().poolConfig(config);
+					clientConfiguration.connectTimeout(Duration.ofMillis(CONNECT_TIMEOUT));
+					connectionFactory = new JedisConnectionFactory(single, clientConfiguration.build());
 					break;
 				}
-			}
-			catch (URISyntaxException e) {
-				throw new JedisConnectionException(e);
-			}
-			break;
-		default:
-			for (RedisNode node : nodes) {
-				String host = node.getHost();
-				int port = node.getPort();
-				RedisStandaloneConfiguration single = new RedisStandaloneConfiguration(host, port);
-				single.setDatabase(database);
-				single.setPassword(paw);
-				JedisClientConfigurationBuilder clientConfiguration = JedisClientConfiguration.builder();
-				clientConfiguration.usePooling().poolConfig(config);
-				clientConfiguration.connectTimeout(Duration.ofMillis(CONNECT_TIMEOUT));
-				connectionFactory = new JedisConnectionFactory(single, clientConfiguration.build());
+				if ("single".equalsIgnoreCase(mode)) {
+				} else {
+					log.warn("Redis mode [" + mode + "] not defined. Using 'single'.");
+				}
 				break;
-			}
-			if ("single".equalsIgnoreCase(mode)) {
-			}
-			else {
-				log.warn("Redis mode [" + mode + "] not defined. Using 'single'.");
-			}
-			break;
 		}
 		return connectionFactory;
 	}
@@ -153,7 +150,7 @@ public class J2CacheSpringRedisAutoConfiguration {
 		String clusterName = l2CacheProperties.getProperty("cluster_name");
 		String password = l2CacheProperties.getProperty("password");
 		int database = l2CacheProperties.getProperty("database") == null ? 0
-				: Integer.parseInt(l2CacheProperties.getProperty("database"));
+			: Integer.parseInt(l2CacheProperties.getProperty("database"));
 		LettuceConnectionFactory connectionFactory = null;
 		LettucePoolingClientConfigurationBuilder config = LettucePoolingClientConfiguration.builder();
 		config.commandTimeout(Duration.ofMillis(CONNECT_TIMEOUT));
@@ -167,8 +164,7 @@ public class J2CacheSpringRedisAutoConfiguration {
 				RedisNode n = new RedisNode(host, port);
 				nodes.add(n);
 			}
-		}
-		else {
+		} else {
 			log.error("j2cache中的redis配置缺少hosts！！");
 			throw new IllegalArgumentException();
 		}
@@ -177,47 +173,72 @@ public class J2CacheSpringRedisAutoConfiguration {
 			paw = RedisPassword.of(password);
 		}
 		switch (mode) {
-		case "sentinel":
-			RedisSentinelConfiguration sentinel = new RedisSentinelConfiguration();
-			sentinel.setDatabase(database);
-			sentinel.setPassword(paw);
-			sentinel.setMaster(clusterName);
-			sentinel.setSentinels(nodes);
-			connectionFactory = new LettuceConnectionFactory(sentinel, config.build());
-			break;
-		case "cluster":
-			RedisClusterConfiguration cluster = new RedisClusterConfiguration();
-			cluster.setClusterNodes(nodes);
-			cluster.setMaxRedirects(MAX_ATTEMPTS);
-			cluster.setPassword(paw);
-			connectionFactory = new LettuceConnectionFactory(cluster, config.build());
-			break;
-		case "sharded":
-			throw new IllegalArgumentException("Lettuce not support use mode [sharded]!!");
-		default:
-			for (RedisNode node : nodes) {
-				String host = node.getHost();
-				int port = node.getPort();
-				RedisStandaloneConfiguration single = new RedisStandaloneConfiguration(host, port);
-				single.setDatabase(database);
-				single.setPassword(paw);
-				connectionFactory = new LettuceConnectionFactory(single, config.build());
+			case "sentinel":
+				RedisSentinelConfiguration sentinel = new RedisSentinelConfiguration();
+				sentinel.setDatabase(database);
+				sentinel.setPassword(paw);
+				sentinel.setMaster(clusterName);
+				sentinel.setSentinels(nodes);
+				connectionFactory = new LettuceConnectionFactory(sentinel, config.build());
 				break;
-			}
-			if ("single".equalsIgnoreCase(mode)) {
-			}
-			else {
-				log.warn("Redis mode [" + mode + "] not defined. Using 'single'.");
-			}
-			break;
+			case "cluster":
+				RedisClusterConfiguration cluster = new RedisClusterConfiguration();
+				cluster.setClusterNodes(nodes);
+				cluster.setMaxRedirects(MAX_ATTEMPTS);
+				cluster.setPassword(paw);
+				connectionFactory = new LettuceConnectionFactory(cluster, config.build());
+				break;
+			case "sharded":
+				throw new IllegalArgumentException("Lettuce not support use mode [sharded]!!");
+			default:
+				for (RedisNode node : nodes) {
+					String host = node.getHost();
+					int port = node.getPort();
+					RedisStandaloneConfiguration single = new RedisStandaloneConfiguration(host, port);
+					single.setDatabase(database);
+					single.setPassword(paw);
+					connectionFactory = new LettuceConnectionFactory(single, config.build());
+					break;
+				}
+				if ("single".equalsIgnoreCase(mode)) {
+				} else {
+					log.warn("Redis mode [" + mode + "] not defined. Using 'single'.");
+				}
+				break;
 		}
 		return connectionFactory;
 	}
 
+	private GenericObjectPoolConfig getGenericRedisPool(Properties props, String prefix) {
+		GenericObjectPoolConfig cfg = new GenericObjectPoolConfig();
+		cfg.setMaxTotal(Integer.valueOf((String) props.getOrDefault(key(prefix, "maxTotal"), "-1")));
+		cfg.setMaxIdle(Integer.valueOf((String) props.getOrDefault(key(prefix, "maxIdle"), "100")));
+		cfg.setMaxWaitMillis(Integer.valueOf((String) props.getOrDefault(key(prefix, "maxWaitMillis"), "100")));
+		cfg.setMinEvictableIdleTimeMillis(
+			Integer.valueOf((String) props.getOrDefault(key(prefix, "minEvictableIdleTimeMillis"), "864000000")));
+		cfg.setMinIdle(Integer.valueOf((String) props.getOrDefault(key(prefix, "minIdle"), "10")));
+		cfg.setNumTestsPerEvictionRun(
+			Integer.valueOf((String) props.getOrDefault(key(prefix, "numTestsPerEvictionRun"), "10")));
+		cfg.setLifo(Boolean.valueOf(props.getProperty(key(prefix, "lifo"), "false")));
+		cfg.setSoftMinEvictableIdleTimeMillis(
+			Integer.valueOf((String) props.getOrDefault(key(prefix, "softMinEvictableIdleTimeMillis"), "10")));
+		cfg.setTestOnBorrow(Boolean.valueOf(props.getProperty(key(prefix, "testOnBorrow"), "true")));
+		cfg.setTestOnReturn(Boolean.valueOf(props.getProperty(key(prefix, "testOnReturn"), "false")));
+		cfg.setTestWhileIdle(Boolean.valueOf(props.getProperty(key(prefix, "testWhileIdle"), "true")));
+		cfg.setTimeBetweenEvictionRunsMillis(
+			Integer.valueOf((String) props.getOrDefault(key(prefix, "timeBetweenEvictionRunsMillis"), "300000")));
+		cfg.setBlockWhenExhausted(Boolean.valueOf(props.getProperty(key(prefix, "blockWhenExhausted"), "false")));
+		return cfg;
+	}
+
+	private String key(String prefix, String key) {
+		return (prefix == null) ? key : prefix + "." + key;
+	}
+
 	@Bean("j2CacheRedisTemplate")
 	public RedisTemplate<String, Serializable> j2CacheRedisTemplate(
-			@Qualifier("j2CahceRedisConnectionFactory") RedisConnectionFactory j2CahceRedisConnectionFactory,
-			@Qualifier("j2CacheValueSerializer") RedisSerializer<Object> j2CacheSerializer) {
+		@Qualifier("j2CahceRedisConnectionFactory") RedisConnectionFactory j2CahceRedisConnectionFactory,
+		@Qualifier("j2CacheValueSerializer") RedisSerializer<Object> j2CacheSerializer) {
 		RedisTemplate<String, Serializable> template = new RedisTemplate<String, Serializable>();
 		template.setKeySerializer(new StringRedisSerializer());
 		template.setHashKeySerializer(new StringRedisSerializer());
@@ -234,36 +255,10 @@ public class J2CacheSpringRedisAutoConfiguration {
 
 	@Bean("j2CacheRedisMessageListenerContainer")
 	RedisMessageListenerContainer container(
-			@Qualifier("j2CahceRedisConnectionFactory") RedisConnectionFactory j2CahceRedisConnectionFactory) {
+		@Qualifier("j2CahceRedisConnectionFactory") RedisConnectionFactory j2CahceRedisConnectionFactory) {
 		RedisMessageListenerContainer container = new RedisMessageListenerContainer();
 		container.setConnectionFactory(j2CahceRedisConnectionFactory);
 		return container;
-	}
-
-	private GenericObjectPoolConfig getGenericRedisPool(Properties props, String prefix) {
-		GenericObjectPoolConfig cfg = new GenericObjectPoolConfig();
-		cfg.setMaxTotal(Integer.valueOf((String) props.getOrDefault(key(prefix, "maxTotal"), "-1")));
-		cfg.setMaxIdle(Integer.valueOf((String) props.getOrDefault(key(prefix, "maxIdle"), "100")));
-		cfg.setMaxWaitMillis(Integer.valueOf((String) props.getOrDefault(key(prefix, "maxWaitMillis"), "100")));
-		cfg.setMinEvictableIdleTimeMillis(
-				Integer.valueOf((String) props.getOrDefault(key(prefix, "minEvictableIdleTimeMillis"), "864000000")));
-		cfg.setMinIdle(Integer.valueOf((String) props.getOrDefault(key(prefix, "minIdle"), "10")));
-		cfg.setNumTestsPerEvictionRun(
-				Integer.valueOf((String) props.getOrDefault(key(prefix, "numTestsPerEvictionRun"), "10")));
-		cfg.setLifo(Boolean.valueOf(props.getProperty(key(prefix, "lifo"), "false")));
-		cfg.setSoftMinEvictableIdleTimeMillis(
-				Integer.valueOf((String) props.getOrDefault(key(prefix, "softMinEvictableIdleTimeMillis"), "10")));
-		cfg.setTestOnBorrow(Boolean.valueOf(props.getProperty(key(prefix, "testOnBorrow"), "true")));
-		cfg.setTestOnReturn(Boolean.valueOf(props.getProperty(key(prefix, "testOnReturn"), "false")));
-		cfg.setTestWhileIdle(Boolean.valueOf(props.getProperty(key(prefix, "testWhileIdle"), "true")));
-		cfg.setTimeBetweenEvictionRunsMillis(
-				Integer.valueOf((String) props.getOrDefault(key(prefix, "timeBetweenEvictionRunsMillis"), "300000")));
-		cfg.setBlockWhenExhausted(Boolean.valueOf(props.getProperty(key(prefix, "blockWhenExhausted"), "false")));
-		return cfg;
-	}
-
-	private String key(String prefix, String key) {
-		return (prefix == null) ? key : prefix + "." + key;
 	}
 
 }

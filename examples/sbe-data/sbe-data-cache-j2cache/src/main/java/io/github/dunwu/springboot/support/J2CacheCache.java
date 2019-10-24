@@ -13,7 +13,6 @@ import java.util.concurrent.Callable;
  * {@link CacheManager} implementation for J2Cache.
  *
  * @author zhangsaizz
- *
  */
 public class J2CacheCache extends AbstractValueAdaptingCache {
 
@@ -46,12 +45,19 @@ public class J2CacheCache extends AbstractValueAdaptingCache {
 	}
 
 	@Override
+	public ValueWrapper putIfAbsent(Object key, Object value) {
+		if (!cacheChannel.exists(j2CacheName, String.valueOf(key))) {
+			cacheChannel.set(j2CacheName, String.valueOf(key), value);
+		}
+		return get(key);
+	}
+
+	@Override
 	public <T> T get(Object key, Callable<T> valueLoader) {
 		T value;
 		try {
 			value = valueLoader.call();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new ValueRetrievalException(key, valueLoader, ex);
 		}
 		put(key, value);
@@ -61,14 +67,6 @@ public class J2CacheCache extends AbstractValueAdaptingCache {
 	@Override
 	public void put(Object key, Object value) {
 		cacheChannel.set(j2CacheName, String.valueOf(key), value, super.isAllowNullValues());
-	}
-
-	@Override
-	public ValueWrapper putIfAbsent(Object key, Object value) {
-		if (!cacheChannel.exists(j2CacheName, String.valueOf(key))) {
-			cacheChannel.set(j2CacheName, String.valueOf(key), value);
-		}
-		return get(key);
 	}
 
 	@Override
@@ -85,7 +83,7 @@ public class J2CacheCache extends AbstractValueAdaptingCache {
 	protected Object lookup(Object key) {
 		CacheObject cacheObject = cacheChannel.get(j2CacheName, String.valueOf(key));
 		if (cacheObject.rawValue() != null && cacheObject.rawValue().getClass().equals(NullObject.class)
-				&& super.isAllowNullValues()) {
+			&& super.isAllowNullValues()) {
 			return NullValue.INSTANCE;
 		}
 		return cacheObject.getValue();

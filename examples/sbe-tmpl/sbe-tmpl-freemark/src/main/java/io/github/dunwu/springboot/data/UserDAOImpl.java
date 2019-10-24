@@ -38,6 +38,18 @@ public class UserDAOImpl implements UserDAO {
 		jdbcTemplate.execute(sqlStatement);
 	}
 
+	private String getSqlStatement(String tmplSqlClear, Map params) {
+		String sqlStatement = null;
+		try {
+			sqlStatement = freemarkHelper.getMergeContent(tmplSqlClear, params);
+		} catch (IOException e) {
+			log.error("Freemarker IOException:", e);
+		} catch (TemplateException e) {
+			log.error("Freemarker TemplateException:", e);
+		}
+		return sqlStatement;
+	}
+
 	@Override
 	public void deleteByName(String name) {
 		Map params = new HashMap();
@@ -64,20 +76,6 @@ public class UserDAOImpl implements UserDAO {
 
 		String sqlStatement = getSqlStatement(FreemarkHelper.TMPL_SQL_CLEAR, params);
 		jdbcTemplate.execute(sqlStatement);
-	}
-
-	private String getSqlStatement(String tmplSqlClear, Map params) {
-		String sqlStatement = null;
-		try {
-			sqlStatement = freemarkHelper.getMergeContent(tmplSqlClear, params);
-		}
-		catch (IOException e) {
-			log.error("Freemarker IOException:", e);
-		}
-		catch (TemplateException e) {
-			log.error("Freemarker TemplateException:", e);
-		}
-		return sqlStatement;
 	}
 
 }

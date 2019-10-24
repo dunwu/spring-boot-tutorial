@@ -22,6 +22,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	 * 查询接口
 	 * <p>
 	 * 示例：http://localhost:8080/user/search/findByName?name=lisi
+	 *
 	 * @param name 姓名
 	 * @return
 	 */

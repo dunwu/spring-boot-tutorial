@@ -30,11 +30,11 @@ public class FileUploadController {
 	public String listUploadedFiles(Model model) throws IOException {
 
 		model.addAttribute("files",
-				storageService.loadAll()
-						.map(path -> MvcUriComponentsBuilder
-								.fromMethodName(FileUploadController.class, "serveFile", path.getFileName().toString())
-								.build().toString())
-						.collect(Collectors.toList()));
+			storageService.loadAll()
+				.map(path -> MvcUriComponentsBuilder
+					.fromMethodName(FileUploadController.class, "serveFile", path.getFileName().toString())
+					.build().toString())
+				.collect(Collectors.toList()));
 
 		return "uploadForm";
 	}
@@ -45,8 +45,8 @@ public class FileUploadController {
 
 		Resource file = storageService.loadAsResource(filename);
 		return ResponseEntity.ok()
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
-				.body(file);
+			.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
+			.body(file);
 	}
 
 	@PostMapping("/")
@@ -54,7 +54,7 @@ public class FileUploadController {
 
 		storageService.store(file);
 		redirectAttributes.addFlashAttribute("message",
-				"You successfully uploaded " + file.getOriginalFilename() + "!");
+			"You successfully uploaded " + file.getOriginalFilename() + "!");
 
 		return "redirect:/";
 	}

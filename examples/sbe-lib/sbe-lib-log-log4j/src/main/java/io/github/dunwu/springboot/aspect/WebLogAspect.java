@@ -31,7 +31,8 @@ public class WebLogAspect {
 		startTime.set(System.currentTimeMillis());
 
 		// 接收到请求，记录请求内容
-		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		ServletRequestAttributes attributes =
+			(ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpServletRequest request = attributes.getRequest();
 
 		// 记录下请求内容
@@ -39,7 +40,7 @@ public class WebLogAspect {
 		logger.info("HTTP_METHOD : " + request.getMethod());
 		logger.info("IP : " + request.getRemoteAddr());
 		logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "."
-				+ joinPoint.getSignature().getName());
+			+ joinPoint.getSignature().getName());
 		logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
 	}
 

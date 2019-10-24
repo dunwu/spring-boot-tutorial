@@ -48,7 +48,6 @@ public class MasterSlaveTests {
 		userList.forEach(user -> {
 			log.info(user.toString());
 		});
-
 	}
 
 }

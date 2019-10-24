@@ -19,8 +19,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 使用 @JsonTest 测试 DateJsonConvert 的配置是否生效
  *
  * @author Zhang Peng
- * @date 2018-12-30
  * @see DateJsonConvert
+ * @since 2018-12-30
  */
 @JsonTest
 @RunWith(SpringRunner.class)

@@ -18,11 +18,10 @@ import java.util.Collection;
  * 开启对spring cache支持的配置入口
  *
  * @author zhangsaizz
- *
  */
 @Configuration
 @ConditionalOnClass(J2Cache.class)
-@EnableConfigurationProperties({ J2CacheProperties.class, CacheProperties.class })
+@EnableConfigurationProperties({J2CacheProperties.class, CacheProperties.class})
 @ConditionalOnProperty(name = "j2cache.open-spring-cache", havingValue = "true")
 @EnableCaching
 public class J2CacheSpringCacheAutoConfiguration {

@@ -57,7 +57,7 @@ public class UserController {
 	@ApiOperation("用户列表分页展示")
 	@GetMapping("/listInPage")
 	public ResponseDTO<Page<User>> listInPage(@ApiParam("查看第几页") @RequestParam int page,
-			@ApiParam("每页多少条") @RequestParam int size) {
+		@ApiParam("每页多少条") @RequestParam int size) {
 		PageRequest pageRequest = PageRequest.of(page, size);
 		Page<User> userPage = repository.findAll(pageRequest);
 		return new ResponseDTO<>(true, ResponseDTO.CodeEn.SUCCESS, userPage);

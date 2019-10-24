@@ -21,7 +21,7 @@ public class WebUploadingApplication {
 		return (args) -> {
 			storageService.deleteAll();
 			storageService.init();
-		};
+		}
 	}
 
 }
