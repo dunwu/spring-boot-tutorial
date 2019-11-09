@@ -1,5 +1,17 @@
-anguage: java
+language: java
 jdk:
-	- oraclejdk8
+  - openjdk8
+
 script:
-	- mvn clean install -DskipTests=true -DskipTests=true -B -V
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+branches:
+  only:
+    - master
+
+notifications:
+  email:
+    recipients:
+      - forbreak@163.com
+    on_success: change # default: change
+    on_failure: always # default: always
