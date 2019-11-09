@@ -88,14 +88,14 @@ Spring Data 包含对 Elasticsearch 的 repository 支持。基本原则是根�
 
 ## 源码
 
-完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/data/sbe-data-elasticsearch)
+完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/data/spring-boot-data-elasticsearch)
 
 使用方法：
 
 ```bash
 mvn clean package
 cd target
-java -jar sbe-data-elasticsearch.jar
+java -jar spring-boot-data-elasticsearch.jar
 ```
 
 ## 引申和引用

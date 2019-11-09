@@ -127,14 +127,14 @@ public class MyAsyncUncaughtExceptionHandler implements AsyncUncaughtExceptionHa
 
 ## 源码
 
-完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/core/sbe-core-asyn)
+完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/core/spring-boot-asyn)
 
 使用方法：
 
 ```bash
 mvn clean package
 cd target
-java -jar sbe-core-asyn.jar
+java -jar spring-boot-asyn.jar
 ```
 
 ## 引申和引用

@@ -123,7 +123,7 @@ org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration org.springfr
 
 `@JsonTest` 使用示例：
 
-想试试完整示例，可以参考：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/sbe-web-json)
+想试试完整示例，可以参考：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/spring-boot-web-json)
 
 ```java
 @JsonTest
@@ -257,7 +257,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 ## 示例源码
 
-完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/sbe-web-json)
+完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/spring-boot-web-json)
 
 ## 引申和引用
 

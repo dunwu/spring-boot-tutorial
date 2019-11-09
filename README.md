@@ -19,11 +19,11 @@
 
 | 示例项目                                                        | 说明                                                                           |
 | --------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| [SpringBoot 教程之属性加载详解](docs/core/sbe-core-property.md) | 展示 Spring Boot 中如何读写 Spring Boot 配置属性。                             |
-| [SpringBoot 教程之 profile](docs/core/sbe-core-profile.md)      | 展示 Spring Boot 中如何配置 Profile 来使得应用能在不同运行环境使用各自的配置。 |
-| [sbe-core-aop](examples/sbe-core/sbe-core-aop)                  | 展示 Spring Boot 中如何使用 AOP 进行切面编程。                                 |
-| [SpringBoot 教程之处理异步请求](docs/core/sbe-core-asyn.md)     | 展示 Spring Boot 中如何支持异步方法。                                          |
-| [SpringBoot 教程之 banner 定制](docs/core/sbe-core-banner.md)   | 展示 Spring Boot 中如何定制 Banner。                                           |
+| [SpringBoot 教程之属性加载详解](spring-boot-property) | 展示 Spring Boot 中如何读写 Spring Boot 配置属性。                             |
+| [SpringBoot 教程之 profile](spring-boot-profile)      | 展示 Spring Boot 中如何配置 Profile 来使得应用能在不同运行环境使用各自的配置。 |
+| [spring-boot-aop](spring-boot-aop)                  | 展示 Spring Boot 中如何使用 AOP 进行切面编程。                                 |
+| [SpringBoot 教程之处理异步请求](spring-boot-async)     | 展示 Spring Boot 中如何支持异步方法。                                          |
+| [SpringBoot 教程之 banner 定制](spring-boot-banner)   | 展示 Spring Boot 中如何定制 Banner。                                           |
 
 ## Web
 
@@ -31,12 +31,12 @@
 
 | 示例项目                                                  | 说明                                                                                                                                                                                             |
 | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [sbe-web-helloworld](examples/sbe-web/sbe-web-helloworld) | 展示 Spring Boot Web 应用的 Hello World 示例。                                                                                                                                                   |
-| [sbe-web-form](examples/sbe-web/sbe-web-form)             | 展示 Spring Boot Web 应用中表单如何提交、校验。                                                                                                                                                  |
-| [sbe-web-json](examples/sbe-web/sbe-web-json)             | 展示 Spring Boot Web 应用中如何使用 json 序列化、反序列化。                                                                                                                                      |
-| [sbe-web-jsp](examples/sbe-web/sbe-web-jsp)               | 展示 Spring Boot Web 应用中如何运行 JSP，提供 2 种服务器的整合示例：Tomcat、 Jetty。                                                                                                             |
-| [sbe-web-websocket](examples/sbe-web/sbe-web-websocket)   | 展示 Spring Boot Web 应用中如何运行 WebSocket，提供 3 种服务器的整合示例：Tomcat、Jetty、Undertow。                                                                                              |
-| [sbe-web-ui](examples/sbe-web/sbe-web-ui)                 | 展示 Spring Boot Web 应用中如何整合前端 UI。目前已完成的示例有：[整合 Bootstrap](examples/sbe-web/sbe-web-ui/sbe-web-ui-bootstrap)、[整合 EasyUI](examples/sbe-web/sbe-web-ui/sbe-web-ui-easyui) |
+| [spring-boot-web-helloworld](spring-boot-helloworld) | 展示 Spring Boot Web 应用的 Hello World 示例。                                                                                                                                                   |
+| [spring-boot-web-form](spring-boot-web-form)             | 展示 Spring Boot Web 应用中表单如何提交、校验。                                                                                                                                                  |
+| [spring-boot-web-json](spring-boot-web-fastjson)             | 展示 Spring Boot Web 应用中如何使用 json 序列化、反序列化。                                                                                                                                      |
+| [spring-boot-web-jsp](spring-boot-web-jsp)               | 展示 Spring Boot Web 应用中如何运行 JSP，提供 2 种服务器的整合示例：Tomcat、 Jetty。                                                                                                             |
+| [spring-boot-web-websocket](spring-boot-web-websocket)   | 展示 Spring Boot Web 应用中如何运行 WebSocket，提供 3 种服务器的整合示例：Tomcat、Jetty、Undertow。                                                                                              |
+| [spring-boot-web-ui](spring-boot-web-ui)                 | 展示 Spring Boot Web 应用中如何整合前端 UI。目前已完成的示例有：[整合 Bootstrap](spring-boot-web-ui/spring-boot-web-ui-bootstrap)、[整合 EasyUI](spring-boot-web-ui/spring-boot-web-ui-easyui) |
 
 ## Data
 
@@ -48,38 +48,38 @@
 
 | 示例项目                                                                              | 说明                                                                             |
 | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| [sbe-data-jdbc](examples/sbe-data/sbe-data-jdbc)                                      | 展示在 Spring Boot 中，如何使用 JDBC 访问数据。                                  |
-| [sbe-data-jdbc-multi-datasource](examples/sbe-data/sbe-data-jdbc-multi-datasource)    | 展示在 Spring Boot 中，如何使用 JDBC 访问多数据源。                              |
-| [sbe-data-jpa](examples/sbe-data/sbe-data-jpa)                                        | Spring Boot 中使用 JPA 访问数据。                                                |
-| [sbe-data-mybatis](examples/sbe-data/sbe-data-mybatis)                                | Spring Boot + Mybatis Plus 访问数据。                                            |
-| [sbe-data-mybatis-multi-datasource](examples/sbe-data/sbe-data-jdbc-multi-datasource) | Spring Boot + Mybatis Plus 访问多数据源。                                        |
-| [sbe-data-mybatis-sharding](examples/sbe-data/sbe-data-mybatis-sharding)              | Spring Boot + Mybatis Plus + ShardingSphere (sharding-jdbc) 访问分库分表的数据。 |
-| [sbe-data-flyway](examples/sbe-data/sbe-data-mybatis)                                 | Spring Boot 中通过 flyway 控制 sql 版本。                                        |
+| [spring-boot-data-jdbc](spring-boot-data-jdbc)                                      | 展示在 Spring Boot 中，如何使用 JDBC 访问数据。                                  |
+| [spring-boot-data-jdbc-multi-datasource](spring-boot-data-jdbc-multi-datasource)    | 展示在 Spring Boot 中，如何使用 JDBC 访问多数据源。                              |
+| [spring-boot-data-jpa](spring-boot-data-jpa)                                        | Spring Boot 中使用 JPA 访问数据。                                                |
+| [spring-boot-data-mybatis](spring-boot-data-mybatis)                                | Spring Boot + Mybatis Plus 访问数据。                                            |
+| [spring-boot-data-mybatis-multi-datasource](spring-boot-data-jdbc-multi-datasource) | Spring Boot + Mybatis Plus 访问多数据源。                                        |
+| [spring-boot-data-mybatis-sharding](spring-boot-data-mybatis-sharding)              | Spring Boot + Mybatis Plus + ShardingSphere (sharding-jdbc) 访问分库分表的数据。 |
+| [spring-boot-data-flyway](spring-boot-data-mybatis)                                 | Spring Boot 中通过 flyway 控制 sql 版本。                                        |
 
 ### NoSql
 
 | 示例项目                                                           | 说明                                    |
 | ------------------------------------------------------------------ | --------------------------------------- |
-| [sbe-data-redis](examples/sbe-data/sbe-data-redis)                 | Spring Boot 中访问 redis。              |
-| [sbe-data-redis-cluster](examples/sbe-data/sbe-data-redis-cluster) | Spring Boot 中访问 redis 集群。         |
-| [sbe-data-mongodb](examples/sbe-data/sbe-data-mongodb)             | Spring Boot 中访问 mongodb 数据。       |
-| [sbe-data-elasticsearch](examples/sbe-data/sbe-data-elasticsearch) | Spring Boot 中访问 elasticsearch 数据。 |
+| [spring-boot-data-redis](spring-boot-data-redis)                 | Spring Boot 中访问 redis。              |
+| [spring-boot-data-redis-cluster](spring-boot-data-redis-cluster) | Spring Boot 中访问 redis 集群。         |
+| [spring-boot-data-mongodb](spring-boot-data-mongodb)             | Spring Boot 中访问 mongodb 数据。       |
+| [spring-boot-data-elasticsearch](spring-boot-data-elasticsearch) | Spring Boot 中访问 elasticsearch 数据。 |
 
 ### 缓存
 
 | 示例项目                                                             | 说明                                             |
 | -------------------------------------------------------------------- | ------------------------------------------------ |
-| [sbe-core-cache](examples/sbe-data/sbe-data-cache)                   | 展示 Spring Boot 中如何使用简单的应用缓存。      |
-| [sbe-data-cache-j2cache](examples/sbe-data/sbe-data-cache-j2cache)   | 展示 Spring Boot + J2Cache 实现分布式二级缓存。  |
-| [sbe-data-cache-jetcache](examples/sbe-data/sbe-data-cache-jetcache) | 展示 Spring Boot + Jetcache 实现分布式二级缓存。 |
+| [spring-boot-cache](spring-boot-data-cache)                   | 展示 Spring Boot 中如何使用简单的应用缓存。      |
+| [spring-boot-data-cache-j2cache](spring-boot-data-cache-j2cache)   | 展示 Spring Boot + J2Cache 实现分布式二级缓存。  |
+| [spring-boot-data-cache-jetcache](spring-boot-data-cache-jetcache) | 展示 Spring Boot + Jetcache 实现分布式二级缓存。 |
 
 ## Message
 
 | 示例项目                                              | 说明                                       |
 | ----------------------------------------------------- | ------------------------------------------ |
-| [sbe-msg-activemq](examples/sbe-msg/sbe-msg-activemq) | Spring Boot 中使用 ActiveMQ 作为消息队列。 |
-| [sbe-msg-kafka](examples/sbe-msg/sbe-msg-kafka)       | Spring Boot 中使用 Kafka 作为消息队列。    |
-| [sbe-msg-redis](examples/sbe-msg/sbe-msg-redis)       | Spring Boot 中使用 Redis 作为消息队列。    |
+| [spring-boot-msg-activemq](examples/spring-boot-msg/spring-boot-msg-activemq) | Spring Boot 中使用 ActiveMQ 作为消息队列。 |
+| [spring-boot-msg-kafka](examples/spring-boot-msg/spring-boot-msg-kafka)       | Spring Boot 中使用 Kafka 作为消息队列。    |
+| [spring-boot-msg-redis](examples/spring-boot-msg/spring-boot-msg-redis)       | Spring Boot 中使用 Redis 作为消息队列。    |
 
 ## Lib
 
@@ -96,10 +96,10 @@
 
 | 示例项目                                                    | 说明                                                               |
 | ----------------------------------------------------------- | ------------------------------------------------------------------ |
-| [sbe-lib-log-simple](examples/sbe-lib/sbe-lib-log-simple)   | 无需 xml 配置，展示使用 Spring Boot 中的日志相关属性定义日志配置。 |
-| [sbe-lib-log-logback](examples/sbe-lib/sbe-lib-log-logback) | 展示 Spring Boot 中使用 Logback 记录日志。                         |
-| [sbe-lib-log-log4j2](examples/sbe-lib/sbe-lib-log-log4j2)   | 展示 Spring Boot 中使用 Log4j2 记录日志。                          |
-| [sbe-lib-log-log4j](examples/sbe-lib/sbe-lib-log-log4j)     | 展示 Spring Boot 中使用 Log4j 记录日志。                           |
+| [spring-boot-logging-simple](examples/sbe-lib/spring-boot-logging-simple)   | 无需 xml 配置，展示使用 Spring Boot 中的日志相关属性定义日志配置。 |
+| [spring-boot-logging-logback](examples/sbe-lib/spring-boot-logging-logback) | 展示 Spring Boot 中使用 Logback 记录日志。                         |
+| [spring-boot-logging-log4j2](examples/sbe-lib/spring-boot-logging-log4j2)   | 展示 Spring Boot 中使用 Log4j2 记录日志。                          |
+| [spring-boot-logging-log4j](examples/sbe-lib/spring-boot-logging-log4j)     | 展示 Spring Boot 中使用 Log4j 记录日志。                           |
 
 ### 邮件
 
@@ -119,8 +119,8 @@
 
 | 示例项目                                                   | 说明                                         |
 | ---------------------------------------------------------- | -------------------------------------------- |
-| [sbe-tmpl-freemark](examples/sbe-tmpl/sbe-tmpl-freemark)   | 展示 Spring Boot 中使用 Freemark 模板引擎。  |
-| [sbe-tmpl-thymeleaf](examples/sbe-tmpl/sbe-tmpl-thymeleaf) | 展示 Spring Boot 中使用 Thymeleaf 模板引擎。 |
+| [spring-boot-tmpl-freemark](examples/spring-boot-tmpl/spring-boot-tmpl-freemark)   | 展示 Spring Boot 中使用 Freemark 模板引擎。  |
+| [spring-boot-tmpl-thymeleaf](examples/spring-boot-tmpl/spring-boot-tmpl-thymeleaf) | 展示 Spring Boot 中使用 Thymeleaf 模板引擎。 |
 
 ## Others
 
@@ -130,5 +130,5 @@
 | -------------------------------------------------------------- | ---------------------------------------------- |
 | [sbe-docker](examples/sbe-others/sbe-docker)                   | 展示 Spring Boot 如何通过 Docker 部署应用。    |
 | [sbe-schedule](examples/sbe-others/sbe-schedule)               | 展示 Spring Boot 如何使用简单的调度器。        |
-| [sbe-schedule-quartz](examples/sbe-others/sbe-schedule-quartz) | 展示 Spring Boot + Quartz 管理、使用调度任务。 |
+| [spring-boot-scheduler-quartz](examples/sbe-others/spring-boot-scheduler-quartz) | 展示 Spring Boot + Quartz 管理、使用调度任务。 |
 | [sbe-statemachine](examples/sbe-others/sbe-statemachine)       | 展示 Spring Boot 如何使用状态机控制工作流。    |
