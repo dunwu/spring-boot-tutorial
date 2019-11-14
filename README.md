@@ -1,9 +1,20 @@
-# Spring Boot Tutorial
+<p align="center">
+    <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener noreferrer">
+        <img src="http://dunwu.test.upcdn.net/common/logo/spring-boot.svg" alt="spring-boot-logo">
+    </a>
+</p>
 
-> Spring Boot 教程
->
-> ![](https://api.travis-ci.com/dunwu/spring-boot-tutorial.svg?branch=master)
->
+<p align="center">
+    <a href="https://lbesson.mit-license.org/" target="_blank" rel="noopener noreferrer">
+        <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT license">
+    </a>
+    <img alt="Spring Boot Version" src="https://img.shields.io/maven-central/v/org.springframework.boot/spring-boot-starter-parent/2.1.9.RELEASE?label=spring-boot">
+    <img src="https://img.shields.io/badge/maven-v3.6.0-blue" alt="maven">
+    <img src="https://api.travis-ci.com/dunwu/spring-boot-tutorial.svg?branch=master" alt="build">
+</p>
+
+<h1 align="center">Spring Boot Tutorial</h1>
+
 > 这是一个 Spring Boot 实战教程，通过大量丰富的示例，展示 Spring Boot 在各个应用领域的应用。本项目旨在覆盖 Java 应用的各领域。
 >
 > 本项目的源码使用 maven 进行构建管理，任意 maven module 都可以独立运行。

@@ -4,5 +4,6 @@
 
 > Spring Boot 实战教程
 
-[Java Tutorial](https://dunwu.github.io/spring-boot-tutorial/)
+[Java Tutorial](https://dunwu.github.io/java-tutorial/)
+[Spring Tutorial](https://dunwu.github.io/spring-tutorial/)
 [开始阅读](README.md)
