@@ -25,59 +25,24 @@
 						</div>
 						<div class="card fat">
 							<div class="card-body">
-								<h4 class="card-title text-center">登录</h4>
-								<form method="POST" action="/login" class="my-login-validation" novalidate="">
+								<h4 class="card-title text-center">忘记密码</h4>
+								<form method="POST" class="my-login-validation" novalidate="">
 									<div class="form-group">
-										<label for="username">用户名</label>
-										<input
-											id="username"
-											placeholder="用户名"
-											type="text"
-											class="form-control"
-											name="username"
-											value=""
-											required
-											autofocus
-										/>
+										<label for="email">E-Mail 地址</label>
+										<input id="email" type="email" class="form-control" name="email" value="" required autofocus />
 										<div class="invalid-feedback">
-											用户名无效
+											邮箱是无效的
 										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="password"
-											>密码
-											<a href="forgot.html" class="float-right">
-												忘记密码？
-											</a>
-										</label>
-										<input
-											id="password"
-											placeholder="密码"
-											type="password"
-											class="form-control"
-											name="password"
-											required
-											data-eye
-										/>
-										<div class="invalid-feedback">
-											Password is required
-										</div>
-									</div>
-
-									<div class="form-group">
-										<div class="custom-checkbox custom-control">
-											<input type="checkbox" name="remember" id="remember" class="custom-control-input" />
-											<label for="remember" class="custom-control-label">记住我</label>
+										<div class="form-text text-muted">
+											点击“重置密码”，我们会发送一个重置密码的链接
 										</div>
 									</div>
 
 									<div class="form-group m-0">
 										<button type="submit" class="btn btn-info btn-block">
-											登录
+											重置密码
 										</button>
 									</div>
-									<div class="mt-4 text-center">没有账户吗？ <a href="register.html">创建一个</a></div>
 								</form>
 							</div>
 						</div>

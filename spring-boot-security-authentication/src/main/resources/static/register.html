@@ -25,59 +25,50 @@
 						</div>
 						<div class="card fat">
 							<div class="card-body">
-								<h4 class="card-title text-center">登录</h4>
-								<form method="POST" action="/login" class="my-login-validation" novalidate="">
+								<h4 class="card-title text-center">注册</h4>
+								<form method="POST" class="my-login-validation" novalidate="">
 									<div class="form-group">
-										<label for="username">用户名</label>
-										<input
-											id="username"
-											placeholder="用户名"
-											type="text"
-											class="form-control"
-											name="username"
-											value=""
-											required
-											autofocus
-										/>
+										<label for="name">姓名</label>
+										<input id="name" type="text" class="form-control" name="name" required autofocus />
 										<div class="invalid-feedback">
-											用户名无效
+											你叫什么名字？
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label for="password"
-											>密码
-											<a href="forgot.html" class="float-right">
-												忘记密码？
-											</a>
-										</label>
-										<input
-											id="password"
-											placeholder="密码"
-											type="password"
-											class="form-control"
-											name="password"
-											required
-											data-eye
-										/>
+										<label for="email">邮箱</label>
+										<input id="email" type="email" class="form-control" name="email" required />
 										<div class="invalid-feedback">
-											Password is required
+											邮箱无效
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label for="password">密码</label>
+										<input id="password" type="password" class="form-control" name="password" required data-eye />
+										<div class="invalid-feedback">
+											必须填写密码
 										</div>
 									</div>
 
 									<div class="form-group">
 										<div class="custom-checkbox custom-control">
-											<input type="checkbox" name="remember" id="remember" class="custom-control-input" />
-											<label for="remember" class="custom-control-label">记住我</label>
+											<input type="checkbox" name="agree" id="agree" class="custom-control-input" required="" />
+											<label for="agree" class="custom-control-label"
+												>我同意 <a href="#">条款</a></label
+											>
+											<div class="invalid-feedback">
+												你必须同意条款
+											</div>
 										</div>
 									</div>
 
 									<div class="form-group m-0">
 										<button type="submit" class="btn btn-info btn-block">
-											登录
+											注册
 										</button>
 									</div>
-									<div class="mt-4 text-center">没有账户吗？ <a href="register.html">创建一个</a></div>
+									<div class="mt-4 text-center">已经有账户了？ <a href="login.html">登录</a></div>
 								</form>
 							</div>
 						</div>

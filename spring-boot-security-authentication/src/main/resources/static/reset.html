@@ -17,67 +17,40 @@
 
 	<body class="dunwu-login-page">
 		<section class="h-100">
-			<div class="container h-100">
-				<div class="row justify-content-md-center h-100">
+			<div class="container h-100">justify-content-md-center
+				<div class="row  h-100">
 					<div class="card-wrapper">
 						<div class="brand">
 							<img src="http://dunwu.test.upcdn.net/common/logo/zp.png" alt="logo" />
 						</div>
 						<div class="card fat">
 							<div class="card-body">
-								<h4 class="card-title text-center">登录</h4>
-								<form method="POST" action="/login" class="my-login-validation" novalidate="">
+								<h4 class="card-title">Reset Password</h4>
+								<form method="POST" class="my-login-validation" novalidate="">
 									<div class="form-group">
-										<label for="username">用户名</label>
+										<label for="new-password">New Password</label>
 										<input
-											id="username"
-											placeholder="用户名"
-											type="text"
-											class="form-control"
-											name="username"
-											value=""
-											required
-											autofocus
-										/>
-										<div class="invalid-feedback">
-											用户名无效
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="password"
-											>密码
-											<a href="forgot.html" class="float-right">
-												忘记密码？
-											</a>
-										</label>
-										<input
-											id="password"
-											placeholder="密码"
+											id="new-password"
 											type="password"
 											class="form-control"
 											name="password"
 											required
+											autofocus
 											data-eye
 										/>
 										<div class="invalid-feedback">
 											Password is required
 										</div>
-									</div>
-
-									<div class="form-group">
-										<div class="custom-checkbox custom-control">
-											<input type="checkbox" name="remember" id="remember" class="custom-control-input" />
-											<label for="remember" class="custom-control-label">记住我</label>
+										<div class="form-text text-muted">
+											Make sure your password is strong and easy to remember
 										</div>
 									</div>
 
 									<div class="form-group m-0">
 										<button type="submit" class="btn btn-info btn-block">
-											登录
+											Reset Password
 										</button>
 									</div>
-									<div class="mt-4 text-center">没有账户吗？ <a href="register.html">创建一个</a></div>
 								</form>
 							</div>
 						</div>

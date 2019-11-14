@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 2019-09-25
  */
 @SpringBootApplication
-public class SpringBootAuthenticationSecurityApplication {
+public class SpringBootAuthSecurityApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootAuthenticationSecurityApplication.class, args);
+		SpringApplication.run(SpringBootAuthSecurityApplication.class, args);
 	}
 
 }

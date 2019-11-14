@@ -26,11 +26,9 @@ public class UserDetailServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// 模拟一个用户，替代数据库获取逻辑
 		MyUser user = new MyUser();
-		user.setUserName(username);
-		user.setPassword(this.passwordEncoder.encode("123456"));
+		user.setUserName(username).setPassword(this.passwordEncoder.encode("123456"));
 		// 输出加密后的密码
 		log.info("加密后的密码：" + user.getPassword());
-
 		return new User(username, user.getPassword(), user.isEnabled(), user.isAccountNonExpired(),
 			user.isCredentialsNonExpired(), user.isAccountNonLocked(),
 			AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));

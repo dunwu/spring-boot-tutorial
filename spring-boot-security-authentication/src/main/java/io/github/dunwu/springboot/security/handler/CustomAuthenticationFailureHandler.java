@@ -24,7 +24,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 		AuthenticationException exception) throws IOException {
 		response.setStatus(HttpStatus.UNAUTHORIZED.value());
 		response.setContentType("application/json;charset=utf-8");
-		response.getWriter().write(mapper.writeValueAsString(exception.getMessage()));
+		response.getWriter().write(mapper.writeValueAsString("登录失败：" + exception.getMessage()));
 	}
 
 }

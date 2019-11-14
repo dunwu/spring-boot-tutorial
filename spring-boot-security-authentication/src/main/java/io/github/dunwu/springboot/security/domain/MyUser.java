@@ -2,11 +2,13 @@ package io.github.dunwu.springboot.security.domain;
 
 import lombok.Data;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
 @Data
 @ToString
+@Accessors(chain = true)
 public class MyUser implements Serializable {
 
 	private static final long serialVersionUID = 3497935890426858541L;
