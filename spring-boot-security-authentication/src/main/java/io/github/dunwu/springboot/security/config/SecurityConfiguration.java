@@ -1,7 +1,7 @@
 package io.github.dunwu.springboot.security.config;
 
 import io.github.dunwu.springboot.security.handler.CustomAuthenticationFailureHandler;
-import io.github.dunwu.springboot.security.handler.CustomAuthenticationSucessHandler;
+import io.github.dunwu.springboot.security.handler.CustomAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,11 +15,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private CustomAuthenticationSucessHandler authenticationSucessHandler;
+	private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
 
 	@Autowired
 	private CustomAuthenticationFailureHandler authenticationFailureHandler;
 
+	/**
+	 * 模拟数据库查询，判断尝试登陆用户是否满足认证条件
+	 *
+	 * @param auth AuthenticationManagerBuilder
+	 * @throws Exception 异常
+	 */
 	@Override
 	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication()
@@ -33,14 +39,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/unauthorized", "/login", "/*.html", "/css/*.css").permitAll()
-			.anyRequest().authenticated(); // 所有请求都需要认证
+			// 设置不需要认证的路径
+			.antMatchers("/unauthorized", "/login", "/auth/*.html", "/css/*.css")
+			.permitAll()
+			// 其余所有请求都需要认证
+			.anyRequest()
+			.authenticated();
 
 		http.formLogin() // 表单登录
 			// http.httpBasic() // HTTP Basic
 			.loginPage("/unauthorized") // 登录页面
 			.loginProcessingUrl("/login") // 处理登录请求表单的 URL
-			.successHandler(authenticationSucessHandler) // 处理登录成功事件
+			.successHandler(authenticationSuccessHandler) // 处理登录成功事件
 			.failureHandler(authenticationFailureHandler); // 处理登录失败事件
 
 		http.csrf().disable();

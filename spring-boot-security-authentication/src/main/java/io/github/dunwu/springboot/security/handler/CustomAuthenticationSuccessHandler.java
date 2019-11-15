@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Component
-public class CustomAuthenticationSucessHandler implements AuthenticationSuccessHandler {
+public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 

@@ -36,7 +36,7 @@ public class UnAuthorizedController {
 		if (savedRequest != null) {
 			String targetUrl = savedRequest.getRedirectUrl();
 			log.info("{} 需要认证后才能访问", targetUrl);
-			redirectStrategy.sendRedirect(request, response, "/login.html");
+			redirectStrategy.sendRedirect(request, response, "/auth/login.html");
 		}
 		return "访问的资源需要身份认证！";
 	}

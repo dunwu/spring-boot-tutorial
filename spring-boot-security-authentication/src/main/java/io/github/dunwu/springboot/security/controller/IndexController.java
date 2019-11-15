@@ -26,11 +26,6 @@ public class IndexController {
 		this.objectMapper = objectMapper;
 	}
 
-	@GetMapping("hello")
-	public String hello() {
-		return "hello spring security";
-	}
-
 	@GetMapping("/")
 	public String index(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 		throws IOException {
