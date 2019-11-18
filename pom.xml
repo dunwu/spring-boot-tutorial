@@ -9,6 +9,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>spring-boot-helloworld</module>
 		<module>spring-boot-aop</module>
 		<module>spring-boot-banner</module>
 		<module>spring-boot-bean</module>
@@ -43,7 +44,6 @@
 		<module>spring-boot-test-junit5</module>
 		<module>spring-boot-scheduler</module>
 		<module>spring-boot-scheduler-quartz</module>
-		<module>spring-boot-web-helloworld</module>
 		<module>spring-boot-web-jsp</module>
 		<module>spring-boot-web-websocket</module>
 		<module>spring-boot-web-form</module>
