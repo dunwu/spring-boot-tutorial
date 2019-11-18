@@ -1,34 +1,11 @@
 # SpringBoot 教程之属性加载详解
 
-<!-- TOC depthFrom:2 depthTo:3 -->
-
-- [加载 property 顺序](#加载-property-顺序)
-- [随机属性](#随机属性)
-- [命令行属性](#命令行属性)
-- [Application 属性文件](#application-属性文件)
-- [Profile 特定属性](#profile-特定属性)
-- [属性中的占位符](#属性中的占位符)
-- [YAML 属性](#yaml-属性)
-    - [访问属性](#访问属性)
-    - [多 profile 配置](#多-profile-配置)
-    - [YAML 的缺点](#yaml-的缺点)
-- [属性前缀](#属性前缀)
-- [属性松散绑定规则](#属性松散绑定规则)
-- [属性转换](#属性转换)
-    - [时间单位转换](#时间单位转换)
-    - [数据大小转换](#数据大小转换)
-- [校验属性](#校验属性)
-- [源码](#源码)
-- [引申和引用](#引申和引用)
-
-<!-- /TOC -->
-
 ## 加载 property 顺序
 
 Spring Boot 加载 property 顺序如下：
 
 1. [Devtools 全局配置](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-devtools-globalsettings) (当 devtools 被激活 `\~/.spring-boot-devtools.properties`).
-2. [测试环境中的 `@TestPropertySource` 注解配置](https://docs.spring.io/spring/docs/5.1.3.RELEASE/javadoc-api/org/springframework/test/context/TestPropertySource.html)
+2. [测试环境中的 `@TestPropertySource` 注解配置](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/context/TestPropertySource.html)
 3. 测试环境中的属性 `properties`：[`@SpringBootTest`](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/context/SpringBootTest.html) 和 [测试注解](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-tests).
 4. 命令行参数
 5. `SPRING_APPLICATION_JSON` 属性
@@ -386,24 +363,10 @@ public class AcmeProperties {
 
 你也可以自定义一个名为 `configurationPropertiesValidator` 的校验器 Bean。获取这个 `@Bean` 的方法必须声明为 `static`。
 
-## 源码
+## 示例源码
 
-完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/core/spring-boot-property)
+> 示例源码：[spring-boot-property](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-property)
 
-使用方法：
-
-```bash
-mvn clean package
-cd target
-java -jar spring-boot-property.jar
-```
-
-## 引申和引用
-
-**引申**
-
-- [Spring Boot 教程](https://github.com/dunwu/spring-boot-tutorial)
-
-**参考**
+## 参考资料
 
 - [Spring Boot 官方文档之 boot-features-external-config](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config)

@@ -1,4 +1,4 @@
-# SpringBoot 教程之第一个 Web 工程
+# SpringBoot 教程之 HelloWorld
 
 ## 创建项目
 
@@ -8,7 +8,6 @@
 2. 选择构建工具`Maven Project`、Spring Boot 版本 `1.5.10` 以及一些工程基本信息，可参考下图所示：
 
 <div align="center"><img src="http://dunwu.test.upcdn.net/snap/start.spring.io.png!zp"/></div>
-
 3. 点击`Generate Project`下载项目压缩包
 4. 解压压缩包，包中已是一个完整的项目。
 
@@ -17,7 +16,6 @@
 如果你使用 Intellij 作为 IDE，那么你可以直接使用 SPRING INITIALIZR，参考下图操作：
 
 <div align="center"><img src="http://dunwu.test.upcdn.net/snap/intellij-spring-initializr.gif!zp"/></div>
-
 ## 项目说明
 
 **重要文件**
@@ -132,3 +130,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 ```
 
 至此已完成目标，通过 Maven 构建了一个空白 Spring Boot 项目，再通过引入 web 模块实现了一个简单的请求处理。
+
+## 示例源码
+
+> 示例源码：[spring-boot-web-helloworld](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-helloworld)

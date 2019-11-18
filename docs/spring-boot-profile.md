@@ -1,27 +1,8 @@
-# SpringBoot 教程之 profile
+# SpringBoot 教程之 profile 的应用
 
 > 一个应用为了在不同的环境下工作，常常会有不同的配置，代码逻辑处理。Spring Boot 对此提供了简便的支持。
 >
 > 关键词： `@Profile`、`spring.profiles.active`
-
-<!-- TOC depthFrom:2 depthTo:3 -->
-
-- [区分环境的配置](#区分环境的配置)
-    - [properties 配置](#properties-配置)
-    - [yml 配置](#yml-配置)
-- [区分环境的代码](#区分环境的代码)
-    - [修饰类](#修饰类)
-    - [修饰注解](#修饰注解)
-    - [修饰方法](#修饰方法)
-- [激活 profile](#激活-profile)
-    - [插件激活 profile](#插件激活-profile)
-    - [main 方法激活 profile](#main-方法激活-profile)
-    - [jar 激活 profile](#jar-激活-profile)
-    - [在 Java 代码中激活 profile](#在-java-代码中激活-profile)
-- [源码](#源码)
-- [引申和引用](#引申和引用)
-
-<!-- /TOC -->
 
 ## 区分环境的配置
 
@@ -192,25 +173,12 @@ ctx.register(SomeConfig.class, StandaloneDataConfig.class, JndiDataConfig.class)
 ctx.refresh();
 ```
 
-## 源码
 
-完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/core/spring-boot-profile)
+## 示例源码
 
-使用方法：
+> 示例源码：[spring-boot-profile](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-profile)
 
-```bash
-mvn clean package
-cd target
-java -jar -Dspring.profiles.active=prod spring-boot-profile.jar
-```
+## 参考资料
 
-## 引申和引用
-
-**引申**
-
-- [Spring Boot 教程](https://github.com/dunwu/spring-boot-tutorial)
-
-**参考**
-
-- [Bean Definition Profiles](https://docs.spring.io/spring/docs/5.1.3.RELEASE/spring-framework-reference/core.html#beans-definition-profiles)
-- [boot-features-profiles](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-profiles)
+- [Spring 官方文档之 Bean Definition Profiles](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-definition-profiles)
+- [Spring Boot 官方文档之 boot-features-profiles](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-profiles)
