@@ -34,19 +34,17 @@ public class SpringBootDataJdbcApplication implements CommandLineRunner {
 
 		if (userDao != null) {
 			printDataSourceInfo(userDao.getJdbcTemplate());
-			log.info("连接数据源成功！");
+			log.info("Connect to datasource success.");
 		} else {
-			log.error("连接数据源失败！");
+			log.error("Connect to datasource failed!");
 			return;
 		}
 
 		List<User> list = userDao.list();
-		list.forEach(item -> {
-			log.info(item.toString());
-		});
+		list.forEach(item -> log.info(item.toString()));
 	}
 
-	public void printDataSourceInfo(JdbcTemplate jdbcTemplate) throws SQLException {
+	private void printDataSourceInfo(JdbcTemplate jdbcTemplate) throws SQLException {
 
 		DataSource dataSource = jdbcTemplate.getDataSource();
 
@@ -54,14 +52,14 @@ public class SpringBootDataJdbcApplication implements CommandLineRunner {
 		if (dataSource != null) {
 			connection = dataSource.getConnection();
 		} else {
-			log.error("获取 DataSource 失败");
+			log.error("Get dataSource failed!");
 			return;
 		}
 
 		if (connection != null) {
-			log.info("DB URL: {}", connection.getMetaData().getURL());
+			log.info("DataSource Url: {}", connection.getMetaData().getURL());
 		} else {
-			log.error("获取 Connection 失败");
+			log.error("Connect to datasource failed!");
 		}
 	}
 

@@ -3,13 +3,19 @@ package io.github.dunwu.springboot.data;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+/**
+ * user 表 Dao 接口实现类
+ *
+ * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
+ * @since 2019/11/18
+ */
+@Repository
 public class UserDaoImpl implements UserDao {
 
 	private final JdbcTemplate jdbcTemplate;
@@ -19,16 +25,39 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
+	public void insert(User user) {
+		jdbcTemplate.update("INSERT INTO user(username, password, email) VALUES(?, ?, ?)",
+			user.getUsername(), user.getPassword(), user.getEmail());
+	}
+
+	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void batchInsert(List<User> users) {
-		String sql = "INSERT INTO user(name, age, address, email) VALUES(?, ?, ?, ?)";
+		String sql = "INSERT INTO user(username, password, email) VALUES(?, ?, ?)";
 
 		List<Object[]> params = new ArrayList<>();
 
 		users.forEach(item -> {
-			params.add(new Object[] { item.getName(), item.getAge(), item.getAddress(), item.getEmail() });
+			params.add(new Object[] { item.getUsername(), item.getPassword(), item.getEmail() });
 		});
 		jdbcTemplate.batchUpdate(sql, params);
+	}
+
+	@Override
+	public void deleteByName(String username) {
+		jdbcTemplate.update("DELETE FROM user WHERE username = ?", username);
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public void deleteAll() {
+		jdbcTemplate.execute("DELETE FROM user");
+	}
+
+	@Override
+	public void update(User user) {
+		jdbcTemplate.update("UPDATE USER SET username=?, password=?, email=? WHERE id=?",
+			user.getUsername(), user.getPassword(), user.getEmail(), user.getId());
 	}
 
 	@Override
@@ -41,55 +70,45 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void deleteByName(String name) {
-		jdbcTemplate.update("DELETE FROM user WHERE name = ?", name);
-	}
-
-	@Override
-	public void insert(User user) {
-		jdbcTemplate.update("INSERT INTO user(name, age, address, email) VALUES(?, ?, ?, ?)", user.getName(),
-			user.getAge(), user.getAddress(), user.getEmail());
-	}
-
-	@Override
 	public List<User> list() {
 		return jdbcTemplate.query("select * from USER", new BeanPropertyRowMapper(User.class));
 	}
 
 	@Override
-	public User queryByName(String name) {
+	public User queryByName(String username) {
 		try {
-			return jdbcTemplate.queryForObject("SELECT * FROM user WHERE name = ?",
-				new BeanPropertyRowMapper<>(User.class), name);
+			return jdbcTemplate.queryForObject("SELECT * FROM user WHERE username = ?",
+				new BeanPropertyRowMapper<>(User.class), username);
 		} catch (EmptyResultDataAccessException e) {
 			return null;
 		}
 	}
 
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	public JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
+	}
+
+	@Override
+	public void truncate() {
+		jdbcTemplate.execute("TRUNCATE TABLE user");
+	}
+
+	@Override
 	public void recreateTable() {
 		jdbcTemplate.execute("DROP TABLE IF EXISTS user");
 
 		String sqlStatement =
-			"CREATE TABLE user (\n" + "    id      BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Id',\n"
-				+ "    name    VARCHAR(10)         NOT NULL DEFAULT '' COMMENT '用户名',\n"
-				+ "    age     TINYINT(3)          NOT NULL DEFAULT 0 COMMENT '年龄',\n"
-				+ "    address VARCHAR(32)         NOT NULL DEFAULT '' COMMENT '地址',\n"
-				+ "    email   VARCHAR(32)         NOT NULL DEFAULT '' COMMENT '邮件',\n" + "    PRIMARY KEY (id)\n"
-				+ ") COMMENT = '用户表';";
+			"CREATE TABLE `user` (\n"
+				+ "    `id`       INT(20)             NOT NULL AUTO_INCREMENT COMMENT 'ID',\n"
+				+ "    `username` VARCHAR(30)         NOT NULL COMMENT '用户名',\n"
+				+ "    `password` VARCHAR(60)         NOT NULL COMMENT '密码',\n"
+				+ "    `email`    VARCHAR(100)        NOT NULL COMMENT '邮箱',\n"
+				+ "    PRIMARY KEY (`id`),\n"
+				+ "    UNIQUE KEY `uk_username`(`username`),\n"
+				+ "    UNIQUE KEY `uk_email`(`email`)\n"
+				+ ") ENGINE = INNODB COMMENT ='用户表';\n";
 		jdbcTemplate.execute(sqlStatement);
-	}
-
-	@Override
-	public void update(User user) {
-		jdbcTemplate.update("UPDATE USER SET name=?, age=?, address=?, email=? WHERE id=?", user.getName(),
-			user.getAge(), user.getAddress(), user.getEmail(), user.getId());
-	}
-
-	@Override
-	public JdbcTemplate getJdbcTemplate() {
-		return jdbcTemplate;
 	}
 
 }
