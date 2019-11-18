@@ -11,8 +11,9 @@
 
 	<groupId>io.github.dunwu.springboot</groupId>
 	<artifactId>spring-boot-security-session</artifactId>
-	<version>1.0.0</version>
 	<name>spring-boot-security-session</name>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
 
 	<dependencies>
 		<dependency>
@@ -24,16 +25,29 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>3.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-data-redis</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.github.dunwu</groupId>
-			<artifactId>dunwu-common</artifactId>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
 			<version>0.4.8</version>
 		</dependency>
 	</dependencies>
