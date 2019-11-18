@@ -13,28 +13,27 @@ import javax.sql.DataSource;
 @Configuration
 public class DataSourceConfig {
 
-	@Bean(name = "primaryDataSource")
-	@Qualifier("primaryDataSource")
-	@ConfigurationProperties(prefix = "spring.datasource.primary")
-	public DataSource primaryDataSource() {
+	@Primary
+	@Bean("mysqlDataSource")
+	@ConfigurationProperties(prefix = "spring.datasource.mysql")
+	public DataSource mysqlDataSource() {
 		return DataSourceBuilder.create().build();
-	}
-
-	@Bean(name = "primaryJdbcTemplate")
-	public JdbcTemplate primaryJdbcTemplate(@Qualifier("primaryDataSource") DataSource dataSource) {
-		return new JdbcTemplate(dataSource);
 	}
 
 	@Primary
-	@Bean(name = "secondaryDataSource")
-	@Qualifier("secondaryDataSource")
-	@ConfigurationProperties(prefix = "spring.datasource.secondary")
-	public DataSource secondaryDataSource() {
+	@Bean("mysqlJdbcTemplate")
+	public JdbcTemplate mysqlJdbcTemplate(@Qualifier("mysqlDataSource") DataSource dataSource) {
+		return new JdbcTemplate(dataSource);
+	}
+
+	@Bean("h2DataSource")
+	@ConfigurationProperties(prefix = "spring.datasource.h2")
+	public DataSource h2DataSource() {
 		return DataSourceBuilder.create().build();
 	}
 
-	@Bean(name = "secondaryJdbcTemplate")
-	public JdbcTemplate secondaryJdbcTemplate(@Qualifier("secondaryDataSource") DataSource dataSource) {
+	@Bean(name = "h2JdbcTemplate")
+	public JdbcTemplate h2JdbcTemplate(@Qualifier("h2DataSource") DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
 	}
 

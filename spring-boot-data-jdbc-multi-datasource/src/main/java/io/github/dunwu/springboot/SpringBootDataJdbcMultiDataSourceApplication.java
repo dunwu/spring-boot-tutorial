@@ -37,17 +37,17 @@ public class SpringBootDataJdbcMultiDataSourceApplication implements CommandLine
 
 		if (mysqlUserDao != null && mysqlUserDao.getJdbcTemplate() != null) {
 			printDataSourceInfo(mysqlUserDao.getJdbcTemplate());
-			log.info("连接主数据源成功！");
+			log.info("Connect to mysql datasource success.");
 		} else {
-			log.error("连接主数据源失败！");
+			log.error("Connect to mysql datasource failed!");
 			return;
 		}
 
 		if (h2UserDao != null) {
 			printDataSourceInfo(h2UserDao.getJdbcTemplate());
-			log.info("连接次数据源成功！");
+			log.info("Connect to h2 datasource success.");
 		} else {
-			log.error("连接次数据源失败！");
+			log.error("Connect to h2 datasource failed!");
 			return;
 		}
 
@@ -58,7 +58,7 @@ public class SpringBootDataJdbcMultiDataSourceApplication implements CommandLine
 		h2UserDao.recreateTable();
 	}
 
-	public void printDataSourceInfo(JdbcTemplate jdbcTemplate) throws SQLException {
+	private void printDataSourceInfo(JdbcTemplate jdbcTemplate) throws SQLException {
 
 		DataSource dataSource = jdbcTemplate.getDataSource();
 
@@ -66,14 +66,14 @@ public class SpringBootDataJdbcMultiDataSourceApplication implements CommandLine
 		if (dataSource != null) {
 			connection = dataSource.getConnection();
 		} else {
-			log.error("获取 DataSource 失败");
+			log.error("Get dataSource failed!");
 			return;
 		}
 
 		if (connection != null) {
-			log.info("DB URL: {}", connection.getMetaData().getURL());
+			log.info("DataSource Url: {}", connection.getMetaData().getURL());
 		} else {
-			log.error("获取 Connection 失败");
+			log.error("Connect to datasource failed!");
 		}
 	}
 
