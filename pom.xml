@@ -53,7 +53,7 @@
 		<module>spring-boot-web-ui</module>
 		<module>spring-boot-security-simple</module>
 		<module>spring-boot-security-authentication</module>
-		<module>spring-boot-security-kaptcha</module>
+		<module>spring-boot-security-checkcode</module>
 		<module>spring-boot-security-session</module>
 		<module>spring-boot-security-remember-me</module>
 	</modules>
