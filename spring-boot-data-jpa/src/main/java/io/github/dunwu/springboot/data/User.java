@@ -1,37 +1,67 @@
 package io.github.dunwu.springboot.data;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Data
+/**
+ * 用户实体，对应 user 表
+ *
+ * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
+ * @since 2019/11/18
+ */
 @Entity
+@Data
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String name;
+	private String username;
 
-	private Integer age;
-
-	private String address;
+	private String password;
 
 	private String email;
 
-	public User() {}
-
-	public User(String name, Integer age, String address, String email) {
-		this.name = name;
-		this.age = age;
-		this.address = address;
+	public User(String username, String password, String email) {
+		this.username = username;
+		this.password = password;
 		this.email = email;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+
+		if (!(o instanceof User)) {
+			return false;
+		}
+
+		User user = (User) o;
+
+		if (id != null && id.equals(user.id)) {
+			return true;
+		}
+
+		return username.equals(user.username);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, username);
 	}
 
 }
