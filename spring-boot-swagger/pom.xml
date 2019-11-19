@@ -12,13 +12,10 @@
 	<groupId>io.github.dunwu.springboot</groupId>
 	<artifactId>spring-boot-swagger</artifactId>
 	<version>1.0.0</version>
-	<name>spring-boot-swagger</name>
+	<packaging>jar</packaging>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-	</properties>
+	<name>spring-boot-swagger</name>
+	<description>SpringBoot + Swagger generate rest api docs</description>
 
 	<dependencies>
 		<dependency>
@@ -35,6 +32,10 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
@@ -42,15 +43,6 @@
 			<groupId>com.spring4all</groupId>
 			<artifactId>swagger-spring-boot-starter</artifactId>
 			<version>1.9.0.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>io.swagger</groupId>
-			<artifactId>swagger-annotations</artifactId>
-			<version>1.5.22</version>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
 		</dependency>
 	</dependencies>
 

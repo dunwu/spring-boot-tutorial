@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot;
+package io.github.dunwu.springboot.web;
 
 /**
  * @author Zhang Peng
