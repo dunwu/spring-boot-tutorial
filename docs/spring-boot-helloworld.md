@@ -8,6 +8,7 @@
 2. 选择构建工具`Maven Project`、Spring Boot 版本 `1.5.10` 以及一些工程基本信息，可参考下图所示：
 
 <div align="center"><img src="http://dunwu.test.upcdn.net/snap/start.spring.io.png!zp"/></div>
+
 3. 点击`Generate Project`下载项目压缩包
 4. 解压压缩包，包中已是一个完整的项目。
 

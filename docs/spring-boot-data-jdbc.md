@@ -156,7 +156,7 @@ public Integer count() {
 在 `src/main/resource` 目录下添加 `application.properties` 配置文件，内容如下：
 
 ```properties
-spring.datasource.url = jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+spring.datasource.url = jdbc:mysql://localhost:3306/spring_boot_tutorial?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
 spring.datasource.username = root
 spring.datasource.password = root
 spring.datasource.driver-class-name = com.mysql.cj.jdbc.Driver

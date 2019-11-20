@@ -9,16 +9,8 @@
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
 		name="viewport"
 	/>
-	<link
-		href="http://dunwu.test.upcdn.net/common/logo/zp_50_50.png"
-		rel="icon"
-		type="image/x-icon"
-	/>
-	<link
-		href="//unpkg.com/docsify/lib/themes/vue.css"
-		rel="stylesheet"
-		title="vue"
-	/>
+	<link href="http://dunwu.test.upcdn.net/common/logo/zp_50_50.png" rel="icon" type="image/x-icon" />
+	<link href="//unpkg.com/docsify/lib/themes/vue.css" rel="stylesheet" title="vue" />
 	<style>
 		h1 + ul {
 			display: block !important;
@@ -139,12 +131,28 @@
 			color: #78943A;
 			text-shadow: 2px 2px 5px grey;
 		}
-
-		img.emoji {
-			border: none;
-			border-radius: 0;
-			box-shadow: none;
+	</style>
+	<style>
+		.markdown-section h1 {
+			font-size: 1rem;
+			margin: 0;
 		}
+
+		.markdown-section h2 {
+			font-size: 1rem;
+			margin: 1rem 0px;
+		}
+
+		.markdown-section h3 {
+			font-size: 1rem;
+			margin: 0;
+		}
+
+		.markdown-section p {
+			line-height: 1rem;
+			word-spacing: 0.05rem;
+		}
+
 	</style>
 	<style>
 		.content > p {
@@ -169,15 +177,14 @@
 
 		.content code {
 			background-color: white;
-			border-radius: 6px;
-			box-shadow: 1px 1px 1px whitesmoke;
+			box-shadow: 1px 1px 1px lightgrey;
 		}
 
 		.content table {
 			display: table;
 			padding-left: 0 !important;
 			padding-right: 0 !important;
-			box-shadow: 2px 2px 20px 6px #DDDDDD !important;
+			box-shadow: 2px 2px 20px 6px lightgrey !important;
 		}
 
 		.content th {
@@ -222,7 +229,7 @@
 <div id="app">正在加载...</div>
 <script>
   window.$docsify = {
-    name: 'Spring Boot Tutorial',
+    name: 'spring-boot-tutorial',
     repo: 'https://github.com/dunwu/spring-boot-tutorial',
     logo: 'http://dunwu.test.upcdn.net/common/logo/zp_100_100.png',
     auto2top: true,

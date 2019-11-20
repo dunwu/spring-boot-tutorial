@@ -1,6 +1,17 @@
 # SpringBoot 教程之 banner 定制
 
-## 简介
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [1. 简介](#1-简介)
+- [2. 变量](#2-变量)
+- [3. 配置](#3-配置)
+- [4. 编程](#4-编程)
+- [5. 示例源码](#5-示例源码)
+- [6. 参考资料](#6-参考资料)
+
+<!-- /TOC -->
+
+## 1. 简介
 
 Spring Boot 启动时默认会显示以下 LOGO：
 
@@ -23,7 +34,7 @@ Spring Boot 启动时默认会显示以下 LOGO：
 - 对于文本文件，Spring Boot 会将其直接输出。
 - 对于图像文件（ `banner.gif` 、`banner.jpg` 或 `banner.png` ），Spring Boot 会将图像转为 ASCII 字符，然后输出。
 
-## 变量
+## 2. 变量
 
 banner.txt 文件中还可以使用变量来设置字体、颜色、版本号。
 
@@ -64,7 +75,7 @@ ${AnsiBackground.WHITE}${AnsiColor.RED}${AnsiStyle.UNDERLINE}
 - <http://www.network-science.de/ascii/>
 - <http://patorjk.com/software/taag/>
 
-## 配置
+## 3. 配置
 
 `application.properties` 中与 Banner 相关的配置：
 
@@ -99,16 +110,16 @@ spring:
     banner-mode: off
 ```
 
-## 编程
+## 4. 编程
 
 默认，Spring Boot 会注册一个 `SpringBootBanner` 的单例 Bean，用来负责打印 Banner。
 
 如果想完全个人定制 Banner，可以这么做：先实现 `org.springframework.boot.Banner#printBanner` 接口来自己定制 Banner。在将这个 Banner 通过 `SpringApplication.setBanner(…)` 方法注入 Spring Boot。
 
-## 示例
+## 5. 示例源码
 
 > 示例源码：[spring-boot-banner](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-banner)
 
-## 参考资料
+## 6. 参考资料
 
 - [Spring Boot 官方文档之 Customizing the Banner](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-banner)

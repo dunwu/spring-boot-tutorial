@@ -1,10 +1,33 @@
 # SpringBoot 教程之属性加载详解
 
-## 加载 property 顺序
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [1. 加载 property 顺序](#1-加载-property-顺序)
+- [2. 随机属性](#2-随机属性)
+- [3. 命令行属性](#3-命令行属性)
+- [4. Application 属性文件](#4-application-属性文件)
+- [5. Profile 特定属性](#5-profile-特定属性)
+- [6. 属性中的占位符](#6-属性中的占位符)
+- [7. YAML 属性](#7-yaml-属性)
+  - [7.1. 访问属性](#71-访问属性)
+  - [7.2. 多 profile 配置](#72-多-profile-配置)
+  - [7.3. YAML 的缺点](#73-yaml-的缺点)
+- [8. 属性前缀](#8-属性前缀)
+- [9. 属性松散绑定规则](#9-属性松散绑定规则)
+- [10. 属性转换](#10-属性转换)
+  - [10.1. 时间单位转换](#101-时间单位转换)
+  - [10.2. 数据大小转换](#102-数据大小转换)
+- [11. 校验属性](#11-校验属性)
+- [12. 示例源码](#12-示例源码)
+- [13. 参考资料](#13-参考资料)
+
+<!-- /TOC -->
+
+## 1. 加载 property 顺序
 
 Spring Boot 加载 property 顺序如下：
 
-1. [Devtools 全局配置](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-devtools-globalsettings) (当 devtools 被激活 `\~/.spring-boot-devtools.properties`).
+1. [Devtools 全局配置](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-devtools-globalsettings) (当 devtools 被激活 `~/.spring-boot-devtools.properties`).
 2. [测试环境中的 `@TestPropertySource` 注解配置](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/context/TestPropertySource.html)
 3. 测试环境中的属性 `properties`：[`@SpringBootTest`](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/context/SpringBootTest.html) 和 [测试注解](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-tests).
 4. 命令行参数
@@ -22,7 +45,7 @@ Spring Boot 加载 property 顺序如下：
 16. `@PropertySource` 绑定的配置
 17. 默认属性 (通过 `SpringApplication.setDefaultProperties` 指定)
 
-## 随机属性
+## 2. 随机属性
 
 `RandomValuePropertySource` 类用于配置随机值。
 
@@ -37,13 +60,13 @@ my.number.less.than.ten=${random.int(10)}
 my.number.in.range=${random.int[1024,65536]}
 ```
 
-## 命令行属性
+## 3. 命令行属性
 
 默认情况下， `SpringApplication` 会获取 `--` 参数（例如 `--server.port=9000` ），并将这个 `property` 添加到 Spring 的 `Environment` 中。
 
 如果不想加载命令行属性，可以通过 `SpringApplication.setAddCommandLineProperties(false)` 禁用。
 
-## Application 属性文件
+## 4. Application 属性文件
 
 `SpringApplication` 会自动加载以下路径下的 `application.properties` 配置文件，将其中的属性读到 Spring 的 `Environment` 中。
 
@@ -70,13 +93,13 @@ $ java -jar myproject.jar --spring.config.name=myproject
 $ java -jar myproject.jar --spring.config.location=classpath:/default.properties,classpath:/override.properties
 ```
 
-## Profile 特定属性
+## 5. Profile 特定属性
 
 如果定义 `application-{profile}.properties` 形式的配置文件，将被视为 `profile` 环境下的特定配置。
 
 可以通过 `spring.profiles.active` 参数来激活 profile，如果没有激活的 profile,默认会加载 `application-default.properties` 中的配置。
 
-## 属性中的占位符
+## 6. 属性中的占位符
 
 `application.properties` 中的值会被 `Environment` 过滤，所以，可以引用之前定义的属性。
 
@@ -87,9 +110,7 @@ app.description=${app.name} is a Spring Boot application
 
 > 注：你可以使用此技术来创建 Spring Boot 属性变量。请参考： [Section 77.4, “Use ‘Short’ Command Line Arguments](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-use-short-command-line-arguments)
 
-## YAML 属性
-
-Spring Framework provides two convenient classes that can be used to load YAML documents. The `YamlPropertiesFactoryBean` loads YAML as `Properties` and the `YamlMapFactoryBean` loads YAML as a `Map`.
+## 7. YAML 属性
 
 Spring 框架有两个类支持加载 YAML 文件。
 
@@ -133,11 +154,11 @@ my.servers[0]=dev.example.com
 my.servers[1]=another.example.com
 ```
 
-### 访问属性
+### 7.1. 访问属性
 
 `YamlPropertySourceLoader` 类会将 YAML 配置转化为 Spring `Environment` 类中的 `PropertySource` 。然后，你可以如同 properties 文件中的属性一样，使用 `@Value` 注解来访问 YAML 中配置的属性。
 
-### 多 profile 配置
+### 7.2. 多 profile 配置
 
 ```yaml
 server:
@@ -154,11 +175,11 @@ server:
   address: 192.168.1.120
 ```
 
-### YAML 的缺点
+### 7.3. YAML 的缺点
 
 注：YAML 注解中的属性不能通过 `@PropertySource` 注解来访问。所以，如果你的项目中使用了一些自定义属性文件，建议不要用 YAML。
 
-## 属性前缀
+## 8. 属性前缀
 
 ```java
 package com.example;
@@ -223,14 +244,14 @@ public class AcmeProperties {
 
 然后，你需要使用 `@EnableConfigurationProperties` 注解将属性类注入配置类中。
 
-```
+```java
 @Configuration
 @EnableConfigurationProperties(AcmeProperties.class)
 public class MyConfiguration {
 }
 ```
 
-## 属性松散绑定规则
+## 9. 属性松散绑定规则
 
 Spring Boot 属性名绑定比较松散。
 
@@ -243,11 +264,11 @@ Spring Boot 属性名绑定比较松散。
 | `acme.my_project.person.first_name` | `_` 分隔 |
 | `ACME_MYPROJECT_PERSON_FIRSTNAME`   | 大写字母 |
 
-## 属性转换
+## 10. 属性转换
 
 如果需要类型转换，你可以提供一个 `ConversionService` bean (一个名叫 `conversionService` 的 bean) 或自定义属性配置 (一个 `CustomEditorConfigurer` bean) 或自定义的 `Converters` (被 `@ConfigurationPropertiesBinding` 注解修饰的 bena)。
 
-### 时间单位转换
+### 10.1. 时间单位转换
 
 Spring 使用 `java.time.Duration` 类代表时间大小，以下场景适用：
 
@@ -292,7 +313,7 @@ public class AppSystemProperties {
 }
 ```
 
-### 数据大小转换
+### 10.2. 数据大小转换
 
 Spring 使用 `DataSize` 类代表数据大小，以下场景适用：
 
@@ -334,7 +355,7 @@ public class AppIoProperties {
 }
 ```
 
-## 校验属性
+## 11. 校验属性
 
 ```java
 @ConfigurationProperties(prefix="acme")
@@ -363,10 +384,10 @@ public class AcmeProperties {
 
 你也可以自定义一个名为 `configurationPropertiesValidator` 的校验器 Bean。获取这个 `@Bean` 的方法必须声明为 `static`。
 
-## 示例源码
+## 12. 示例源码
 
 > 示例源码：[spring-boot-property](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-property)
 
-## 参考资料
+## 13. 参考资料
 
 - [Spring Boot 官方文档之 boot-features-external-config](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config)

@@ -1,6 +1,19 @@
 # SpringBoot 教程之处理异步请求
 
-## `@EnableAsync` 注解
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [1. `@EnableAsync` 注解](#1-enableasync-注解)
+- [2. `@Async` 注解](#2-async-注解)
+  - [2.1. 支持的用法](#21-支持的用法)
+  - [2.2. 不支持的用法](#22-不支持的用法)
+- [3. 明确指定执行器](#3-明确指定执行器)
+- [4. 管理 `@Async` 的异常](#4-管理-async-的异常)
+- [5. 示例源码](#5-示例源码)
+- [6. 参考资料](#6-参考资料)
+
+<!-- /TOC -->
+
+## 1. `@EnableAsync` 注解
 
 要使用 `@Async`，首先需要使用 `@EnableAsync` 注解开启 Spring Boot 中的异步特性。
 
@@ -13,9 +26,9 @@ public class AppConfig {
 
 更详细的配置说明，可以参考：[`AsyncConfigurer`](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/annotation/AsyncConfigurer.html)
 
-## `@Async` 注解
+## 2. `@Async` 注解
 
-### 支持的用法
+### 2.1. 支持的用法
 
 （1）**无入参无返回值方法**
 
@@ -50,7 +63,7 @@ Future<String> returnSomething(int i) {
 }
 ```
 
-### 不支持的用法
+### 2.2. 不支持的用法
 
 `@Async` 不能与生命周期回调一起使用，例如 `@PostConstruct`。
 
@@ -82,7 +95,7 @@ public class SampleBeanInitializer {
 }
 ```
 
-## 明确指定执行器
+## 3. 明确指定执行器
 
 默认情况下，在方法上指定 `@Async` 时，使用的执行器是在启用异步支持时配置的执行器，即如果使用 XML 或 `AsyncConfigurer` 实现（如果有），则为 `annotation-driven` 元素。但是，如果需要指示在执行给定方法时应使用默认值以外的执行器，则可以使用 `@Async` 注解的 value 属性。以下示例显示了如何执行此操作：
 
@@ -95,7 +108,7 @@ void doSomething(String s) {
 
 在这种情况下，“otherExecutor”可以是 Spring 容器中任何 Executor bean 的名称，也可以是与任何 Executor 关联的限定符的名称（例如，使用 `<qualifier>` 元素或 Spring 的 `@Qualifier` 注释指定） ）。
 
-## 管理 `@Async` 的异常
+## 4. 管理 `@Async` 的异常
 
 当 `@Async` 方法的返回值类型为 `Future` 型时，很容易管理在方法执行期间抛出的异常，因为在调用 `get` 结果时会抛出此异常。但是，对于返回值类型为 void 型的方法，异常不会被捕获且无法传输。您可以提供 `AsyncUncaughtExceptionHandler` 来处理此类异常。以下示例显示了如何执行此操作：
 
@@ -109,13 +122,13 @@ public class MyAsyncUncaughtExceptionHandler implements AsyncUncaughtExceptionHa
 }
 ```
 
-默认情况下，仅记录异常。您可以使用 `AsyncConfigurer` 或 `<task：annotation-driven />` XML元素定义自定义 `AsyncUncaughtExceptionHandler`。
+默认情况下，仅记录异常。您可以使用 `AsyncConfigurer` 或 `<task：annotation-driven />` XML 元素定义自定义 `AsyncUncaughtExceptionHandler`。
 
-## 示例
+## 5. 示例源码
 
 > 示例源码：[spring-boot-async](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-async)
 
-## 参考资料
+## 6. 参考资料
 
 - [Spring Boot 官方文档之 boot-features-external-config](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config)
 - [Spring Boot 官方文档之 scheduling-annotation-support](https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#scheduling-annotation-support)
