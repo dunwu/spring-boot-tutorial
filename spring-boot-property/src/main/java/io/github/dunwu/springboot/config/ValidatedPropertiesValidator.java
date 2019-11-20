@@ -6,6 +6,13 @@ import org.springframework.validation.Validator;
 
 import java.util.regex.Pattern;
 
+/**
+ * 自定义属性校验器，校验 {@link ValidatedProperties}
+ *
+ * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
+ * @see ValidatedProperties
+ * @since 2019-11-20
+ */
 public class ValidatedPropertiesValidator implements Validator {
 
 	private final Pattern pattern = Pattern.compile(

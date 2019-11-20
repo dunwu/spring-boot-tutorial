@@ -9,7 +9,7 @@ import org.springframework.core.env.Environment;
  * 通过 {@link Environment} 获取属性，并且属性值保存在 application.properties 以外的文件
  */
 @Configuration
-@PropertySource("classpath:/myconfig/custom.properties")
+@PropertySource("classpath:/prop/custom.properties")
 public class CustomConfig {
 
 	private final Environment env;

@@ -12,6 +12,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.validation.Validator;
 
+import java.text.SimpleDateFormat;
+
 @SpringBootApplication
 public class SpringBootPropertyApplication implements CommandLineRunner {
 
@@ -48,16 +50,16 @@ public class SpringBootPropertyApplication implements CommandLineRunner {
 	public void run(String... args) {
 		log.info("validator.host: {}", validatedProperties.getHost());
 		log.info("validator.port: {}", validatedProperties.getPort());
+		log.info("profile: {}", dunwuProperties.getProfile());
 		log.info("ID: {}", dunwuProperties.getId());
 		log.info("作者姓名: {}", dunwuProperties.getAuthor());
 		log.info("性别: {}", dunwuProperties.getSex().getValue());
+		log.info("日期: {}", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(dunwuProperties.getDate()));
 		log.info("邮件: {}", dunwuProperties.getMail());
 		log.info("=========== 兴趣 ===========");
 		dunwuProperties.getInterestList().forEach(log::info);
 		log.info("=========== 信息 ===========");
-		dunwuProperties.getInfoMap().forEach((key, value) -> {
-			log.info("{} : {}", key, value);
-		});
+		dunwuProperties.getInfoMap().forEach((key, value) -> log.info("{} : {}", key, value));
 		log.info("=========== 技能 ===========");
 		dunwuProperties.getSkillMap().forEach((key, value) -> {
 			log.info("{} 技术项：", key);

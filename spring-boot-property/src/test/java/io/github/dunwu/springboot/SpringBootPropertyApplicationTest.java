@@ -1,20 +1,20 @@
 package io.github.dunwu.springboot;
 
 import io.github.dunwu.springboot.config.DunwuProperties;
+import io.github.dunwu.springboot.config.DunwuRandomProperties;
 import io.github.dunwu.springboot.config.GenderEnum;
 import io.github.dunwu.springboot.config.ValidatedProperties;
 import org.junit.After;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.rule.OutputCapture;
 import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -25,15 +25,18 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringBootPropertyApplicationTests {
-
-	@Rule
-	public final OutputCapture output = new OutputCapture();
+public class SpringBootPropertyApplicationTest {
 
 	private final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 
 	@Autowired
 	private DunwuProperties dunwuProperties;
+
+	@Autowired
+	private DunwuRandomProperties dunwuRandomProperties;
+
+	@Autowired
+	private ValidatedProperties validatedProperties;
 
 	@Test
 	public void bindDunwuProperties() {
@@ -49,34 +52,46 @@ public class SpringBootPropertyApplicationTests {
 		assertThat(dunwuProperties.getAuthor()).isEqualTo("Zhang Peng");
 		assertThat(dunwuProperties.getMail()).isEqualTo("forbreak@163.com");
 		assertThat(dunwuProperties.getSex()).isEqualTo(GenderEnum.MALE);
+		assertThat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(dunwuProperties.getDate()))
+			.isEqualTo("2019-11-20 12:00:00");
+		assertThat(dunwuProperties.getAddress()).containsAll(Arrays.asList("China", "Jiangsu", "Nanjing"));
 		assertThat(dunwuProperties.getInterestList()).containsAll(Arrays.asList("Music", "Game", "Reading"));
 		assertThat(dunwuProperties.getInfoMap()).containsAllEntriesOf(infoMap);
 		assertThat(dunwuProperties.getSkillMap()).containsAllEntriesOf(skillMap);
+
+		System.out.format("加载 %s 测试成功。加载属性：%s\n", dunwuProperties.getClass().getSimpleName(),
+			dunwuProperties.toString());
 	}
 
 	@Test
-	public void bindInvalidHost() {
+	public void bindDunwuRandomProperties() {
+		assertThat(dunwuRandomProperties).isNotNull();
+		assertThat(dunwuRandomProperties.getSecret()).isNotNull();
+		assertThat(dunwuRandomProperties.getNumber()).isNotNull();
+		assertThat(dunwuRandomProperties.getBigNumber()).isNotNull();
+		assertThat(dunwuRandomProperties.getUuid()).isNotNull();
+		assertThat(dunwuRandomProperties.getLessThanTenNum()).isLessThan(10);
+		assertThat(dunwuRandomProperties.getInRangeNum()).isBetween(1024, 65536);
+
+		System.out.format("加载 %s 测试成功。加载属性：%s\n", dunwuRandomProperties.getClass().getSimpleName(),
+			dunwuRandomProperties.toString());
+	}
+
+	@Test
+	public void bindValidatedProperties() {
+		assertThat(validatedProperties.getHost()).isEqualTo("127.0.0.1");
+		assertThat(validatedProperties.getPort()).isEqualTo(Integer.valueOf(8080));
+		System.out.format("加载 %s 测试成功。加载属性：%s\n", validatedProperties.getClass().getSimpleName(),
+			validatedProperties.toString());
+	}
+
+	@Test
+	public void bindInvalidProperties() {
 		this.context.register(SpringBootPropertyApplication.class);
+		this.context.getEnvironment().getSystemProperties();
 		TestPropertyValues.of("validator.host:xxxxxx", "validator.port:9090").applyTo(this.context);
 		assertThatExceptionOfType(BeanCreationException.class).isThrownBy(this.context::refresh)
 			.withMessageContaining("Failed to bind properties under 'validator'");
-	}
-
-	@Test
-	public void bindNullHost() {
-		this.context.register(SpringBootPropertyApplication.class);
-		assertThatExceptionOfType(BeanCreationException.class).isThrownBy(this.context::refresh)
-			.withMessageContaining("Failed to bind properties under 'validator'");
-	}
-
-	@Test
-	public void bindValidProperties() {
-		this.context.register(SpringBootPropertyApplication.class);
-		TestPropertyValues.of("validator.host:127.0.0.1", "validator.port:9090").applyTo(this.context);
-		this.context.refresh();
-		ValidatedProperties properties = this.context.getBean(ValidatedProperties.class);
-		assertThat(properties.getHost()).isEqualTo("127.0.0.1");
-		assertThat(properties.getPort()).isEqualTo(Integer.valueOf(9090));
 	}
 
 	@After
