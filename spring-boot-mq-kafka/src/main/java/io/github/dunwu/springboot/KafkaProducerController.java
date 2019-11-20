@@ -1,6 +1,6 @@
 package io.github.dunwu.springboot;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import io.github.dunwu.springboot.msg.SimpleKafkaDemo;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("kafka")
 public class KafkaProducerController {
 
-	@Autowired
-	private KafkaProducer kafkaProducer;
+	private final SimpleKafkaDemo simpleKafkaDemo;
+
+	public KafkaProducerController(SimpleKafkaDemo simpleKafkaDemo) {
+		this.simpleKafkaDemo = simpleKafkaDemo;
+	}
 
 	@RequestMapping("send")
 	public void send(String topic, String data) {
-		kafkaProducer.send(topic, data);
+		simpleKafkaDemo.send(topic, data);
 	}
 
 }

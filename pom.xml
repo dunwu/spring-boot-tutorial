@@ -22,9 +22,9 @@
 		<module>spring-boot-actuator</module>
 		<module>spring-boot-docker</module>
 		<module>spring-boot-statemachine</module>
-		<module>spring-boot-msg-activemq</module>
-		<module>spring-boot-msg-kafka</module>
-		<module>spring-boot-msg-redis</module>
+		<module>spring-boot-mq-activemq</module>
+		<module>spring-boot-mq-kafka</module>
+		<module>spring-boot-mq-redis</module>
 		<module>spring-boot-data-jdbc</module>
 		<module>spring-boot-data-jpa</module>
 		<module>spring-boot-data-jdbc-multi-datasource</module>

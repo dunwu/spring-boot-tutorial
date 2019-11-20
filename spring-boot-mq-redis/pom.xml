@@ -10,8 +10,8 @@
 	</parent>
 
 	<groupId>io.github.dunwu.springboot</groupId>
-	<artifactId>spring-boot-msg-redis</artifactId>
-	<name>spring-boot-msg-redis</name>
+	<artifactId>spring-boot-mq-redis</artifactId>
+	<name>spring-boot-mq-redis</name>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
