@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/12
+ * @since 2019-10-12
  */
 @SpringBootApplication
 @MapperScan("io.github.dunwu.springboot.mapper")

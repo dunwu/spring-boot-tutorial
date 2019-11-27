@@ -55,4 +55,32 @@
 		<module>spring-boot-security-checkcode</module>
 		<module>spring-boot-security-session</module>
 	</modules>
+
+	<url>https://github.com/dunwu/dunwu</url>
+	<inceptionYear>2016-Now</inceptionYear>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+	<scm>
+		<url>https://github.com/dunwu/dunwu</url>
+		<connection>git@github.com:dunwu/dunwu.git</connection>
+		<developerConnection>https://github.com/dunwu</developerConnection>
+	</scm>
+	<developers>
+		<developer>
+			<name>Zhang Peng</name>
+			<url>https://github.com/dunwu</url>
+			<email>forbreak@163.com</email>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/dunwu/dunwu/issues</url>
+	</issueManagement>
 </project>

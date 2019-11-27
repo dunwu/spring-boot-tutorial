@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class ActuatorApplicationTests {
+public class SpringBootActuatorApplicationTests {
 
 	@Autowired
 	private TestRestTemplate restTemplate;

@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/16
+ * @since 2019-10-16
  */
 @SpringBootApplication
 @MapperScan("io.github.dunwu.springboot.mapper")

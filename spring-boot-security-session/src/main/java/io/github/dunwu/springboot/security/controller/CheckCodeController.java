@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
  * 校验码 Controller
  *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/9
+ * @since 2019-10-9
  */
 @RestController
 @RequestMapping("checkcode")

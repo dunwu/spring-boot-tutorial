@@ -30,9 +30,9 @@ public class DunwuKafkaConfig {
 		return factory;
 	}
 
-	// @Bean
-	// public RecordMessageConverter converter() {
-	// 	return new StringJsonMessageConverter();
-	// }
+	@Bean
+	public RecordMessageConverter converter() {
+		return new StringJsonMessageConverter();
+	}
 
 }

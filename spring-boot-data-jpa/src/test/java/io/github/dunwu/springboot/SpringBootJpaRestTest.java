@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Spring Boot + JPA 基于 REST 的 CRUD 测试
  *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/12
+ * @since 2019-10-12
  */
 @SpringBootTest
 @AutoConfigureMockMvc

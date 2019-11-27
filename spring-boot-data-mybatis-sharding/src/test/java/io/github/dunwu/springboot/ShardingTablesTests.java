@@ -20,7 +20,7 @@ import java.util.List;
  * 分表案例测试
  *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/16
+ * @since 2019-10-16
  */
 @Rollback
 @SpringBootTest

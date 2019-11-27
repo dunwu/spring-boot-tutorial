@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 启动类
  *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/14
+ * @since 2019-10-14
  */
 @SpringBootApplication
 public class SpringBootDataCacheJ2cacheApplication {

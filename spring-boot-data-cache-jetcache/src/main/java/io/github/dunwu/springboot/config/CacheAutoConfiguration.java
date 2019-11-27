@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/14
+ * @since 2019-10-14
  */
 @Configuration
 @EnableCreateCacheAnnotation

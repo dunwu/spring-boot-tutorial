@@ -15,7 +15,7 @@ import javax.persistence.Id;
  * 用户实体，对应 user 表
  *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/11/18
+ * @since 2019-11-18
  */
 @Entity
 @Data

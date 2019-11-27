@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/8
+ * @since 2019-10-8
  */
 @Component
 public class ValidateCodeFilter extends OncePerRequestFilter {

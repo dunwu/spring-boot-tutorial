@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/11/9
+ * @since 2019-11-9
  */
 @Service
 public class WeatherService {

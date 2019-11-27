@@ -18,25 +18,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = {
 	"management.server.port:0" })
-public class ActuatorApplicationPortTests {
+public class SpringBootActuatorApplicationPortTests {
 
 	@LocalServerPort
-	private int port = 9010;
+	private int port = 8080;
 
 	@LocalManagementPort
-	private int managementPort = 9011;
+	private int managementPort = 18080;
 
 	@Test
 	public void testHealth() {
-		ResponseEntity<String> entity = new TestRestTemplate().withBasicAuth("user", getPassword())
-			.getForEntity("http://localhost:" + this.managementPort + "/actuator/health",
-				String.class);
+		ResponseEntity<String> entity = new TestRestTemplate().withBasicAuth("root", "root")
+			.getForEntity("http://localhost:" + this.managementPort + "/actuator/health", String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(entity.getBody()).contains("\"status\":\"UP\"");
-	}
-
-	private String getPassword() {
-		return "password";
 	}
 
 	@Test

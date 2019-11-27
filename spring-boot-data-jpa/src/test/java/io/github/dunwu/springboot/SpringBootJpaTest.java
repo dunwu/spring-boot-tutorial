@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Spring Boot + JPA 基本 CRUD 测试
  *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/12
+ * @since 2019-10-12
  */
 @DataJpaTest
 @ActiveProfiles({ "test" })

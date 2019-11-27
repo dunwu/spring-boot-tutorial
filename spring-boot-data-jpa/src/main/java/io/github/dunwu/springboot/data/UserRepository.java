@@ -11,7 +11,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * 启动 Application 后，直接访问：http://<host:ip>/user
  *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/12
+ * @since 2019-10-12
  */
 @RepositoryRestResource(collectionResourceRel = "user", path = "user")
 public interface UserRepository extends JpaRepository<User, Long> {

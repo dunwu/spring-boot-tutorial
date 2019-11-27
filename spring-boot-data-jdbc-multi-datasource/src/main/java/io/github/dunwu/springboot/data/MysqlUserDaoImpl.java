@@ -14,7 +14,7 @@ import java.util.List;
  * user 表 Dao 接口的 Mysql 实现
  *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/12
+ * @since 2019-10-12
  */
 @Repository("mysqlUserDao")
 public class MysqlUserDaoImpl implements UserDao {

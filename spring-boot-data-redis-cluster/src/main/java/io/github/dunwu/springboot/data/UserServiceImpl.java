@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @since 2019/10/14
+ * @since 2019-10-14
  */
 @Service
 public class UserServiceImpl implements UserService {
