@@ -39,6 +39,7 @@
 		<module>spring-boot-data-redis-cluster</module>
 		<module>spring-boot-data-mongodb</module>
 		<module>spring-boot-data-elasticsearch</module>
+		<module>spring-boot-data-elasticsearch-jest</module>
 		<module>spring-boot-tmpl-freemark</module>
 		<module>spring-boot-tmpl-thymeleaf</module>
 		<module>spring-boot-test-junit5</module>

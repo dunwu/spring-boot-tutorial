@@ -8,7 +8,7 @@
     <a href="https://lbesson.mit-license.org/" target="_blank" rel="noopener noreferrer">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT license">
     </a>
-    <img alt="Spring Boot Version" src="https://img.shields.io/maven-central/v/org.springframework.boot/spring-boot-starter-parent/2.1.9.RELEASE?label=spring-boot">
+    <img alt="Spring Boot Version" src="https://img.shields.io/maven-central/v/org.springframework.boot/spring-boot-starter-parent/2.2.1.RELEASE?label=spring-boot">
     <img src="https://img.shields.io/badge/maven-v3.6.0-blue" alt="maven">
     <img src="https://api.travis-ci.com/dunwu/spring-boot-tutorial.svg?branch=master" alt="build">
 </p>

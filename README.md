@@ -8,21 +8,26 @@
     <a href="https://lbesson.mit-license.org/" target="_blank" rel="noopener noreferrer">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT license">
     </a>
-    <img alt="Spring Boot Version" src="https://img.shields.io/maven-central/v/org.springframework.boot/spring-boot-starter-parent/2.1.9.RELEASE?label=spring-boot">
+    <img alt="Spring Boot Version" src="https://img.shields.io/maven-central/v/org.springframework.boot/spring-boot-starter-parent/2.2.1.RELEASE?label=spring-boot">
     <img src="https://img.shields.io/badge/maven-v3.6.0-blue" alt="maven">
     <img src="https://api.travis-ci.com/dunwu/spring-boot-tutorial.svg?branch=master" alt="build">
 </p>
 
 <h1 align="center">Spring Boot Tutorial</h1>
 
-> 这是一个 Spring Boot 实战教程，通过大量丰富的示例，展示 Spring Boot 在各个应用领域的应用。本项目旨在覆盖 Java 应用的各领域。
+> **`spring-boot-tutorial`** 是一个 Spring Boot 实战教程，通过大量丰富的示例，展示 Spring Boot 在各个应用领域的应用。本项目旨在覆盖 Java 应用的各领域。
 >
 > 本项目的源码使用 maven 进行构建管理，任意 maven module 都可以独立编译运行。
 >
 > - 🔁 项目同步维护：[Github](https://github.com/dunwu/spring-boot-tutorial/) | [Gitee](https://gitee.com/turnon/spring-boot-tutorial/)
 > - 📖 电子书阅读：[Github Pages](https://dunwu.github.io/spring-boot-tutorial/) | [Gitee Pages](http://turnon.gitee.io/spring-boot-tutorial/)
 
-## 示例
+## 🔰 准备
+
+-  [java-tutorial](https://dunwu.github.io/java-tutorial/) - java-tutorial 是一个全面的 Java 教程。如果你还不熟悉 Java 编程，学习 Spring Boot 之前，不妨先学习一下。
+-  [spring-tutorial](https://dunwu.github.io/spring-tutorial/) - spring-tutorial 是一个 Spring 实战教程。Spring 是 Spring Boot 的基石，如果想更深入了解 SpringBoot，还是很有必要了解一下 Spring 框架机制。
+
+## 🎯 示例
 
 ### 基础
 
@@ -68,6 +73,17 @@
 - [spring-boot-security-session](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-security-session)
 - [spring-boot-security-simple](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-security-simple)
 
+### Web
+
+- [spring-boot-web-fastjson](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-fastjson) - 展示 Spring Boot Web 应用中如何集成 Fastjson （默认的 JSON 库为 ）并定制序列化、反序列化方式。
+- [spring-boot-web-form](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-form) - 展示 Spring Boot Web 应用中表单如何提交、校验。
+- [spring-boot-web-helloworld](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-helloworld) - 展示 Spring Boot Web 应用的 Hello World 示例。
+- [spring-boot-web-jsp](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-jsp) - 展示 Spring Boot Web 应用中如何运行 JSP，提供 2 种服务器的整合示例：Tomcat、 Jetty。
+- [spring-boot-web-multi-connectors](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-multi-connectors) - 展示 Spring Boot Web 应用如何同时支持 HTTP 协议和 HTTPS 协议访问。
+- [spring-boot-web-ui](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-ui) - 展示 Spring Boot 和多种不同前端技术的交互。
+- [spring-boot-web-uploading](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-uploading) - 展示 Spring Boot Web 应用中如何支持文件上传下载服务。
+- [spring-boot-web-websocket](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-websocket) - 展示 Spring Boot Web 应用中如何运行 WebSocket，提供 3 种服务器的整合示例：Tomcat、Jetty、Undertow。
+
 ### 其他
 
 - [spring-boot-docker](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-docker) - 展示 Spring Boot 如何通过 Docker 部署应用。
@@ -84,18 +100,7 @@
 - [spring-boot-tmpl-freemark](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-tmpl-freemark) - 展示 Spring Boot 中使用 Freemark 模板引擎。
 - [spring-boot-tmpl-thymeleaf](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-tmpl-thymeleaf) - 展示 Spring Boot 中使用 Thymeleaf 模板引擎。
 
-### Web
-
-- [spring-boot-web-fastjson](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-fastjson) - 展示 Spring Boot Web 应用中如何集成 Fastjson （默认的 JSON 库为 ）并定制序列化、反序列化方式。
-- [spring-boot-web-form](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-form) - 展示 Spring Boot Web 应用中表单如何提交、校验。
-- [spring-boot-web-helloworld](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-helloworld) - 展示 Spring Boot Web 应用的 Hello World 示例。
-- [spring-boot-web-jsp](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-jsp) - 展示 Spring Boot Web 应用中如何运行 JSP，提供 2 种服务器的整合示例：Tomcat、 Jetty。
-- [spring-boot-web-multi-connectors](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-multi-connectors) - 展示 Spring Boot Web 应用如何同时支持 HTTP 协议和 HTTPS 协议访问。
-- [spring-boot-web-ui](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-ui) - 展示 Spring Boot 和多种不同前端技术的交互。
-- [spring-boot-web-uploading](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-uploading) - 展示 Spring Boot Web 应用中如何支持文件上传下载服务。
-- [spring-boot-web-websocket](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-websocket) - 展示 Spring Boot Web 应用中如何运行 WebSocket，提供 3 种服务器的整合示例：Tomcat、Jetty、Undertow。
-
-## 文档
+## 📖 文档
 
 - [SpringBoot 教程之 HelloWorld](docs/spring-boot-helloworld.md)
 - [SpringBoot 教程之处理异步请求](docs/spring-boot-async.md)
@@ -103,3 +108,7 @@
 - [SpringBoot 教程之属性加载详解](docs/spring-boot-property.md)
 - [SpringBoot 教程之 profile 的应用](docs/spring-boot-profile.md)
 - [SpringBoot 教程之发送邮件](docs/spring-boot-mail.md)
+
+## License
+
+本博客所有文章除特别声明外，均采用 [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议。
