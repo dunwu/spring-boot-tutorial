@@ -1,13 +1,18 @@
-package io.github.dunwu.springboot;
+package io.github.dunwu.springboot.data.repositories;
 
-import io.github.dunwu.springboot.data.User;
-import io.github.dunwu.springboot.data.UserRepository;
+import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
+import io.github.dunwu.springboot.data.entities.User;
+import io.github.dunwu.springboot.data.entities.UserQuery;
+import io.github.dunwu.springboot.data.util.QueryFeildToQueryBuilderUtil;
 import io.github.dunwu.util.RandomExtUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -18,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { SpringBootDataElasticsearchApplication.class })
-public class ElasticsearchCrudTest {
+public class UserRepositoryTest {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -27,35 +32,38 @@ public class ElasticsearchCrudTest {
 	public void before() {
 		userRepository.deleteAll();
 
-		userRepository.save(new User("张鹏", "xxxxxx", "forbreak@163.com"));
-		userRepository.save(new User("张鹏", "xxxxxx", "xxxxxxx@163.com"));
+		userRepository.save(new User("刘备", 32, "xxxxxx", "forbreak@163.com"));
+		userRepository.save(new User("关羽", 31, "xxxxxx", "xxxxxxx@163.com"));
+		userRepository.save(new User("张飞", 29, "xxxxxx", "123xxx@163.com"));
+		userRepository.save(new User("赵云", 26, "xxxxxx", "x23xxxx@163.com"));
 	}
 
 	@Test
 	public void testCount() {
 		long count = userRepository.count();
-		assertThat(count).isEqualTo(2L);
+		assertThat(count).isEqualTo(4L);
 	}
 
 	@Test
 	public void testSave() {
 		List<User> users = new ArrayList<>();
 		for (int i = 0; i < 1000; i++) {
-			User user = new User(RandomExtUtils.randomChineseName(), RandomExtUtils.randomLetter(6, 10),
+			User user = new User(RandomExtUtils.randomChineseName(),
+				RandomUtils.nextInt(18, 99), RandomExtUtils.randomLetter(6, 10),
 				RandomExtUtils.randomEmail());
 			users.add(user);
 		}
 		userRepository.saveAll(users);
 		long count = userRepository.count();
-		assertThat(count).isEqualTo(1002L);
+		assertThat(count).isEqualTo(1004L);
 	}
 
 	@Test
 	public void testFind() {
 		List<User> users = new ArrayList<>();
 		for (int i = 0; i < 1000; i++) {
-			User user = new User(RandomExtUtils.randomChineseName(), RandomExtUtils.randomLetter(6, 10),
-				RandomExtUtils.randomEmail());
+			User user = new User(RandomExtUtils.randomChineseName(), RandomUtils.nextInt(18, 99),
+				RandomExtUtils.randomLetter(6, 10), RandomExtUtils.randomEmail());
 			users.add(user);
 		}
 		userRepository.saveAll(users);
@@ -74,6 +82,25 @@ public class ElasticsearchCrudTest {
 		User user = userRepository.findByEmail("forbreak@163.com");
 		System.out.println(user);
 		assertThat(user).isNotNull();
+	}
+
+	@Test
+	public void testSearch() throws IllegalAccessException {
+		List<User> users = new ArrayList<>();
+		for (int i = 0; i < 1000; i++) {
+			User user = new User(String.valueOf(i), RandomExtUtils.randomChineseName(), RandomUtils.nextInt(18, 99),
+				RandomExtUtils.randomLetter(6, 10), RandomExtUtils.randomEmail());
+			users.add(user);
+		}
+		userRepository.saveAll(users);
+
+		UserQuery userQuery = new UserQuery();
+		userQuery.setUsername("张");
+		SearchQuery searchQuery = QueryFeildToQueryBuilderUtil.transQueryDto2Condition(userQuery);
+
+		Page<User> page = userRepository.search(searchQuery);
+		System.out.println("Total Match: " + page.getTotalElements());
+		page.getContent().forEach(System.out::println);
 	}
 
 	@Test

@@ -1,5 +1,6 @@
-package io.github.dunwu.springboot.data;
+package io.github.dunwu.springboot.data.repositories;
 
+import io.github.dunwu.springboot.data.entities.User;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;

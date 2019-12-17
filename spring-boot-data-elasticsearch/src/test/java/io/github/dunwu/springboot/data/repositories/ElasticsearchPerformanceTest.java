@@ -1,8 +1,10 @@
-package io.github.dunwu.springboot;
+package io.github.dunwu.springboot.data.repositories;
 
-import io.github.dunwu.springboot.data.User;
-import io.github.dunwu.springboot.data.UserRepository;
+import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
+import io.github.dunwu.springboot.data.entities.User;
+import io.github.dunwu.springboot.data.repositories.UserRepository;
 import io.github.dunwu.util.RandomExtUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,9 +47,9 @@ public class ElasticsearchPerformanceTest {
 		for (int i = 0; i < 100; i++) {
 			tasks.add(() -> {
 				List<User> users = new ArrayList<>();
-				for (int j = 0; j < 10000; j++) {
-					User user = new User(RandomExtUtils.randomChineseName(), RandomExtUtils.randomLetter(6, 10),
-						RandomExtUtils.randomEmail());
+				for (int j = 0; j < 1000; j++) {
+					User user = new User(RandomExtUtils.randomChineseName(), RandomUtils.nextInt(18, 99),
+						RandomExtUtils.randomLetter(6, 10), RandomExtUtils.randomEmail());
 					users.add(user);
 				}
 				return userRepository.saveAll(users);
@@ -65,7 +67,7 @@ public class ElasticsearchPerformanceTest {
 
 		System.out.println(String.format("the time of write %d doc: %d ms", count, millis));
 
-		userRepository.save(new User("张鹏", "xxxxxx", "forbreak@163.com"));
+		userRepository.save(new User("张三", 31, "xxxxxx", "forbreak@163.com"));
 
 		System.out.printf("当前有 %s 条数据\n", count);
 
