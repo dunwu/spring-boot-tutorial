@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @ToString
-@Document(indexName = "articles", type = "article", shards = 1, replicas = 0, refreshInterval = "-1")
+@Document(indexName = "article", type = "article", shards = 1, replicas = 0, refreshInterval = "-1")
 public class Article {
 
 	@Id

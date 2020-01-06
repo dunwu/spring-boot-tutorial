@@ -55,6 +55,7 @@
 		<module>spring-boot-security-authentication</module>
 		<module>spring-boot-security-checkcode</module>
 		<module>spring-boot-security-session</module>
+		<module>spring-boot-zookeeper</module>
 	</modules>
 
 	<url>https://github.com/dunwu/dunwu</url>

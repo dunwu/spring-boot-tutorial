@@ -7,7 +7,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 @Data
 @ToString
-@Document(indexName = "book", type = "book", shards = 1, replicas = 0, refreshInterval = "-1")
+@Document(indexName = "product", type = "product", shards = 1, replicas = 0, refreshInterval = "-1")
 public class Product {
 
 	@Id

@@ -27,16 +27,8 @@ public class Book {
 	@Version
 	private Long version;
 
-	public Map<Integer, Collection<String>> getBuckets() {
-		return buckets;
-	}
-
-	public void setBuckets(Map<Integer, Collection<String>> buckets) {
-		this.buckets = buckets;
-	}
-
 	@Field(type = FieldType.Nested)
-	private Map<Integer, Collection<String>> buckets = new HashMap();
+	private Map<Integer, Collection<String>> buckets = new HashMap<>();
 
 	public Book() {}
 

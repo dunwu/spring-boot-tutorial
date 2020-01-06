@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @ToString
-@Document(indexName = "person-multiple-level-nested", type = "user", shards = 1, replicas = 0, refreshInterval = "-1")
+@Document(indexName = "person-nested", type = "user", shards = 1, replicas = 0, refreshInterval = "-1")
 public class PersonMultipleLevelNested {
 
 	@Id

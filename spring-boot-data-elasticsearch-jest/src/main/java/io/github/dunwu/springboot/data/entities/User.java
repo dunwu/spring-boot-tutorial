@@ -15,7 +15,7 @@ public class User {
 	@Id
 	private String id;
 
-	private String username;
+	private String userName;
 
 	private int age;
 
@@ -26,16 +26,16 @@ public class User {
 
 	public User() {}
 
-	public User(String username, int age, String password, String email) {
-		this.username = username;
+	public User(String userName, int age, String password, String email) {
+		this.userName = userName;
 		this.age = age;
 		this.password = password;
 		this.email = email;
 	}
 
-	public User(String id, String username, int age, String password, String email) {
+	public User(String id, String userName, int age, String password, String email) {
 		this.id = id;
-		this.username = username;
+		this.userName = userName;
 		this.age = age;
 		this.password = password;
 		this.email = email;

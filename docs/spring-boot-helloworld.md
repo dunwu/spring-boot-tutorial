@@ -7,7 +7,7 @@
 1. 访问：`http://start.spring.io/`
 2. 选择构建工具`Maven Project`、Spring Boot 版本 `1.5.10` 以及一些工程基本信息，可参考下图所示：
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/start.spring.io.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/start.spring.io.png!zp)
 
 3. 点击`Generate Project`下载项目压缩包
 4. 解压压缩包，包中已是一个完整的项目。
@@ -16,7 +16,7 @@
 
 如果你使用 Intellij 作为 IDE，那么你可以直接使用 SPRING INITIALIZR，参考下图操作：
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/intellij-spring-initializr.gif!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/intellij-spring-initializr.gif!zp)
 ## 项目说明
 
 **重要文件**

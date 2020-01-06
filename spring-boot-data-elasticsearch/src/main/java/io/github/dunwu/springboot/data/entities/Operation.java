@@ -34,7 +34,6 @@ public class Operation {
 		type = FieldType.Date,
 		index = false,
 		store = true,
-		fielddata = true,
 		format = DateFormat.custom,
 		pattern = "yyyy-MM-dd hh:mm:ss"
 	)

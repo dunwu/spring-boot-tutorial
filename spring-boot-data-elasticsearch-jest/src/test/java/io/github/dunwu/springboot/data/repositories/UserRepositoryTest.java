@@ -1,18 +1,17 @@
 package io.github.dunwu.springboot.data.repositories;
 
 import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
+import io.github.dunwu.springboot.data.common.QueryLogicType;
+import io.github.dunwu.springboot.data.elasticsearch.ElasticSearchUtil;
 import io.github.dunwu.springboot.data.entities.User;
 import io.github.dunwu.springboot.data.entities.UserQuery;
-import io.github.dunwu.springboot.data.util.QueryFeildToQueryBuilderUtil;
-import io.github.dunwu.util.RandomExtUtils;
-import org.apache.commons.lang3.RandomUtils;
-import org.junit.Before;
+import io.github.dunwu.tool.util.RandomUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
-import org.springframework.data.elasticsearch.core.query.SearchQuery;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -28,15 +27,15 @@ public class UserRepositoryTest {
 	@Autowired
 	private UserRepository userRepository;
 
-	@Before
-	public void before() {
-		userRepository.deleteAll();
-
-		userRepository.save(new User("刘备", 32, "xxxxxx", "forbreak@163.com"));
-		userRepository.save(new User("关羽", 31, "xxxxxx", "xxxxxxx@163.com"));
-		userRepository.save(new User("张飞", 29, "xxxxxx", "123xxx@163.com"));
-		userRepository.save(new User("赵云", 26, "xxxxxx", "x23xxxx@163.com"));
-	}
+	// @Before
+	// public void clear() {
+	// 	userRepository.deleteAll();
+	//
+	// 	userRepository.save(new User("刘备", 32, "xxxxxx", "forbreak@163.com"));
+	// 	userRepository.save(new User("关羽", 31, "xxxxxx", "xxxxxxx@163.com"));
+	// 	userRepository.save(new User("张飞", 29, "xxxxxx", "123xxx@163.com"));
+	// 	userRepository.save(new User("赵云", 26, "xxxxxx", "x23xxxx@163.com"));
+	// }
 
 	@Test
 	public void testCount() {
@@ -48,9 +47,9 @@ public class UserRepositoryTest {
 	public void testSave() {
 		List<User> users = new ArrayList<>();
 		for (int i = 0; i < 1000; i++) {
-			User user = new User(RandomExtUtils.randomChineseName(),
-				RandomUtils.nextInt(18, 99), RandomExtUtils.randomLetter(6, 10),
-				RandomExtUtils.randomEmail());
+			User user = new User(RandomUtil.randomChineseName(),
+				RandomUtil.randomInt(18, 99), RandomUtil.randomString(6, 10),
+				RandomUtil.randomEmail());
 			users.add(user);
 		}
 		userRepository.saveAll(users);
@@ -62,8 +61,8 @@ public class UserRepositoryTest {
 	public void testFind() {
 		List<User> users = new ArrayList<>();
 		for (int i = 0; i < 1000; i++) {
-			User user = new User(RandomExtUtils.randomChineseName(), RandomUtils.nextInt(18, 99),
-				RandomExtUtils.randomLetter(6, 10), RandomExtUtils.randomEmail());
+			User user = new User(RandomUtil.randomChineseName(), RandomUtil.randomInt(18, 99),
+				RandomUtil.randomString(6, 10), RandomUtil.randomEmail());
 			users.add(user);
 		}
 		userRepository.saveAll(users);
@@ -73,7 +72,7 @@ public class UserRepositoryTest {
 
 		System.out.println("User found with findByUsername(\"张鹏\"):");
 		System.out.println("--------------------------------");
-		List<User> userList2 = userRepository.findByUsername("鹏");
+		List<User> userList2 = userRepository.findByUserName("鹏");
 		assertThat(userList2).isNotEmpty();
 		userList2.forEach(System.out::println);
 
@@ -85,21 +84,45 @@ public class UserRepositoryTest {
 	}
 
 	@Test
-	public void testSearch() throws IllegalAccessException {
-		List<User> users = new ArrayList<>();
-		for (int i = 0; i < 1000; i++) {
-			User user = new User(String.valueOf(i), RandomExtUtils.randomChineseName(), RandomUtils.nextInt(18, 99),
-				RandomExtUtils.randomLetter(6, 10), RandomExtUtils.randomEmail());
-			users.add(user);
-		}
-		userRepository.saveAll(users);
+	public void searchTest() throws IllegalAccessException {
+		// List<User> users = new ArrayList<>();
+		// for (int i = 0; i < 10000; i++) {
+		// 	User user = new User(String.valueOf(i), RandomUtil.randomChineseName(), RandomUtil.randomInt(18, 99),
+		// 		RandomUtil.randomString(6, 10), RandomUtil.randomEmail());
+		// 	users.add(user);
+		// }
+		// userRepository.saveAll(users);
 
 		UserQuery userQuery = new UserQuery();
-		userQuery.setUsername("张");
-		SearchQuery searchQuery = QueryFeildToQueryBuilderUtil.transQueryDto2Condition(userQuery);
+		userQuery.setUserName("张");
+		userQuery.setAge(20);
 
-		Page<User> page = userRepository.search(searchQuery);
-		System.out.println("Total Match: " + page.getTotalElements());
+		List<User> list = ElasticSearchUtil.search(userRepository, userQuery, QueryLogicType.OR);
+		System.out.println("Total Match: " + list.size());
+		list.forEach(System.out::println);
+	}
+
+	@Test
+	public void pageSearchTest() throws IllegalAccessException, NoSuchFieldException {
+		// List<User> users = new ArrayList<>();
+		// for (int i = 0; i < 10000; i++) {
+		// 	User user = new User(String.valueOf(i), RandomUtil.randomChineseName(), RandomUtil.randomInt(18, 99),
+		// 		RandomUtil.randomString(6, 10), RandomUtil.randomEmail());
+		// 	users.add(user);
+		// }
+		// userRepository.saveAll(users);
+
+		UserQuery userQuery = new UserQuery();
+		userQuery.setUserName("张");
+		userQuery.setAge(20);
+
+		userQuery.setSize(20);
+		userQuery.setCurrent(2);
+
+		Page<User> page = ElasticSearchUtil.pageSearch(userRepository, userQuery, QueryLogicType.OR);
+		String info = String.format("total:%s, page:%s, size:%s", page.getTotalElements(), userQuery.getCurrent(),
+			userQuery.getSize());
+		System.out.println(info);
 		page.getContent().forEach(System.out::println);
 	}
 

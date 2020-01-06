@@ -2,8 +2,8 @@ package io.github.dunwu.springboot.data.repositories;
 
 import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.springboot.data.entities.Book;
-import io.github.dunwu.util.RandomExtUtils;
-import io.github.dunwu.util.code.IdUtil;
+import io.github.dunwu.tool.util.IdUtil;
+import io.github.dunwu.tool.util.RandomUtil;
 import org.apache.lucene.search.join.ScoreMode;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
@@ -58,8 +58,8 @@ public class BookRepositoryTest {
 	@Test
 	public void shouldBulkIndexMultipleBookEntities() {
 
-		Book book1 = new Book(RandomExtUtils.randomAscii(5, 10), "Spring Data", System.currentTimeMillis());
-		Book book2 = new Book(RandomExtUtils.randomAscii(5, 10), "Elasticsearch", System.currentTimeMillis());
+		Book book1 = new Book(RandomUtil.randomString(5, 10), "Spring Data", System.currentTimeMillis());
+		Book book2 = new Book(RandomUtil.randomString(5, 10), "Elasticsearch", System.currentTimeMillis());
 		//Bulk Index using repository
 		repository.saveAll(asList(book1, book2));
 		//lets try to search same records in elasticsearch
@@ -73,9 +73,9 @@ public class BookRepositoryTest {
 	@Ignore
 	public void crudRepositoryTest() {
 
-		Book book1 = new Book(IdUtil.randomUuid2(), "Spring Data", System.currentTimeMillis());
-		Book book2 = new Book(IdUtil.randomUuid2(), "Elasticsearch", System.currentTimeMillis());
-		Book book3 = new Book(IdUtil.randomUuid2(), "Spring Data Elasticsearch", System.currentTimeMillis());
+		Book book1 = new Book(IdUtil.fastSimpleUUID(), "Spring Data", System.currentTimeMillis());
+		Book book2 = new Book(IdUtil.fastSimpleUUID(), "Elasticsearch", System.currentTimeMillis());
+		Book book3 = new Book(IdUtil.fastSimpleUUID(), "Spring Data Elasticsearch", System.currentTimeMillis());
 		List<Book> books = Arrays.asList(book1, book2);
 
 		//indexing single document
@@ -115,7 +115,7 @@ public class BookRepositoryTest {
 
 		List<Book> books = new ArrayList<>();
 		for (int i = 1; i <= 10; i++) {
-			books.add(new Book(RandomExtUtils.randomAscii(5, 10), "Spring Data Rocks !", System.currentTimeMillis()));
+			books.add(new Book(RandomUtil.randomString(5, 10), "Spring Data Rocks !", System.currentTimeMillis()));
 		}
 		//Bulk Index using repository
 		repository.saveAll(books);
@@ -127,8 +127,8 @@ public class BookRepositoryTest {
 	@Test
 	public void shouldExecuteCustomSearchQueries() {
 
-		Book book1 = new Book(RandomExtUtils.randomAscii(5, 10), "Custom Query", System.currentTimeMillis());
-		Book book2 = new Book(RandomExtUtils.randomAscii(5, 10), null, System.currentTimeMillis());
+		Book book1 = new Book(RandomUtil.randomString(5, 10), "Custom Query", System.currentTimeMillis());
+		Book book2 = new Book(RandomUtil.randomString(5, 10), null, System.currentTimeMillis());
 		//indexing a book
 		repository.saveAll(Arrays.asList(book1, book2));
 
@@ -144,8 +144,8 @@ public class BookRepositoryTest {
 
 	@Test
 	public void shouldReturnBooksForCustomMethodsWithAndCriteria() {
-		Book book1 = new Book(RandomExtUtils.randomAscii(5, 10), "test", System.currentTimeMillis());
-		Book book2 = new Book(RandomExtUtils.randomAscii(5, 10), "test", System.currentTimeMillis());
+		Book book1 = new Book(RandomUtil.randomString(5, 10), "test", System.currentTimeMillis());
+		Book book2 = new Book(RandomUtil.randomString(5, 10), "test", System.currentTimeMillis());
 		book1.setPrice(10L);
 		book2.setPrice(10L);
 		repository.saveAll(Arrays.asList(book1, book2));
@@ -156,8 +156,8 @@ public class BookRepositoryTest {
 
 	@Test
 	public void shouldReturnBooksWithName() {
-		Book book1 = new Book(RandomExtUtils.randomAscii(5, 10), "test1", System.currentTimeMillis());
-		Book book2 = new Book(RandomExtUtils.randomAscii(5, 10), "test2", System.currentTimeMillis());
+		Book book1 = new Book(RandomUtil.randomString(5, 10), "test1", System.currentTimeMillis());
+		Book book2 = new Book(RandomUtil.randomString(5, 10), "test2", System.currentTimeMillis());
 		repository.saveAll(Arrays.asList(book1, book2));
 
 		Page<Book> books = repository.findByName("test1", PageRequest.of(0, 10));
@@ -166,8 +166,8 @@ public class BookRepositoryTest {
 
 	@Test
 	public void shouldReturnBooksForGivenBucket() {
-		Book book1 = new Book(RandomExtUtils.randomAscii(5, 10), "test1", System.currentTimeMillis());
-		Book book2 = new Book(RandomExtUtils.randomAscii(5, 10), "test2", System.currentTimeMillis());
+		Book book1 = new Book(RandomUtil.randomString(5, 10), "test1", System.currentTimeMillis());
+		Book book2 = new Book(RandomUtil.randomString(5, 10), "test2", System.currentTimeMillis());
 
 		Map<Integer, Collection<String>> map1 = new HashMap<>();
 		map1.put(1, Arrays.asList("test1", "test2"));
@@ -196,8 +196,8 @@ public class BookRepositoryTest {
 		template.putMapping(Book.class);
 		template.refresh(Book.class);
 
-		Book book1 = new Book(RandomExtUtils.randomAscii(5, 10), "test1", System.currentTimeMillis());
-		Book book2 = new Book(RandomExtUtils.randomAscii(5, 10), "test2", System.currentTimeMillis());
+		Book book1 = new Book(RandomUtil.randomString(5, 10), "test1", System.currentTimeMillis());
+		Book book2 = new Book(RandomUtil.randomString(5, 10), "test2", System.currentTimeMillis());
 
 		Map<Integer, Collection<String>> map1 = new HashMap<>();
 		map1.put(1, Arrays.asList("test1", "test2"));
@@ -221,8 +221,8 @@ public class BookRepositoryTest {
 
 	@Test
 	public void shouldReturnBooksForCustomMethodsWithOrCriteria() {
-		Book book1 = new Book(RandomExtUtils.randomAscii(5, 10), "test Or", System.currentTimeMillis());
-		Book book2 = new Book(RandomExtUtils.randomAscii(5, 10), "test And", System.currentTimeMillis());
+		Book book1 = new Book(RandomUtil.randomString(5, 10), "test Or", System.currentTimeMillis());
+		Book book2 = new Book(RandomUtil.randomString(5, 10), "test And", System.currentTimeMillis());
 		book1.setPrice(10L);
 		book2.setPrice(10L);
 		repository.saveAll(Arrays.asList(book1, book2));
@@ -233,8 +233,8 @@ public class BookRepositoryTest {
 
 	@Test
 	public void shouldGiveIterableOfBooks() {
-		Book book1 = new Book(RandomExtUtils.randomAscii(5, 10), "test Or", System.currentTimeMillis());
-		Book book2 = new Book(RandomExtUtils.randomAscii(5, 10), "test And", System.currentTimeMillis());
+		Book book1 = new Book(RandomUtil.randomString(5, 10), "test Or", System.currentTimeMillis());
+		Book book2 = new Book(RandomUtil.randomString(5, 10), "test And", System.currentTimeMillis());
 		book1.setPrice(10L);
 		book2.setPrice(10L);
 		repository.saveAll(Arrays.asList(book1, book2));

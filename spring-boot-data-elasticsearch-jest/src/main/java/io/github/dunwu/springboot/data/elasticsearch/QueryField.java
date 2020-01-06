@@ -1,10 +1,13 @@
-package io.github.dunwu.springboot.data.annotation;
+package io.github.dunwu.springboot.data.elasticsearch;
 
-import io.github.dunwu.springboot.data.constant.QueryJudgeType;
-import io.github.dunwu.springboot.data.constant.QueryLogicType;
+import io.github.dunwu.springboot.data.common.QueryJudgeType;
 
 import java.lang.annotation.*;
 
+/**
+ * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
+ * @since 2019-12-17
+ */
 @Documented
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
@@ -12,8 +15,6 @@ import java.lang.annotation.*;
 public @interface QueryField {
 
 	String value() default "";
-
-	QueryLogicType logicType() default QueryLogicType.AND;
 
 	QueryJudgeType judgeType() default QueryJudgeType.Equals;
 

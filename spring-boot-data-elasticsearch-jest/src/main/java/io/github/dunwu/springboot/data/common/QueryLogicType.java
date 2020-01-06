@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.data.constant;
+package io.github.dunwu.springboot.data.common;
 
 /**
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
@@ -6,5 +6,6 @@ package io.github.dunwu.springboot.data.constant;
  */
 public enum QueryLogicType {
 	AND,
-	OR
+	OR,
+	NOT
 }

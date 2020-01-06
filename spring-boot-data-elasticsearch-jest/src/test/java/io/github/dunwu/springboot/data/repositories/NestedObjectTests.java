@@ -2,7 +2,7 @@ package io.github.dunwu.springboot.data.repositories;
 
 import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.springboot.data.entities.*;
-import io.github.dunwu.util.RandomExtUtils;
+import io.github.dunwu.tool.util.RandomUtil;
 import org.apache.lucene.search.join.ScoreMode;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -56,7 +56,7 @@ public class NestedObjectTests {
 	@Test
 	public void shouldIndexInnerObject() {
 		// given
-		String id = RandomExtUtils.randomAscii(5, 10);
+		String id = RandomUtil.randomString(5, 10);
 		Book book = new Book();
 		book.setId(id);
 		book.setName("xyz");

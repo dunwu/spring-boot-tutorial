@@ -1,6 +1,8 @@
 package io.github.dunwu.springboot.data.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.DateFormat;
@@ -8,13 +10,14 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
-import java.util.Date;
 import java.util.List;
 
 @Data
 @ToString
-@Document(indexName = "operations", type = "operation")
-public class OperationDocument {
+@NoArgsConstructor
+@AllArgsConstructor
+@Document(indexName = "operation", type = "operation")
+public class Operation {
 
 	@Id
 	private Long id;
@@ -34,7 +37,7 @@ public class OperationDocument {
 		format = DateFormat.custom,
 		pattern = "yyyy-MM-dd hh:mm:ss"
 	)
-	private Date dateUp;
+	private String dateUp;
 
 	@Field(
 		type = FieldType.Text,

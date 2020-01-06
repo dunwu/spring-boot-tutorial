@@ -2,8 +2,7 @@ package io.github.dunwu.springboot.data.repositories;
 
 import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.springboot.data.entities.User;
-import io.github.dunwu.util.RandomExtUtils;
-import org.apache.commons.lang3.RandomUtils;
+import io.github.dunwu.tool.util.RandomUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,8 +46,8 @@ public class ElasticsearchPerformanceTest {
 			tasks.add(() -> {
 				List<User> users = new ArrayList<>();
 				for (int j = 0; j < 1000; j++) {
-					User user = new User(RandomExtUtils.randomChineseName(), RandomUtils.nextInt(18, 99),
-						RandomExtUtils.randomLetter(6, 10), RandomExtUtils.randomEmail());
+					User user = new User(RandomUtil.randomChineseName(), RandomUtil.randomInt(18, 99),
+						RandomUtil.randomString(6, 10), RandomUtil.randomEmail());
 					users.add(user);
 				}
 				return userRepository.saveAll(users);
@@ -71,7 +70,7 @@ public class ElasticsearchPerformanceTest {
 		System.out.printf("当前有 %s 条数据\n", count);
 
 		begin = System.nanoTime();
-		List<User> userList = userRepository.findByUsername("张鹏");
+		List<User> userList = userRepository.findByUserName("张鹏");
 		assertThat(userList).isNotEmpty();
 		end = System.nanoTime();
 		millis = TimeUnit.NANOSECONDS.toMillis(end - begin);
