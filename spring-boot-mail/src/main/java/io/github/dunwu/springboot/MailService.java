@@ -85,10 +85,10 @@ public class MailService {
 	}
 
 	public void sendSimpleMailMessage(MailDTO mailDTO) {
+        if (StringUtils.isEmpty(mailDTO.getFrom())) {
+            mailDTO.setFrom(mailProperties.getFrom());
+        }
 		SimpleMailMessage simpleMailMessage = mapper.map(mailDTO, SimpleMailMessage.class);
-		if (StringUtils.isEmpty(mailDTO.getFrom())) {
-			mailDTO.setFrom(mailProperties.getFrom());
-		}
 		javaMailSender.send(simpleMailMessage);
 	}
 

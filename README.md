@@ -10,7 +10,7 @@
     </a>
     <img alt="Spring Boot Version" src="https://img.shields.io/maven-central/v/org.springframework.boot/spring-boot-starter-parent/2.2.1.RELEASE?label=spring-boot">
     <img src="https://img.shields.io/badge/maven-v3.6.0-blue" alt="maven">
-    <img src="https://api.travis-ci.com/dunwu/spring-boot-tutorial.svg?branch=master" alt="build">
+    <a href="https://travis-ci.com/dunwu/spring-boot-tutorial"><img src="https://api.travis-ci.com/dunwu/spring-boot-tutorial.svg?branch=master" alt="build"></a>
 </p>
 
 <h1 align="center">Spring Boot Tutorial</h1>

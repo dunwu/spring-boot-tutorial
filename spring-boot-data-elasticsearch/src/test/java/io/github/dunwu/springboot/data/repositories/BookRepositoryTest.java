@@ -92,7 +92,7 @@ public class BookRepositoryTest {
 		Page<Book> bookPage = repository.findAll(PageRequest.of(0, 1));
 		Assertions.assertThat(bookPage.getContent()).hasSize(1);
 		// to get all records as ASC on name field
-		Iterable<Book> bookIterable = repository.findAll(new Sort(Sort.Direction.ASC, "name"));
+		Iterable<Book> bookIterable = repository.findAll(Sort.by("name").ascending());
 		Assertions.assertThat(bookIterable.iterator().next().getName()).isEqualTo("Elasticsearch");
 		//to get total number of docoments in an index
 		Long count = repository.count();

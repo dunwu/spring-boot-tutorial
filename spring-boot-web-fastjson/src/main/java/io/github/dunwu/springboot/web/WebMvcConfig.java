@@ -90,7 +90,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	}
 
 	private void responseResponse(HttpServletResponse response, ResponseDTO responseDTO) {
-		response.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
 		response.setHeader("Content-type", "application/json;charset=UTF-8");
 		response.setStatus(200);
 		try {

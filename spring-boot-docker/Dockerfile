@@ -1,8 +1,28 @@
 FROM openjdk:8-jdk-alpine
-MAINTAINER zhangpeng <forbreak@163.com>
+
+ARG NAME
+ARG VERSION
+ARG JAR_FILE
+
+LABEL name=$NAME \
+      version=$VERSION
+
 VOLUME /tmp
-ARG DEPENDENCY=target/dependency
-COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY ${DEPENDENCY}/META-INF /app/META-INF
-COPY ${DEPENDENCY}/BOOT-INF/classes /app
-ENTRYPOINT ["java","-cp","app:app/lib/*","io.github.dunwu.springboot.SpringBootDockerApplication"]
+
+ENV TIME_ZONE=Asia/Shanghai
+ENV APP_DIR=/home/myapp
+
+RUN set -eux; \
+    ln -snf /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime; \
+    echo ${TIME_ZONE} > /etc/timezone; \
+    mkdir -p ${APP_DIR}/lib ${APP_DIR}/etc ${APP_DIR}/log
+
+ADD *.sh /usr/local/bin/
+ADD target/${JAR_FILE} ${APP_DIR}/app.jar
+
+RUN chmod +x /usr/local/bin/*.sh
+
+CMD [ "startup.sh" ]
+ENTRYPOINT [ "docker-entrypoint.sh" ]
+
+EXPOSE 8080
