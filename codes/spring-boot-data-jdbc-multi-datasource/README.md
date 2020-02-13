@@ -121,4 +121,4 @@ java -jar spring-boot-data-jdbc-multi-datasource-1.0.0.jar
 ## 扩展学习
 
 - [Mysql 教程](https://dunwu.github.io/db-tutorial/#/sql/mysql/README)
-- [H2 快速指南](https://dunwu.github.io/db-tutorial/#/sql/h2)
+- [H2 入门指南](https://dunwu.github.io/db-tutorial/#/sql/h2)

@@ -26,11 +26,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>io.github.dunwu</groupId>
-			<artifactId>dunwu-common</artifactId>
-			<version>0.4.8</version>
-		</dependency>
+    <dependency>
+      <groupId>io.github.dunwu</groupId>
+      <artifactId>dunwu-common-core</artifactId>
+      <version>0.5.1</version>
+    </dependency>
 	</dependencies>
 
 	<build>

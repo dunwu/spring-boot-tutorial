@@ -1,4 +1,4 @@
-# JUnit 快速指南
+# JUnit 入门指南
 
 > version: junit5
 
