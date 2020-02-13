@@ -194,7 +194,7 @@ ctx.refresh();
 
 ## 4. 示例源码
 
-> 示例源码：[spring-boot-profile](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-profile)
+> 示例源码：[spring-boot-profile](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-profile)
 
 ## 5. 参考资料
 

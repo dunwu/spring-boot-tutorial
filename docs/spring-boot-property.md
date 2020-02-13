@@ -386,7 +386,7 @@ public class AcmeProperties {
 
 ## 12. 示例源码
 
-> 示例源码：[spring-boot-property](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-property)
+> 示例源码：[spring-boot-property](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-property)
 
 ## 13. 参考资料
 

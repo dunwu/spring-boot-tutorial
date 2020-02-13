@@ -88,7 +88,7 @@ Spring Data 包含对 Elasticsearch 的 repository 支持。基本原则是根�
 
 ## 源码
 
-完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/data/spring-boot-data-elasticsearch)
+完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-data-elasticsearch)
 
 使用方法：
 

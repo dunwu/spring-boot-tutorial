@@ -267,7 +267,7 @@ public class MailService {
 
 ## 5. 示例源码
 
-> 示例源码：[spring-boot-mail](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-mail)
+> 示例源码：[spring-boot-mail](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-mail)
 
 ## 6. 参考资料
 

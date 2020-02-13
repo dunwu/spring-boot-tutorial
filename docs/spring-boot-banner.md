@@ -118,7 +118,7 @@ spring:
 
 ## 5. 示例源码
 
-> 示例源码：[spring-boot-banner](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-banner)
+> 示例源码：[spring-boot-banner](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-banner)
 
 ## 6. 参考资料
 

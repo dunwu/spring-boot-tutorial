@@ -491,7 +491,7 @@ public class UserController {
 
 ## 完整示例
 
-请参考 [源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/spring-boot-web-ui/spring-boot-web-ui-easyui)
+请参考 [源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-web-ui/spring-boot-web-ui-easyui)
 
 运行方式：
 

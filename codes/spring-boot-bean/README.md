@@ -395,7 +395,7 @@ System.out.println(person.toString());
 
 ## 示例源码
 
-完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/core/sbe-lib-bean-lombok)
+完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-bean)
 
 ## 引用和引申
 

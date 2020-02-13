@@ -183,7 +183,7 @@ public class UserDAOImpl implements UserDAO {
 
 ### 完整示例
 
-请参考：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/data/spring-boot-data-jdbc)
+请参考：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-data-jdbc)
 
 ## 引申和引用
 

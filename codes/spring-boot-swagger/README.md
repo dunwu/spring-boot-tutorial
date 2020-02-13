@@ -4,7 +4,7 @@
 >
 > 本项目使用 [**`swagger-spring-boot-starter`**](https://github.com/SpringForAll/spring-boot-starter-swagger) 管理 swagger 以生成定制化的 REST API 接口文档。
 >
-> 项目示例中 `UserController` 定义了 `/user/*` REST 接口去调用 JPA 做 CRUD 操作。如果对 Spring Boot + JPA 不了解，可以先学习 [spring-boot-data-jpa](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-data-jpa) 项目。
+> 项目示例中 `UserController` 定义了 `/user/*` REST 接口去调用 JPA 做 CRUD 操作。如果对 Spring Boot + JPA 不了解，可以先学习 [spring-boot-data-jpa](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-data-jpa) 项目。
 >
 > 依赖环境：
 >

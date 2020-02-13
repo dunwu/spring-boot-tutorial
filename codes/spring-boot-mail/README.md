@@ -267,7 +267,7 @@ public class MailService {
 
 ## 完整示例
 
-完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/lib/sbe-lib-mail)
+完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-mail)
 
 使用方法：
 

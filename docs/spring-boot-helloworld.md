@@ -134,4 +134,4 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 ## 示例源码
 
-> 示例源码：[spring-boot-web-helloworld](https://github.com/dunwu/spring-boot-tutorial/tree/master/spring-boot-web-helloworld)
+> 示例源码：[spring-boot-web-helloworld](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-web-helloworld)
