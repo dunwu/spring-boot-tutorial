@@ -43,6 +43,7 @@
 		<module>codes/spring-boot-data-elasticsearch-jest</module>
 		<module>codes/spring-boot-tmpl-freemark</module>
 		<module>codes/spring-boot-tmpl-thymeleaf</module>
+		<module>codes/spring-boot-tmpl-velocity</module>
 		<module>codes/spring-boot-test-junit5</module>
 		<module>codes/spring-boot-scheduler</module>
 		<module>codes/spring-boot-scheduler-quartz</module>
