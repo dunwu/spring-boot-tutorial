@@ -3,7 +3,7 @@ jdk:
   - openjdk8
 
 script:
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - sh scripts/build.sh package
 
 branches:
   only:
