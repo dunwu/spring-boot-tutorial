@@ -2,6 +2,7 @@
 
 # -----------------------------------------------------------------------------------------------------
 # Shell Utils
+# 使用此脚本，应该先 export ENV_LOG_PATH，指定日志路径；否则将使用默认日志路径 /var/log/shell.log
 # @author Zhang Peng
 # -----------------------------------------------------------------------------------------------------
 
@@ -51,42 +52,44 @@ export ENV_COLOR_RESET="$(tput sgr0)"
 export ENV_YES=0
 export ENV_NO=1
 export ENV_SUCCEED=0
-export FAILED=1
+export ENV_FAILED=1
 
 
 # ------------------------------------------------------------------------------ functions
 
 # 显示打印日志的时间
-DATE=$(date "+%Y-%m-%d %H:%M:%S")
-# 那个用户在操作
+SHELL_LOG_TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
+# 哪个用户在操作
 USER=$(whoami)
 # 日志路径
-LOG_DIR=${FIDE_LOG_DIR:-/var/log/fide}
-LOG_PATH=${LOG_DIR}/shell.log
+LOG_PATH=${ENV_LOG_PATH:-/var/log/dunwu/shell.log}
+# 日志目录
+LOG_DIR=${LOG_PATH%/*}
 
 createLogFileIfNotExists() {
     if [[ ! -x "${LOG_PATH}" ]]; then
-    mkdir -p "${LOG_DIR}"
-    touch "${LOG_PATH}"
+        mkdir -p "${LOG_DIR}"
+        touch "${LOG_PATH}"
+        chmod +xrw "${LOG_PATH}"
     fi
 }
 
 logInfo() {
     echo -e "${ENV_COLOR_B_GREEN}[INFO] $@${ENV_COLOR_RESET}"
     createLogFileIfNotExists
-    echo "[${DATE}] [${USER}] [INFO] [$0] [$@] execute succeed." >> "${LOG_PATH}"
+    echo "[${SHELL_LOG_TIMESTAMP}] [${USER}] [INFO] [$0] $@" >> "${LOG_PATH}"
 }
 
 logWarn() {
     echo -e "${ENV_COLOR_B_YELLOW}[WARN] $@${ENV_COLOR_RESET}"
     createLogFileIfNotExists
-    echo "[${DATE}] [${USER}] [WARN] [$0] [$@] execute succeed." >> "${LOG_PATH}"
+    echo "[${SHELL_LOG_TIMESTAMP}] [${USER}] [WARN] [$0] $@" >> "${LOG_PATH}"
 }
 
 logError() {
     echo -e "${ENV_COLOR_B_RED}[ERROR] $@${ENV_COLOR_RESET}"
     createLogFileIfNotExists
-    echo "[${DATE}] [${USER}] [ERROR] [$0] [$@] execute failed." >> "${LOG_PATH}"
+    echo "[${SHELL_LOG_TIMESTAMP}] [${USER}] [ERROR] [$0] $@" >> "${LOG_PATH}"
 }
 
 printInfo() {
@@ -104,11 +107,9 @@ printError() {
 callAndLog () {
     $*
     if [[ $? -eq ${ENV_SUCCEED} ]]; then
-        echo -e "${ENV_COLOR_B_GREEN}[INFO] $@${ENV_COLOR_RESET}"
         logInfo "$@"
         return ${ENV_SUCCEED}
     else
-        echo -e "${ENV_COLOR_B_RED}[ERROR] $@ EXECUTE FAILED.${ENV_COLOR_RESET}"
         logError "$@ EXECUTE FAILED"
         return ${ENV_FAILED}
     fi
