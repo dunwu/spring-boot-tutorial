@@ -7,6 +7,6 @@ import lombok.ToString;
 @ToString
 public class InfoDTO {
 
-	private String content;
+    private String content;
 
 }

@@ -25,5 +25,5 @@ const ReduxDevTools = createDevTools(// Monitors are individually adjustable wit
                changePositionKey='ctrl-q'
                defaultIsVisible={true}>
     <LogMonitor theme='tomorrow' />
-  </DockMonitor>)
+  </DockMonitor>);
 export default ReduxDevTools

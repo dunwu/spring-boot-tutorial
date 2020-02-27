@@ -14,17 +14,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 public class MsgActivemqApplicationTests {
 
-	@ClassRule
-	public static final OutputCapture output = new OutputCapture();
+    @ClassRule
+    public static final OutputCapture output = new OutputCapture();
 
-	@Autowired
-	private Producer producer;
+    @Autowired
+    private Producer producer;
 
-	@Test
-	public void sendSimpleMessage() throws InterruptedException {
-		this.producer.send("Hello World");
-		Thread.sleep(1000L);
-		assertThat(output.toString().contains("Hello World")).isTrue();
-	}
+    @Test
+    public void sendSimpleMessage() throws InterruptedException {
+        this.producer.send("Hello World");
+        Thread.sleep(1000L);
+        assertThat(output.toString().contains("Hello World")).isTrue();
+    }
 
 }

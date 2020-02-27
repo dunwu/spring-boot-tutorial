@@ -12,8 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringBootDataCacheJ2cacheApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDataCacheJ2cacheApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootDataCacheJ2cacheApplication.class, args);
+    }
 
 }

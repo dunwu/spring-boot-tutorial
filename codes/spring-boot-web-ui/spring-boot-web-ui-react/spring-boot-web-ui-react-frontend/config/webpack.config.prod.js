@@ -1,11 +1,11 @@
 /**
  * Created by Zhang Peng on 2017/6/14.
  */
-const path = require('path')
-const webpack = require('webpack')
-const webpackMerge = require('webpack-merge')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const baseWebpackConfig = require('./webpack.config.base')
+const path = require('path');
+const webpack = require('webpack');
+const webpackMerge = require('webpack-merge');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const baseWebpackConfig = require('./webpack.config.base');
 
 module.exports = webpackMerge(baseWebpackConfig, {
   // 这里应用程序开始执行
@@ -64,4 +64,4 @@ module.exports = webpackMerge(baseWebpackConfig, {
 
     // 将样式文件独立打包
     new ExtractTextPlugin('styles.css')]
-})
+});

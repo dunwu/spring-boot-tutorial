@@ -7,7 +7,7 @@
       <tr valign="top">
         <td width="350" valign="middle">
           <span
-              style="color: #999999; font-size: 12px; font-family: Verdana, Arial, Helvetica, sans-serif;">Copyright $company $year. 保留所有权利。</span>
+            style="color: #999999; font-size: 12px; font-family: Verdana, Arial, Helvetica, sans-serif;">Copyright $company $year. 保留所有权利。</span>
         </td>
       </tr>
       </tbody>

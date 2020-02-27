@@ -32,90 +32,90 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 public class SpringBootJpaTest {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired
-	private UserRepository repository;
+    @Autowired
+    private UserRepository repository;
 
-	@Before
-	public void before() {
-		repository.deleteAll();
-	}
+    @Before
+    public void before() {
+        repository.deleteAll();
+    }
 
-	@Test
-	public void insert() {
-		User user = new User("张三", "123456", "user1@163.com");
-		repository.save(user);
-		Optional<User> optional = repository.findById(user.getId());
-		assertThat(optional).isNotNull();
-		assertThat(optional.isPresent()).isTrue();
-	}
+    @Test
+    public void insert() {
+        User user = new User("张三", "123456", "user1@163.com");
+        repository.save(user);
+        Optional<User> optional = repository.findById(user.getId());
+        assertThat(optional).isNotNull();
+        assertThat(optional.isPresent()).isTrue();
+    }
 
-	@Test
-	public void batchInsert() {
-		List<User> users = new ArrayList<>();
-		users.add(new User("张三", "123456", "user1@163.com"));
-		users.add(new User("李四", "123456", "user2@163.com"));
-		users.add(new User("王五", "123456", "user3@163.com"));
-		users.add(new User("赵六", "123456", "user4@163.com"));
-		repository.saveAll(users);
+    @Test
+    public void batchInsert() {
+        List<User> users = new ArrayList<>();
+        users.add(new User("张三", "123456", "user1@163.com"));
+        users.add(new User("李四", "123456", "user2@163.com"));
+        users.add(new User("王五", "123456", "user3@163.com"));
+        users.add(new User("赵六", "123456", "user4@163.com"));
+        repository.saveAll(users);
 
-		long count = repository.count();
-		assertThat(count).isEqualTo(4);
+        long count = repository.count();
+        assertThat(count).isEqualTo(4);
 
-		List<User> list = repository.findAll();
-		assertThat(list).isNotEmpty().hasSize(4);
-		list.forEach(this::accept);
-	}
+        List<User> list = repository.findAll();
+        assertThat(list).isNotEmpty().hasSize(4);
+        list.forEach(this::accept);
+    }
 
-	@Test
-	public void delete() {
-		List<User> users = new ArrayList<>();
-		users.add(new User("张三", "123456", "user1@163.com"));
-		users.add(new User("李四", "123456", "user2@163.com"));
-		users.add(new User("王五", "123456", "user3@163.com"));
-		users.add(new User("赵六", "123456", "user4@163.com"));
-		repository.saveAll(users);
+    private void accept(User user) {log.info(user.toString());}
 
-		repository.deleteByUsername("张三");
-		assertThat(repository.findByUsername("张三")).isNull();
+    @Test
+    public void delete() {
+        List<User> users = new ArrayList<>();
+        users.add(new User("张三", "123456", "user1@163.com"));
+        users.add(new User("李四", "123456", "user2@163.com"));
+        users.add(new User("王五", "123456", "user3@163.com"));
+        users.add(new User("赵六", "123456", "user4@163.com"));
+        repository.saveAll(users);
 
-		repository.deleteAll();
-		List<User> list = repository.findAll();
-		assertThat(list).isEmpty();
-	}
+        repository.deleteByUsername("张三");
+        assertThat(repository.findByUsername("张三")).isNull();
 
-	@Test
-	public void findAllInPage() {
-		List<User> users = new ArrayList<>();
-		users.add(new User("张三", "123456", "user1@163.com"));
-		users.add(new User("李四", "123456", "user2@163.com"));
-		users.add(new User("王五", "123456", "user3@163.com"));
-		users.add(new User("赵六", "123456", "user4@163.com"));
-		repository.saveAll(users);
+        repository.deleteAll();
+        List<User> list = repository.findAll();
+        assertThat(list).isEmpty();
+    }
 
-		PageRequest pageRequest = PageRequest.of(1, 2);
-		Page<User> page = repository.findAll(pageRequest);
-		assertThat(page).isNotNull();
-		assertThat(page.isEmpty()).isFalse();
-		assertThat(page.getTotalElements()).isEqualTo(4);
-		assertThat(page.getTotalPages()).isEqualTo(2);
+    @Test
+    public void findAllInPage() {
+        List<User> users = new ArrayList<>();
+        users.add(new User("张三", "123456", "user1@163.com"));
+        users.add(new User("李四", "123456", "user2@163.com"));
+        users.add(new User("王五", "123456", "user3@163.com"));
+        users.add(new User("赵六", "123456", "user4@163.com"));
+        repository.saveAll(users);
 
-		List<User> list = page.get().collect(Collectors.toList());
-		System.out.println("user list: ");
-		list.forEach(System.out::println);
-	}
+        PageRequest pageRequest = PageRequest.of(1, 2);
+        Page<User> page = repository.findAll(pageRequest);
+        assertThat(page).isNotNull();
+        assertThat(page.isEmpty()).isFalse();
+        assertThat(page.getTotalElements()).isEqualTo(4);
+        assertThat(page.getTotalPages()).isEqualTo(2);
 
-	@Test
-	public void update() {
-		User oldUser = repository.save(new User("张三", "123456", "user1@163.com"));
-		oldUser.setUsername("张三丰");
-		repository.save(oldUser);
+        List<User> list = page.get().collect(Collectors.toList());
+        System.out.println("user list: ");
+        list.forEach(System.out::println);
+    }
 
-		User newUser = repository.findByUsername("张三丰");
-		assertThat(newUser).isNotNull();
-	}
+    @Test
+    public void update() {
+        User oldUser = repository.save(new User("张三", "123456", "user1@163.com"));
+        oldUser.setUsername("张三丰");
+        repository.save(oldUser);
 
-	private void accept(User user) {log.info(user.toString());}
+        User newUser = repository.findByUsername("张三丰");
+        assertThat(newUser).isNotNull();
+    }
 
 }

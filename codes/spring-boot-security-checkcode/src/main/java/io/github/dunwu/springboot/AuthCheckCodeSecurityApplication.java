@@ -12,8 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("io.github.dunwu.springboot.security.mapper")
 public class AuthCheckCodeSecurityApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AuthCheckCodeSecurityApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AuthCheckCodeSecurityApplication.class, args);
+    }
 
 }

@@ -10,21 +10,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringBootProfileApplication implements CommandLineRunner {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	private final MessageService messageService;
+    private final MessageService messageService;
 
-	public SpringBootProfileApplication(MessageService messageService) {
-		this.messageService = messageService;
-	}
+    public SpringBootProfileApplication(MessageService messageService) {
+        this.messageService = messageService;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootProfileApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootProfileApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) {
-		log.info(this.messageService.getMessage());
-	}
+    @Override
+    public void run(String... args) {
+        log.info(this.messageService.getMessage());
+    }
 
 }

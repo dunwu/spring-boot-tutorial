@@ -1,9 +1,9 @@
 /**
  * Created by Zhang Peng on 2017/6/14.
  */
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 
@@ -96,4 +96,4 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor' // 指定公共 bundle 的名字
     })]
-}
+};

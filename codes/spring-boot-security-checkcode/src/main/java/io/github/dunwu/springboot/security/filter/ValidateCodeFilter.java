@@ -21,55 +21,55 @@ import javax.servlet.http.HttpSession;
 @Component
 public class ValidateCodeFilter extends OncePerRequestFilter {
 
-	private final DunwuSecurityProperties dunwuSecurityProperties;
+    private final DunwuSecurityProperties dunwuSecurityProperties;
 
-	private final AuthenticationFailureHandler authenticationFailureHandler;
+    private final AuthenticationFailureHandler authenticationFailureHandler;
 
-	public ValidateCodeFilter(DunwuSecurityProperties dunwuSecurityProperties,
-		AuthenticationFailureHandler authenticationFailureHandler) {
-		this.dunwuSecurityProperties = dunwuSecurityProperties;
-		this.authenticationFailureHandler = authenticationFailureHandler;
-	}
+    public ValidateCodeFilter(DunwuSecurityProperties dunwuSecurityProperties,
+        AuthenticationFailureHandler authenticationFailureHandler) {
+        this.dunwuSecurityProperties = dunwuSecurityProperties;
+        this.authenticationFailureHandler = authenticationFailureHandler;
+    }
 
-	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-		throws ServletException, IOException {
-		if (StringUtils.equalsIgnoreCase(dunwuSecurityProperties.getLoginProcessingUrl(), request.getRequestURI())
-			&& StringUtils.equalsIgnoreCase(request.getMethod(), "post")) {
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+        throws ServletException, IOException {
+        if (StringUtils.equalsIgnoreCase(dunwuSecurityProperties.getLoginProcessingUrl(), request.getRequestURI())
+            && StringUtils.equalsIgnoreCase(request.getMethod(), "post")) {
 
-			try {
-				check(request);
-			} catch (DunwuSecurityException e) {
-				authenticationFailureHandler.onAuthenticationFailure(request, response, e);
-			}
-		}
+            try {
+                check(request);
+            } catch (DunwuSecurityException e) {
+                authenticationFailureHandler.onAuthenticationFailure(request, response, e);
+            }
+        }
 
-		filterChain.doFilter(request, response);
-	}
+        filterChain.doFilter(request, response);
+    }
 
-	private void check(HttpServletRequest httpServletRequest) throws DunwuSecurityException {
+    private void check(HttpServletRequest httpServletRequest) throws DunwuSecurityException {
 
-		HttpSession session = httpServletRequest.getSession();
-		String code = (String) session.getAttribute("code");
-		LocalDateTime expireTime = (LocalDateTime) session.getAttribute("expireTime");
-		String checkCode = httpServletRequest.getParameter("checkCode");
+        HttpSession session = httpServletRequest.getSession();
+        String code = (String) session.getAttribute("code");
+        LocalDateTime expireTime = (LocalDateTime) session.getAttribute("expireTime");
+        String checkCode = httpServletRequest.getParameter("checkCode");
 
-		if (StringUtils.isBlank(checkCode)) {
+        if (StringUtils.isBlank(checkCode)) {
 
-			throw new DunwuSecurityException("验证码不能为空！");
-		}
+            throw new DunwuSecurityException("验证码不能为空！");
+        }
 
-		if (StringUtils.isBlank(code)) {
-			throw new DunwuSecurityException("验证码不存在！");
-		}
+        if (StringUtils.isBlank(code)) {
+            throw new DunwuSecurityException("验证码不存在！");
+        }
 
-		if (expireTime == null || expireTime.isBefore(LocalDateTime.now())) {
-			throw new DunwuSecurityException("验证码已过期！");
-		}
+        if (expireTime == null || expireTime.isBefore(LocalDateTime.now())) {
+            throw new DunwuSecurityException("验证码已过期！");
+        }
 
-		if (!code.equalsIgnoreCase(checkCode)) {
-			throw new DunwuSecurityException("验证码不正确！");
-		}
-	}
+        if (!code.equalsIgnoreCase(checkCode)) {
+            throw new DunwuSecurityException("验证码不正确！");
+        }
+    }
 
 }

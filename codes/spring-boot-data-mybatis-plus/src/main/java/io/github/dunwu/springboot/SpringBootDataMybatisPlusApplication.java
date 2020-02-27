@@ -19,31 +19,31 @@ import java.util.List;
 @MapperScan("io.github.dunwu.springboot.mapper")
 public class SpringBootDataMybatisPlusApplication implements CommandLineRunner {
 
-	private static final Logger log = LoggerFactory.getLogger(SpringBootDataMybatisPlusApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(SpringBootDataMybatisPlusApplication.class);
 
-	private final UserMapper userMapper;
+    private final UserMapper userMapper;
 
-	public SpringBootDataMybatisPlusApplication(UserMapper userMapper) {
-		this.userMapper = userMapper;
-	}
+    public SpringBootDataMybatisPlusApplication(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDataMybatisPlusApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootDataMybatisPlusApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
+    @Override
+    public void run(String... args) throws Exception {
 
-		if (userMapper == null) {
-			log.error("连接数据源失败");
-			return;
-		}
+        if (userMapper == null) {
+            log.error("连接数据源失败");
+            return;
+        }
 
-		List<User> userList = userMapper.selectList(null);
-		log.info("======= 打印 user 表所有数据 =======");
-		userList.forEach(user -> {
-			log.info(user.toString());
-		});
-	}
+        List<User> userList = userMapper.selectList(null);
+        log.info("======= 打印 user 表所有数据 =======");
+        userList.forEach(user -> {
+            log.info(user.toString());
+        });
+    }
 
 }

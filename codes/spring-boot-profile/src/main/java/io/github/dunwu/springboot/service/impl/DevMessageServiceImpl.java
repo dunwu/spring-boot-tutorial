@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 @Profile({ "dev", "default" })
 public class DevMessageServiceImpl implements MessageService {
 
-	@Value("${dunwu.message:Development Begin!}")
-	private String message;
+    @Value("${dunwu.message:Development Begin!}")
+    private String message;
 
-	@Override
-	public String getMessage() {
-		return this.message;
-	}
+    @Override
+    public String getMessage() {
+        return this.message;
+    }
 
 }

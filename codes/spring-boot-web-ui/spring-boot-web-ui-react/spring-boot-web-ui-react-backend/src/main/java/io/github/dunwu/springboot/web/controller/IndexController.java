@@ -1,7 +1,7 @@
 package io.github.dunwu.springboot.web.controller;
 
-import io.github.dunwu.core.DataResult;
-import io.github.dunwu.core.ResultUtil;
+import io.github.dunwu.common.DataResult;
+import io.github.dunwu.common.ResultUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
-	/**
-	 * <p>
-	 * 在本例中，Spring将会将数据传给 hello.jsp
-	 * <p>
-	 * 访问形式：http://localhost:8080/hello?name=张三
-	 */
-	@RequestMapping(value = "/hello", method = RequestMethod.GET)
-	public DataResult<String> hello(@RequestParam("name") String name) {
-		return ResultUtil.successDataResult("你好，" + name);
-	}
+    /**
+     * <p>
+     * 在本例中，Spring将会将数据传给 hello.jsp
+     * <p>
+     * 访问形式：http://localhost:8080/hello?name=张三
+     */
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public DataResult<String> hello(@RequestParam("name") String name) {
+        return ResultUtils.successDataResult("你好，" + name);
+    }
 
 }

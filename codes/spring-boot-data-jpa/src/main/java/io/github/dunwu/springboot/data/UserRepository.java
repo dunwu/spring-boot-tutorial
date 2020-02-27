@@ -16,30 +16,30 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "user", path = "user")
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	/**
-	 * 根据用户名查找用户
-	 * <p>
-	 * 示例：http://localhost:8080/user/search/findByName?name=lisi
-	 *
-	 * @param username 用户名
-	 * @return {@link User}
-	 */
-	User findByUsername(@Param("username") String username);
+    /**
+     * 根据用户名查找用户
+     * <p>
+     * 示例：http://localhost:8080/user/search/findByName?name=lisi
+     *
+     * @param username 用户名
+     * @return {@link User}
+     */
+    User findByUsername(@Param("username") String username);
 
-	/**
-	 * 根据邮箱查找用户
-	 *
-	 * @param email 邮箱
-	 * @return {@link User}
-	 */
-	@Query("from User u where u.email=:email")
-	User findByEmail(@Param("email") String email);
+    /**
+     * 根据邮箱查找用户
+     *
+     * @param email 邮箱
+     * @return {@link User}
+     */
+    @Query("from User u where u.email=:email")
+    User findByEmail(@Param("email") String email);
 
-	/**
-	 * 根据用户名删除用户
-	 *
-	 * @param username 用户名
-	 */
-	void deleteByUsername(@Param("username") String username);
+    /**
+     * 根据用户名删除用户
+     *
+     * @param username 用户名
+     */
+    void deleteByUsername(@Param("username") String username);
 
 }

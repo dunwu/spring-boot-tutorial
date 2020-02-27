@@ -25,49 +25,49 @@ import java.util.Map;
 @Controller
 public class FreemarkController {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	@Value("${application.message:Hello World}")
-	private String message = "Hello World";
+    @Value("${application.message:Hello World}")
+    private String message = "Hello World";
 
-	@Autowired
-	private FreemarkHelper freemarkHelper;
+    @Autowired
+    private FreemarkHelper freemarkHelper;
 
-	@GetMapping("/exception2")
-	public String error2() throws Exception {
-		throw new Exception("自定义异常");
-	}
+    @GetMapping("/exception2")
+    public String error2() throws Exception {
+        throw new Exception("自定义异常");
+    }
 
-	@ResponseBody
-	@ExceptionHandler(Exception.class)
-	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	public String handleMyRuntimeException(Exception exception) {
-		Map params = new HashMap();
-		params.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
-		params.put("info", exception.getMessage());
+    @ResponseBody
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String handleMyRuntimeException(Exception exception) {
+        Map params = new HashMap();
+        params.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
+        params.put("info", exception.getMessage());
 
-		String mergeContent = null;
-		try {
-			mergeContent = freemarkHelper.getMergeContent("web/exception.ftl", params);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (TemplateException e) {
-			e.printStackTrace();
-		}
+        String mergeContent = null;
+        try {
+            mergeContent = freemarkHelper.getMergeContent("web/exception.ftl", params);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TemplateException e) {
+            e.printStackTrace();
+        }
 
-		return mergeContent;
-	}
+        return mergeContent;
+    }
 
-	@GetMapping("/index2")
-	@ResponseBody
-	public String print() throws IOException, TemplateException {
-		Map params = new HashMap();
-		params.put("time", new Date());
-		params.put("message", this.message);
-		String mergeContent = freemarkHelper.getMergeContent("web/index.ftl", params);
+    @GetMapping("/index2")
+    @ResponseBody
+    public String print() throws IOException, TemplateException {
+        Map params = new HashMap();
+        params.put("time", new Date());
+        params.put("message", this.message);
+        String mergeContent = freemarkHelper.getMergeContent("web/index.ftl", params);
 
-		log.info("freemark 模板合并后内容：\n{}", mergeContent);
-		return mergeContent;
-	}
+        log.info("freemark 模板合并后内容：\n{}", mergeContent);
+        return mergeContent;
+    }
 
 }

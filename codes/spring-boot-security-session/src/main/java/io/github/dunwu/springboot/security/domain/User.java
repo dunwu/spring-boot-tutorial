@@ -17,15 +17,15 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class User {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@TableId(value = "id", type = IdType.AUTO)
-	protected Integer id;
+    @TableId(value = "id", type = IdType.AUTO)
+    protected Integer id;
 
-	private String username;
+    private String username;
 
-	private String password;
+    private String password;
 
-	private String email;
+    private String email;
 
 }

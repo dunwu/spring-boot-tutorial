@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class DunwuAuthenticationSucessHandler implements AuthenticationSuccessHandler {
 
-	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-		Authentication authentication) throws IOException {
-		redirectStrategy.sendRedirect(request, response, "/");
-	}
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+        Authentication authentication) throws IOException {
+        redirectStrategy.sendRedirect(request, response, "/");
+    }
 
 }

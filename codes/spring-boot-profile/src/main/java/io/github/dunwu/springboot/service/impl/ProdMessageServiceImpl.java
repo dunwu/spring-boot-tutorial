@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 @Profile({ "prod" })
 public class ProdMessageServiceImpl implements MessageService {
 
-	@Value("${dunwu.message:Production Begin!}")
-	private String message;
+    @Value("${dunwu.message:Production Begin!}")
+    private String message;
 
-	@Override
-	public String getMessage() {
-		return this.message;
-	}
+    @Override
+    public String getMessage() {
+        return this.message;
+    }
 
 }

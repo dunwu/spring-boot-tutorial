@@ -11,7 +11,7 @@ import Routes from '../../routes'
 import ReduxDevTools from './ReduxDevTools'
 import configureStore from '../../redux/store/configureStore'
 
-const store = configureStore()
+const store = configureStore();
 
 /**
  * 开发环境的 Root 容器，会包含 Redux 的开发工具
@@ -19,7 +19,7 @@ const store = configureStore()
  */
 class RootContainer extends React.PureComponent {
   render() {
-    if (!this.routes) this.routes = Routes
+    if (!this.routes) this.routes = Routes;
     return (<Provider store={store}>
       <div>
         <Router children={this.routes} />

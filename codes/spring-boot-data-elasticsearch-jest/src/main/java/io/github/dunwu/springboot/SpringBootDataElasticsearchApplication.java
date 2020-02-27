@@ -10,19 +10,19 @@ import org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchDa
 @SpringBootApplication(exclude = { ElasticsearchAutoConfiguration.class, ElasticsearchDataAutoConfiguration.class })
 public class SpringBootDataElasticsearchApplication implements CommandLineRunner {
 
-	private final UserRepository repository;
+    private final UserRepository repository;
 
-	public SpringBootDataElasticsearchApplication(UserRepository repository) {
-		this.repository = repository;
-	}
+    public SpringBootDataElasticsearchApplication(UserRepository repository) {
+        this.repository = repository;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDataElasticsearchApplication.class);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootDataElasticsearchApplication.class);
+    }
 
-	@Override
-	public void run(String... args) {
-		System.out.println("[index = user] 的文档数：" + repository.count());
-	}
+    @Override
+    public void run(String... args) {
+        System.out.println("[index = user] 的文档数：" + repository.count());
+    }
 
 }

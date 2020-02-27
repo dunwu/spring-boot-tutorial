@@ -21,65 +21,65 @@ import java.lang.reflect.Field;
  */
 public class QueryFeildToQueryBuilderUtil {
 
-	public static final String LIKE_REGEX_TEMPLATE = ".*%s.*";
+    public static final String LIKE_REGEX_TEMPLATE = ".*%s.*";
 
-	public static SearchQuery transQueryDto2Condition(final Object queryBean) throws IllegalAccessException {
-		NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
+    public static SearchQuery transQueryDto2Condition(final Object queryBean) throws IllegalAccessException {
+        NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
 
-		QueryDocument document = queryBean.getClass().getAnnotation(QueryDocument.class);
-		if (null == document) {
-			throw new IllegalArgumentException("查询条件类定义必须使用 @QueryDocument 注解");
-		}
+        QueryDocument document = queryBean.getClass().getAnnotation(QueryDocument.class);
+        if (null == document) {
+            throw new IllegalArgumentException("查询条件类定义必须使用 @QueryDocument 注解");
+        }
 
-		// 排序条件
-		if (StringUtils.isNotBlank(document.orderItem())) {
-			SortOrder order = SortOrder.fromString(document.orderType().name());
-			FieldSortBuilder fieldSortBuilder = new FieldSortBuilder(document.orderItem()).order(order);
-			nativeSearchQueryBuilder.withSort(fieldSortBuilder);
-		}
+        // 排序条件
+        if (StringUtils.isNotBlank(document.orderItem())) {
+            SortOrder order = SortOrder.fromString(document.orderType().name());
+            FieldSortBuilder fieldSortBuilder = new FieldSortBuilder(document.orderItem()).order(order);
+            nativeSearchQueryBuilder.withSort(fieldSortBuilder);
+        }
 
-		Field[] fields = queryBean.getClass().getDeclaredFields();
-		for (Field field : fields) {
-			field.setAccessible(true);
-			Object value = field.get(queryBean);
+        Field[] fields = queryBean.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            Object value = field.get(queryBean);
 
-			if (value != null && StringUtils.isNotBlank(value.toString())) {
-				QueryField queryField = field.getAnnotation(QueryField.class);
-				if (null == queryField) {
-					continue;
-				}
+            if (value != null && StringUtils.isNotBlank(value.toString())) {
+                QueryField queryField = field.getAnnotation(QueryField.class);
+                if (null == queryField) {
+                    continue;
+                }
 
-				QueryLogicType logicType = queryField.logicType();
-				QueryJudgeType judgeType = queryField.judgeType();
+                QueryLogicType logicType = queryField.logicType();
+                QueryJudgeType judgeType = queryField.judgeType();
 
-				String fieldName;
-				if (StringUtils.isNotBlank(queryField.value())) {
-					fieldName = queryField.value();
-				} else {
-					fieldName = field.getName();
-				}
+                String fieldName;
+                if (StringUtils.isNotBlank(queryField.value())) {
+                    fieldName = queryField.value();
+                } else {
+                    fieldName = field.getName();
+                }
 
-				if (StringUtils.isBlank(fieldName)) {
-					continue;
-				}
+                if (StringUtils.isBlank(fieldName)) {
+                    continue;
+                }
 
-				QueryBuilder queryBuilder = null;
-				switch (judgeType) {
-					case Equals:
-						queryBuilder = new TermQueryBuilder(fieldName, value);
-						break;
-					case Like:
-						String regexp = String.format(LIKE_REGEX_TEMPLATE, value);
-						queryBuilder = new RegexpQueryBuilder(fieldName, regexp);
-						break;
-					default:
-						break;
-				}
-				nativeSearchQueryBuilder.withQuery(queryBuilder);
-			}
-		}
+                QueryBuilder queryBuilder = null;
+                switch (judgeType) {
+                    case Equals:
+                        queryBuilder = new TermQueryBuilder(fieldName, value);
+                        break;
+                    case Like:
+                        String regexp = String.format(LIKE_REGEX_TEMPLATE, value);
+                        queryBuilder = new RegexpQueryBuilder(fieldName, regexp);
+                        break;
+                    default:
+                        break;
+                }
+                nativeSearchQueryBuilder.withQuery(queryBuilder);
+            }
+        }
 
-		return nativeSearchQueryBuilder.build();
-	}
+        return nativeSearchQueryBuilder.build();
+    }
 
 }

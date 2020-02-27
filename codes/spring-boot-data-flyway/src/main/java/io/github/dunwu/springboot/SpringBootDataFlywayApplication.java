@@ -13,25 +13,25 @@ import java.util.List;
 @SpringBootApplication
 public class SpringBootDataFlywayApplication implements CommandLineRunner {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	private final UserDao userDAO;
+    private final UserDao userDAO;
 
-	public SpringBootDataFlywayApplication(UserDao userDAO) {
-		this.userDAO = userDAO;
-	}
+    public SpringBootDataFlywayApplication(UserDao userDAO) {
+        this.userDAO = userDAO;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDataFlywayApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootDataFlywayApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
+    @Override
+    public void run(String... args) throws Exception {
 
-		List<User> list = userDAO.list();
-		list.forEach(user -> {
-			log.info(user.toString());
-		});
-	}
+        List<User> list = userDAO.list();
+        list.forEach(user -> {
+            log.info(user.toString());
+        });
+    }
 
 }

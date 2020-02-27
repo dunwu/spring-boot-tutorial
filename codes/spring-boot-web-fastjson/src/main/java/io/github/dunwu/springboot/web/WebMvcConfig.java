@@ -33,71 +33,71 @@ import javax.servlet.http.HttpServletResponse;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	/**
-	 * 自定义消息转换器：使用 Fastjson 替换 Spring Boot 默认使用的 Jackson
-	 *
-	 * @param converters 消息转换器
-	 */
-	@Override
-	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-		// 清除默认 Json 转换器
-		converters.removeIf(converter -> converter instanceof MappingJackson2HttpMessageConverter);
+    /**
+     * 自定义消息转换器：使用 Fastjson 替换 Spring Boot 默认使用的 Jackson
+     *
+     * @param converters 消息转换器
+     */
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        // 清除默认 Json 转换器
+        converters.removeIf(converter -> converter instanceof MappingJackson2HttpMessageConverter);
 
-		// 配置 FastJson
-		FastJsonConfig config = new FastJsonConfig();
-		config.setSerializerFeatures(SerializerFeature.QuoteFieldNames, SerializerFeature.WriteEnumUsingToString,
-			SerializerFeature.WriteMapNullValue, SerializerFeature.WriteDateUseDateFormat);
+        // 配置 FastJson
+        FastJsonConfig config = new FastJsonConfig();
+        config.setSerializerFeatures(SerializerFeature.QuoteFieldNames, SerializerFeature.WriteEnumUsingToString,
+            SerializerFeature.WriteMapNullValue, SerializerFeature.WriteDateUseDateFormat);
 
-		// 添加 FastJsonHttpMessageConverter
-		FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
-		fastJsonHttpMessageConverter.setFastJsonConfig(config);
-		List<MediaType> fastMediaTypes = new ArrayList<>();
-		fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
-		fastJsonHttpMessageConverter.setSupportedMediaTypes(fastMediaTypes);
-		converters.add(fastJsonHttpMessageConverter);
+        // 添加 FastJsonHttpMessageConverter
+        FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
+        fastJsonHttpMessageConverter.setFastJsonConfig(config);
+        List<MediaType> fastMediaTypes = new ArrayList<>();
+        fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
+        fastJsonHttpMessageConverter.setSupportedMediaTypes(fastMediaTypes);
+        converters.add(fastJsonHttpMessageConverter);
 
-		// 添加 StringHttpMessageConverter，解决中文乱码问题
-		StringHttpMessageConverter stringHttpMessageConverter = new StringHttpMessageConverter(StandardCharsets.UTF_8);
-		converters.add(stringHttpMessageConverter);
-	}
+        // 添加 StringHttpMessageConverter，解决中文乱码问题
+        StringHttpMessageConverter stringHttpMessageConverter = new StringHttpMessageConverter(StandardCharsets.UTF_8);
+        converters.add(stringHttpMessageConverter);
+    }
 
-	/**
-	 * 自定义异常拦截处理器
-	 *
-	 * @param exceptionResolvers 异常处理器
-	 */
-	@Override
-	public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
-		exceptionResolvers
-			.add((HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) -> {
-				ResponseDTO responseDTO = new ResponseDTO();
-				StringBuilder sb = new StringBuilder();
-				if (e instanceof AppException) {
-					responseDTO.setCode(CodeEn.APP_ERROR.code());
-					sb.append(CodeEn.APP_ERROR.message());
-				} else {
-					responseDTO.setCode(CodeEn.OTHER_ERROR.code());
-					sb.append(CodeEn.OTHER_ERROR.message());
-				}
-				sb.append("，详细错误原因：");
-				sb.append(e.getMessage());
-				responseDTO.setMessage(sb.toString());
-				responseResponse(response, responseDTO);
-				return new ModelAndView();
-			});
-	}
+    /**
+     * 自定义异常拦截处理器
+     *
+     * @param exceptionResolvers 异常处理器
+     */
+    @Override
+    public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
+        exceptionResolvers
+            .add((HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) -> {
+                ResponseDTO responseDTO = new ResponseDTO();
+                StringBuilder sb = new StringBuilder();
+                if (e instanceof AppException) {
+                    responseDTO.setCode(CodeEn.APP_ERROR.code());
+                    sb.append(CodeEn.APP_ERROR.message());
+                } else {
+                    responseDTO.setCode(CodeEn.OTHER_ERROR.code());
+                    sb.append(CodeEn.OTHER_ERROR.message());
+                }
+                sb.append("，详细错误原因：");
+                sb.append(e.getMessage());
+                responseDTO.setMessage(sb.toString());
+                responseResponse(response, responseDTO);
+                return new ModelAndView();
+            });
+    }
 
-	private void responseResponse(HttpServletResponse response, ResponseDTO responseDTO) {
-		response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-		response.setHeader("Content-type", "application/json;charset=UTF-8");
-		response.setStatus(200);
-		try {
-			response.getWriter().write(JSON.toJSONString(responseDTO));
-		} catch (IOException e) {
-			log.error(e.getMessage());
-		}
-	}
+    private void responseResponse(HttpServletResponse response, ResponseDTO responseDTO) {
+        response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
+        response.setHeader("Content-type", "application/json;charset=UTF-8");
+        response.setStatus(200);
+        try {
+            response.getWriter().write(JSON.toJSONString(responseDTO));
+        } catch (IOException e) {
+            log.error(e.getMessage());
+        }
+    }
 
 }

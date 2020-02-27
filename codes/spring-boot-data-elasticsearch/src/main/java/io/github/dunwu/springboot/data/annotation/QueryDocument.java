@@ -15,10 +15,10 @@ import java.lang.annotation.*;
 @Target({ ElementType.TYPE })
 public @interface QueryDocument {
 
-	Class<?> value();
+    Class<?> value();
 
-	String orderItem() default "";
+    String orderItem() default "";
 
-	OrderType orderType() default OrderType.ASC;
+    OrderType orderType() default OrderType.ASC;
 
 }

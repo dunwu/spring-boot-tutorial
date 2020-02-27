@@ -13,10 +13,10 @@ import {ERROR_HANDLER_TYPE} from './index'
  * @return {boolean}
  */
 export function messageBizError(e, callBack) {
-  let continueHandler = true
+  let continueHandler = true;
   if (e && e.ret === -3) {
     // 业务错误
-    Message.error(e.msg, 4.5)
+    Message.error(e.msg, 4.5);
     continueHandler = ERROR_HANDLER_TYPE.NO
   }
   if (_.isFunction(callBack)) {

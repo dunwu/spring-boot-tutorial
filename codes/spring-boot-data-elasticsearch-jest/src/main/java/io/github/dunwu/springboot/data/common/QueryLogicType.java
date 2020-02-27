@@ -5,7 +5,7 @@ package io.github.dunwu.springboot.data.common;
  * @since 2019-12-17
  */
 public enum QueryLogicType {
-	AND,
-	OR,
-	NOT
+    AND,
+    OR,
+    NOT
 }

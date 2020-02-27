@@ -1,14 +1,14 @@
 .inputbox {
-	display: inline-block;
-	vertical-align: middle;
-	overflow: hidden;
-	white-space: nowrap;
-	margin: 0;
-	padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
 }
 
 .validatebox-invalid {
-	border-color: #FFA8A8;
-	background-color: #FFF3F3;
-	color: #000000;
+  border-color: #FFA8A8;
+  background-color: #FFF3F3;
+  color: #000000;
 }

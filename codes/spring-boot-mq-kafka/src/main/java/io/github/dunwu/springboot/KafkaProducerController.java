@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("kafka")
 public class KafkaProducerController {
 
-	private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
-	public KafkaProducerController(KafkaTemplate<String, String> kafkaTemplate) {
-		this.kafkaTemplate = kafkaTemplate;
-	}
+    public KafkaProducerController(KafkaTemplate<String, String> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
 
-	@RequestMapping("send")
-	public void send(String topic, String key, String value) {
-		kafkaTemplate.send(topic, key, value);
-	}
+    @RequestMapping("send")
+    public void send(String topic, String key, String value) {
+        kafkaTemplate.send(topic, key, value);
+    }
 
 }

@@ -28,44 +28,44 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("login")
 public class LoginController {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	private RequestCache requestCache = new HttpSessionRequestCache();
+    private RequestCache requestCache = new HttpSessionRequestCache();
 
-	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-	@GetMapping("unauthorized")
-	@ResponseStatus(HttpStatus.UNAUTHORIZED)
-	public String unauthorized(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		SavedRequest savedRequest = requestCache.getRequest(request, response);
-		if (savedRequest != null) {
-			String targetUrl = savedRequest.getRedirectUrl();
-			log.info("{} 需要认证后才能访问", targetUrl);
-			redirectStrategy.sendRedirect(request, response, "/auth/login.html");
-		}
-		return "访问的资源需要身份认证！";
-	}
+    @GetMapping("unauthorized")
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public String unauthorized(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        SavedRequest savedRequest = requestCache.getRequest(request, response);
+        if (savedRequest != null) {
+            String targetUrl = savedRequest.getRedirectUrl();
+            log.info("{} 需要认证后才能访问", targetUrl);
+            redirectStrategy.sendRedirect(request, response, "/auth/login.html");
+        }
+        return "访问的资源需要身份认证！";
+    }
 
-	/**
-	 * 生成校验码图，每次访问会随机生成新的校验码图
-	 */
-	@GetMapping("checkcode")
-	public void authImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		response.setHeader("Pragma", "No-cache");
-		response.setHeader("Cache-Control", "no-cache");
-		response.setDateHeader("Expires", 0);
-		response.setContentType("image/jpeg");
-		// 生成随机字串
-		CheckCodeUtils.CheckCode checkCode = CheckCodeUtils.create(60);
-		// 存入会话session
-		HttpSession session = request.getSession(true);
-		// 删除以前的
-		session.removeAttribute("code");
-		session.removeAttribute("expireTime");
-		session.setAttribute("code", checkCode.getCode());
-		session.setAttribute("expireTime", checkCode.getExpireTime());
-		OutputStream out = response.getOutputStream();
-		CheckCodeUtils.toOutputStream(checkCode, out);
-	}
+    /**
+     * 生成校验码图，每次访问会随机生成新的校验码图
+     */
+    @GetMapping("checkcode")
+    public void authImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setHeader("Pragma", "No-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 0);
+        response.setContentType("image/jpeg");
+        // 生成随机字串
+        CheckCodeUtils.CheckCode checkCode = CheckCodeUtils.create(60);
+        // 存入会话session
+        HttpSession session = request.getSession(true);
+        // 删除以前的
+        session.removeAttribute("code");
+        session.removeAttribute("expireTime");
+        session.setAttribute("code", checkCode.getCode());
+        session.setAttribute("expireTime", checkCode.getExpireTime());
+        OutputStream out = response.getOutputStream();
+        CheckCodeUtils.toOutputStream(checkCode, out);
+    }
 
 }

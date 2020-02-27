@@ -11,11 +11,11 @@ import java.util.List;
 @ToString
 public class GirlFriend {
 
-	private String name;
+    private String name;
 
-	private String type;
+    private String type;
 
-	@Field(type = FieldType.Nested)
-	private List<Car> cars;
+    @Field(type = FieldType.Nested)
+    private List<Car> cars;
 
 }

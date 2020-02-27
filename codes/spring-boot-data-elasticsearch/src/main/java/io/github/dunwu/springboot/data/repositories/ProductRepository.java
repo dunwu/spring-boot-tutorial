@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface ProductRepository extends ElasticsearchRepository<Product, String> {
 
-	List<Product> findByName(String name);
+    List<Product> findByName(String name);
 
-	List<Product> findByName(String name, Pageable pageable);
+    List<Product> findByName(String name, Pageable pageable);
 
-	List<Product> findByNameAndId(String name, String id);
+    List<Product> findByNameAndId(String name, String id);
 
 }

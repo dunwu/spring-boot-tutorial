@@ -9,7 +9,7 @@ import React from 'react'
 
 import './Content.less'
 
-const {Content} = Layout
+const {Content} = Layout;
 
 /**
  * 内容布局组件

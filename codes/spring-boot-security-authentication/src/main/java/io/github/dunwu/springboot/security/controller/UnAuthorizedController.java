@@ -23,22 +23,22 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 public class UnAuthorizedController {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	private RequestCache requestCache = new HttpSessionRequestCache();
+    private RequestCache requestCache = new HttpSessionRequestCache();
 
-	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-	@GetMapping("/unauthorized")
-	@ResponseStatus(HttpStatus.UNAUTHORIZED)
-	public String unauthorized(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		SavedRequest savedRequest = requestCache.getRequest(request, response);
-		if (savedRequest != null) {
-			String targetUrl = savedRequest.getRedirectUrl();
-			log.info("{} 需要认证后才能访问", targetUrl);
-			redirectStrategy.sendRedirect(request, response, "/auth/login.html");
-		}
-		return "访问的资源需要身份认证！";
-	}
+    @GetMapping("/unauthorized")
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public String unauthorized(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        SavedRequest savedRequest = requestCache.getRequest(request, response);
+        if (savedRequest != null) {
+            String targetUrl = savedRequest.getRedirectUrl();
+            log.info("{} 需要认证后才能访问", targetUrl);
+            redirectStrategy.sendRedirect(request, response, "/auth/login.html");
+        }
+        return "访问的资源需要身份认证！";
+    }
 
 }

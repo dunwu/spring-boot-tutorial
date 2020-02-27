@@ -13,44 +13,44 @@ import javax.sql.DataSource;
 @SpringBootApplication
 public class SpringBootDataJpaApplication implements CommandLineRunner {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	private final DataSource dataSource;
+    private final DataSource dataSource;
 
-	public SpringBootDataJpaApplication(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+    public SpringBootDataJpaApplication(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDataJpaApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootDataJpaApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
+    @Override
+    public void run(String... args) throws Exception {
 
-		if (dataSource != null) {
-			printDataSourceInfo(dataSource);
-			log.info("Connect to datasource success.");
-		} else {
-			log.error("Connect to datasource failed!");
-		}
-	}
+        if (dataSource != null) {
+            printDataSourceInfo(dataSource);
+            log.info("Connect to datasource success.");
+        } else {
+            log.error("Connect to datasource failed!");
+        }
+    }
 
-	private void printDataSourceInfo(DataSource dataSource) throws SQLException {
+    private void printDataSourceInfo(DataSource dataSource) throws SQLException {
 
-		Connection connection;
-		if (dataSource != null) {
-			connection = dataSource.getConnection();
-		} else {
-			log.error("Get dataSource failed!");
-			return;
-		}
+        Connection connection;
+        if (dataSource != null) {
+            connection = dataSource.getConnection();
+        } else {
+            log.error("Get dataSource failed!");
+            return;
+        }
 
-		if (connection != null) {
-			log.info("DataSource Url: {}", connection.getMetaData().getURL());
-		} else {
-			log.error("Connect to datasource failed!");
-		}
-	}
+        if (connection != null) {
+            log.info("DataSource Url: {}", connection.getMetaData().getURL());
+        } else {
+            log.error("Connect to datasource failed!");
+        }
+    }
 
 }

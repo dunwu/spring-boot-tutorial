@@ -2,8 +2,7 @@ package io.github.dunwu.springboot.data.repositories;
 
 import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.springboot.data.entities.User;
-import io.github.dunwu.springboot.data.repositories.UserRepository;
-import io.github.dunwu.util.RandomExtUtils;
+import io.github.dunwu.tool.util.RandomUtil;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,56 +27,56 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(classes = { SpringBootDataElasticsearchApplication.class })
 public class ElasticsearchPerformanceTest {
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	@Before
-	public void before() {
-		userRepository.deleteAll();
-		System.out.println(userRepository.count());
-	}
+    @Before
+    public void before() {
+        userRepository.deleteAll();
+        System.out.println(userRepository.count());
+    }
 
-	@Test
-	public void test() {
+    @Test
+    public void test() {
 
-		// 并发写数据
-		long begin = System.nanoTime();
-		ExecutorService service = Executors.newFixedThreadPool(10);
-		ArrayList<Callable<Object>> tasks = new ArrayList<>();
-		for (int i = 0; i < 100; i++) {
-			tasks.add(() -> {
-				List<User> users = new ArrayList<>();
-				for (int j = 0; j < 1000; j++) {
-					User user = new User(RandomExtUtils.randomChineseName(), RandomUtils.nextInt(18, 99),
-						RandomExtUtils.randomLetter(6, 10), RandomExtUtils.randomEmail());
-					users.add(user);
-				}
-				return userRepository.saveAll(users);
-			});
-		}
-		try {
-			service.invokeAll(tasks);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		service.shutdown();
-		long end = System.nanoTime();
-		long millis = TimeUnit.NANOSECONDS.toMillis(end - begin);
-		long count = userRepository.count();
+        // 并发写数据
+        long begin = System.nanoTime();
+        ExecutorService service = Executors.newFixedThreadPool(10);
+        ArrayList<Callable<Object>> tasks = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            tasks.add(() -> {
+                List<User> users = new ArrayList<>();
+                for (int j = 0; j < 1000; j++) {
+                    User user = new User(RandomUtil.randomChineseName(), RandomUtils.nextInt(18, 99),
+                        RandomUtil.randomString(6, 10), RandomUtil.randomEmail());
+                    users.add(user);
+                }
+                return userRepository.saveAll(users);
+            });
+        }
+        try {
+            service.invokeAll(tasks);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        service.shutdown();
+        long end = System.nanoTime();
+        long millis = TimeUnit.NANOSECONDS.toMillis(end - begin);
+        long count = userRepository.count();
 
-		System.out.println(String.format("the time of write %d doc: %d ms", count, millis));
+        System.out.println(String.format("the time of write %d doc: %d ms", count, millis));
 
-		userRepository.save(new User("张三", 31, "xxxxxx", "forbreak@163.com"));
+        userRepository.save(new User("张三", 31, "xxxxxx", "forbreak@163.com"));
 
-		System.out.printf("当前有 %s 条数据\n", count);
+        System.out.printf("当前有 %s 条数据\n", count);
 
-		begin = System.nanoTime();
-		List<User> userList = userRepository.findByUsername("张鹏");
-		assertThat(userList).isNotEmpty();
-		end = System.nanoTime();
-		millis = TimeUnit.NANOSECONDS.toMillis(end - begin);
-		System.out.println(String.format("the time of find doc in %d data: %d ms", count, millis));
-		userList.forEach(System.out::println);
-	}
+        begin = System.nanoTime();
+        List<User> userList = userRepository.findByUsername("张鹏");
+        assertThat(userList).isNotEmpty();
+        end = System.nanoTime();
+        millis = TimeUnit.NANOSECONDS.toMillis(end - begin);
+        System.out.println(String.format("the time of find doc in %d data: %d ms", count, millis));
+        userList.forEach(System.out::println);
+    }
 
 }

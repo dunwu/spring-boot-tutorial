@@ -20,21 +20,21 @@ import java.lang.annotation.*;
 @Target({ ElementType.TYPE })
 public @interface QueryDocument {
 
-	NamingStrategy namingStrategy() default NamingStrategy.DEFAULT;
+    NamingStrategy namingStrategy() default NamingStrategy.DEFAULT;
 
-	QueryLogicType logicType() default QueryLogicType.AND;
+    QueryLogicType logicType() default QueryLogicType.AND;
 
-	Order[] orders() default {};
+    Order[] orders() default {};
 
-	@Retention(RetentionPolicy.RUNTIME)
-	@Target({})
-	@interface Order {
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target({})
+    @interface Order {
 
-		@AliasFor("property")
-		String value() default "";
+        @AliasFor("property")
+        String value() default "";
 
-		OrderType type() default OrderType.ASC;
+        OrderType type() default OrderType.ASC;
 
-	}
+    }
 
 }

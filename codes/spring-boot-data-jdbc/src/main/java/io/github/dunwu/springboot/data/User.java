@@ -19,42 +19,42 @@ import java.util.Objects;
 @AllArgsConstructor
 public class User {
 
-	private Long id;
+    private Long id;
 
-	private String username;
+    private String username;
 
-	private String password;
+    private String password;
 
-	private String email;
+    private String email;
 
-	public User(String username, String password, String email) {
-		this.username = username;
-		this.password = password;
-		this.email = email;
-	}
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, username);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username);
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
 
-		if (!(o instanceof User)) {
-			return false;
-		}
+        if (!(o instanceof User)) {
+            return false;
+        }
 
-		User user = (User) o;
+        User user = (User) o;
 
-		if (id != null && id.equals(user.id)) {
-			return true;
-		}
+        if (id != null && id.equals(user.id)) {
+            return true;
+        }
 
-		return username.equals(user.username);
-	}
+        return username.equals(user.username);
+    }
 
 }

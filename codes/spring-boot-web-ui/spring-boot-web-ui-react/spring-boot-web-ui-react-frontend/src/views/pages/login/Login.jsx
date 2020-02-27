@@ -10,11 +10,11 @@ import loginLogo from './login-logo.png'
 
 import './Login.less'
 
-const FormItem = Form.Item
+const FormItem = Form.Item;
 
 const propTypes = {
   user: PropTypes.object, loggingIn: PropTypes.bool, message: PropTypes.string
-}
+};
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field])
@@ -22,7 +22,7 @@ function hasErrors(fieldsError) {
 
 class Login extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       loading: false
     }
@@ -34,32 +34,32 @@ class Login extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     this.setState({
       loading: true
-    })
+    });
 
-    const data = this.props.form.getFieldsValue()
+    const data = this.props.form.getFieldsValue();
     this.props
       .login(data.user, data.password)
       .payload.promise.then(response => {
       this.setState({
         loading: false
-      })
+      });
 
       if (response.login) {
         console.warn('login failed: ', response.payload.message)
       } else {
-        let result = response.payload.data
-        console.log('login result:', result)
+        let result = response.payload.data;
+        console.log('login result:', result);
         if (result) {
           if (result.success) {
-            console.info('[Login] res.payload.data: ', result)
-            message.success('欢迎你，' + result.data.name)
+            console.info('[Login] res.payload.data: ', result);
+            message.success('欢迎你，' + result.data.name);
             this.props.history.replace('/')
           } else {
-            let str = ''
+            let str = '';
             if (result.msg) {
               str = result.msg
             }
@@ -69,11 +69,11 @@ class Login extends React.Component {
       }
     })
       .catch(err => {
-        console.error('[Login] err: ', err)
+        console.error('[Login] err: ', err);
         this.setState({
           loading: false
         })
-      })
+      });
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.info('提交表单信息', values)
@@ -86,10 +86,10 @@ class Login extends React.Component {
   render() {
     const {
       getFieldDecorator, getFieldsError, getFieldError, isFieldTouched, setFieldsValue
-    } = this.props.form
+    } = this.props.form;
     // Only show error after a field is touched.
-    const userNameError = isFieldTouched('userName') && getFieldError('userName')
-    const passwordError = isFieldTouched('password') && getFieldError('password')
+    const userNameError = isFieldTouched('userName') && getFieldError('userName');
+    const passwordError = isFieldTouched('password') && getFieldError('password');
 
     return (<Row
       className="login-row"
@@ -159,12 +159,12 @@ class Login extends React.Component {
   }
 }
 
-Login.propTypes = propTypes
+Login.propTypes = propTypes;
 
-Login = Form.create()(Login)
+Login = Form.create()(Login);
 
 function mapStateToProps(state) {
-  const {auth} = state
+  const {auth} = state;
   if (auth.user) {
     return {user: auth.user, loggingIn: auth.loggingIn, message: ''}
   }

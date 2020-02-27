@@ -19,35 +19,35 @@ import java.util.List;
 @Document(indexName = "operation", type = "operation")
 public class Operation {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	@Field(
-		type = FieldType.Text,
-		searchAnalyzer = "standard",
-		analyzer = "standard",
-		store = true
-	)
-	private String operationName;
+    @Field(
+        type = FieldType.Text,
+        searchAnalyzer = "standard",
+        analyzer = "standard",
+        store = true
+    )
+    private String operationName;
 
-	@Field(
-		type = FieldType.Date,
-		index = false,
-		store = true,
-		format = DateFormat.custom,
-		pattern = "yyyy-MM-dd hh:mm:ss"
-	)
-	private String dateUp;
+    @Field(
+        type = FieldType.Date,
+        index = false,
+        store = true,
+        format = DateFormat.custom,
+        pattern = "yyyy-MM-dd hh:mm:ss"
+    )
+    private String dateUp;
 
-	@Field(
-		type = FieldType.Text,
-		index = false,
-		store = false
-	)
-	private String someTransientData;
+    @Field(
+        type = FieldType.Text,
+        index = false,
+        store = false
+    )
+    private String someTransientData;
 
-	@Field(type = FieldType.Nested)
-	private List<Sector> sectors;
+    @Field(type = FieldType.Nested)
+    private List<Sector> sectors;
 
 }
 

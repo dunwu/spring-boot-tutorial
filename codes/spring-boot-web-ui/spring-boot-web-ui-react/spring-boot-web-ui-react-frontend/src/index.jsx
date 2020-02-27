@@ -14,15 +14,15 @@ const render = Component => {
   ReactDOM.render(<AppContainer>
     <Component />
   </AppContainer>, document.getElementById('root'))
-}
+};
 
 // 初次启动 App
-render(RootContainer)
+render(RootContainer);
 
 // 热替换启动 App
 if (module.hot) {
   module.hot.accept('./containers/Root/RootContainer', () => {
-    const NextRootContainer = require('./containers/Root/RootContainer')
+    const NextRootContainer = require('./containers/Root/RootContainer');
     render(NextRootContainer)
   })
 }

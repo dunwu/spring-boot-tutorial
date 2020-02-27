@@ -20,35 +20,35 @@ import java.util.Map;
 @SpringBootTest(classes = { SpringBootDataElasticsearchApplication.class })
 public class OperationRepositoryTest {
 
-	@Autowired
-	private ElasticsearchTemplate elasticsearchTemplate;
+    @Autowired
+    private ElasticsearchTemplate elasticsearchTemplate;
 
-	@Autowired
-	private OperationRepository repository;
+    @Autowired
+    private OperationRepository repository;
 
-	@Before
-	public void clear() {
-		repository.deleteAll();
-	}
+    @Before
+    public void clear() {
+        repository.deleteAll();
+    }
 
-	@Test
-	public void getMappingTest() {
-		Map mapping = elasticsearchTemplate.getMapping(Operation.class);
-		System.out.println(mapping.toString());
-	}
+    @Test
+    public void getMappingTest() {
+        Map mapping = elasticsearchTemplate.getMapping(Operation.class);
+        System.out.println(mapping.toString());
+    }
 
-	@Test
-	public void test() {
-		Sector sector1 = new Sector(1, RandomUtil.randomString(5, 10));
-		Sector sector2 = new Sector(2, RandomUtil.randomString(5, 10));
-		Sector sector3 = new Sector(3, RandomUtil.randomString(5, 10));
-		ArrayList<Sector> list = CollectionUtil.newArrayList(sector1, sector2, sector3);
-		Operation operation = new Operation(1L, RandomUtil.randomString(5, 10), "2010-01-01 12:00:00",
-			RandomUtil.randomString(5, 10), list);
-		repository.save(operation);
+    @Test
+    public void test() {
+        Sector sector1 = new Sector(1, RandomUtil.randomString(5, 10));
+        Sector sector2 = new Sector(2, RandomUtil.randomString(5, 10));
+        Sector sector3 = new Sector(3, RandomUtil.randomString(5, 10));
+        ArrayList<Sector> list = CollectionUtil.newArrayList(sector1, sector2, sector3);
+        Operation operation = new Operation(1L, RandomUtil.randomString(5, 10), "2010-01-01 12:00:00",
+            RandomUtil.randomString(5, 10), list);
+        repository.save(operation);
 
-		Iterable<Operation> iterable = repository.findAll();
-		iterable.forEach(System.out::println);
-	}
+        Iterable<Operation> iterable = repository.findAll();
+        iterable.forEach(System.out::println);
+    }
 
 }

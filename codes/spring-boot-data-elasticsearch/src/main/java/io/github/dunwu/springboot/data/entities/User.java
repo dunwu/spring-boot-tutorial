@@ -12,33 +12,33 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 @Document(indexName = "user", type = "user", shards = 1, replicas = 0, refreshInterval = "-1")
 public class User {
 
-	@Id
-	private String id;
+    @Id
+    private String id;
 
-	private String username;
+    private String username;
 
-	private int age;
+    private int age;
 
-	private String password;
+    private String password;
 
-	@Field(type = FieldType.Text, fielddata = true)
-	private String email;
+    @Field(type = FieldType.Text, fielddata = true)
+    private String email;
 
-	public User() {}
+    public User() {}
 
-	public User(String username, int age, String password, String email) {
-		this.username = username;
-		this.age = age;
-		this.password = password;
-		this.email = email;
-	}
+    public User(String username, int age, String password, String email) {
+        this.username = username;
+        this.age = age;
+        this.password = password;
+        this.email = email;
+    }
 
-	public User(String id, String username, int age, String password, String email) {
-		this.id = id;
-		this.username = username;
-		this.age = age;
-		this.password = password;
-		this.email = email;
-	}
+    public User(String id, String username, int age, String password, String email) {
+        this.id = id;
+        this.username = username;
+        this.age = age;
+        this.password = password;
+        this.email = email;
+    }
 
 }

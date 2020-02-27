@@ -15,16 +15,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class StringStringKafkaConsumer {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	@KafkaListener(id = "kafka-string-string-consumer", topics = "${dunwu.kafka.string-string-topic}")
-	public void recvStringStringData(ConsumerRecord<String, String> consumerRecord) {
-		log.info("收到kafka消息：{}", consumerRecord.toString());
-	}
+    @KafkaListener(id = "kafka-string-string-consumer", topics = "${dunwu.kafka.string-string-topic}")
+    public void recvStringStringData(ConsumerRecord<String, String> consumerRecord) {
+        log.info("收到kafka消息：{}", consumerRecord.toString());
+    }
 
-	@KafkaListener(id = "kafka-string-json-consumer", topics = "${dunwu.kafka.string-json-topic}")
-	public void recvStringJsonData(ConsumerRecord<String, String> consumerRecord) {
-		log.info("收到kafka消息：{}", consumerRecord.toString());
-	}
+    @KafkaListener(id = "kafka-string-json-consumer", topics = "${dunwu.kafka.string-json-topic}")
+    public void recvStringJsonData(ConsumerRecord<String, String> consumerRecord) {
+        log.info("收到kafka消息：{}", consumerRecord.toString());
+    }
 
 }

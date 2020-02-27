@@ -12,30 +12,30 @@ import java.util.List;
  */
 public interface UserDao {
 
-	// DML
-	// -------------------------------------------------------------------
-	void insert(User user);
+    // DML
+    // -------------------------------------------------------------------
+    void insert(User user);
 
-	void batchInsert(List<User> users);
+    void batchInsert(List<User> users);
 
-	void deleteByName(String name);
+    void deleteByName(String name);
 
-	void deleteAll();
+    void deleteAll();
 
-	void update(User user);
+    void update(User user);
 
-	Integer count();
+    Integer count();
 
-	List<User> list();
+    List<User> list();
 
-	User queryByName(String name);
+    User queryByName(String name);
 
-	JdbcTemplate getJdbcTemplate();
+    JdbcTemplate getJdbcTemplate();
 
-	// DDL
-	// -------------------------------------------------------------------
-	void truncate();
+    // DDL
+    // -------------------------------------------------------------------
+    void truncate();
 
-	void recreateTable();
+    void recreateTable();
 
 }

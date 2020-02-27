@@ -7,7 +7,7 @@ const columns = [{
   title: 'Age', dataIndex: 'age'
 }, {
   title: 'Address', dataIndex: 'address'
-}]
+}];
 const data = [{
   key: '1', name: 'John Brown', age: 32, address: 'New York No. 1 Lake Park'
 }, {
@@ -18,7 +18,7 @@ const data = [{
   key: '4', name: 'Joe Black', age: 32, address: 'Sidney No. 1 Lake Park'
 }, {
   key: '5', name: 'Joe Black', age: 32, address: 'Sidney No. 1 Lake Park'
-}]
+}];
 
 export default class MailboxPage extends React.Component {
   render() {

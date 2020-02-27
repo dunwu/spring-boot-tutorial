@@ -11,31 +11,31 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringBootDataRedisClusterApplication implements CommandLineRunner {
 
-	private static final Logger log = LoggerFactory.getLogger(SpringBootDataRedisClusterApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(SpringBootDataRedisClusterApplication.class);
 
-	private final UserService userService;
+    private final UserService userService;
 
-	public SpringBootDataRedisClusterApplication(UserService userService) {
-		this.userService = userService;
-	}
+    public SpringBootDataRedisClusterApplication(UserService userService) {
+        this.userService = userService;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDataRedisClusterApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootDataRedisClusterApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
+    @Override
+    public void run(String... args) throws Exception {
 
-		User user = new User(1L, "张三", 21, "南京", "xxx@163.com");
-		User user2 = new User(2L, "李四", 28, "上海", "xxx@163.com");
-		userService.setUser(user);
-		userService.setUser(user2);
+        User user = new User(1L, "张三", 21, "南京", "xxx@163.com");
+        User user2 = new User(2L, "李四", 28, "上海", "xxx@163.com");
+        userService.setUser(user);
+        userService.setUser(user2);
 
-		User result = userService.getUser(user.getId());
-		User result2 = userService.getUser(user2.getId());
+        User result = userService.getUser(user.getId());
+        User result2 = userService.getUser(user2.getId());
 
-		log.info(result.toString());
-		log.info(result2.toString());
-	}
+        log.info(result.toString());
+        log.info(result2.toString());
+    }
 
 }

@@ -12,43 +12,43 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDetailsManagerImpl implements UserDetailsManager {
 
-	private final UserMapper userMapper;
+    private final UserMapper userMapper;
 
-	public UserDetailsManagerImpl(UserMapper userMapper) {
-		this.userMapper = userMapper;
-	}
+    public UserDetailsManagerImpl(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
-	@Override
-	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		QueryWrapper<User> query = new QueryWrapper<>();
-		User user = userMapper.selectOne(query.eq("userName", userName));
-		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-			true, true, true, true, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
-	}
+    @Override
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        QueryWrapper<User> query = new QueryWrapper<>();
+        User user = userMapper.selectOne(query.eq("userName", userName));
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+            true, true, true, true, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+    }
 
-	@Override
-	public void createUser(UserDetails userDetails) {
+    @Override
+    public void createUser(UserDetails userDetails) {
 
-	}
+    }
 
-	@Override
-	public void updateUser(UserDetails userDetails) {
+    @Override
+    public void updateUser(UserDetails userDetails) {
 
-	}
+    }
 
-	@Override
-	public void deleteUser(String s) {
+    @Override
+    public void deleteUser(String s) {
 
-	}
+    }
 
-	@Override
-	public void changePassword(String s, String s1) {
+    @Override
+    public void changePassword(String s, String s1) {
 
-	}
+    }
 
-	@Override
-	public boolean userExists(String s) {
-		return false;
-	}
+    @Override
+    public boolean userExists(String s) {
+        return false;
+    }
 
 }

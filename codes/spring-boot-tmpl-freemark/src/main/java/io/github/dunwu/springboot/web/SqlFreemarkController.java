@@ -18,27 +18,27 @@ import java.util.List;
 @RequestMapping("/sql")
 public class SqlFreemarkController {
 
-	@Autowired
-	private UserDAO userDAO;
+    @Autowired
+    private UserDAO userDAO;
 
-	@RequestMapping("/clear")
-	public void clear() {
-		userDAO.clear();
-	}
+    @RequestMapping("/clear")
+    public void clear() {
+        userDAO.clear();
+    }
 
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public void create(@RequestParam("name") String name, @RequestParam("age") Integer age) {
-		userDAO.create(name, age);
-	}
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public void create(@RequestParam("name") String name, @RequestParam("age") Integer age) {
+        userDAO.create(name, age);
+    }
 
-	@RequestMapping("/deleteByName")
-	public void deleteByName(@RequestParam("name") String name) {
-		userDAO.deleteByName(name);
-	}
+    @RequestMapping("/deleteByName")
+    public void deleteByName(@RequestParam("name") String name) {
+        userDAO.deleteByName(name);
+    }
 
-	@RequestMapping("/list")
-	public List<User> list() {
-		return userDAO.list();
-	}
+    @RequestMapping("/list")
+    public List<User> list() {
+        return userDAO.list();
+    }
 
 }

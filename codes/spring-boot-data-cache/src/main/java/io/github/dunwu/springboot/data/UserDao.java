@@ -9,25 +9,25 @@ import java.util.List;
 
 public interface UserDao {
 
-	void batchInsert(List<User> users);
+    void batchInsert(List<User> users);
 
-	Integer count();
+    Integer count();
 
-	@CacheEvict(value = "dunwu:users", key = "#name")
-	int deleteByName(String name);
+    @CacheEvict(value = "dunwu:users", key = "#name")
+    int deleteByName(String name);
 
-	void insert(User user);
+    void insert(User user);
 
-	List<User> list();
+    List<User> list();
 
-	@Cacheable(value = "dunwu:users", key = "#name")
-	User queryByName(String name);
+    @Cacheable(value = "dunwu:users", key = "#name")
+    User queryByName(String name);
 
-	void recreateTable();
+    void recreateTable();
 
-	@CachePut(value = "dunwu:users", key = "#user.name")
-	User update(User user);
+    @CachePut(value = "dunwu:users", key = "#user.name")
+    User update(User user);
 
-	JdbcTemplate getJdbcTemplate();
+    JdbcTemplate getJdbcTemplate();
 
 }

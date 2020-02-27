@@ -12,27 +12,27 @@ import static org.junit.jupiter.api.condition.OS.*;
  */
 public class OSEnvDemo {
 
-	@Test
-	@DisabledOnOs(WINDOWS)
-	void notOnWindows() {
-		// ...
-	}
+    @Test
+    @DisabledOnOs(WINDOWS)
+    void notOnWindows() {
+        // ...
+    }
 
-	@Test
-	@EnabledOnOs({ LINUX, MAC })
-	void onLinuxOrMac() {
-		// ...
-	}
+    @Test
+    @EnabledOnOs({ LINUX, MAC })
+    void onLinuxOrMac() {
+        // ...
+    }
 
-	@Test
-	@EnabledOnOs(MAC)
-	void onlyOnMacOs() {
-		// ...
-	}
+    @Test
+    @EnabledOnOs(MAC)
+    void onlyOnMacOs() {
+        // ...
+    }
 
-	@TestOnWindows
-	void testOnMac() {
-		// ...
-	}
+    @TestOnWindows
+    void testOnMac() {
+        // ...
+    }
 
 }

@@ -11,20 +11,20 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherData {
 
-	private String shidu;
+    private String shidu;
 
-	private int pm25;
+    private int pm25;
 
-	private int pm10;
+    private int pm10;
 
-	private String quality;
+    private String quality;
 
-	private String wendu;
+    private String wendu;
 
-	private String ganmao;
+    private String ganmao;
 
-	private List<CoreWeatherInfo> forecast;
+    private List<CoreWeatherInfo> forecast;
 
-	private CoreWeatherInfo yesterday;
+    private CoreWeatherInfo yesterday;
 
 }

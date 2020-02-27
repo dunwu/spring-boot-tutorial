@@ -9,16 +9,16 @@ import lombok.ToString;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Weather {
 
-	private String message;
+    private String message;
 
-	private int status;
+    private int status;
 
-	private String date;
+    private String date;
 
-	private String time;
+    private String time;
 
-	private CityInfo cityInfo;
+    private CityInfo cityInfo;
 
-	private WeatherData data;
+    private WeatherData data;
 
 }

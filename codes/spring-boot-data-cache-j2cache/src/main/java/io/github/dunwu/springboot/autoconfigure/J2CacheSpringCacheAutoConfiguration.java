@@ -26,23 +26,23 @@ import java.util.Collection;
 @EnableCaching
 public class J2CacheSpringCacheAutoConfiguration {
 
-	private final CacheProperties cacheProperties;
+    private final CacheProperties cacheProperties;
 
-	private final J2CacheProperties j2CacheProperties;
+    private final J2CacheProperties j2CacheProperties;
 
-	J2CacheSpringCacheAutoConfiguration(CacheProperties cacheProperties, J2CacheProperties j2CacheProperties) {
-		this.cacheProperties = cacheProperties;
-		this.j2CacheProperties = j2CacheProperties;
-	}
+    J2CacheSpringCacheAutoConfiguration(CacheProperties cacheProperties, J2CacheProperties j2CacheProperties) {
+        this.cacheProperties = cacheProperties;
+        this.j2CacheProperties = j2CacheProperties;
+    }
 
-	@Bean
-	@ConditionalOnBean(CacheChannel.class)
-	public J2CacheCacheManger cacheManager(CacheChannel cacheChannel) {
-		Collection<String> cacheNames = cacheProperties.getCacheNames();
-		J2CacheCacheManger cacheCacheManger = new J2CacheCacheManger(cacheChannel);
-		cacheCacheManger.setAllowNullValues(j2CacheProperties.isAllowNullValues());
-		cacheCacheManger.setCacheNames(cacheNames);
-		return cacheCacheManger;
-	}
+    @Bean
+    @ConditionalOnBean(CacheChannel.class)
+    public J2CacheCacheManger cacheManager(CacheChannel cacheChannel) {
+        Collection<String> cacheNames = cacheProperties.getCacheNames();
+        J2CacheCacheManger cacheCacheManger = new J2CacheCacheManger(cacheChannel);
+        cacheCacheManger.setAllowNullValues(j2CacheProperties.isAllowNullValues());
+        cacheCacheManger.setCacheNames(cacheNames);
+        return cacheCacheManger;
+    }
 
 }

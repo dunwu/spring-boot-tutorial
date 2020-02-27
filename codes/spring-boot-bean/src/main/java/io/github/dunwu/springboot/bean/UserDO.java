@@ -15,10 +15,10 @@ import lombok.ToString;
 @AllArgsConstructor
 public class UserDO {
 
-	private Long id;
+    private Long id;
 
-	private String name;
+    private String name;
 
-	private String info;
+    private String info;
 
 }

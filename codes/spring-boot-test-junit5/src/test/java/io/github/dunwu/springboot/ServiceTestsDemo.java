@@ -15,14 +15,14 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ServiceTestsDemo {
 
-	@Autowired
-	private HelloService helloService;
+    @Autowired
+    private HelloService helloService;
 
-	@Test
-	public void test() {
-		String info = helloService.hello();
-		System.out.println(info);
-		Assertions.assertEquals("Hello World", info);
-	}
+    @Test
+    public void test() {
+        String info = helloService.hello();
+        System.out.println(info);
+        Assertions.assertEquals("Hello World", info);
+    }
 
 }

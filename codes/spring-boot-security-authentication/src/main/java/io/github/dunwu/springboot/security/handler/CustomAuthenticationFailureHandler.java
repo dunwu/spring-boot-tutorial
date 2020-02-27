@@ -14,19 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
-	private final ObjectMapper mapper;
+    private final ObjectMapper mapper;
 
-	public CustomAuthenticationFailureHandler(ObjectMapper mapper) {
-		this.mapper = mapper;
-	}
+    public CustomAuthenticationFailureHandler(ObjectMapper mapper) {
+        this.mapper = mapper;
+    }
 
-	@Override
-	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
-		AuthenticationException exception) throws IOException {
-		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-		response.getWriter().write(mapper.writeValueAsString("登录失败：" + exception.getMessage()));
-	}
+    @Override
+    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+        AuthenticationException exception) throws IOException {
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
+        response.getWriter().write(mapper.writeValueAsString("登录失败：" + exception.getMessage()));
+    }
 
 }

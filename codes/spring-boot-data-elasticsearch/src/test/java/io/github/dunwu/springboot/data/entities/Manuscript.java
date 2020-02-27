@@ -11,14 +11,14 @@ import java.util.List;
 @ToString
 public class Manuscript {
 
-	private String title;
+    private String title;
 
-	private String abstractText;
+    private String abstractText;
 
-	@Field(type = FieldType.Text, index = false)
-	private String status;
+    @Field(type = FieldType.Text, index = false)
+    private String status;
 
-	@Field(type = FieldType.Nested)
-	private List<Role> role;
+    @Field(type = FieldType.Nested)
+    private List<Role> role;
 
 }

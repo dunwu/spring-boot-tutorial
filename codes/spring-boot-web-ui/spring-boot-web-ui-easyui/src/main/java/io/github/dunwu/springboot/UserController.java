@@ -18,46 +18,46 @@ import java.util.List;
 @Controller
 public class UserController {
 
-	@Autowired
-	private UserRepository customerRepository;
+    @Autowired
+    private UserRepository customerRepository;
 
-	@ResponseBody
-	@RequestMapping(value = "/user/add")
-	public ResponseDTO<User> add(User user) {
-		User result = customerRepository.save(user);
-		List<User> list = new ArrayList<>();
-		list.add(result);
-		return new ResponseDTO<>(true, 1, list);
-	}
+    @ResponseBody
+    @RequestMapping(value = "/user/add")
+    public ResponseDTO<User> add(User user) {
+        User result = customerRepository.save(user);
+        List<User> list = new ArrayList<>();
+        list.add(result);
+        return new ResponseDTO<>(true, 1, list);
+    }
 
-	@ResponseBody
-	@RequestMapping(value = "/user/delete")
-	public ResponseDTO delete(@RequestParam("id") Long id) {
-		customerRepository.deleteById(id);
-		return new ResponseDTO<>(true, null, null);
-	}
+    @ResponseBody
+    @RequestMapping(value = "/user/delete")
+    public ResponseDTO delete(@RequestParam("id") Long id) {
+        customerRepository.deleteById(id);
+        return new ResponseDTO<>(true, null, null);
+    }
 
-	@ResponseBody
-	@RequestMapping(value = "/user/list")
-	public ResponseDTO<User> list() {
-		Iterable<User> all = customerRepository.findAll();
-		List<User> list = IteratorUtils.toList(all.iterator());
-		return new ResponseDTO<>(true, list.size(), list);
-	}
+    @ResponseBody
+    @RequestMapping(value = "/user/list")
+    public ResponseDTO<User> list() {
+        Iterable<User> all = customerRepository.findAll();
+        List<User> list = IteratorUtils.toList(all.iterator());
+        return new ResponseDTO<>(true, list.size(), list);
+    }
 
-	@ResponseBody
-	@RequestMapping(value = "/user/save")
-	public ResponseDTO<User> save(@RequestParam("id") Long id, User user) {
-		user.setId(id);
-		customerRepository.save(user);
-		List<User> list = new ArrayList<>();
-		list.add(user);
-		return new ResponseDTO<>(true, 1, list);
-	}
+    @ResponseBody
+    @RequestMapping(value = "/user/save")
+    public ResponseDTO<User> save(@RequestParam("id") Long id, User user) {
+        user.setId(id);
+        customerRepository.save(user);
+        List<User> list = new ArrayList<>();
+        list.add(user);
+        return new ResponseDTO<>(true, 1, list);
+    }
 
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String user() {
-		return "user";
-	}
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String user() {
+        return "user";
+    }
 
 }

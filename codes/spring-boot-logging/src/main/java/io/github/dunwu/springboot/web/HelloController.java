@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class HelloController {
 
-	@ResponseBody
-	@RequestMapping(value = { "/", "/hello" }, method = RequestMethod.GET)
-	public String hello(@RequestParam String name) {
-		return "Hello " + name;
-	}
+    @ResponseBody
+    @RequestMapping(value = { "/", "/hello" }, method = RequestMethod.GET)
+    public String hello(@RequestParam String name) {
+        return "Hello " + name;
+    }
 
 }

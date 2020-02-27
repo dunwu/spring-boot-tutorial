@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 @Profile("test")
 public class TestMessageServiceImpl implements MessageService {
 
-	@Value("${dunwu.message:Test Begin!}")
-	private String message;
+    @Value("${dunwu.message:Test Begin!}")
+    private String message;
 
-	@Override
-	public String getMessage() {
-		return this.message;
-	}
+    @Override
+    public String getMessage() {
+        return this.message;
+    }
 
 }

@@ -7,5 +7,5 @@ import menu from './menu'
 
 const rootReducer = combineReducers({
   auth, menu
-})
+});
 export default rootReducer

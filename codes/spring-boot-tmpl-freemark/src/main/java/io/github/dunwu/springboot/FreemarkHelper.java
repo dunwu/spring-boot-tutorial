@@ -17,25 +17,25 @@ import java.util.Map;
 @Component
 public class FreemarkHelper {
 
-	public static final String TMPL_SQL_SELECT = "sql/sql_select.ftl";
+    public static final String TMPL_SQL_SELECT = "sql/sql_select.ftl";
 
-	public static final String TMPL_SQL_CLEAR = "sql/sql_clear.ftl";
+    public static final String TMPL_SQL_CLEAR = "sql/sql_clear.ftl";
 
-	public static final String TMPL_SQL_DELETE = "sql/sql_delete.ftl";
+    public static final String TMPL_SQL_DELETE = "sql/sql_delete.ftl";
 
-	public static final String TMPL_SQL_CREATE = "sql/sql_create.ftl";
+    public static final String TMPL_SQL_CREATE = "sql/sql_create.ftl";
 
-	@Autowired
-	private Configuration freemarkConfig;
+    @Autowired
+    private Configuration freemarkConfig;
 
-	public String getMergeContent(final String tmplName, Map params) throws IOException, TemplateException {
-		/* Get the template (uses cache internally) */
-		Template temp = freemarkConfig.getTemplate(tmplName);
+    public String getMergeContent(final String tmplName, Map params) throws IOException, TemplateException {
+        /* Get the template (uses cache internally) */
+        Template temp = freemarkConfig.getTemplate(tmplName);
 
-		/* Merge data-model with template */
-		StringWriter stringWriter = new StringWriter();
-		temp.process(params, stringWriter);
-		return stringWriter.toString();
-	}
+        /* Merge data-model with template */
+        StringWriter stringWriter = new StringWriter();
+        temp.process(params, stringWriter);
+        return stringWriter.toString();
+    }
 
 }

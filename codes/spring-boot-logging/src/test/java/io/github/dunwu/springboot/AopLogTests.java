@@ -17,25 +17,25 @@ import java.util.Map;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class AopLogTests {
 
-	@Rule
-	public OutputCapture output = new OutputCapture();
+    @Rule
+    public OutputCapture output = new OutputCapture();
 
-	@Autowired
-	private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
-	@Test
-	public void testAopLog() {
-		Map<String, Object> map = new HashMap<>();
-		map.put("name", "Tom");
-		String response = restTemplate.getForObject("/hello?name={name}", String.class, map);
-		System.out.println("Response: " + response);
-		Assert.assertEquals("Hello Tom", response);
+    @Test
+    public void testAopLog() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", "Tom");
+        String response = restTemplate.getForObject("/hello?name={name}", String.class, map);
+        System.out.println("Response: " + response);
+        Assert.assertEquals("Hello Tom", response);
 
-		// this.output.expect(containsString("HTTP_METHOD : GET"));
-		// this.output.expect(containsString("CLASS_METHOD :
-		// io.github.dunwu.springboot.web.HelloController.hello"));
-		// this.output.expect(containsString("ARGS : [Tom]"));
-		// this.output.expect(containsString("RESPONSE : Hello Tom"));
-	}
+        // this.output.expect(containsString("HTTP_METHOD : GET"));
+        // this.output.expect(containsString("CLASS_METHOD :
+        // io.github.dunwu.springboot.web.HelloController.hello"));
+        // this.output.expect(containsString("ARGS : [Tom]"));
+        // this.output.expect(containsString("RESPONSE : Hello Tom"));
+    }
 
 }

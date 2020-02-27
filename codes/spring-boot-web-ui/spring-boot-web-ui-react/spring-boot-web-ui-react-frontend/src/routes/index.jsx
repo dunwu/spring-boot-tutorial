@@ -20,7 +20,7 @@ export const ChildRoutes = [{
   'path': '/pages/mailbox', 'component': require('../views/pages/mail/Mailbox').default
 }, {
   'path': '/pages/user', 'component': require('../views/pages/user/User').default
-}]
+}];
 
 /**
  * 默认路由
@@ -29,5 +29,5 @@ export const ChildRoutes = [{
 const Routes = (<Switch>
   <Route path="/login" component={Login} />
   <Route path="/" component={CoreContainer} />
-</Switch>)
+</Switch>);
 export default Routes

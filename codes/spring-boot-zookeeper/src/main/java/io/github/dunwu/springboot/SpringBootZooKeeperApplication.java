@@ -1,6 +1,5 @@
 package io.github.dunwu.springboot;
 
-import org.apache.zookeeper.ZooKeeper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,13 +11,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringBootZooKeeperApplication implements CommandLineRunner {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootZooKeeperApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootZooKeeperApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
-		// ZooKeeper zooKeeper = new ZooKeeper();
-	}
+    @Override
+    public void run(String... args) throws Exception {
+        // ZooKeeper zooKeeper = new ZooKeeper();
+    }
 
 }

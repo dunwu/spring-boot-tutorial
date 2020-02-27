@@ -11,29 +11,29 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringBootHelloWorldApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(SpringBootHelloWorldApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(SpringBootHelloWorldApplication.class);
 
-	private final WeatherService weatherService;
+    private final WeatherService weatherService;
 
-	public SpringBootHelloWorldApplication(WeatherService weatherService) {
-		this.weatherService = weatherService;
-	}
+    public SpringBootHelloWorldApplication(WeatherService weatherService) {
+        this.weatherService = weatherService;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootHelloWorldApplication.class);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootHelloWorldApplication.class);
+    }
 
-	@Bean
-	public CommandLineRunner run() {
-		return args -> {
-			log.info("查询南京市天气：");
-			Weather weather = weatherService.getWeather("101190101");
-			if (weather == null) {
-				log.info("未查到数据！");
-				return;
-			}
-			weatherService.printBasicWeatherInfo(weather);
-		};
-	}
+    @Bean
+    public CommandLineRunner run() {
+        return args -> {
+            log.info("查询南京市天气：");
+            Weather weather = weatherService.getWeather("101190101");
+            if (weather == null) {
+                log.info("未查到数据！");
+                return;
+            }
+            weatherService.printBasicWeatherInfo(weather);
+        };
+    }
 
 }

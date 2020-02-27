@@ -1,6 +1,6 @@
 const createApi = fetchFunc => options => (...args) => {
-  let finalOpts
-  const argsName = ['options', 'successCallBack', 'errorCallBack', 'dispatch']
+  let finalOpts;
+  const argsName = ['options', 'successCallBack', 'errorCallBack', 'dispatch'];
   // options 可以是 url，或完整的 options 对象
   if (typeof options === 'string') {
     finalOpts = {url: options}
@@ -8,12 +8,12 @@ const createApi = fetchFunc => options => (...args) => {
     finalOpts = {...options}
   }
 
-  const temArgs = {}
+  const temArgs = {};
   if (args) {
     // args 第一个参数，options 可以忽略
-    let i = 0
+    let i = 0;
     if (args[0] !== null && typeof args[0] === 'object') {
-      i = 1
+      i = 1;
       finalOpts = Object.assign(finalOpts, args[0])
     }
 
@@ -32,6 +32,6 @@ const createApi = fetchFunc => options => (...args) => {
     finalOpts.onError = temArgs.errorCallBack
   }
   fetchFunc(finalOpts, temArgs.dispatch)
-}
+};
 
 export default createApi

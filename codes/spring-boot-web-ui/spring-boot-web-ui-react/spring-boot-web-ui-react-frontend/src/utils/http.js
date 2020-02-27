@@ -5,18 +5,18 @@
  * @see http://www.jianshu.com/p/df464b26ae58
  */
 
-const axios = require('axios')
-const qs = require('qs')
+const axios = require('axios');
+const qs = require('qs');
 
 import config from '../../config/app.config'
 
 // 本项目中 axios 的默认全局配置
-axios.defaults.timeout = config.http.timeout
-axios.defaults.baseURL = config.http.baseURL
+axios.defaults.timeout = config.http.timeout;
+axios.defaults.baseURL = config.http.baseURL;
 
-axios.defaults.headers.get['Content-Type'] = 'application/json'
-axios.defaults.headers.post['Content-Type'] = 'application/json'
-axios.defaults.headers.put['Content-Type'] = 'application/json'
+axios.defaults.headers.get['Content-Type'] = 'application/json';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.put['Content-Type'] = 'application/json';
 
 // 本项目的默认配置
 const defaultConfig = {
@@ -37,7 +37,7 @@ const defaultConfig = {
   transformRequest: [function (data) {
     // 序列化
     if (data) {
-      console.log('[request after stringify] data: ', JSON.stringify(data))
+      console.log('[request after stringify] data: ', JSON.stringify(data));
       return JSON.stringify(data)
     }
   }],
@@ -46,7 +46,7 @@ const defaultConfig = {
   transformResponse: [function (data) {
     // 反序列化
     if (data) {
-      console.log('[response after parse] data: ', JSON.parse(data))
+      console.log('[response after parse] data: ', JSON.parse(data));
       return JSON.parse(data)
     }
   }],
@@ -63,8 +63,8 @@ const defaultConfig = {
   //`paramsSerializer`是一个可选的函数，起作用是让参数（params）序列化
   //例如(https://www.npmjs.com/package/qs,http://api.jquery.com/jquery.param)
   paramsSerializer: function (params) {
-    const content = qs.stringify(params, {arrayFormat: 'brackets'})
-    console.log('[http] params 序列化后：', content)
+    const content = qs.stringify(params, {arrayFormat: 'brackets'});
+    console.log('[http] params 序列化后：', content);
     return content
   },
 
@@ -147,7 +147,7 @@ const defaultConfig = {
   //详见cancelation部分
   // cancelToken: new CancelToken(function (cancel) {
   // })
-}
+};
 // 使用默认配置初始化的请求
-const http = axios.create(defaultConfig)
+const http = axios.create(defaultConfig);
 export default http

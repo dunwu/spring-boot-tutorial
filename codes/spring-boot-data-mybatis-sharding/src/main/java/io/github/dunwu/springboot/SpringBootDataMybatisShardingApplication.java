@@ -16,27 +16,27 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("io.github.dunwu.springboot.mapper")
 public class SpringBootDataMybatisShardingApplication implements CommandLineRunner {
 
-	private static final Logger log = LoggerFactory.getLogger(SpringBootDataMybatisShardingApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(SpringBootDataMybatisShardingApplication.class);
 
-	private final UserMapper userMapper;
+    private final UserMapper userMapper;
 
-	public SpringBootDataMybatisShardingApplication(UserMapper userMapper) {
-		this.userMapper = userMapper;
-	}
+    public SpringBootDataMybatisShardingApplication(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDataMybatisShardingApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootDataMybatisShardingApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
+    @Override
+    public void run(String... args) throws Exception {
 
-		if (userMapper == null) {
-			log.error("连接数据源失败");
-			return;
-		} else {
-			log.info("连接数据源成功");
-		}
-	}
+        if (userMapper == null) {
+            log.error("连接数据源失败");
+            return;
+        } else {
+            log.info("连接数据源成功");
+        }
+    }
 
 }

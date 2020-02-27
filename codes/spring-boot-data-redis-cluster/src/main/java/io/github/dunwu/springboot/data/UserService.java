@@ -6,8 +6,8 @@ package io.github.dunwu.springboot.data;
  */
 public interface UserService {
 
-	User getUser(Long id);
+    User getUser(Long id);
 
-	void setUser(User user);
+    void setUser(User user);
 
 }

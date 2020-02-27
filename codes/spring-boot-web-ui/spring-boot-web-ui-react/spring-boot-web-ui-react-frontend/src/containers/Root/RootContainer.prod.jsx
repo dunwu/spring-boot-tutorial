@@ -10,7 +10,7 @@ import {HashRouter as Router} from 'react-router-dom'
 import Routes from '../../routes'
 import configureStore from '../../redux/store/configureStore'
 
-const store = configureStore()
+const store = configureStore();
 
 /**
  * 生产环境的 Root 容器
@@ -18,7 +18,7 @@ const store = configureStore()
  */
 class RootContainer extends React.PureComponent {
   render() {
-    if (!this.routes) this.routes = Routes
+    if (!this.routes) this.routes = Routes;
     return (<Provider store={store}>
       <Router children={this.routes} />
     </Provider>)

@@ -17,20 +17,20 @@ import './Breadcrumb.less'
 class CustomBreadcrumb extends React.PureComponent {
   static propTypes = {
     data: PropTypes.array
-  }
+  };
 
   static defaultProps = {
     data: []
-  }
+  };
 
   render() {
-    const {data} = this.props
+    const {data} = this.props;
     const breadcrumbItems = data.map((item) => {
       return (<Breadcrumb.Item key={'bc-' + item.key}>
         <Icon type={item.icon} />
         <span>{item.title}</span>
       </Breadcrumb.Item>)
-    })
+    });
 
     return (<div className="ant-layout-breadcrumb">
       <Breadcrumb>

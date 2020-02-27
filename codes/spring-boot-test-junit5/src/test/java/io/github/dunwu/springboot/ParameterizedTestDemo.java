@@ -11,22 +11,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class ParameterizedTestDemo {
 
-	@ParameterizedTest
-	@ValueSource(strings = { "123456789", "Hello World" })
-	void palindromes(String candidate) {
-		assertTrue(isMoreThan7(candidate));
-	}
+    @ParameterizedTest
+    @ValueSource(strings = { "123456789", "Hello World" })
+    void palindromes(String candidate) {
+        assertTrue(isMoreThan7(candidate));
+    }
 
-	private boolean isMoreThan7(String str) {
-		if (str == null || str.length() <= 0) {
-			return false;
-		}
+    private boolean isMoreThan7(String str) {
+        if (str == null || str.length() <= 0) {
+            return false;
+        }
 
-		if (str.length() > 7) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+        return str.length() > 7;
+    }
 
 }

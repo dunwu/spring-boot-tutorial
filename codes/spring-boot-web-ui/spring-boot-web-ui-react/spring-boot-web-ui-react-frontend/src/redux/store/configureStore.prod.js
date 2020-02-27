@@ -10,7 +10,7 @@ import thunk from 'redux-thunk'
 import promise from '../middlewares/promiseMiddleware'
 import reducers from '../reducers'
 
-const enhancer = applyMiddleware(thunk, promise)
+const enhancer = applyMiddleware(thunk, promise);
 
 /**
  * 生产环境的 Store 构造方法。

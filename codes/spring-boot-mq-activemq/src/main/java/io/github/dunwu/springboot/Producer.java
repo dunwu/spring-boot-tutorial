@@ -12,23 +12,23 @@ import javax.jms.Queue;
 @Component
 public class Producer implements CommandLineRunner {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired
-	private JmsMessagingTemplate jmsMessagingTemplate;
+    @Autowired
+    private JmsMessagingTemplate jmsMessagingTemplate;
 
-	@Autowired
-	private Queue queue;
+    @Autowired
+    private Queue queue;
 
-	@Override
-	public void run(String... args) throws Exception {
-		String msg = "Hello World";
-		send(msg);
-		log.info("send message: {}", msg);
-	}
+    @Override
+    public void run(String... args) throws Exception {
+        String msg = "Hello World";
+        send(msg);
+        log.info("send message: {}", msg);
+    }
 
-	public void send(String msg) {
-		this.jmsMessagingTemplate.convertAndSend(this.queue, msg);
-	}
+    public void send(String msg) {
+        this.jmsMessagingTemplate.convertAndSend(this.queue, msg);
+    }
 
 }

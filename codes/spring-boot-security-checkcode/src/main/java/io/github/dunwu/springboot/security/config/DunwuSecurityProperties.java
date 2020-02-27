@@ -13,17 +13,17 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "dunwu.security")
 public class DunwuSecurityProperties {
 
-	private String registerUrl = "/register";
+    private String registerUrl = "/register";
 
-	private String loginPage = "/login/unauthorized";
+    private String loginPage = "/login/unauthorized";
 
-	private String loginProcessingUrl = "/login";
+    private String loginProcessingUrl = "/login";
 
-	private String logoutUrl = "/logout";
+    private String logoutUrl = "/logout";
 
-	/**
-	 * 无需鉴权即可访问的 url 列表
-	 */
-	private String[] permitUrls;
+    /**
+     * 无需鉴权即可访问的 url 列表
+     */
+    private String[] permitUrls;
 
 }

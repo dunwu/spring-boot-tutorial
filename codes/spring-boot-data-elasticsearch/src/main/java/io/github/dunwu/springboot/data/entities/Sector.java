@@ -11,8 +11,8 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Sector {
 
-	private int id;
+    private int id;
 
-	private String sectorName;
+    private String sectorName;
 
 }

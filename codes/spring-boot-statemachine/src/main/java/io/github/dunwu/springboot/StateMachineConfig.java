@@ -17,39 +17,39 @@ import java.util.EnumSet;
 @EnableStateMachine
 public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<States, Events> {
 
-	@Override
-	public void configure(StateMachineConfigurationConfigurer<States, Events> config) throws Exception {
-		// @formatter:off
+    @Override
+    public void configure(StateMachineConfigurationConfigurer<States, Events> config) throws Exception {
+        // @formatter:off
 		config
 			.withConfiguration()
 			.autoStartup(true)
 			.listener(listener());
 		// @formatter:on
-	}
+    }
 
-	@Bean
-	public StateMachineListener<States, Events> listener() {
-		return new StateMachineListenerAdapter<States, Events>() {
-			@Override
-			public void stateChanged(State<States, Events> from, State<States, Events> to) {
-				System.out.println("State change to " + to.getId());
-			}
-		};
-	}
+    @Bean
+    public StateMachineListener<States, Events> listener() {
+        return new StateMachineListenerAdapter<States, Events>() {
+            @Override
+            public void stateChanged(State<States, Events> from, State<States, Events> to) {
+                System.out.println("State change to " + to.getId());
+            }
+        };
+    }
 
-	@Override
-	public void configure(StateMachineStateConfigurer<States, Events> states) throws Exception {
-		// @formatter:off
+    @Override
+    public void configure(StateMachineStateConfigurer<States, Events> states) throws Exception {
+        // @formatter:off
 		states
 			.withStates()
 			.initial(States.SI)
 			.states(EnumSet.allOf(States.class));
 		// @formatter:on
-	}
+    }
 
-	@Override
-	public void configure(StateMachineTransitionConfigurer<States, Events> transitions) throws Exception {
-		// @formatter:off
+    @Override
+    public void configure(StateMachineTransitionConfigurer<States, Events> transitions) throws Exception {
+        // @formatter:off
 		transitions
 			.withExternal()
 			.source(States.SI).target(States.S1).event(Events.E1)
@@ -57,6 +57,6 @@ public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<States
 			.withExternal()
 			.source(States.S1).target(States.S2).event(Events.E2);
 		// @formatter:on
-	}
+    }
 
 }

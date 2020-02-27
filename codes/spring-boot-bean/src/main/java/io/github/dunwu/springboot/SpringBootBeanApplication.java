@@ -20,36 +20,36 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 public class SpringBootBeanApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(SpringBootBeanApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(SpringBootBeanApplication.class);
 
-	@Autowired
-	private BeanUtil beanUtil;
+    @Autowired
+    private BeanUtil beanUtil;
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootBeanApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootBeanApplication.class, args);
+    }
 
-	@Bean
-	public DozerBeanMapperFactoryBean dozerFactory(ResourcePatternResolver resourcePatternResolver)
-		throws IOException {
-		DozerBeanMapperFactoryBean factoryBean = new DozerBeanMapperFactoryBean();
-		factoryBean.setMappingFiles(
-			resourcePatternResolver.getResources("classpath*:/*mapping.xml"));
+    @Bean
+    public DozerBeanMapperFactoryBean dozerFactory(ResourcePatternResolver resourcePatternResolver)
+        throws IOException {
+        DozerBeanMapperFactoryBean factoryBean = new DozerBeanMapperFactoryBean();
+        factoryBean.setMappingFiles(
+            resourcePatternResolver.getResources("classpath*:/*mapping.xml"));
 
-		return factoryBean;
-	}
+        return factoryBean;
+    }
 
-	@Bean
-	public Mapper dozerMapper(DozerBeanMapperFactoryBean dozerFactory) {
-		return dozerFactory.getObject();
-	}
+    @Bean
+    public Mapper dozerMapper(DozerBeanMapperFactoryBean dozerFactory) {
+        return dozerFactory.getObject();
+    }
 
-	@PostConstruct
-	public void postConstruct() {
-		UserDO[] userDOS = { new UserDO(1L, "userA", "用户A"), new UserDO(2L, "userB", "用户B"),
-			new UserDO(3L, "userC", "用户C"), new UserDO(4L, "userD", "用户D") };
-		List<UserDTO> list = beanUtil.mapList(Arrays.asList(userDOS), UserDTO.class);
-		log.info("List<UserDO> 转化为 List<UserDTO> 的结果: {}", list);
-	}
+    @PostConstruct
+    public void postConstruct() {
+        UserDO[] userDOS = { new UserDO(1L, "userA", "用户A"), new UserDO(2L, "userB", "用户B"),
+            new UserDO(3L, "userC", "用户C"), new UserDO(4L, "userD", "用户D") };
+        List<UserDTO> list = beanUtil.mapList(Arrays.asList(userDOS), UserDTO.class);
+        log.info("List<UserDO> 转化为 List<UserDTO> 的结果: {}", list);
+    }
 
 }

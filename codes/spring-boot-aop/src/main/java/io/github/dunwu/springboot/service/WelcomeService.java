@@ -9,20 +9,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class WelcomeService {
 
-	@Value("${author.name:Unknow}")
-	private String name;
+    @Value("${author.name:Unknow}")
+    private String name;
 
-	@Value("${throw.exception:false}")
-	private boolean throwException;
+    @Value("${throw.exception:false}")
+    private boolean throwException;
 
-	public void getException() throws Exception {
-		if (throwException) {
-			throw new Exception("throw.exception = true");
-		}
-	}
+    public void getException() throws Exception {
+        if (throwException) {
+            throw new Exception("throw.exception = true");
+        }
+    }
 
-	public String getMessage() {
-		return "Welcome " + this.name;
-	}
+    public String getMessage() {
+        return "Welcome " + this.name;
+    }
 
 }

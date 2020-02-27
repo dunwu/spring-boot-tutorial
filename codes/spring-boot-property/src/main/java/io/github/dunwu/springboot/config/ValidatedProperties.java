@@ -20,25 +20,25 @@ import javax.validation.constraints.NotNull;
 @PropertySource("classpath:/prop/validator.properties")
 public class ValidatedProperties {
 
-	@NotNull
-	private String host;
+    @NotNull
+    private String host;
 
-	private Integer port;
+    private Integer port;
 
-	public String getHost() {
-		return this.host;
-	}
+    public String getHost() {
+        return this.host;
+    }
 
-	public void setHost(String host) {
-		this.host = host;
-	}
+    public void setHost(String host) {
+        this.host = host;
+    }
 
-	public Integer getPort() {
-		return this.port;
-	}
+    public Integer getPort() {
+        return this.port;
+    }
 
-	public void setPort(Integer port) {
-		this.port = port;
-	}
+    public void setPort(Integer port) {
+        this.port = port;
+    }
 
 }

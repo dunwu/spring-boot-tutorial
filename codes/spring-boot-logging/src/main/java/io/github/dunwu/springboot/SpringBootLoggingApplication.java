@@ -10,19 +10,19 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 public class SpringBootLoggingApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(SpringBootLoggingApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(SpringBootLoggingApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootLoggingApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootLoggingApplication.class, args);
+    }
 
-	@PostConstruct
-	public void logInAllLevel() {
-		log.error("Print Error Message");
-		log.warn("Print Warn Message");
-		log.info("Print Info Message");
-		log.debug("Print Debug Message");
-		log.trace("Print Trace Message");
-	}
+    @PostConstruct
+    public void logInAllLevel() {
+        log.error("Print Error Message");
+        log.warn("Print Warn Message");
+        log.info("Print Info Message");
+        log.debug("Print Debug Message");
+        log.trace("Print Trace Message");
+    }
 
 }

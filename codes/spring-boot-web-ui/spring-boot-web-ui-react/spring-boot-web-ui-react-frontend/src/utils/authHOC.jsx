@@ -14,12 +14,12 @@ import {withRouter} from 'react-router-dom'
  * @param props {PropsType<S>} 组件的props
  */
 const validate = props => {
-  const {history} = props
-  const isLoggedIn = !!window.localStorage.getItem('uid')
+  const {history} = props;
+  const isLoggedIn = !!window.localStorage.getItem('uid');
   if (!isLoggedIn && history.location.pathname !== '/login') {
     history.replace('/login')
   }
-}
+};
 
 /**
  * 对组件进行认证的方法
@@ -45,5 +45,5 @@ const authHOC = WrappedComponent => {
   }
 
   return withRouter(Authenticate)
-}
+};
 export default authHOC

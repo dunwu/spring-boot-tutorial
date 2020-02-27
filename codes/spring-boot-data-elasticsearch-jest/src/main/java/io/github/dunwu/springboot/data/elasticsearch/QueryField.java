@@ -14,8 +14,8 @@ import java.lang.annotation.*;
 @Target(ElementType.FIELD)
 public @interface QueryField {
 
-	String value() default "";
+    String value() default "";
 
-	QueryJudgeType judgeType() default QueryJudgeType.Equals;
+    QueryJudgeType judgeType() default QueryJudgeType.Equals;
 
 }

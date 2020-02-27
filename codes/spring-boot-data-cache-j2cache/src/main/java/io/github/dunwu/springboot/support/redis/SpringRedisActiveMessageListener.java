@@ -13,30 +13,30 @@ import org.springframework.data.redis.connection.MessageListener;
  */
 public class SpringRedisActiveMessageListener implements MessageListener {
 
-	private static Logger logger = LoggerFactory.getLogger(SpringRedisActiveMessageListener.class);
+    private static Logger logger = LoggerFactory.getLogger(SpringRedisActiveMessageListener.class);
 
-	private ClusterPolicy clusterPolicy;
+    private ClusterPolicy clusterPolicy;
 
-	private String namespace;
+    private String namespace;
 
-	SpringRedisActiveMessageListener(ClusterPolicy clusterPolicy, String namespace) {
-		this.clusterPolicy = clusterPolicy;
-		this.namespace = namespace;
-	}
+    SpringRedisActiveMessageListener(ClusterPolicy clusterPolicy, String namespace) {
+        this.clusterPolicy = clusterPolicy;
+        this.namespace = namespace;
+    }
 
-	@Override
-	public void onMessage(Message message, byte[] pattern) {
-		String key = message.toString();
-		if (key == null) {
-			return;
-		}
-		if (key.startsWith(namespace + ":")) {
-			String[] k = key.replaceFirst(namespace + ":", "").split(":", 2);
-			if (k.length != 2) {
-				return;
-			}
-			clusterPolicy.evict(k[0], k[1]);
-		}
-	}
+    @Override
+    public void onMessage(Message message, byte[] pattern) {
+        String key = message.toString();
+        if (key == null) {
+            return;
+        }
+        if (key.startsWith(namespace + ":")) {
+            String[] k = key.replaceFirst(namespace + ":", "").split(":", 2);
+            if (k.length != 2) {
+                return;
+            }
+            clusterPolicy.evict(k[0], k[1]);
+        }
+    }
 
 }

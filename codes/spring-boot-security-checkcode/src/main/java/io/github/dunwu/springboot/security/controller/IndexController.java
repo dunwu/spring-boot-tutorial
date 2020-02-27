@@ -16,22 +16,22 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class IndexController {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	private final ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
-	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-	public IndexController(ObjectMapper objectMapper) {
-		this.objectMapper = objectMapper;
-	}
+    public IndexController(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
 
-	@GetMapping("/")
-	public String index(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
-		throws IOException {
-		log.info("用户已认证，身份信息:{}", objectMapper.writeValueAsString(authentication));
-		redirectStrategy.sendRedirect(request, response, "/index.html");
-		return "用户已认证";
-	}
+    @GetMapping("/")
+    public String index(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+        throws IOException {
+        log.info("用户已认证，身份信息:{}", objectMapper.writeValueAsString(authentication));
+        redirectStrategy.sendRedirect(request, response, "/index.html");
+        return "用户已认证";
+    }
 
 }

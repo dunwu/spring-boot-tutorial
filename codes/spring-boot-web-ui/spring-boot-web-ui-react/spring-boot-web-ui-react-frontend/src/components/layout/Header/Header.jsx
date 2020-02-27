@@ -14,7 +14,7 @@ import './Header.less'
 import Breadcrumb from '../Breadcrumb/Breadcrumb'
 import {fetchProfile, logout} from '../../../redux/actions/auth'
 
-const {Header} = Layout
+const {Header} = Layout;
 
 const content = (<div>
   <p>Content</p>
@@ -22,18 +22,18 @@ const content = (<div>
   <p>Content</p>
   <p>Content</p>
   <p>Content</p>
-</div>)
+</div>);
 
 const mapStateToProps = (state) => {
-  const {auth, menu} = state
+  const {auth, menu} = state;
   return {
     auth: auth ? auth : null, navpath: menu.navpath
   }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {actions: bindActionCreators({fetchProfile, logout}, dispatch)}
-}
+};
 
 /**
  * 顶部布局组件
@@ -42,26 +42,26 @@ const mapDispatchToProps = (dispatch) => {
 class CustomHeader extends React.PureComponent {
   static propTypes = {
     auth: PropTypes.object, actions: PropTypes.object, navpath: PropTypes.array
-  }
+  };
   static defaultProps = {
     auth: null, actions: null, navpath: []
-  }
+  };
 
   componentWillMount() {
-    const {actions} = this.props
+    const {actions} = this.props;
     actions.fetchProfile()
   }
 
   handleLogOut = () => {
-    const {actions} = this.props
+    const {actions} = this.props;
     actions.logout().payload.promise.then(() => {
       this.props.history.replace('/login')
     })
-  }
+  };
 
   render() {
-    const {auth, navpath} = this.props
-    let username = ''
+    const {auth, navpath} = this.props;
+    let username = '';
     if (auth.user) {
       if (auth.user.data) {
         username = auth.user.data.name
@@ -79,7 +79,7 @@ class CustomHeader extends React.PureComponent {
       <Menu.Item key="logout">
         <a onClick={this.handleLogOut}>注销</a>
       </Menu.Item>
-    </Menu>)
+    </Menu>);
 
     return (<Header className="ant-layout-header">
       <Row type="flex" align="middle">

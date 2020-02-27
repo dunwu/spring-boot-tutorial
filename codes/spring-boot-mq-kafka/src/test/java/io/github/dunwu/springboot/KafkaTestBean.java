@@ -15,8 +15,8 @@ import java.util.Date;
 @Accessors(chain = true)
 class KafkaTestBean<T> {
 
-	Date timestamp;
+    Date timestamp;
 
-	T data;
+    T data;
 
 }

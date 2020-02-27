@@ -9,12 +9,12 @@ import lombok.ToString;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CityInfo {
 
-	private String city;
+    private String city;
 
-	private String citykey;
+    private String citykey;
 
-	private String parent;
+    private String parent;
 
-	private String updateTime;
+    private String updateTime;
 
 }

@@ -22,46 +22,46 @@ import java.util.Date;
 @JsonComponent
 public class DateJsonConvert {
 
-	/**
-	 * 对 Date 类做特殊序列化
-	 */
-	public static class DateJsonSerializer extends JsonSerializer<Date> {
+    /**
+     * 对 Date 类做特殊序列化
+     */
+    public static class DateJsonSerializer extends JsonSerializer<Date> {
 
-		@Override
-		public void serialize(Date date, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
-			throws IOException {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			jsonGenerator.writeObject(sdf.format(date));
-		}
+        @Override
+        public void serialize(Date date, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
+            throws IOException {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            jsonGenerator.writeObject(sdf.format(date));
+        }
 
-	}
+    }
 
-	/**
-	 * InfoDTO 类的反序列化做特殊处理
-	 */
-	public static class InfoDTOJsonDeserializer extends JsonDeserializer<InfoDTO> {
+    /**
+     * InfoDTO 类的反序列化做特殊处理
+     */
+    public static class InfoDTOJsonDeserializer extends JsonDeserializer<InfoDTO> {
 
-		@Override
-		public InfoDTO deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
-			throws IOException {
-			InfoDTO infoDTO = new InfoDTO();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        @Override
+        public InfoDTO deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+            throws IOException {
+            InfoDTO infoDTO = new InfoDTO();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-			TreeNode treeNode = jsonParser.getCodec().readTree(jsonParser);
+            TreeNode treeNode = jsonParser.getCodec().readTree(jsonParser);
 
-			TextNode appNameNode = (TextNode) treeNode.get("appName");
-			infoDTO.setAppName(appNameNode.asText());
-			TextNode versionNode = (TextNode) treeNode.get("version");
-			infoDTO.setVersion(versionNode.asText());
-			TextNode dateNode = (TextNode) treeNode.get("date");
-			try {
-				infoDTO.setDate(sdf.parse(dateNode.asText()));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			return infoDTO;
-		}
+            TextNode appNameNode = (TextNode) treeNode.get("appName");
+            infoDTO.setAppName(appNameNode.asText());
+            TextNode versionNode = (TextNode) treeNode.get("version");
+            infoDTO.setVersion(versionNode.asText());
+            TextNode dateNode = (TextNode) treeNode.get("date");
+            try {
+                infoDTO.setDate(sdf.parse(dateNode.asText()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return infoDTO;
+        }
 
-	}
+    }
 
 }

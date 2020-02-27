@@ -25,49 +25,49 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 @EnableWebSocket
 public class SpringBootWebSocketApplication extends SpringBootServletInitializer implements WebSocketConfigurer {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootWebSocketApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootWebSocketApplication.class, args);
+    }
 
-	@Override
-	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(echoWebSocketHandler(), "/echo").withSockJS();
-		registry.addHandler(snakeWebSocketHandler(), "/snake").withSockJS();
-	}
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        registry.addHandler(echoWebSocketHandler(), "/echo").withSockJS();
+        registry.addHandler(snakeWebSocketHandler(), "/snake").withSockJS();
+    }
 
-	@Bean
-	public WebSocketHandler echoWebSocketHandler() {
-		return new EchoWebSocketHandler(echoService());
-	}
+    @Bean
+    public WebSocketHandler echoWebSocketHandler() {
+        return new EchoWebSocketHandler(echoService());
+    }
 
-	@Bean
-	public WebSocketHandler snakeWebSocketHandler() {
-		return new PerConnectionWebSocketHandler(SnakeWebSocketHandler.class);
-	}
+    @Bean
+    public EchoService echoService() {
+        return new DefaultEchoService("Did you say \"%s\"?");
+    }
 
-	@Bean
-	public EchoService echoService() {
-		return new DefaultEchoService("Did you say \"%s\"?");
-	}
+    @Bean
+    public WebSocketHandler snakeWebSocketHandler() {
+        return new PerConnectionWebSocketHandler(SnakeWebSocketHandler.class);
+    }
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(SpringBootWebSocketApplication.class);
-	}
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(SpringBootWebSocketApplication.class);
+    }
 
-	@Bean
-	public GreetingService greetingService() {
-		return new SimpleGreetingService();
-	}
+    @Bean
+    public GreetingService greetingService() {
+        return new SimpleGreetingService();
+    }
 
-	@Bean
-	public ReverseWebSocketEndpoint reverseWebSocketEndpoint() {
-		return new ReverseWebSocketEndpoint();
-	}
+    @Bean
+    public ReverseWebSocketEndpoint reverseWebSocketEndpoint() {
+        return new ReverseWebSocketEndpoint();
+    }
 
-	@Bean
-	public ServerEndpointExporter serverEndpointExporter() {
-		return new ServerEndpointExporter();
-	}
+    @Bean
+    public ServerEndpointExporter serverEndpointExporter() {
+        return new ServerEndpointExporter();
+    }
 
 }

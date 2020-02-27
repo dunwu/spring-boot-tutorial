@@ -6,22 +6,22 @@ import java.util.List;
 
 public interface UserDao {
 
-	void batchInsert(List<User> users);
+    void batchInsert(List<User> users);
 
-	Integer count();
+    Integer count();
 
-	void deleteByName(String name);
+    void deleteByName(String name);
 
-	void insert(User user);
+    void insert(User user);
 
-	List<User> list();
+    List<User> list();
 
-	User queryByName(String name);
+    User queryByName(String name);
 
-	void recreateTable();
+    void recreateTable();
 
-	void update(User user);
+    void update(User user);
 
-	JdbcTemplate getJdbcTemplate();
+    JdbcTemplate getJdbcTemplate();
 
 }

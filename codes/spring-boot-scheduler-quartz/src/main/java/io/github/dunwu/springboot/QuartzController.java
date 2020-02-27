@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("quartz")
 public class QuartzController {
 
-	private final SchedulerFactoryBean schedulerFactoryBean;
+    private final SchedulerFactoryBean schedulerFactoryBean;
 
-	public QuartzController(SchedulerFactoryBean schedulerFactoryBean) {
-		this.schedulerFactoryBean = schedulerFactoryBean;
-	}
+    public QuartzController(SchedulerFactoryBean schedulerFactoryBean) {
+        this.schedulerFactoryBean = schedulerFactoryBean;
+    }
 
-	@GetMapping("create")
-	public void create(String name) throws SchedulerException {
+    @GetMapping("create")
+    public void create(String name) throws SchedulerException {
 
-		JobDetail jobDetail = JobBuilder.newJob(SampleJob.class).withIdentity(name).usingJobData("name", name)
-			.storeDurably().build();
+        JobDetail jobDetail = JobBuilder.newJob(SampleJob.class).withIdentity(name).usingJobData("name", name)
+            .storeDurably().build();
 
-		SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(2)
-			.repeatForever();
+        SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(2)
+            .repeatForever();
 
-		Trigger trigger = TriggerBuilder.newTrigger().forJob(jobDetail).withIdentity(name).withSchedule(scheduleBuilder)
-			.build();
+        Trigger trigger = TriggerBuilder.newTrigger().forJob(jobDetail).withIdentity(name).withSchedule(scheduleBuilder)
+            .build();
 
-		schedulerFactoryBean.getScheduler().scheduleJob(jobDetail, trigger);
-	}
+        schedulerFactoryBean.getScheduler().scheduleJob(jobDetail, trigger);
+    }
 
-	@GetMapping("remove")
-	public void remove(String name) throws SchedulerException {
-		JobKey jobKey = new JobKey(name);
-		TriggerKey triggerKey = TriggerKey.triggerKey(name);
-		Scheduler scheduler = schedulerFactoryBean.getScheduler();
-		scheduler.pauseTrigger(triggerKey);
-		scheduler.unscheduleJob(triggerKey);
-		// 删除任务
-		scheduler.deleteJob(jobKey);
-	}
+    @GetMapping("remove")
+    public void remove(String name) throws SchedulerException {
+        JobKey jobKey = new JobKey(name);
+        TriggerKey triggerKey = TriggerKey.triggerKey(name);
+        Scheduler scheduler = schedulerFactoryBean.getScheduler();
+        scheduler.pauseTrigger(triggerKey);
+        scheduler.unscheduleJob(triggerKey);
+        // 删除任务
+        scheduler.deleteJob(jobKey);
+    }
 
 }

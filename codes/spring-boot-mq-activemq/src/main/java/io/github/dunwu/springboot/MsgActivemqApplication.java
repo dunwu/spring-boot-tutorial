@@ -12,13 +12,13 @@ import javax.jms.Queue;
 @EnableJms
 public class MsgActivemqApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MsgActivemqApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MsgActivemqApplication.class, args);
+    }
 
-	@Bean
-	public Queue queue() {
-		return new ActiveMQQueue("io.github.dunwu.springboot");
-	}
+    @Bean
+    public Queue queue() {
+        return new ActiveMQQueue("io.github.dunwu.springboot");
+    }
 
 }

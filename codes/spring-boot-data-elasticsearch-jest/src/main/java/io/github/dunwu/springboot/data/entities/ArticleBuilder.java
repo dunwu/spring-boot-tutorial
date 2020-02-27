@@ -39,9 +39,9 @@ public class ArticleBuilder {
 
     public ArticleBuilder addTag(String tag) {
         List<String> tagsTmp = new ArrayList<String>();
-        if(result.getTags()==null){
+        if (result.getTags() == null) {
             result.setTags(tagsTmp);
-        }else {
+        } else {
             tagsTmp = (List<String>) result.getTags();
         }
         tagsTmp.add(tag);

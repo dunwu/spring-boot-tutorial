@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class IndexController {
 
-	@GetMapping("/")
-	public String index(HttpServletRequest request, Map<String, Object> model) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		model.put("time", sdf.format(new Date()));
-		return "index";
-	}
+    @GetMapping("/")
+    public String index(HttpServletRequest request, Map<String, Object> model) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        model.put("time", sdf.format(new Date()));
+        return "index";
+    }
 
 }

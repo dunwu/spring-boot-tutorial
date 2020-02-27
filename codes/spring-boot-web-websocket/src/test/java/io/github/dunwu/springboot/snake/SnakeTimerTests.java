@@ -11,13 +11,13 @@ import static org.mockito.Mockito.mock;
 
 public class SnakeTimerTests {
 
-	@Test
-	public void removeDysfunctionalSnakes() throws Exception {
-		Snake snake = mock(Snake.class);
-		willThrow(new IOException()).given(snake).sendMessage(anyString());
-		SnakeTimer.addSnake(snake);
-		SnakeTimer.broadcast("");
-		assertThat(SnakeTimer.getSnakes()).hasSize(0);
-	}
+    @Test
+    public void removeDysfunctionalSnakes() throws Exception {
+        Snake snake = mock(Snake.class);
+        willThrow(new IOException()).given(snake).sendMessage(anyString());
+        SnakeTimer.addSnake(snake);
+        SnakeTimer.broadcast("");
+        assertThat(SnakeTimer.getSnakes()).hasSize(0);
+    }
 
 }

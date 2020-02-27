@@ -27,56 +27,56 @@ import javax.validation.constraints.NotNull;
 @ApiModel("用户基本信息")
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@ApiModelProperty(name = "ID", hidden = true, example = "0")
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @ApiModelProperty(name = "ID", hidden = true, example = "0")
+    private Long id;
 
-	@NotNull
-	@Column(unique = true)
-	@Length(min = 4, max = 30)
-	@ApiModelProperty(name = "用户名", example = "user")
-	private String username;
+    @NotNull
+    @Column(unique = true)
+    @Length(min = 4, max = 30)
+    @ApiModelProperty(name = "用户名", example = "user")
+    private String username;
 
-	@NotNull
-	@Length(min = 6, max = 60)
-	@ApiModelProperty(name = "密码", example = "123456")
-	private String password;
+    @NotNull
+    @Length(min = 6, max = 60)
+    @ApiModelProperty(name = "密码", example = "123456")
+    private String password;
 
-	@NotNull
-	@Email
-	@Column(unique = true)
-	@ApiModelProperty(name = "用户名", example = "xxx@xxx.com")
-	private String email;
+    @NotNull
+    @Email
+    @Column(unique = true)
+    @ApiModelProperty(name = "用户名", example = "xxx@xxx.com")
+    private String email;
 
-	public User(String username, String password, String email) {
-		this.username = username;
-		this.password = password;
-		this.email = email;
-	}
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username);
+    }
 
-		if (!(o instanceof User)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
 
-		User user = (User) o;
+        if (!(o instanceof User)) {
+            return false;
+        }
 
-		if (id != null && id.equals(user.id)) {
-			return true;
-		}
+        User user = (User) o;
 
-		return username.equals(user.username);
-	}
+        if (id != null && id.equals(user.id)) {
+            return true;
+        }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, username);
-	}
+        return username.equals(user.username);
+    }
 
 }

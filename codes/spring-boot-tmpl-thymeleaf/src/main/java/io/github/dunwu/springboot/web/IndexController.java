@@ -29,25 +29,25 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-	@RequestMapping("/displayError")
-	public String displayError() throws Exception {
-		throw new Exception("发生错误");
-	}
+    @RequestMapping("/displayError")
+    public String displayError() throws Exception {
+        throw new Exception("发生错误");
+    }
 
-	@RequestMapping("/displayError2")
-	public String displayError2() throws MyException {
-		throw new MyException("发生错误2");
-	}
+    @RequestMapping("/displayError2")
+    public String displayError2() throws MyException {
+        throw new MyException("发生错误2");
+    }
 
-	@RequestMapping("/")
-	public String getData(Model model) {
-		List<StudentDTO> list = new ArrayList<>();
-		list.add(new StudentDTO("张三", 20, "北京"));
-		list.add(new StudentDTO("李四", 30, "上海"));
-		list.add(new StudentDTO("王五", 40, "河北"));
-		list.add(new StudentDTO("赵六", 50, "山西"));
-		model.addAttribute("list", list);
-		return "/index";
-	}
+    @RequestMapping("/")
+    public String getData(Model model) {
+        List<StudentDTO> list = new ArrayList<>();
+        list.add(new StudentDTO("张三", 20, "北京"));
+        list.add(new StudentDTO("李四", 30, "上海"));
+        list.add(new StudentDTO("王五", 40, "河北"));
+        list.add(new StudentDTO("赵六", 50, "山西"));
+        model.addAttribute("list", list);
+        return "/index";
+    }
 
 }

@@ -14,15 +14,15 @@ import java.util.List;
 @Document(indexName = "person-nested", type = "user", shards = 1, replicas = 0, refreshInterval = "-1")
 public class PersonMultipleLevelNested {
 
-	@Id
-	private String id;
+    @Id
+    private String id;
 
-	private String name;
+    private String name;
 
-	@Field(type = FieldType.Nested)
-	private List<GirlFriend> girlFriends;
+    @Field(type = FieldType.Nested)
+    private List<GirlFriend> girlFriends;
 
-	@Field(type = FieldType.Nested)
-	private List<Car> cars;
+    @Field(type = FieldType.Nested)
+    private List<Car> cars;
 
 }

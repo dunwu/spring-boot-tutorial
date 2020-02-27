@@ -2,7 +2,7 @@ import React from 'react'
 import {Alert, Button, Col, Input, Row, Select, Table} from 'antd'
 import './User.less'
 
-const {Option, OptGroup} = Select
+const {Option, OptGroup} = Select;
 
 const columns = [{
   title: 'Name', dataIndex: 'name', filters: [{
@@ -31,7 +31,7 @@ const columns = [{
   filterMultiple: false,
   onFilter: (value, record) => record.address.indexOf(value) === 0,
   sorter: (a, b) => a.address.length - b.address.length
-}]
+}];
 
 const data = [{
   key: '1', name: 'John Brown', age: 32, address: 'New York No. 1 Lake Park'
@@ -41,7 +41,7 @@ const data = [{
   key: '3', name: 'Joe Black', age: 32, address: 'Sidney No. 1 Lake Park'
 }, {
   key: '4', name: 'Jim Red', age: 32, address: 'London No. 2 Lake Park'
-}]
+}];
 
 function onChange(pagination, filters, sorter) {
   console.log('params', pagination, filters, sorter)

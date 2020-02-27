@@ -7,8 +7,8 @@ import './Home.less'
 import logo from './logo.svg'
 
 export default class Home extends React.Component {
-  static propTypes = {}
-  static defaultProps = {}
+  static propTypes = {};
+  static defaultProps = {};
 
   render() {
     return (<div className="App">

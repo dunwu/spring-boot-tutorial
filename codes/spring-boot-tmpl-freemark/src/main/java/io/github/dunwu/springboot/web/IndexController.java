@@ -15,21 +15,21 @@ import java.util.Map;
 @Controller
 public class IndexController {
 
-	@Value("${application.message:Hello World}")
-	private String message = "Hello World";
+    @Value("${application.message:Hello World}")
+    private String message = "Hello World";
 
-	@GetMapping("/exception")
-	public String error(Map<String, Object> model) {
-		model.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
-		model.put("info", HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
-		return "spring/exception";
-	}
+    @GetMapping("/exception")
+    public String error(Map<String, Object> model) {
+        model.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
+        model.put("info", HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
+        return "spring/exception";
+    }
 
-	@GetMapping(value = { "/", "index" })
-	public String welcome(Map<String, Object> model) {
-		model.put("time", new Date());
-		model.put("message", this.message);
-		return "spring/index";
-	}
+    @GetMapping(value = { "/", "index" })
+    public String welcome(Map<String, Object> model) {
+        model.put("time", new Date());
+        model.put("message", this.message);
+        return "spring/index";
+    }
 
 }

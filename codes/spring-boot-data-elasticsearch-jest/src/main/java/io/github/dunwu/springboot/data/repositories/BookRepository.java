@@ -7,10 +7,10 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 
 public interface BookRepository extends ElasticsearchRepository<Book, String> {
 
-	Page<Book> findByNameAndPrice(String name, Integer price, Pageable pageable);
+    Page<Book> findByNameAndPrice(String name, Integer price, Pageable pageable);
 
-	Page<Book> findByNameOrPrice(String name, Integer price, Pageable pageable);
+    Page<Book> findByNameOrPrice(String name, Integer price, Pageable pageable);
 
-	Page<Book> findByName(String name, Pageable pageable);
+    Page<Book> findByName(String name, Pageable pageable);
 
 }

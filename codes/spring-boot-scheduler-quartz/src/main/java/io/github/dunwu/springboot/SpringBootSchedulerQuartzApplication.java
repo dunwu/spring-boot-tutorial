@@ -8,29 +8,29 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringBootSchedulerQuartzApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootSchedulerQuartzApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootSchedulerQuartzApplication.class, args);
+    }
 
-	@Bean
-	public Trigger sampleJobTrigger() {
-		SimpleScheduleBuilder scheduleBuilder =
-			SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(2).repeatForever();
+    @Bean
+    public Trigger sampleJobTrigger() {
+        SimpleScheduleBuilder scheduleBuilder =
+            SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(2).repeatForever();
 
-		return TriggerBuilder.newTrigger()
-			.forJob(sampleJobDetail())
-			.withIdentity("sampleTrigger")
-			.withSchedule(scheduleBuilder)
-			.build();
-	}
+        return TriggerBuilder.newTrigger()
+            .forJob(sampleJobDetail())
+            .withIdentity("sampleTrigger")
+            .withSchedule(scheduleBuilder)
+            .build();
+    }
 
-	@Bean
-	public JobDetail sampleJobDetail() {
-		return JobBuilder.newJob(SampleJob.class)
-			.withIdentity("sampleJob")
-			.usingJobData("name", "World")
-			.storeDurably()
-			.build();
-	}
+    @Bean
+    public JobDetail sampleJobDetail() {
+        return JobBuilder.newJob(SampleJob.class)
+            .withIdentity("sampleJob")
+            .usingJobData("name", "World")
+            .storeDurably()
+            .build();
+    }
 
 }

@@ -19,17 +19,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 public class SpringBootTmplThymeleafApplicationTests {
 
-	private MockMvc mvc;
+    private MockMvc mvc;
 
-	@Test
-	public void getHello() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
-			.andExpect(status().isOk());
-	}
+    @Test
+    public void getHello() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk());
+    }
 
-	@Before
-	public void setUp() {
-		mvc = MockMvcBuilders.standaloneSetup(new IndexController()).build();
-	}
+    @Before
+    public void setUp() {
+        mvc = MockMvcBuilders.standaloneSetup(new IndexController()).build();
+    }
 
 }

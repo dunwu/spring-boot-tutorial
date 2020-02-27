@@ -21,7 +21,6 @@ public class Echo2Tool extends SafeConfig {
     public void echo(String message) {
 
         logger.info("Echo2Tool : " + message);
-
     }
 
 }

@@ -24,44 +24,44 @@ import javax.persistence.Id;
 @AllArgsConstructor
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	private String username;
+    private String username;
 
-	private String password;
+    private String password;
 
-	private String email;
+    private String email;
 
-	public User(String username, String password, String email) {
-		this.username = username;
-		this.password = password;
-		this.email = email;
-	}
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username);
+    }
 
-		if (!(o instanceof User)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
 
-		User user = (User) o;
+        if (!(o instanceof User)) {
+            return false;
+        }
 
-		if (id != null && id.equals(user.id)) {
-			return true;
-		}
+        User user = (User) o;
 
-		return username.equals(user.username);
-	}
+        if (id != null && id.equals(user.id)) {
+            return true;
+        }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, username);
-	}
+        return username.equals(user.username);
+    }
 
 }

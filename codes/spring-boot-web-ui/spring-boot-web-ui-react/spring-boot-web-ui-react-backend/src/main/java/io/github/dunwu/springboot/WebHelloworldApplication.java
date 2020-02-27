@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class WebHelloworldApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WebHelloworldApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WebHelloworldApplication.class, args);
+    }
 
 }

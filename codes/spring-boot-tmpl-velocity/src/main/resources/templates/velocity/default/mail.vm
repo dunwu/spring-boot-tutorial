@@ -23,8 +23,8 @@
        cellpadding="0">
   <tbody>
 
-  ## 页首
-  #parse("templates/velocity/default/header.vm")
+    ## 页首
+    #parse("templates/velocity/default/header.vm")
 
   <tr>
     <td bgcolor="#17212e">
@@ -89,8 +89,8 @@
     </td>
   </tr>
 
-  ## 页脚
-  #parse("templates/velocity/default/footer.vm")
+    ## 页脚
+    #parse("templates/velocity/default/footer.vm")
   </tbody>
 </table>
 

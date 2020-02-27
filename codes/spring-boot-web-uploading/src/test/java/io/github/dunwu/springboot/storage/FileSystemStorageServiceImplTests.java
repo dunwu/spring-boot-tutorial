@@ -29,37 +29,37 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class FileSystemStorageServiceImplTests {
 
-	private StorageProperties properties = new StorageProperties();
+    private StorageProperties properties = new StorageProperties();
 
-	private FileSystemStorageServiceImpl service;
+    private FileSystemStorageServiceImpl service;
 
-	@Before
-	public void init() {
-		properties.setLocation("target/files/" + Math.abs(new Random().nextLong()));
-		service = new FileSystemStorageServiceImpl(properties);
-		service.init();
-	}
+    @Before
+    public void init() {
+        properties.setLocation("target/files/" + Math.abs(new Random().nextLong()));
+        service = new FileSystemStorageServiceImpl(properties);
+        service.init();
+    }
 
-	@Test
-	public void loadNonExistent() {
-		assertThat(service.load("foo.txt")).doesNotExist();
-	}
+    @Test
+    public void loadNonExistent() {
+        assertThat(service.load("foo.txt")).doesNotExist();
+    }
 
-	@Test
-	public void saveAndLoad() {
-		service.store(new MockMultipartFile("foo", "foo.txt", MediaType.TEXT_PLAIN_VALUE, "Hello World".getBytes()));
-		assertThat(service.load("foo.txt")).exists();
-	}
+    @Test
+    public void saveAndLoad() {
+        service.store(new MockMultipartFile("foo", "foo.txt", MediaType.TEXT_PLAIN_VALUE, "Hello World".getBytes()));
+        assertThat(service.load("foo.txt")).exists();
+    }
 
-	@Test(expected = StorageException.class)
-	public void saveNotPermitted() {
-		service.store(new MockMultipartFile("foo", "../foo.txt", MediaType.TEXT_PLAIN_VALUE, "Hello World".getBytes()));
-	}
+    @Test(expected = StorageException.class)
+    public void saveNotPermitted() {
+        service.store(new MockMultipartFile("foo", "../foo.txt", MediaType.TEXT_PLAIN_VALUE, "Hello World".getBytes()));
+    }
 
-	@Test
-	public void savePermitted() {
-		service.store(
-			new MockMultipartFile("foo", "bar/../foo.txt", MediaType.TEXT_PLAIN_VALUE, "Hello World".getBytes()));
-	}
+    @Test
+    public void savePermitted() {
+        service.store(
+            new MockMultipartFile("foo", "bar/../foo.txt", MediaType.TEXT_PLAIN_VALUE, "Hello World".getBytes()));
+    }
 
 }

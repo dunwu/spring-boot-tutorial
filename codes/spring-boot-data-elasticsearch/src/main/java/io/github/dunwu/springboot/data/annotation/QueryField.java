@@ -11,10 +11,10 @@ import java.lang.annotation.*;
 @Target(ElementType.FIELD)
 public @interface QueryField {
 
-	String value() default "";
+    String value() default "";
 
-	QueryLogicType logicType() default QueryLogicType.AND;
+    QueryLogicType logicType() default QueryLogicType.AND;
 
-	QueryJudgeType judgeType() default QueryJudgeType.Equals;
+    QueryJudgeType judgeType() default QueryJudgeType.Equals;
 
 }

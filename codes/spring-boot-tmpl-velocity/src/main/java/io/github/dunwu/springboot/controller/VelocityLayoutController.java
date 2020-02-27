@@ -25,7 +25,7 @@ public class VelocityLayoutController extends BaseController {
     @Autowired(required = false)
     private VelocityLayoutProperties velocityLayoutProperties = new VelocityLayoutProperties();
 
-    @RequestMapping(value = {"/layout"})
+    @RequestMapping(value = { "/layout" })
     @VelocityLayout("/layout/layout.vm")
     public String layout(Model model) {
         // Overrides @VelocityLayout("/layout/layout.vm")

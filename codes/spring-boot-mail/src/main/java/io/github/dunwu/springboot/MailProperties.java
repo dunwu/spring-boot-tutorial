@@ -13,24 +13,24 @@ import org.springframework.validation.annotation.Validated;
 @ConfigurationProperties(prefix = "mail")
 public class MailProperties {
 
-	private String domain;
+    private String domain;
 
-	private String from;
+    private String from;
 
-	public String getDomain() {
-		return domain;
-	}
+    public String getDomain() {
+        return domain;
+    }
 
-	public void setDomain(String domain) {
-		this.domain = domain;
-	}
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
 
-	public String getFrom() {
-		return from;
-	}
+    public String getFrom() {
+        return from;
+    }
 
-	public void setFrom(String from) {
-		this.from = from;
-	}
+    public void setFrom(String from) {
+        this.from = from;
+    }
 
 }

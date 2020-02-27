@@ -11,10 +11,10 @@ import lombok.ToString;
 @ToString
 public class UserDTO {
 
-	private long id;
+    private long id;
 
-	private String name;
+    private String name;
 
-	private InfoDTO infoDTO;
+    private InfoDTO infoDTO;
 
 }

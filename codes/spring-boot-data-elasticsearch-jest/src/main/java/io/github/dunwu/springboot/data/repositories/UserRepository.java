@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface UserRepository extends ElasticsearchRepository<User, String> {
 
-	List<User> findByUserName(String UserName);
+    List<User> findByUserName(String UserName);
 
-	User findByEmail(String email);
+    User findByEmail(String email);
 
 }

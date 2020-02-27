@@ -29,30 +29,30 @@ import javax.validation.constraints.Size;
 @ConfigurationProperties(prefix = "io.github.dunwu")
 public class DunwuProperties {
 
-	private String profile;
+    private String profile;
 
-	@Range(min = 0, max = 100)
-	private int id;
+    @Range(min = 0, max = 100)
+    private int id;
 
-	@Value("io.github.dunwu.author")
-	private String author;
+    @Value("io.github.dunwu.author")
+    private String author;
 
-	private GenderEnum sex;
+    private GenderEnum sex;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date date;
 
-	@Email
-	private String mail;
+    @Email
+    private String mail;
 
-	@Size(min = 3, max = 4)
-	private String[] address;
+    @Size(min = 3, max = 4)
+    private String[] address;
 
-	@NotEmpty
-	private List<String> interestList;
+    @NotEmpty
+    private List<String> interestList;
 
-	private Map<String, String> infoMap;
+    private Map<String, String> infoMap;
 
-	private Map<String, List<String>> skillMap;
+    private Map<String, List<String>> skillMap;
 
 }

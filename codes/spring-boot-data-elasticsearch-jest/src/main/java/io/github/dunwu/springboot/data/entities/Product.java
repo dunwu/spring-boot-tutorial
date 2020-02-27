@@ -10,23 +10,23 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Document(indexName = "product", type = "product", shards = 1, replicas = 0, refreshInterval = "-1")
 public class Product {
 
-	@Id
-	private String id;
+    @Id
+    private String id;
 
-	private String name;
+    private String name;
 
-	private String description;
+    private String description;
 
-	private boolean enabled;
+    private boolean enabled;
 
-	public Product() {}
+    public Product(String id, String name, String description, boolean enabled) {
+        this();
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.enabled = enabled;
+    }
 
-	public Product(String id, String name, String description, boolean enabled) {
-		this();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.enabled = enabled;
-	}
+    public Product() {}
 
 }

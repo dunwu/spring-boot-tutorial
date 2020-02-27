@@ -10,22 +10,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-	public static final String DEFAULT_KEY = "spring-boot:user";
+    public static final String DEFAULT_KEY = "spring-boot:user";
 
-	private final RedisTemplate redisTemplate;
+    private final RedisTemplate redisTemplate;
 
-	public UserServiceImpl(RedisTemplate redisTemplate) {
-		this.redisTemplate = redisTemplate;
-	}
+    public UserServiceImpl(RedisTemplate redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
-	@Override
-	public User getUser(Long id) {
-		return (User) redisTemplate.opsForHash().get(DEFAULT_KEY, id.toString());
-	}
+    @Override
+    public User getUser(Long id) {
+        return (User) redisTemplate.opsForHash().get(DEFAULT_KEY, id.toString());
+    }
 
-	@Override
-	public void setUser(User user) {
-		redisTemplate.opsForHash().put(DEFAULT_KEY, user.getId().toString(), user);
-	}
+    @Override
+    public void setUser(User user) {
+        redisTemplate.opsForHash().put(DEFAULT_KEY, user.getId().toString(), user);
+    }
 
 }

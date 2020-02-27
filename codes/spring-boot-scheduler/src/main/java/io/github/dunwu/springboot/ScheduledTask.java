@@ -19,28 +19,28 @@ import java.util.Date;
 @Component
 public class ScheduledTask {
 
-	private static final Logger log = LoggerFactory.getLogger(ScheduledTask.class);
+    private static final Logger log = LoggerFactory.getLogger(ScheduledTask.class);
 
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
 
-	@Scheduled(cron = "0/10 * * * * ? ")
-	public void cron() {
-		log.info("[cron]The time is now {}", dateFormat.format(new Date()));
-	}
+    @Scheduled(cron = "0/10 * * * * ? ")
+    public void cron() {
+        log.info("[cron]The time is now {}", dateFormat.format(new Date()));
+    }
 
-	@Scheduled(fixedDelay = 5000)
-	public void fixedDelay() {
-		log.info("[fixedDelay]The time is now {}", dateFormat.format(new Date()));
-	}
+    @Scheduled(fixedDelay = 5000)
+    public void fixedDelay() {
+        log.info("[fixedDelay]The time is now {}", dateFormat.format(new Date()));
+    }
 
-	@Scheduled(fixedRate = 5000)
-	public void fixedRate() {
-		log.info("[fixedRate]The time is now {}", dateFormat.format(new Date()));
-	}
+    @Scheduled(fixedRate = 5000)
+    public void fixedRate() {
+        log.info("[fixedRate]The time is now {}", dateFormat.format(new Date()));
+    }
 
-	@Scheduled(initialDelay = 1000, fixedRate = 5000)
-	public void initialDelay() {
-		log.info("[initialDelay]The time is now {}", dateFormat.format(new Date()));
-	}
+    @Scheduled(initialDelay = 1000, fixedRate = 5000)
+    public void initialDelay() {
+        log.info("[initialDelay]The time is now {}", dateFormat.format(new Date()));
+    }
 
 }

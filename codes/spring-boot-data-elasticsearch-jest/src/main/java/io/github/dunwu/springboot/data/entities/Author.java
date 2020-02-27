@@ -7,8 +7,8 @@ import lombok.ToString;
 @ToString
 public class Author {
 
-	private String id;
+    private String id;
 
-	private String name;
+    private String name;
 
 }

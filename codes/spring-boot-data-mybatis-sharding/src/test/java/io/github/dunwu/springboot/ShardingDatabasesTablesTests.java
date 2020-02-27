@@ -28,28 +28,28 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 public class ShardingDatabasesTablesTests {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired
-	private UserMapper userMapper;
+    @Autowired
+    private UserMapper userMapper;
 
-	@Before
-	public void before() {
-		userMapper.delete(null);
-	}
+    @Before
+    public void before() {
+        userMapper.delete(null);
+    }
 
-	@Test
-	public void insert() {
+    @Test
+    public void insert() {
 
-		for (int i = 0; i < 100; i++) {
-			userMapper.insert(new User("name" + i, 18, "南京", "xxx@163.com"));
-		}
-		List<User> userList = userMapper.selectList(null);
-		Assert.assertEquals(100, userList.size());
-		log.info("======= 打印 user 表所有数据 =======");
-		userList.forEach(user -> {
-			log.info(user.toString());
-		});
-	}
+        for (int i = 0; i < 100; i++) {
+            userMapper.insert(new User("name" + i, 18, "南京", "xxx@163.com"));
+        }
+        List<User> userList = userMapper.selectList(null);
+        Assert.assertEquals(100, userList.size());
+        log.info("======= 打印 user 表所有数据 =======");
+        userList.forEach(user -> {
+            log.info(user.toString());
+        });
+    }
 
 }

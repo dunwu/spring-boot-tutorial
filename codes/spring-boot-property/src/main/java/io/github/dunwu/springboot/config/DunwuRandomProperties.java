@@ -22,16 +22,16 @@ import java.math.BigInteger;
 @PropertySource("classpath:/prop/random.properties")
 public class DunwuRandomProperties {
 
-	private String secret;
+    private String secret;
 
-	private int number;
+    private int number;
 
-	private BigInteger bigNumber;
+    private BigInteger bigNumber;
 
-	private String uuid;
+    private String uuid;
 
-	private int lessThanTenNum;
+    private int lessThanTenNum;
 
-	private Integer inRangeNum;
+    private Integer inRangeNum;
 
 }

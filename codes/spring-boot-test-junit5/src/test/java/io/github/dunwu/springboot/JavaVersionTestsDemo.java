@@ -12,22 +12,22 @@ import static org.junit.jupiter.api.condition.JRE.*;
  */
 public class JavaVersionTestsDemo {
 
-	@Test
-	@DisabledOnJre(JAVA_9)
-	void notOnJava9() {
-		System.out.println("NOT ON JAVA9 TEST");
-	}
+    @Test
+    @DisabledOnJre(JAVA_9)
+    void notOnJava9() {
+        System.out.println("NOT ON JAVA9 TEST");
+    }
 
-	@Test
-	@EnabledOnJre({ JAVA_9, JAVA_10 })
-	void onJava9Or10() {
-		System.out.println("JAVA9, JAVA10 TEST");
-	}
+    @Test
+    @EnabledOnJre({ JAVA_9, JAVA_10 })
+    void onJava9Or10() {
+        System.out.println("JAVA9, JAVA10 TEST");
+    }
 
-	@Test
-	@EnabledOnJre(JAVA_8)
-	void onlyOnJava8() {
-		System.out.println("JAVA8 TEST");
-	}
+    @Test
+    @EnabledOnJre(JAVA_8)
+    void onlyOnJava8() {
+        System.out.println("JAVA8 TEST");
+    }
 
 }

@@ -12,14 +12,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class TestJunit5ApplicationTests {
 
-	@Autowired
-	private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
-	@Test
-	@DisplayName("访问 /hello")
-	void testMessage() {
-		String message = this.restTemplate.getForObject("/hello", String.class);
-		assertThat(message).isEqualTo("Hello World");
-	}
+    @Test
+    @DisplayName("访问 /hello")
+    void testMessage() {
+        String message = this.restTemplate.getForObject("/hello", String.class);
+        assertThat(message).isEqualTo("Hello World");
+    }
 
 }

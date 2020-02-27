@@ -8,40 +8,40 @@ import java.util.List;
  */
 public class ResponseDTO<T> {
 
-	private Boolean success;
+    private Boolean success;
 
-	private Integer total;
+    private Integer total;
 
-	private List<T> rows;
+    private List<T> rows;
 
-	public ResponseDTO(Boolean success, Integer total, List<T> rows) {
-		this.success = success;
-		this.total = total;
-		this.rows = rows;
-	}
+    public ResponseDTO(Boolean success, Integer total, List<T> rows) {
+        this.success = success;
+        this.total = total;
+        this.rows = rows;
+    }
 
-	public Boolean isSuccess() {
-		return success;
-	}
+    public Boolean isSuccess() {
+        return success;
+    }
 
-	public Integer getTotal() {
-		return total;
-	}
+    public Integer getTotal() {
+        return total;
+    }
 
-	public void setTotal(Integer total) {
-		this.total = total;
-	}
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
 
-	public List<T> getRows() {
-		return rows;
-	}
+    public List<T> getRows() {
+        return rows;
+    }
 
-	public void setRows(List<T> rows) {
-		this.rows = rows;
-	}
+    public void setRows(List<T> rows) {
+        this.rows = rows;
+    }
 
-	public void setSuccess(boolean success) {
-		this.success = success;
-	}
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
 
 }

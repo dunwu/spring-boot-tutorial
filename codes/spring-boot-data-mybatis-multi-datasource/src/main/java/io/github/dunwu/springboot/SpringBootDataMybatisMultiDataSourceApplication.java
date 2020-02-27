@@ -20,54 +20,54 @@ import java.util.List;
 @MapperScan("io.github.dunwu.springboot.mapper")
 public class SpringBootDataMybatisMultiDataSourceApplication implements CommandLineRunner {
 
-	private static final Logger log = LoggerFactory.getLogger(SpringBootDataMybatisMultiDataSourceApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(SpringBootDataMybatisMultiDataSourceApplication.class);
 
-	private final Db1UserMapper db1UserMapper;
+    private final Db1UserMapper db1UserMapper;
 
-	private final Db2UserMapper db2UserMapper;
+    private final Db2UserMapper db2UserMapper;
 
-	public SpringBootDataMybatisMultiDataSourceApplication(Db1UserMapper db1UserMapper, Db2UserMapper db2UserMapper) {
-		this.db1UserMapper = db1UserMapper;
-		this.db2UserMapper = db2UserMapper;
-	}
+    public SpringBootDataMybatisMultiDataSourceApplication(Db1UserMapper db1UserMapper, Db2UserMapper db2UserMapper) {
+        this.db1UserMapper = db1UserMapper;
+        this.db2UserMapper = db2UserMapper;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDataMybatisMultiDataSourceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootDataMybatisMultiDataSourceApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
+    @Override
+    public void run(String... args) throws Exception {
 
-		if (db1UserMapper == null) {
-			log.error("连接 DB1 数据源失败");
-			return;
-		} else {
-			log.info("连接 DB1 数据源成功");
-		}
+        if (db1UserMapper == null) {
+            log.error("连接 DB1 数据源失败");
+            return;
+        } else {
+            log.info("连接 DB1 数据源成功");
+        }
 
-		db1UserMapper.insert(new User("张三", 21, "南京", "xxx@163.com"));
-		db1UserMapper.insert(new User("李四", 28, "上海", "xxx@163.com"));
+        db1UserMapper.insert(new User("张三", 21, "南京", "xxx@163.com"));
+        db1UserMapper.insert(new User("李四", 28, "上海", "xxx@163.com"));
 
-		List<User> userList = db1UserMapper.selectList(null);
-		log.info("======= 打印 user 表所有数据 =======");
-		userList.forEach(user -> {
-			log.info(user.toString());
-		});
+        List<User> userList = db1UserMapper.selectList(null);
+        log.info("======= 打印 user 表所有数据 =======");
+        userList.forEach(user -> {
+            log.info(user.toString());
+        });
 
-		if (db2UserMapper == null) {
-			log.error("连接 DB2 数据源失败");
-			return;
-		} else {
-			log.info("连接 DB2 数据源成功");
-		}
+        if (db2UserMapper == null) {
+            log.error("连接 DB2 数据源失败");
+            return;
+        } else {
+            log.info("连接 DB2 数据源成功");
+        }
 
-		db2UserMapper.insert(new User("王五", 24, "北京", "xxx@163.com"));
+        db2UserMapper.insert(new User("王五", 24, "北京", "xxx@163.com"));
 
-		List<User> userList2 = db2UserMapper.selectList(null);
-		log.info("======= 打印 user 表所有数据 =======");
-		userList2.forEach(user -> {
-			log.info(user.toString());
-		});
-	}
+        List<User> userList2 = db2UserMapper.selectList(null);
+        log.info("======= 打印 user 表所有数据 =======");
+        userList2.forEach(user -> {
+            log.info(user.toString());
+        });
+    }
 
 }

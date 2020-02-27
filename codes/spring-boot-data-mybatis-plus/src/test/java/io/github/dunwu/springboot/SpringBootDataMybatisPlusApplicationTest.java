@@ -17,15 +17,15 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 public class SpringBootDataMybatisPlusApplicationTest {
 
-	@Autowired
-	private UserMapper userMapper;
+    @Autowired
+    private UserMapper userMapper;
 
-	@Test
-	public void testSelect() {
-		System.out.println(("----- selectAll method test ------"));
-		List<User> userList = userMapper.selectList(null);
-		Assert.assertEquals(2, userList.size());
-		userList.forEach(System.out::println);
-	}
+    @Test
+    public void testSelect() {
+        System.out.println(("----- selectAll method test ------"));
+        List<User> userList = userMapper.selectList(null);
+        Assert.assertEquals(2, userList.size());
+        userList.forEach(System.out::println);
+    }
 
 }

@@ -7,28 +7,28 @@ package io.github.dunwu.springboot.data.common;
  * @since 2019-12-18
  */
 public enum NamingStrategy {
-	/**
-	 * 默认命名
-	 */
-	DEFAULT,
-	/**
-	 * 驼峰命名。例：namingStrategy
-	 */
-	CAMEL,
-	/**
-	 * 全小写字母用下划线拼接。例：naming_strategy
-	 */
-	LOWER_UNDERLINE,
-	/**
-	 * 全大写字母用下划线拼接。例：NAMING_STRATEGY
-	 */
-	UPPER_UNDERLINE,
-	/**
-	 * 全小写字母用分割线拼接。例：naming-strategy
-	 */
-	LOWER_DASHED,
-	/**
-	 * 全小写字母用分割线拼接。例：NAMING-STRATEGY
-	 */
-	UPPER_DASHED,
+    /**
+     * 默认命名
+     */
+    DEFAULT,
+    /**
+     * 驼峰命名。例：namingStrategy
+     */
+    CAMEL,
+    /**
+     * 全小写字母用下划线拼接。例：naming_strategy
+     */
+    LOWER_UNDERLINE,
+    /**
+     * 全大写字母用下划线拼接。例：NAMING_STRATEGY
+     */
+    UPPER_UNDERLINE,
+    /**
+     * 全小写字母用分割线拼接。例：naming-strategy
+     */
+    LOWER_DASHED,
+    /**
+     * 全小写字母用分割线拼接。例：NAMING-STRATEGY
+     */
+    UPPER_DASHED,
 }

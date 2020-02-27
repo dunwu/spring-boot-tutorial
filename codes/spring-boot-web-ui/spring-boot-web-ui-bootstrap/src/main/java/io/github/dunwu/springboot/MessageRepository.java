@@ -2,12 +2,12 @@ package io.github.dunwu.springboot;
 
 public interface MessageRepository {
 
-	void deleteMessage(Long id);
+    void deleteMessage(Long id);
 
-	Iterable<Message> findAll();
+    Iterable<Message> findAll();
 
-	Message findMessage(Long id);
+    Message findMessage(Long id);
 
-	Message save(Message message);
+    Message save(Message message);
 
 }

@@ -1,17 +1,17 @@
 <html>
 <head>
-    <title>$!pageTitle</title>
+  <title>$!pageTitle</title>
 </head>
 <body>
 
 <div>Layout 页面，当前 Layout URL : $!layout_key</div>
-<p/>
+<p />
 
-$body_content
+  $body_content
 
-<p/>
+<p />
 <div><a href="/">返回首页</a></div>
-<p/>
+<p />
 <div><a href="$!link" target="_blank">$!linkLabel</a></div>
 </body>
 </html>

@@ -14,12 +14,12 @@ import java.util.List;
 @Document(indexName = "test-contact-test", type = "contact-test-type", shards = 1, replicas = 0)
 public class Contact {
 
-	@Id
-	private String id;
+    @Id
+    private String id;
 
-	private String name;
+    private String name;
 
-	@Field(type = FieldType.Nested)
-	private List<Manuscript> manuscripts;
+    @Field(type = FieldType.Nested)
+    private List<Manuscript> manuscripts;
 
 }

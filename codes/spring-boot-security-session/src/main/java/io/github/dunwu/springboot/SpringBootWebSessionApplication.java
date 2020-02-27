@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringBootWebSessionApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootWebSessionApplication.class);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootWebSessionApplication.class);
+    }
 
 }

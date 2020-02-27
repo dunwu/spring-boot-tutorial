@@ -32,99 +32,99 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 public class SpringBootJpaRestTest {
 
-	@Autowired
-	private MockMvc mockMvc;
+    @Autowired
+    private MockMvc mockMvc;
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	@Autowired
-	private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
-	@Before
-	public void deleteAllBeforeTests() {
-		userRepository.deleteAll();
-	}
+    @Before
+    public void deleteAllBeforeTests() {
+        userRepository.deleteAll();
+    }
 
-	@Test
-	public void shouldCreateEntity() throws Exception {
-		User user = new User("张三", "123456", "user1@163.com");
-		mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user))).andExpect(status().isCreated())
-			.andExpect(header().string("Location", containsString("user/")));
-	}
+    @Test
+    public void shouldCreateEntity() throws Exception {
+        User user = new User("张三", "123456", "user1@163.com");
+        mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user))).andExpect(status().isCreated())
+            .andExpect(header().string("Location", containsString("user/")));
+    }
 
-	@Test
-	public void shouldDeleteEntity() throws Exception {
-		User user = new User("张三", "123456", "user1@163.com");
-		MvcResult mvcResult = mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
-			.andExpect(status().isCreated()).andReturn();
+    @Test
+    public void shouldDeleteEntity() throws Exception {
+        User user = new User("张三", "123456", "user1@163.com");
+        MvcResult mvcResult = mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
+            .andExpect(status().isCreated()).andReturn();
 
-		String location = mvcResult.getResponse().getHeader("Location");
-		assertThat(location).isNotNull();
+        String location = mvcResult.getResponse().getHeader("Location");
+        assertThat(location).isNotNull();
 
-		mockMvc.perform(delete(location)).andExpect(status().isNoContent());
-		mockMvc.perform(get(location)).andExpect(status().isNotFound());
-	}
+        mockMvc.perform(delete(location)).andExpect(status().isNoContent());
+        mockMvc.perform(get(location)).andExpect(status().isNotFound());
+    }
 
-	@Test
-	public void shouldPartiallyUpdateEntity() throws Exception {
-		User user = new User("张三", "123456", "user1@163.com");
-		User user2 = new User("李四", "123456", "user2@163.com");
+    @Test
+    public void shouldPartiallyUpdateEntity() throws Exception {
+        User user = new User("张三", "123456", "user1@163.com");
+        User user2 = new User("李四", "123456", "user2@163.com");
 
-		MvcResult mvcResult = mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
-			.andExpect(status().isCreated()).andReturn();
+        MvcResult mvcResult = mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
+            .andExpect(status().isCreated()).andReturn();
 
-		String location = mvcResult.getResponse().getHeader("Location");
-		assertThat(location).isNotNull();
+        String location = mvcResult.getResponse().getHeader("Location");
+        assertThat(location).isNotNull();
 
-		mockMvc.perform(patch(location).content(objectMapper.writeValueAsString(user2)))
-			.andExpect(status().isNoContent());
-		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.username").value("李四"))
-			.andExpect(jsonPath("$.password").value("123456"))
-			.andExpect(jsonPath("$.email").value("user2@163.com"));
-	}
+        mockMvc.perform(patch(location).content(objectMapper.writeValueAsString(user2)))
+            .andExpect(status().isNoContent());
+        mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.username").value("李四"))
+            .andExpect(jsonPath("$.password").value("123456"))
+            .andExpect(jsonPath("$.email").value("user2@163.com"));
+    }
 
-	@Test
-	public void shouldQueryEntity() throws Exception {
-		User user = new User("张三", "123456", "user1@163.com");
-		mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user))).andExpect(status().isCreated());
-		mockMvc.perform(get("/user/search/findByEmail?email={email}", "user1@163.com")).andExpect(status().isOk());
-	}
+    @Test
+    public void shouldQueryEntity() throws Exception {
+        User user = new User("张三", "123456", "user1@163.com");
+        mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user))).andExpect(status().isCreated());
+        mockMvc.perform(get("/user/search/findByEmail?email={email}", "user1@163.com")).andExpect(status().isOk());
+    }
 
-	@Test
-	public void shouldRetrieveEntity() throws Exception {
-		User user = new User("张三", "123456", "user1@163.com");
-		MvcResult mvcResult = mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
-			.andExpect(status().isCreated()).andReturn();
+    @Test
+    public void shouldRetrieveEntity() throws Exception {
+        User user = new User("张三", "123456", "user1@163.com");
+        MvcResult mvcResult = mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
+            .andExpect(status().isCreated()).andReturn();
 
-		String location = mvcResult.getResponse().getHeader("Location");
-		assertThat(location).isNotNull();
-		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.username").value("张三"))
-			.andExpect(jsonPath("$.email").value("user1@163.com"));
-	}
+        String location = mvcResult.getResponse().getHeader("Location");
+        assertThat(location).isNotNull();
+        mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.username").value("张三"))
+            .andExpect(jsonPath("$.email").value("user1@163.com"));
+    }
 
-	@Test
-	public void shouldReturnRepositoryIndex() throws Exception {
-		mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
-			.andExpect(jsonPath("$._links.user").exists());
-	}
+    @Test
+    public void shouldReturnRepositoryIndex() throws Exception {
+        mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
+            .andExpect(jsonPath("$._links.user").exists());
+    }
 
-	@Test
-	public void shouldUpdateEntity() throws Exception {
-		User user = new User("张三", "123456", "user1@163.com");
-		User user2 = new User("李四", "123456", "user2@163.com");
+    @Test
+    public void shouldUpdateEntity() throws Exception {
+        User user = new User("张三", "123456", "user1@163.com");
+        User user2 = new User("李四", "123456", "user2@163.com");
 
-		MvcResult mvcResult = mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
-			.andExpect(status().isCreated()).andReturn();
+        MvcResult mvcResult = mockMvc.perform(post("/user").content(objectMapper.writeValueAsString(user)))
+            .andExpect(status().isCreated()).andReturn();
 
-		String location = mvcResult.getResponse().getHeader("Location");
-		assertThat(location).isNotNull();
+        String location = mvcResult.getResponse().getHeader("Location");
+        assertThat(location).isNotNull();
 
-		mockMvc.perform(put(location).content(objectMapper.writeValueAsString(user2)))
-			.andExpect(status().isNoContent());
+        mockMvc.perform(put(location).content(objectMapper.writeValueAsString(user2)))
+            .andExpect(status().isNoContent());
 
-		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.username").value("李四"))
-			.andExpect(jsonPath("$.password").value("123456"));
-	}
+        mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.username").value("李四"))
+            .andExpect(jsonPath("$.password").value("123456"));
+    }
 
 }

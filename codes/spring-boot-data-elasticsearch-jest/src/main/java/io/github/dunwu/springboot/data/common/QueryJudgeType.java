@@ -5,12 +5,12 @@ package io.github.dunwu.springboot.data.common;
  * @since 2019-12-17
  */
 public enum QueryJudgeType {
-	Equals,
-	NotEquals,
-	Like,
-	NotLike,
-	In,
-	NotIn,
-	IsNull,
-	IsNotNull,
+    Equals,
+    NotEquals,
+    Like,
+    NotLike,
+    In,
+    NotIn,
+    IsNull,
+    IsNotNull,
 }

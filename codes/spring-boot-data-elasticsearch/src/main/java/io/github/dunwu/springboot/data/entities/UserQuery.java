@@ -18,16 +18,16 @@ import org.springframework.data.annotation.Id;
 @QueryDocument(value = User.class, orderType = OrderType.DESC, orderItem = "age")
 public class UserQuery {
 
-	@Id
-	private String id;
+    @Id
+    private String id;
 
-	@QueryField(logicType = QueryLogicType.OR, judgeType = QueryJudgeType.Like)
-	private String username;
+    @QueryField(logicType = QueryLogicType.OR, judgeType = QueryJudgeType.Like)
+    private String username;
 
-	@QueryField(logicType = QueryLogicType.AND, judgeType = QueryJudgeType.Equals)
-	private Integer age;
+    @QueryField(logicType = QueryLogicType.AND, judgeType = QueryJudgeType.Equals)
+    private Integer age;
 
-	@QueryField(logicType = QueryLogicType.OR, judgeType = QueryJudgeType.Equals)
-	private String email;
+    @QueryField(logicType = QueryLogicType.OR, judgeType = QueryJudgeType.Equals)
+    private String email;
 
 }

@@ -17,45 +17,45 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class CustomerRepositoryTests {
 
-	@Autowired
-	CustomerRepository repository;
+    @Autowired
+    CustomerRepository repository;
 
-	Customer dave, oliver, carter;
+    Customer dave, oliver, carter;
 
-	@Test
-	public void findsByExample() {
+    @Test
+    public void findsByExample() {
 
-		Customer probe = new Customer(null, "Matthews");
+        Customer probe = new Customer(null, "Matthews");
 
-		List<Customer> result = repository.findAll(Example.of(probe));
+        List<Customer> result = repository.findAll(Example.of(probe));
 
-		Assertions.assertThat(result).hasSize(2).extracting("firstName").contains("Dave", "Oliver August");
-	}
+        Assertions.assertThat(result).hasSize(2).extracting("firstName").contains("Dave", "Oliver August");
+    }
 
-	@Test
-	public void findsByLastName() {
+    @Test
+    public void findsByLastName() {
 
-		List<Customer> result = repository.findByLastName("Beauford");
+        List<Customer> result = repository.findByLastName("Beauford");
 
-		Assertions.assertThat(result).hasSize(1).extracting("firstName").contains("Carter");
-	}
+        Assertions.assertThat(result).hasSize(1).extracting("firstName").contains("Carter");
+    }
 
-	@Before
-	public void setUp() {
+    @Before
+    public void setUp() {
 
-		repository.deleteAll();
+        repository.deleteAll();
 
-		dave = repository.save(new Customer("Dave", "Matthews"));
-		oliver = repository.save(new Customer("Oliver August", "Matthews"));
-		carter = repository.save(new Customer("Carter", "Beauford"));
-	}
+        dave = repository.save(new Customer("Dave", "Matthews"));
+        oliver = repository.save(new Customer("Oliver August", "Matthews"));
+        carter = repository.save(new Customer("Carter", "Beauford"));
+    }
 
-	@Test
-	public void setsIdOnSave() {
+    @Test
+    public void setsIdOnSave() {
 
-		Customer dave = repository.save(new Customer("Dave", "Matthews"));
+        Customer dave = repository.save(new Customer("Dave", "Matthews"));
 
-		assertThat(dave.id).isNotNull();
-	}
+        assertThat(dave.id).isNotNull();
+    }
 
 }

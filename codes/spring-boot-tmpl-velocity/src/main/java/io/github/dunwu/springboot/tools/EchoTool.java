@@ -29,6 +29,11 @@ public class EchoTool extends SafeConfig implements ApplicationContextAware {
     @Autowired
     private ApplicationContext applicationContext;
 
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
+
     public void echo(String message) {
 
         logger.info("EchoTool : " + message);
@@ -38,11 +43,6 @@ public class EchoTool extends SafeConfig implements ApplicationContextAware {
         }
 
         echo2Tool.echo(message);
-
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
 }

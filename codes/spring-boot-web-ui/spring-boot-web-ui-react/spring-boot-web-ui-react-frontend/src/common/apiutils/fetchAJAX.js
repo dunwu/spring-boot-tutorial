@@ -20,12 +20,12 @@ function handleJson(data) {
 export function doFetch(options = {}, dispatch) {
   const opts = {
     ...defaultOptions, ...options, onError: wrapErrorHandler(options.onError, dispatch)
-  }
+  };
 
   // 根据配置创建 Request 对象
   const req = new Request(getRealUrl(opts.url), {
     method: opts.method, headers: opts.headers, body: opts.data, cache: opts.cache, redirect: 'follow', mode: 'cors'
-  })
+  });
 
   if (!__DEV__) {
     req.credentials = 'include'
@@ -33,7 +33,7 @@ export function doFetch(options = {}, dispatch) {
 
   // 请求
   // FIXME 应该根据 response 类型自动判断是否 Json 请求
-  let tempRes = fetch(req).then(handleStatus)
+  let tempRes = fetch(req).then(handleStatus);
   if (options.type === REQ_TYPE.JSON) {
     tempRes = tempRes.then(res => res.json()).then(handleJson)
   }
@@ -41,6 +41,6 @@ export function doFetch(options = {}, dispatch) {
 }
 
 export function doFetchJson(options = {}, dispatch) {
-  const opts = {...defaultJsonOptions, ...options}
+  const opts = {...defaultJsonOptions, ...options};
   doFetch(opts, dispatch)
 }

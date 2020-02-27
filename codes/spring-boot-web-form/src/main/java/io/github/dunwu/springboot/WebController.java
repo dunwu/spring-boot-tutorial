@@ -14,35 +14,35 @@ import javax.validation.Valid;
 @Controller
 public class WebController implements WebMvcConfigurer {
 
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/results").setViewName("results");
-	}
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/results").setViewName("results");
+    }
 
-	@PostMapping("/")
-	public String checkPersonInfo(@Valid PersonForm personForm, BindingResult bindingResult) {
+    @PostMapping("/")
+    public String checkPersonInfo(@Valid PersonForm personForm, BindingResult bindingResult) {
 
-		if (bindingResult.hasErrors()) {
-			return "form";
-		}
+        if (bindingResult.hasErrors()) {
+            return "form";
+        }
 
-		return "redirect:/welcome";
-	}
+        return "redirect:/welcome";
+    }
 
-	@GetMapping("/greeting")
-	public String greetingForm(Model model) {
-		model.addAttribute("greeting", new Greeting());
-		return "greeting";
-	}
+    @GetMapping("/greeting")
+    public String greetingForm(Model model) {
+        model.addAttribute("greeting", new Greeting());
+        return "greeting";
+    }
 
-	@PostMapping("/greeting")
-	public String greetingSubmit(@ModelAttribute Greeting greeting) {
-		return "result";
-	}
+    @PostMapping("/greeting")
+    public String greetingSubmit(@ModelAttribute Greeting greeting) {
+        return "result";
+    }
 
-	@GetMapping("/")
-	public String showForm(PersonForm personForm) {
-		return "form";
-	}
+    @GetMapping("/")
+    public String showForm(PersonForm personForm) {
+        return "form";
+    }
 
 }

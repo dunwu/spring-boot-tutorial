@@ -10,22 +10,22 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringBootAopApplication implements CommandLineRunner {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	private final WelcomeService welcomeService;
+    private final WelcomeService welcomeService;
 
-	public SpringBootAopApplication(WelcomeService welcomeService) {
-		this.welcomeService = welcomeService;
-	}
+    public SpringBootAopApplication(WelcomeService welcomeService) {
+        this.welcomeService = welcomeService;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootAopApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootAopApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
-		log.info(this.welcomeService.getMessage());
-		this.welcomeService.getException();
-	}
+    @Override
+    public void run(String... args) throws Exception {
+        log.info(this.welcomeService.getMessage());
+        this.welcomeService.getException();
+    }
 
 }

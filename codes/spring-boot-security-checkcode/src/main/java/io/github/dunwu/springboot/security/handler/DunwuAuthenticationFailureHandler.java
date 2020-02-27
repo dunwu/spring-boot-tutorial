@@ -13,18 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class DunwuAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
-	private final ObjectMapper mapper;
+    private final ObjectMapper mapper;
 
-	public DunwuAuthenticationFailureHandler(ObjectMapper mapper) {
-		this.mapper = mapper;
-	}
+    public DunwuAuthenticationFailureHandler(ObjectMapper mapper) {
+        this.mapper = mapper;
+    }
 
-	@Override
-	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
-		AuthenticationException exception) throws IOException {
-		response.setStatus(HttpStatus.UNAUTHORIZED.value());
-		response.setContentType("application/json;charset=utf-8");
-		response.getWriter().write(mapper.writeValueAsString(exception.getMessage()));
-	}
+    @Override
+    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+        AuthenticationException exception) throws IOException {
+        response.setStatus(HttpStatus.UNAUTHORIZED.value());
+        response.setContentType("application/json;charset=utf-8");
+        response.getWriter().write(mapper.writeValueAsString(exception.getMessage()));
+    }
 
 }

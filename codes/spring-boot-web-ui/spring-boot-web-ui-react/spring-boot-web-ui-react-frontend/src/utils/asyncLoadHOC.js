@@ -6,7 +6,7 @@
 
 import React from 'react'
 
-let Component = null
+let Component = null;
 export const asyncLoadHOC = loadComponent => (
 
   class AsyncComponent extends React.Component {
@@ -23,12 +23,18 @@ export const asyncLoadHOC = loadComponent => (
       loadComponent().then(module => module.default).then((comp) => {
         Component = comp
       }).catch((err) => {
-        console.error(`Cannot load component in <AsyncComponent />`)
+        console.error(`Cannot load component in <AsyncComponent />`);
         throw err
       })
     }
 
     render() {
-      return (Component) ? <Component {...this.props} /> : null
+      return (Component) ?;
+    <
+      Component;
+      {...
+        this.props
+      }
+      /> : null
     }
-  })
+  });

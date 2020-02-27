@@ -17,25 +17,25 @@ import java.util.Map;
 @Document(indexName = "book", type = "book", shards = 1, replicas = 0, refreshInterval = "-1")
 public class Book {
 
-	@Id
-	private String id;
+    @Id
+    private String id;
 
-	private String name;
+    private String name;
 
-	private Long price;
+    private Long price;
 
-	@Version
-	private Long version;
+    @Version
+    private Long version;
 
-	@Field(type = FieldType.Nested)
-	private Map<Integer, Collection<String>> buckets = new HashMap<>();
+    @Field(type = FieldType.Nested)
+    private Map<Integer, Collection<String>> buckets = new HashMap<>();
 
-	public Book() {}
+    public Book() {}
 
-	public Book(String id, String name, Long version) {
-		this.id = id;
-		this.name = name;
-		this.version = version;
-	}
+    public Book(String id, String name, Long version) {
+        this.id = id;
+        this.name = name;
+        this.version = version;
+    }
 
 }

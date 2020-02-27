@@ -8,20 +8,20 @@ import org.springframework.statemachine.StateMachine;
 @SpringBootApplication
 public class SpringBootStateMachineApplication implements CommandLineRunner {
 
-	private final StateMachine<States, Events> stateMachine;
+    private final StateMachine<States, Events> stateMachine;
 
-	public SpringBootStateMachineApplication(StateMachine<States, Events> stateMachine) {
-		this.stateMachine = stateMachine;
-	}
+    public SpringBootStateMachineApplication(StateMachine<States, Events> stateMachine) {
+        this.stateMachine = stateMachine;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootStateMachineApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootStateMachineApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) {
-		stateMachine.sendEvent(Events.E1);
-		stateMachine.sendEvent(Events.E2);
-	}
+    @Override
+    public void run(String... args) {
+        stateMachine.sendEvent(Events.E1);
+        stateMachine.sendEvent(Events.E2);
+    }
 
 }

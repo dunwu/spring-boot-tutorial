@@ -12,29 +12,29 @@ import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CoreWeatherInfo {
 
-	private String date;
+    private String date;
 
-	private String high;
+    private String high;
 
-	private String low;
+    private String low;
 
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date ymd;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date ymd;
 
-	private String week;
+    private String week;
 
-	private String sunrise;
+    private String sunrise;
 
-	private String sunset;
+    private String sunset;
 
-	private int aqi;
+    private int aqi;
 
-	private String fx;
+    private String fx;
 
-	private String fl;
+    private String fl;
 
-	private String type;
+    private String type;
 
-	private String notice;
+    private String notice;
 
 }

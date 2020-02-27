@@ -19,11 +19,6 @@ public class SpringBootDockerApplication implements CommandLineRunner, Environme
         SpringApplication.run(SpringBootDockerApplication.class, args);
     }
 
-    @RequestMapping("/")
-    public String home() {
-        return "Running in docker.";
-    }
-
     @Override
     public void run(String... args) throws Exception {
         System.out.println("============== ARGUMENTS ==============");
@@ -52,6 +47,11 @@ public class SpringBootDockerApplication implements CommandLineRunner, Environme
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue().toString());
         }
+    }
+
+    @RequestMapping("/")
+    public String home() {
+        return "Running in docker.";
     }
 
 }

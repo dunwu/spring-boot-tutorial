@@ -25,54 +25,54 @@ import javax.sql.DataSource;
 @EnableConfigurationProperties({ DunwuSecurityProperties.class })
 public class DunwuSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	private final DataSource dataSource;
+    private final DataSource dataSource;
 
-	private final UserDetailsManager userDetailsManager;
+    private final UserDetailsManager userDetailsManager;
 
-	private final DunwuSecurityProperties dunwuSecurityProperties;
+    private final DunwuSecurityProperties dunwuSecurityProperties;
 
-	private final ValidateCodeFilter validateCodeFilter;
+    private final ValidateCodeFilter validateCodeFilter;
 
-	private final DunwuAuthenticationSucessHandler authenticationSucessHandler;
+    private final DunwuAuthenticationSucessHandler authenticationSucessHandler;
 
-	private final DunwuAuthenticationFailureHandler authenticationFailureHandler;
+    private final DunwuAuthenticationFailureHandler authenticationFailureHandler;
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 
-		http.csrf().disable();
+        http.csrf().disable();
 
-		// 授权配置
-		http.authorizeRequests()
-			// 无需认证的请求路径
-			.antMatchers(dunwuSecurityProperties.getPermitUrls()).permitAll()
-			// 所有请求都需要认证
-			.anyRequest().authenticated();
+        // 授权配置
+        http.authorizeRequests()
+            // 无需认证的请求路径
+            .antMatchers(dunwuSecurityProperties.getPermitUrls()).permitAll()
+            // 所有请求都需要认证
+            .anyRequest().authenticated();
 
-		http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class) // 添加验证码校验过滤器
-			.formLogin() // 表单登录
-			.loginPage(dunwuSecurityProperties.getLoginPage()) // 登录跳转 URL
-			.loginProcessingUrl(dunwuSecurityProperties.getLoginProcessingUrl()) // 处理表单登录 URL
-			.successHandler(authenticationSucessHandler) // 处理登录成功
-			.failureHandler(authenticationFailureHandler); // 处理登录失败
+        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class) // 添加验证码校验过滤器
+            .formLogin() // 表单登录
+            .loginPage(dunwuSecurityProperties.getLoginPage()) // 登录跳转 URL
+            .loginProcessingUrl(dunwuSecurityProperties.getLoginProcessingUrl()) // 处理表单登录 URL
+            .successHandler(authenticationSucessHandler) // 处理登录成功
+            .failureHandler(authenticationFailureHandler); // 处理登录失败
 
-		http.rememberMe().tokenRepository(persistentTokenRepository()) // 配置
-			// 持久化仓库
-			.tokenValiditySeconds(3600) // remember 过期时间，单为秒
-			.userDetailsService(userDetailsManager); // 处理自动登录逻辑
-	}
+        http.rememberMe().tokenRepository(persistentTokenRepository()) // 配置
+            // 持久化仓库
+            .tokenValiditySeconds(3600) // remember 过期时间，单为秒
+            .userDetailsService(userDetailsManager); // 处理自动登录逻辑
+    }
 
-	@Bean
-	public PersistentTokenRepository persistentTokenRepository() {
-		JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
-		jdbcTokenRepository.setCreateTableOnStartup(false);
-		jdbcTokenRepository.setDataSource(dataSource);
-		return jdbcTokenRepository;
-	}
+    @Bean
+    public PersistentTokenRepository persistentTokenRepository() {
+        JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
+        jdbcTokenRepository.setCreateTableOnStartup(false);
+        jdbcTokenRepository.setDataSource(dataSource);
+        return jdbcTokenRepository;
+    }
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 }

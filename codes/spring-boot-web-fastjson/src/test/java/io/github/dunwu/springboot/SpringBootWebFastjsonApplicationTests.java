@@ -27,32 +27,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 public class SpringBootWebFastjsonApplicationTests {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired
-	private JacksonTester<InfoDTO> json;
+    @Autowired
+    private JacksonTester<InfoDTO> json;
 
-	@Test
-	public void testDeserialize() throws Exception {
-		String content = "{\"appName\":\"JSON测试应用\",\"version\":\"1.0.0\",\"date\":\"2019-01-01\"}";
-		InfoDTO actual = json.parseObject(content);
-		assertThat(actual.getAppName()).isEqualTo("JSON测试应用");
-		assertThat(actual.getVersion()).isEqualTo("1.0.0");
-	}
+    @Test
+    public void testDeserialize() throws Exception {
+        String content = "{\"appName\":\"JSON测试应用\",\"version\":\"1.0.0\",\"date\":\"2019-01-01\"}";
+        InfoDTO actual = json.parseObject(content);
+        assertThat(actual.getAppName()).isEqualTo("JSON测试应用");
+        assertThat(actual.getVersion()).isEqualTo("1.0.0");
+    }
 
-	@Test
-	public void testSerialize() throws Exception {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		InfoDTO infoDTO = new InfoDTO("JSON测试应用", "1.0.0", sdf.parse("2019-01-01 12:00:00"));
-		JsonContent<InfoDTO> jsonContent = json.write(infoDTO);
-		log.info("json content: {}", jsonContent.getJson());
-		// 或者使用基于JSON path的校验
-		assertThat(jsonContent).hasJsonPathStringValue("@.appName");
-		assertThat(jsonContent).extractingJsonPathStringValue("@.appName").isEqualTo("JSON测试应用");
-		assertThat(jsonContent).hasJsonPathStringValue("@.version");
-		assertThat(jsonContent).extractingJsonPathStringValue("@.version").isEqualTo("1.0.0");
-		assertThat(jsonContent).hasJsonPathStringValue("@.date");
-		assertThat(jsonContent).extractingJsonPathStringValue("@.date").isEqualTo("2019-01-01 12:00:00");
-	}
+    @Test
+    public void testSerialize() throws Exception {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        InfoDTO infoDTO = new InfoDTO("JSON测试应用", "1.0.0", sdf.parse("2019-01-01 12:00:00"));
+        JsonContent<InfoDTO> jsonContent = json.write(infoDTO);
+        log.info("json content: {}", jsonContent.getJson());
+        // 或者使用基于JSON path的校验
+        assertThat(jsonContent).hasJsonPathStringValue("@.appName");
+        assertThat(jsonContent).extractingJsonPathStringValue("@.appName").isEqualTo("JSON测试应用");
+        assertThat(jsonContent).hasJsonPathStringValue("@.version");
+        assertThat(jsonContent).extractingJsonPathStringValue("@.version").isEqualTo("1.0.0");
+        assertThat(jsonContent).hasJsonPathStringValue("@.date");
+        assertThat(jsonContent).extractingJsonPathStringValue("@.date").isEqualTo("2019-01-01 12:00:00");
+    }
 
 }

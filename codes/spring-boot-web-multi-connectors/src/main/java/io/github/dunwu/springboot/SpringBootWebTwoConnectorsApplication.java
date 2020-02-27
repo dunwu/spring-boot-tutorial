@@ -20,24 +20,24 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringBootWebTwoConnectorsApplication {
 
-	@Value("${http.port:8080}")
-	private int httpPort;
+    @Value("${http.port:8080}")
+    private int httpPort;
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootWebTwoConnectorsApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootWebTwoConnectorsApplication.class, args);
+    }
 
-	@Bean
-	public ServletWebServerFactory servletContainer() {
-		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
-		tomcat.addAdditionalTomcatConnectors(createStandardConnector());
-		return tomcat;
-	}
+    @Bean
+    public ServletWebServerFactory servletContainer() {
+        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+        tomcat.addAdditionalTomcatConnectors(createStandardConnector());
+        return tomcat;
+    }
 
-	private Connector createStandardConnector() {
-		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
-		connector.setPort(httpPort);
-		return connector;
-	}
+    private Connector createStandardConnector() {
+        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+        connector.setPort(httpPort);
+        return connector;
+    }
 
 }

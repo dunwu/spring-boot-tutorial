@@ -19,43 +19,43 @@ import javax.annotation.Resource;
 @RunWith(SpringRunner.class)
 public class SpringBootDataMybatisMultiDataSourceApplicationTests {
 
-	@Resource
-	private Db1UserMapper db1UserMapper;
+    @Resource
+    private Db1UserMapper db1UserMapper;
 
-	@Resource
-	private Db2UserMapper db2UserMapper;
+    @Resource
+    private Db2UserMapper db2UserMapper;
 
-	@Before
-	public void before() {
-		db1UserMapper.delete(null);
-		db2UserMapper.delete(null);
-	}
+    @Before
+    public void before() {
+        db1UserMapper.delete(null);
+        db2UserMapper.delete(null);
+    }
 
-	@Test
-	public void testDb1() {
-		Integer count = db1UserMapper.selectCount(null);
-		Assert.assertEquals(0, count.intValue());
+    @Test
+    public void testDb1() {
+        Integer count = db1UserMapper.selectCount(null);
+        Assert.assertEquals(0, count.intValue());
 
-		db1UserMapper.insert(new User("张三", 21, "南京", "xxx@163.com"));
-		db1UserMapper.insert(new User("李四", 28, "上海", "xxx@163.com"));
+        db1UserMapper.insert(new User("张三", 21, "南京", "xxx@163.com"));
+        db1UserMapper.insert(new User("李四", 28, "上海", "xxx@163.com"));
 
-		System.out.println(("----- selectAll method test ------"));
-		List<User> userList = db1UserMapper.selectList(null);
-		Assert.assertEquals(2, userList.size());
-		userList.forEach(System.out::println);
-	}
+        System.out.println(("----- selectAll method test ------"));
+        List<User> userList = db1UserMapper.selectList(null);
+        Assert.assertEquals(2, userList.size());
+        userList.forEach(System.out::println);
+    }
 
-	@Test
-	public void testDb2() {
-		Integer count = db2UserMapper.selectCount(null);
-		Assert.assertEquals(0, count.intValue());
+    @Test
+    public void testDb2() {
+        Integer count = db2UserMapper.selectCount(null);
+        Assert.assertEquals(0, count.intValue());
 
-		db2UserMapper.insert(new User("王五", 24, "北京", "xxx@163.com"));
+        db2UserMapper.insert(new User("王五", 24, "北京", "xxx@163.com"));
 
-		System.out.println(("----- selectAll method test ------"));
-		List<User> userList = db2UserMapper.selectList(null);
-		Assert.assertEquals(1, userList.size());
-		userList.forEach(System.out::println);
-	}
+        System.out.println(("----- selectAll method test ------"));
+        List<User> userList = db2UserMapper.selectList(null);
+        Assert.assertEquals(1, userList.size());
+        userList.forEach(System.out::println);
+    }
 
 }
