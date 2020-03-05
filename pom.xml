@@ -41,6 +41,7 @@
 		<module>codes/spring-boot-data-mongodb</module>
 		<module>codes/spring-boot-data-elasticsearch</module>
 		<module>codes/spring-boot-data-elasticsearch-jest</module>
+		<module>codes/spring-boot-dubbo</module>
 		<module>codes/spring-boot-tmpl-freemark</module>
 		<module>codes/spring-boot-tmpl-thymeleaf</module>
 		<module>codes/spring-boot-tmpl-velocity</module>
