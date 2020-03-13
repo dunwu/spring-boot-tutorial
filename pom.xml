@@ -51,6 +51,7 @@
 		<module>codes/spring-boot-web-jsp</module>
 		<module>codes/spring-boot-web-websocket</module>
 		<module>codes/spring-boot-web-form</module>
+		<module>codes/spring-boot-web-https</module>
 		<module>codes/spring-boot-web-fastjson</module>
 		<module>codes/spring-boot-web-uploading</module>
 		<module>codes/spring-boot-web-multi-connectors</module>
