@@ -16,10 +16,6 @@
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
-  <dependencies>
-
-  </dependencies>
-
   <build>
     <plugins>
       <plugin>

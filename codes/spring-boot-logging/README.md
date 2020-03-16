@@ -1,6 +1,6 @@
 # spring-boot-logging
 
-本项目提供三种主流日志库的集成方式：
+本项目演示三种主流日志库的集成方式：
 
 - logback
 - log4j2
