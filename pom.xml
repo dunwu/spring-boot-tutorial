@@ -1,64 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>io.github.dunwu.springboot</groupId>
-	<artifactId>spring-boot-tutorial</artifactId>
-	<version>1.0.0</version>
-	<packaging>pom</packaging>
+  <groupId>io.github.dunwu.springboot</groupId>
+  <artifactId>spring-boot-tutorial</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
   <name>SPRING-BOOT-TUTORIAL</name>
 
-	<modules>
-		<module>codes/spring-boot-helloworld</module>
-		<module>codes/spring-boot-aop</module>
-		<module>codes/spring-boot-banner</module>
-		<module>codes/spring-boot-bean</module>
-		<module>codes/spring-boot-property</module>
-		<module>codes/spring-boot-profile</module>
-		<module>codes/spring-boot-async</module>
-		<module>codes/spring-boot-logging</module>
-		<module>codes/spring-boot-mail</module>
-		<module>codes/spring-boot-swagger</module>
-		<module>codes/spring-boot-actuator</module>
-		<module>codes/spring-boot-docker</module>
-		<module>codes/spring-boot-statemachine</module>
-		<module>codes/spring-boot-mq-activemq</module>
-		<module>codes/spring-boot-mq-kafka</module>
-		<module>codes/spring-boot-mq-redis</module>
-		<module>codes/spring-boot-data-jdbc</module>
-		<module>codes/spring-boot-data-jpa</module>
-		<module>codes/spring-boot-data-jdbc-multi-datasource</module>
-		<module>codes/spring-boot-data-mybatis-plus</module>
-		<module>codes/spring-boot-data-mybatis-multi-datasource</module>
-		<module>codes/spring-boot-data-mybatis-sharding</module>
-		<module>codes/spring-boot-data-flyway</module>
-		<module>codes/spring-boot-data-cache</module>
-		<module>codes/spring-boot-data-cache-j2cache</module>
-		<module>codes/spring-boot-data-cache-jetcache</module>
-		<module>codes/spring-boot-data-redis</module>
-		<module>codes/spring-boot-data-redis-cluster</module>
-		<module>codes/spring-boot-data-mongodb</module>
-		<module>codes/spring-boot-data-elasticsearch</module>
-		<module>codes/spring-boot-data-elasticsearch-jest</module>
-		<module>codes/spring-boot-dubbo</module>
-		<module>codes/spring-boot-tmpl-freemark</module>
-		<module>codes/spring-boot-tmpl-thymeleaf</module>
-		<module>codes/spring-boot-tmpl-velocity</module>
-		<module>codes/spring-boot-test-junit5</module>
-		<module>codes/spring-boot-scheduler</module>
-		<module>codes/spring-boot-scheduler-quartz</module>
-		<module>codes/spring-boot-web-jsp</module>
-		<module>codes/spring-boot-web-websocket</module>
-		<module>codes/spring-boot-web-form</module>
-		<module>codes/spring-boot-web-https</module>
-		<module>codes/spring-boot-web-fastjson</module>
-		<module>codes/spring-boot-web-uploading</module>
-		<module>codes/spring-boot-web-multi-connectors</module>
-		<module>codes/spring-boot-web-ui</module>
-		<module>codes/spring-boot-security-authentication</module>
-		<module>codes/spring-boot-security-checkcode</module>
-		<module>codes/spring-boot-security-session</module>
-		<module>codes/spring-boot-zookeeper</module>
-	</modules>
+  <modules>
+
+    <!-- 基础示例 -->
+    <module>codes/core/spring-boot-aop</module>
+    <module>codes/core/spring-boot-async</module>
+    <module>codes/core/spring-boot-banner</module>
+    <module>codes/core/spring-boot-bean</module>
+    <module>codes/core/spring-boot-property</module>
+    <module>codes/core/spring-boot-profile</module>
+    <module>codes/core/spring-boot-actuator</module>
+
+    <!-- 存储示例 -->
+    <module>codes/storage/spring-boot-data-jdbc</module>
+    <module>codes/storage/spring-boot-data-jpa</module>
+    <module>codes/storage/spring-boot-data-jdbc-multi-datasource</module>
+    <module>codes/storage/spring-boot-data-mybatis-plus</module>
+    <module>codes/storage/spring-boot-data-mybatis-multi-datasource</module>
+    <module>codes/storage/spring-boot-data-mybatis-sharding</module>
+    <module>codes/storage/spring-boot-data-flyway</module>
+    <module>codes/storage/spring-boot-data-cache</module>
+    <module>codes/storage/spring-boot-data-cache-j2cache</module>
+    <module>codes/storage/spring-boot-data-cache-jetcache</module>
+    <module>codes/storage/spring-boot-data-redis</module>
+    <module>codes/storage/spring-boot-data-redis-cluster</module>
+    <module>codes/storage/spring-boot-data-mongodb</module>
+    <module>codes/storage/spring-boot-data-elasticsearch</module>
+    <module>codes/storage/spring-boot-data-elasticsearch-jest</module>
+
+    <!-- MQ 示例 -->
+    <module>codes/mq/spring-boot-mq-activemq</module>
+    <module>codes/mq/spring-boot-mq-kafka</module>
+    <module>codes/mq/spring-boot-mq-redis</module>
+
+    <!-- Security 示例 -->
+    <module>codes/security/spring-boot-security-authentication</module>
+    <module>codes/security/spring-boot-security-checkcode</module>
+    <module>codes/security/spring-boot-security-session</module>
+
+    <!-- Template 示例 -->
+    <module>codes/template/spring-boot-tmpl-jsp</module>
+    <module>codes/template/spring-boot-tmpl-freemark</module>
+    <module>codes/template/spring-boot-tmpl-thymeleaf</module>
+    <module>codes/template/spring-boot-tmpl-velocity</module>
+
+    <!-- Web 示例 -->
+    <module>codes/web/spring-boot-web-fastjson</module>
+    <module>codes/web/spring-boot-web-form</module>
+    <module>codes/web/spring-boot-web-helloworld</module>
+    <module>codes/web/spring-boot-web-https</module>
+    <module>codes/web/spring-boot-web-multi-connectors</module>
+    <module>codes/web/spring-boot-web-ui</module>
+    <module>codes/web/spring-boot-web-uploading</module>
+    <module>codes/web/spring-boot-web-websocket</module>
+
+    <!-- 框架集成示例 -->
+    <module>codes/integration/spring-boot-docker</module>
+    <module>codes/integration/spring-boot-logging</module>
+    <module>codes/integration/spring-boot-mail</module>
+    <module>codes/integration/spring-boot-scheduler</module>
+    <module>codes/integration/spring-boot-scheduler-quartz</module>
+    <module>codes/integration/spring-boot-shell</module>
+    <module>codes/integration/spring-boot-statemachine</module>
+    <module>codes/integration/spring-boot-swagger</module>
+    <module>codes/integration/spring-boot-test-junit5</module>
+
+    <!-- 分布式示例 -->
+    <module>codes/distributed/spring-boot-dubbo</module>
+    <module>codes/distributed/spring-boot-zookeeper</module>
+  </modules>
 </project>
