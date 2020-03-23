@@ -1,5 +1,8 @@
 package io.github.dunwu.springboot.config;
 
+import io.github.dunwu.springboot.annotation.IsMobile;
+import io.github.dunwu.springboot.annotation.RegexValid;
+import io.github.dunwu.tool.util.RegexUtil;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Range;
@@ -41,6 +44,12 @@ public class DunwuProperties {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date;
+
+    @IsMobile(message = "手机号不正确")
+    private String mobile;
+
+    @RegexValid(regexp = RegexUtil.URL)
+    private String host;
 
     @Email
     private String mail;

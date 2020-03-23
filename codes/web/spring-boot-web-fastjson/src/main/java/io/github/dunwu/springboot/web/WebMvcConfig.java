@@ -1,11 +1,13 @@
 package io.github.dunwu.springboot.web;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.parser.Feature;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import io.github.dunwu.springboot.dto.BaseResponse;
 import io.github.dunwu.springboot.dto.CodeEn;
-import io.github.dunwu.springboot.dto.ResponseDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -61,6 +63,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // 添加 StringHttpMessageConverter，解决中文乱码问题
         StringHttpMessageConverter stringHttpMessageConverter = new StringHttpMessageConverter(StandardCharsets.UTF_8);
         converters.add(stringHttpMessageConverter);
+
+
     }
 
     /**
@@ -72,29 +76,29 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
         exceptionResolvers
             .add((HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) -> {
-                ResponseDTO responseDTO = new ResponseDTO();
                 StringBuilder sb = new StringBuilder();
+                CodeEn code;
                 if (e instanceof AppException) {
-                    responseDTO.setCode(CodeEn.APP_ERROR.code());
+                    code = CodeEn.APP_ERROR;
                     sb.append(CodeEn.APP_ERROR.message());
                 } else {
-                    responseDTO.setCode(CodeEn.OTHER_ERROR.code());
+                    code = CodeEn.OTHER_ERROR;
                     sb.append(CodeEn.OTHER_ERROR.message());
                 }
                 sb.append("，详细错误原因：");
                 sb.append(e.getMessage());
-                responseDTO.setMessage(sb.toString());
-                responseResponse(response, responseDTO);
+                BaseResponse<?> baseResponse = BaseResponse.fail(code.code(), sb.toString());
+                responseResponse(response, baseResponse);
                 return new ModelAndView();
             });
     }
 
-    private void responseResponse(HttpServletResponse response, ResponseDTO responseDTO) {
+    private void responseResponse(HttpServletResponse response, BaseResponse<?> baseResponse) {
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
         response.setHeader("Content-type", "application/json;charset=UTF-8");
         response.setStatus(200);
         try {
-            response.getWriter().write(JSON.toJSONString(responseDTO));
+            response.getWriter().write(JSON.toJSONString(baseResponse));
         } catch (IOException e) {
             log.error(e.getMessage());
         }

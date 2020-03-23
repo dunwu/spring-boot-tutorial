@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @Component
 @Validated
 @ConfigurationProperties(prefix = "validator")
-@PropertySource("classpath:/prop/validator.properties")
+@PropertySource("classpath:prop/validator.properties")
 public class ValidatedProperties {
 
     @NotNull

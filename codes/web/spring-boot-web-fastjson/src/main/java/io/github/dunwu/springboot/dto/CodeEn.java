@@ -6,20 +6,20 @@ package io.github.dunwu.springboot.dto;
  */
 public enum CodeEn {
 
-    SUCCESS(0, "成功"),
-    APP_ERROR(-1, "系统内部错误"),
-    OTHER_ERROR(-2, "其他错误");
+    SUCCESS("200", "成功"),
+    APP_ERROR("500", "系统内部错误"),
+    OTHER_ERROR("501", "其他错误");
 
-    private Integer code;
+    private String code;
 
     private String message;
 
-    CodeEn(Integer code, String message) {
+    CodeEn(String code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public Integer code() {
+    public String code() {
         return code;
     }
 

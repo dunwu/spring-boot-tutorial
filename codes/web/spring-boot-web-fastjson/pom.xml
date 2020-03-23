@@ -28,6 +28,11 @@
       <artifactId>fastjson</artifactId>
       <version>1.2.54</version>
     </dependency>
+    <dependency>
+      <groupId>io.github.dunwu</groupId>
+      <artifactId>dunwu-common-core</artifactId>
+      <version>0.5.4</version>
+    </dependency>
   </dependencies>
 
   <build>

@@ -56,6 +56,8 @@ public class SpringBootPropertyApplication implements CommandLineRunner {
         log.info("性别: {}", dunwuProperties.getSex().getValue());
         log.info("日期: {}", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(dunwuProperties.getDate()));
         log.info("邮件: {}", dunwuProperties.getMail());
+        log.info("手机号: {}", dunwuProperties.getMobile());
+        log.info("Host: {}", dunwuProperties.getHost());
         log.info("=========== 兴趣 ===========");
         dunwuProperties.getInterestList().forEach(log::info);
         log.info("=========== 信息 ===========");
