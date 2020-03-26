@@ -47,6 +47,7 @@
     <module>codes/security/spring-boot-security-checkcode</module>
     <module>codes/security/spring-boot-security-session</module>
     <module>codes/security/spring-boot-security-shiro</module>
+    <module>codes/security/spring-boot-security-ldap</module>
 
     <!-- Template 示例 -->
     <module>codes/template/spring-boot-tmpl-jsp</module>
