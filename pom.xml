@@ -28,6 +28,7 @@
     <module>codes/storage/spring-boot-data-mybatis-multi-datasource</module>
     <module>codes/storage/spring-boot-data-mybatis-sharding</module>
     <module>codes/storage/spring-boot-data-flyway</module>
+    <module>codes/storage/spring-boot-data-hdfs</module>
     <module>codes/storage/spring-boot-data-cache</module>
     <module>codes/storage/spring-boot-data-cache-j2cache</module>
     <module>codes/storage/spring-boot-data-cache-jetcache</module>
