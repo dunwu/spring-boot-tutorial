@@ -4,7 +4,7 @@
 
   <contextName>spring-boot-tutorial</contextName>
   <property name="APP_NAME" value="spring-boot-tutorial" />
-  <property name="LOG_DIR" value="${SPRING_BOOT_TUTORIAL_LOG_DIR:-/var/log/spring-boot-tutorial}" />
+  <property name="LOG_DIR" value="${SPRING_BOOT_TUTORIAL_LOG_DIR:-${user.dir}/log}" />
   <property name="LOG_MAX_HISTORY" value="14" />
   <property name="LOG_MAX_FILE_SIZE" value="100MB" />
   <property name="LOG_MAX_QUEUE_SIZE" value="256" />

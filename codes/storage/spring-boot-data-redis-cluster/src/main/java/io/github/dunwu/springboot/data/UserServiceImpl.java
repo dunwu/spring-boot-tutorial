@@ -3,6 +3,8 @@ package io.github.dunwu.springboot.data;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 /**
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @since 2019-10-14
@@ -26,6 +28,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void setUser(User user) {
         redisTemplate.opsForHash().put(DEFAULT_KEY, user.getId().toString(), user);
+    }
+
+    @Override
+    public void batchSetUsers(Map<String, User> users) {
+        redisTemplate.opsForHash().putAll(DEFAULT_KEY, users);
     }
 
 }

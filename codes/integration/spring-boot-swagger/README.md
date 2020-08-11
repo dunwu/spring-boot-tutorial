@@ -90,9 +90,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import javax.validation.Valid;
 
 @Api(tags = "用户管理")
