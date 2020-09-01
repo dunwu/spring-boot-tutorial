@@ -1,5 +1,6 @@
 package io.github.dunwu.springboot.service;
 
+import io.github.dunwu.springboot.aop.MethodLog;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,11 @@ public class WelcomeService {
 
     public String getMessage() {
         return "Welcome " + this.name;
+    }
+
+    @MethodLog
+    public void print(String info) {
+        System.out.println("info = " + info);
     }
 
 }

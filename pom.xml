@@ -7,7 +7,7 @@
   <artifactId>spring-boot-tutorial</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
-  <name>SPRING-BOOT-TUTORIAL</name>
+  <name>_SPRING_BOOT_TUTORIAL</name>
 
   <modules>
 
@@ -47,7 +47,7 @@
     <module>codes/security/spring-boot-security-authentication</module>
     <module>codes/security/spring-boot-security-checkcode</module>
     <module>codes/security/spring-boot-security-session</module>
-    <module>codes/security/spring-boot-security-shiro</module>
+<!--    <module>codes/security/spring-boot-security-shiro</module>-->
     <module>codes/security/spring-boot-security-ldap</module>
 
     <!-- Template 示例 -->

@@ -24,14 +24,14 @@
 
 ## 🔰 准备
 
--  [java-tutorial](https://dunwu.github.io/java-tutorial/) - java-tutorial 是一个全面的 Java 教程。如果你还不熟悉 Java 编程，学习 Spring Boot 之前，不妨先学习一下。
--  [spring-tutorial](https://dunwu.github.io/spring-tutorial/) - spring-tutorial 是一个 Spring 实战教程。Spring 是 Spring Boot 的基石，如果想更深入了解 SpringBoot，还是很有必要了解一下 Spring 框架机制。
+- [java-tutorial](https://dunwu.github.io/java-tutorial/) - java-tutorial 是一个全面的 Java 教程。如果你还不熟悉 Java 编程，学习 Spring Boot 之前，不妨先学习一下。
+- [spring-tutorial](https://dunwu.github.io/spring-tutorial/) - spring-tutorial 是一个 Spring 实战教程。Spring 是 Spring Boot 的基石，如果想更深入了解 SpringBoot，还是很有必要了解一下 Spring 框架机制。
 
 ## 🎯 示例
 
 ### Spring Boot 基础
 
-- [spring-boot-actuator](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-actuator) - 展示 Spring Boot 应用监控。
+- [spring-boot-actuator](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/core/spring-boot-actuator) - 展示 Spring Boot 应用监控。
 - [spring-boot-aop](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/core/spring-boot-aop) - 展示 Spring Boot 中应用 AOP 编程。
 - [spring-boot-async](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/core/spring-boot-async) - 展示在 Spring Boot 中使用异步接口。
 - [spring-boot-banner](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/core/spring-boot-banner) - 展示在 Spring Boot 中定制启动时的输出 Logo。
@@ -81,8 +81,8 @@
 
 - [spring-boot-web-fastjson](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/spring-boot-web-fastjson) - 展示 Spring Boot Web 应用中如何集成 Fastjson （默认的 JSON 库为 ）并定制序列化、反序列化方式。
 - [spring-boot-web-form](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/spring-boot-web-form) - 展示 Spring Boot Web 应用中表单如何提交、校验。
-- [spring-boot-web-helloworld](https://github.com/dunwu/spring-boot-tutorial/tree/master/codesweb//spring-boot-web-helloworld) - 展示 Spring Boot Web 应用的 Hello World 示例。
-- [spring-boot-web-helloworld](https://github.com/dunwu/spring-boot-tutorial/tree/master/codesweb//spring-boot-web-https) - 展示 Spring Boot 如何开发一个 HTTPS 应用。
+- [spring-boot-web-helloworld](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/spring-boot-web-helloworld) - 展示 Spring Boot Web 应用的 Hello World 示例。
+- [spring-boot-web-helloworld](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/spring-boot-web-https) - 展示 Spring Boot 如何开发一个 HTTPS 应用。
 - [spring-boot-web-multi-connectors](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/spring-boot-web-multi-connectors) - 展示 Spring Boot Web 应用如何同时支持 HTTP 协议和 HTTPS 协议访问。
 - [spring-boot-web-ui](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/spring-boot-web-ui) - 展示 Spring Boot 和多种不同前端技术的交互。
 - [spring-boot-web-uploading](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/web/spring-boot-web-uploading) - 展示 Spring Boot Web 应用中如何支持文件上传下载服务。
@@ -91,20 +91,20 @@
 ### Spring Boot 使用模板引擎
 
 - [spring-boot-templ-jsp](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/template/spring-boot-templ-jsp) - 展示 Spring Boot Web 应用中如何运行 JSP，提供 2 种服务器的整合示例：Tomcat、 Jetty。
-- [spring-boot-tmpl-freemark](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-tmpl-freemark) - 展示 Spring Boot 中使用 Freemark 模板引擎。
-- [spring-boot-tmpl-thymeleaf](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-tmpl-thymeleaf) - 展示 Spring Boot 中使用 Thymeleaf 模板引擎。
-- [spring-boot-tmpl-velocity](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-tmpl-velocity) - 展示 Spring Boot 中使用 Velocity 模板引擎。
+- [spring-boot-tmpl-freemark](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/template/spring-boot-tmpl-freemark) - 展示 Spring Boot 中使用 Freemark 模板引擎。
+- [spring-boot-tmpl-thymeleaf](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/template/spring-boot-tmpl-thymeleaf) - 展示 Spring Boot 中使用 Thymeleaf 模板引擎。
+- [spring-boot-tmpl-velocity](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/template/spring-boot-tmpl-velocity) - 展示 Spring Boot 中使用 Velocity 模板引擎。
 
 ### Spring Boot 集成各种框架
 
-- [spring-boot-docker](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-docker) - 展示 Spring Boot 如何通过 Docker 部署应用。
-- [spring-boot-logging](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-logging) - 展示 Spring Boot 集成日志组件。示例可以通过切换 profile 分别集成 logback、log4j2、log4j 三种日志库。
-- [spring-boot-mail](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-mail) - 展示 Spring Boot 中如何收发邮件。
-- [spring-boot-scheduler](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-scheduler) - 展示 Spring Boot 如何使用自带的调度器来执行简单的调度任务场景。
-- [spring-boot-scheduler-quartz](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-scheduler-quartz) - 展示 Spring Boot 集成 Quartz 来管理、调度较为复杂的调度任务场景。
-- [spring-boot-statemachine](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-statemachine) - 展示 Spring Boot 如何使用状态机控制工作流。
-- [spring-boot-swagger](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-swagger) - 展示 Spring Boot 集成 Swagger 来自动生成漂亮的 REST 接口在线文档。
-- [spring-boot-test-junit5](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-test-junit5) - 展示 Spring Boot 中使用 JUnit5 进行单元测试。
+- [spring-boot-docker](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/integration/spring-boot-docker) - 展示 Spring Boot 如何通过 Docker 部署应用。
+- [spring-boot-logging](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/integration/spring-boot-logging) - 展示 Spring Boot 集成日志组件。示例可以通过切换 profile 分别集成 logback、log4j2、log4j 三种日志库。
+- [spring-boot-mail](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/integration/spring-boot-mail) - 展示 Spring Boot 中如何收发邮件。
+- [spring-boot-scheduler](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/integration/spring-boot-scheduler) - 展示 Spring Boot 如何使用自带的调度器来执行简单的调度任务场景。
+- [spring-boot-scheduler-quartz](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/integration/spring-boot-scheduler-quartz) - 展示 Spring Boot 集成 Quartz 来管理、调度较为复杂的调度任务场景。
+- [spring-boot-statemachine](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/integration/spring-boot-statemachine) - 展示 Spring Boot 如何使用状态机控制工作流。
+- [spring-boot-swagger](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/integration/spring-boot-swagger) - 展示 Spring Boot 集成 Swagger 来自动生成漂亮的 REST 接口在线文档。
+- [spring-boot-test-junit5](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/integration/spring-boot-test-junit5) - 展示 Spring Boot 中使用 JUnit5 进行单元测试。
 
 ## 📖 文档
 

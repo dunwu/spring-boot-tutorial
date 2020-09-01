@@ -24,8 +24,11 @@ public class SpringBootAopApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.info(this.welcomeService.getMessage());
-        this.welcomeService.getException();
+        log.info(welcomeService.getMessage());
+        welcomeService.getException();
+        welcomeService.print("HELLO 01");
+        welcomeService.print("HELLO 02");
+        welcomeService.print("HELLO 03");
     }
 
 }
