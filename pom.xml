@@ -42,6 +42,7 @@
     <module>codes/mq/spring-boot-mq-activemq</module>
     <module>codes/mq/spring-boot-mq-kafka</module>
     <module>codes/mq/spring-boot-mq-redis</module>
+    <module>codes/mq/spring-boot-mq-rabbitmq</module>
 
     <!-- Security 示例 -->
     <module>codes/security/spring-boot-security-authentication</module>
