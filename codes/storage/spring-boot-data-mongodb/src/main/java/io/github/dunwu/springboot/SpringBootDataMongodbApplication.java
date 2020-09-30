@@ -1,10 +1,14 @@
 package io.github.dunwu.springboot;
 
+import io.github.dunwu.springboot.mongodb.Person;
+import io.github.dunwu.springboot.mongodb.CustomerRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@Slf4j
 @SpringBootApplication
 public class SpringBootDataMongodbApplication implements CommandLineRunner {
 
@@ -16,31 +20,30 @@ public class SpringBootDataMongodbApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         repository.deleteAll();
 
         // save a couple of customers
-        repository.save(new Customer("Alice", "Smith"));
-        repository.save(new Customer("Bob", "Smith"));
+        repository.save(new Person("Alice", "Smith"));
+        repository.save(new Person("Bob", "Smith"));
 
         // fetch all customers
-        System.out.println("Customers found with findAll():");
-        System.out.println("-------------------------------");
-        for (Customer customer : repository.findAll()) {
-            System.out.println(customer);
+        log.info("Customers found with findAll():");
+        log.info("-------------------------------");
+        for (Person person : repository.findAll()) {
+            log.info(person.toString());
         }
-        System.out.println();
 
         // fetch an individual customer
-        System.out.println("Customer found with findByFirstName('Alice'):");
-        System.out.println("--------------------------------");
-        System.out.println(repository.findByFirstName("Alice"));
+        log.info("Customer found with findByFirstName('Alice'):");
+        log.info("--------------------------------");
+        log.info(repository.findByFirstName("Alice").toString());
 
-        System.out.println("Customers found with findByLastName('Smith'):");
-        System.out.println("--------------------------------");
-        for (Customer customer : repository.findByLastName("Smith")) {
-            System.out.println(customer);
+        log.info("Customers found with findByLastName('Smith'):");
+        log.info("--------------------------------");
+        for (Person person : repository.findByLastName("Smith")) {
+            log.info(person.toString());
         }
     }
 
