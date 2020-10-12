@@ -1,20 +1,16 @@
 package io.github.dunwu.springboot.web.controller;
 
-import io.github.dunwu.common.BaseResult;
-import io.github.dunwu.common.DataListResult;
-import io.github.dunwu.common.DataResult;
-import io.github.dunwu.common.ResultUtils;
-import io.github.dunwu.common.constant.AppCode;
+import cn.hutool.core.util.StrUtil;
+import io.github.dunwu.data.core.BaseResult;
+import io.github.dunwu.data.core.DataListResult;
+import io.github.dunwu.data.core.DataResult;
+import io.github.dunwu.data.core.constant.ResultStatus;
 import io.github.dunwu.springboot.web.dto.MenuDTO;
-import io.github.dunwu.tool.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -33,10 +29,10 @@ public class ApiController {
     public DataListResult<MenuDTO> getAll(HttpServletRequest request) {
         String data = request.getParameter("data");
         log.debug("recv data = {}", data);
-        return ResultUtils.successDataListResult(getAll());
+        return DataListResult.success(getAll());
     }
 
-    private static Set<MenuDTO> getAll() {
+    private static List<MenuDTO> getAll() {
         MenuDTO item0 = new MenuDTO("0", "首页", "home", "Item", "/pages/home");
 
         MenuDTO subMenu1 = new MenuDTO("1", "业务", "bars", "SubMenu", null);
@@ -57,7 +53,7 @@ public class ApiController {
         subMenu2.addChild(divider);
         subMenu2.addChild(itemGroup2);
 
-        Set<MenuDTO> menus = new TreeSet<MenuDTO>();
+        List<MenuDTO> menus = new ArrayList<>();
         menus.add(item0);
         menus.add(subMenu1);
         menus.add(subMenu2);
@@ -70,21 +66,21 @@ public class ApiController {
     public DataResult<Map<String, String>> login(@RequestBody Map<String, String> map) {
         String username = map.get("username");
         String password = map.get("password");
-        if (StringUtil.equals(username, "admin") && StringUtil.equals(password, "123456")) {
+        if (StrUtil.equals(username, "admin") && StrUtil.equals(password, "123456")) {
             Map<String, String> result = new HashMap<>(3);
             result.put("name", "admin");
             result.put("role", "ADMIN");
             result.put("uid", "1");
-            return ResultUtils.successDataResult(result);
+            return DataResult.success(result);
         } else {
-            return ResultUtils.failDataResult(AppCode.FAIL);
+            return DataResult.failData(ResultStatus.FAIL);
         }
     }
 
     @ResponseBody
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public BaseResult logout() {
-        return ResultUtils.successBaseResult();
+        return BaseResult.success();
     }
 
     @ResponseBody
@@ -94,7 +90,7 @@ public class ApiController {
         map.put("name", "admin");
         map.put("role", "ADMIN");
         map.put("uid", "1");
-        return ResultUtils.successDataResult(map);
+        return DataResult.success(map);
     }
 
 }

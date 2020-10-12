@@ -1,6 +1,6 @@
 package io.github.dunwu.springboot.web.dto;
 
-import io.github.dunwu.tool.builder.CompareToBuilder;
+import cn.hutool.core.builder.CompareToBuilder;
 
 import java.util.Arrays;
 import java.util.Objects;

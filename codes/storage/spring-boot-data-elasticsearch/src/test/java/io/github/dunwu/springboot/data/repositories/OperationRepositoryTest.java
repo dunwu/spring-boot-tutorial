@@ -1,9 +1,9 @@
 package io.github.dunwu.springboot.data.repositories;
 
+import cn.hutool.core.collection.CollUtil;
 import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.springboot.data.entities.Operation;
 import io.github.dunwu.springboot.data.entities.Sector;
-import io.github.dunwu.tool.collection.CollectionUtil;
 import io.github.dunwu.tool.util.RandomUtil;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,7 +42,7 @@ public class OperationRepositoryTest {
         Sector sector1 = new Sector(1, RandomUtil.randomString(5, 10));
         Sector sector2 = new Sector(2, RandomUtil.randomString(5, 10));
         Sector sector3 = new Sector(3, RandomUtil.randomString(5, 10));
-        ArrayList<Sector> list = CollectionUtil.newArrayList(sector1, sector2, sector3);
+        ArrayList<Sector> list = CollUtil.newArrayList(sector1, sector2, sector3);
         Operation operation = new Operation(1L, RandomUtil.randomString(5, 10), "2010-01-01 12:00:00",
             RandomUtil.randomString(5, 10), list);
         repository.save(operation);

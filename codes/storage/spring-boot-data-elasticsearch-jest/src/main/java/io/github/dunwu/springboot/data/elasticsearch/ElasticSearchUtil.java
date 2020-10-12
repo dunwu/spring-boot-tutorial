@@ -1,16 +1,16 @@
 package io.github.dunwu.springboot.data.elasticsearch;
 
+import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.core.comparator.ComparatorChain;
+import cn.hutool.core.comparator.PropertyComparator;
+import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.CharUtil;
+import cn.hutool.core.util.ReflectUtil;
+import cn.hutool.core.util.StrUtil;
 import io.github.dunwu.springboot.data.common.NamingStrategy;
 import io.github.dunwu.springboot.data.common.OrderType;
 import io.github.dunwu.springboot.data.common.QueryJudgeType;
 import io.github.dunwu.springboot.data.common.QueryLogicType;
-import io.github.dunwu.tool.collection.CollectionUtil;
-import io.github.dunwu.tool.comparator.ComparatorChain;
-import io.github.dunwu.tool.comparator.PropertyComparator;
-import io.github.dunwu.tool.util.ArrayUtil;
-import io.github.dunwu.tool.util.CharUtil;
-import io.github.dunwu.tool.util.ReflectUtil;
-import io.github.dunwu.tool.util.StringUtil;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.RegexpQueryBuilder;
@@ -237,7 +237,7 @@ public class ElasticSearchUtil {
 
                 // 获取查询字段实际 key
                 String fieldName = getFieldName(namingStrategy, field, queryField);
-                if (StringUtil.isBlank(fieldName)) {
+                if (StrUtil.isBlank(fieldName)) {
                     continue;
                 }
 
@@ -267,7 +267,7 @@ public class ElasticSearchUtil {
     }
 
     private static String getFieldName(NamingStrategy namingStrategy, Field field, QueryField queryField) {
-        if (StringUtil.isNotBlank(queryField.value())) {
+        if (StrUtil.isNotBlank(queryField.value())) {
             return queryField.value();
         } else {
             return getFieldName(namingStrategy, field);
@@ -278,19 +278,19 @@ public class ElasticSearchUtil {
         String fieldName;
         switch (namingStrategy) {
             case CAMEL:
-                fieldName = StringUtil.toCamelCase(field.getName());
+                fieldName = StrUtil.toCamelCase(field.getName());
                 break;
             case LOWER_UNDERLINE:
-                fieldName = StringUtil.toUnderlineCase(field.getName()).toLowerCase();
+                fieldName = StrUtil.toUnderlineCase(field.getName()).toLowerCase();
                 break;
             case UPPER_UNDERLINE:
-                fieldName = StringUtil.toUnderlineCase(field.getName()).toUpperCase();
+                fieldName = StrUtil.toUnderlineCase(field.getName()).toUpperCase();
                 break;
             case LOWER_DASHED:
-                fieldName = StringUtil.toSymbolCase(field.getName(), CharUtil.DASHED).toLowerCase();
+                fieldName = StrUtil.toSymbolCase(field.getName(), CharUtil.DASHED).toLowerCase();
                 break;
             case UPPER_DASHED:
-                fieldName = StringUtil.toSymbolCase(field.getName(), CharUtil.DASHED).toUpperCase();
+                fieldName = StrUtil.toSymbolCase(field.getName(), CharUtil.DASHED).toUpperCase();
                 break;
             default:
                 fieldName = field.getName();

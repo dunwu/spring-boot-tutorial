@@ -22,8 +22,9 @@
 
     <!-- 存储示例 -->
     <module>codes/storage/spring-boot-data-jdbc</module>
-    <module>codes/storage/spring-boot-data-jpa</module>
     <module>codes/storage/spring-boot-data-jdbc-multi-datasource</module>
+    <module>codes/storage/spring-boot-data-druid</module>
+    <module>codes/storage/spring-boot-data-jpa</module>
     <module>codes/storage/spring-boot-data-mybatis-plus</module>
     <module>codes/storage/spring-boot-data-mybatis-multi-datasource</module>
     <module>codes/storage/spring-boot-data-mybatis-sharding</module>

@@ -1,13 +1,9 @@
 package io.github.dunwu.springboot;
 
-import com.alibaba.fastjson.JSON;
+import cn.hutool.core.util.EscapeUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.parser.Feature;
-import io.github.dunwu.tool.util.EscapeUtil;
-import io.github.dunwu.tool.util.StringUtil;
 import org.junit.jupiter.api.Test;
-
-import java.util.Map;
 
 /**
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>

@@ -1,6 +1,6 @@
 package io.github.dunwu.springboot.data.entities;
 
-import io.github.dunwu.common.Pagination;
+import io.github.dunwu.data.core.Pagination;
 import io.github.dunwu.springboot.data.common.OrderType;
 import io.github.dunwu.springboot.data.common.QueryJudgeType;
 import io.github.dunwu.springboot.data.elasticsearch.QueryDocument;

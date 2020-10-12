@@ -1,8 +1,8 @@
 package io.github.dunwu.springboot.data.repositories;
 
+import cn.hutool.core.util.IdUtil;
 import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.springboot.data.entities.Book;
-import io.github.dunwu.tool.util.IdUtil;
 import io.github.dunwu.tool.util.RandomUtil;
 import org.apache.lucene.search.join.ScoreMode;
 import org.assertj.core.api.Assertions;

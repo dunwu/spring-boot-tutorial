@@ -28,8 +28,8 @@
     </dependency>
     <dependency>
       <groupId>io.github.dunwu</groupId>
-      <artifactId>dunwu-common-core</artifactId>
-      <version>0.5.2</version>
+      <artifactId>dunwu-common-data</artifactId>
+      <version>0.5.7</version>
     </dependency>
   </dependencies>
 

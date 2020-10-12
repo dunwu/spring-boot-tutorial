@@ -1,7 +1,7 @@
 package io.github.dunwu.springboot.validator;
 
+import cn.hutool.core.util.StrUtil;
 import io.github.dunwu.springboot.annotation.IsMobile;
-import io.github.dunwu.tool.util.StringUtil;
 import io.github.dunwu.tool.util.ValidatorUtil;
 
 import javax.validation.ConstraintValidator;
@@ -18,7 +18,7 @@ public class MobileValidator implements ConstraintValidator<IsMobile, String> {
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        if (StringUtil.isBlank(s)) {
+        if (StrUtil.isBlank(s)) {
             return false;
         } else {
             return ValidatorUtil.isMobile(s);

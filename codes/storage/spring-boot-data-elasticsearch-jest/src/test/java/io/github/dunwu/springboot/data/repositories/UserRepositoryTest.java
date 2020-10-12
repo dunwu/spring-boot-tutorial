@@ -115,13 +115,13 @@ public class UserRepositoryTest {
         userQuery.setUserName("张");
         userQuery.setAge(20);
 
-        userQuery.setSize(20);
-        userQuery.setCurrent(2);
+        // userQuery.setSize(20);
+        // userQuery.setCurrent(2);
 
         Page<User> page = ElasticSearchUtil.pageSearch(userRepository, userQuery, QueryLogicType.OR);
-        String info = String.format("total:%s, page:%s, size:%s", page.getTotalElements(), userQuery.getCurrent(),
-            userQuery.getSize());
-        System.out.println(info);
+        // String info = String.format("total:%s, page:%s, size:%s", page.getTotalElements(), userQuery.getCurrent(),
+        //     userQuery.getSize());
+        // System.out.println(info);
         page.getContent().forEach(System.out::println);
     }
 
