@@ -12,13 +12,7 @@
   <modules>
 
     <!-- 基础示例 -->
-    <module>codes/core/spring-boot-aop</module>
-    <module>codes/core/spring-boot-async</module>
-    <module>codes/core/spring-boot-banner</module>
-    <module>codes/core/spring-boot-bean</module>
-    <module>codes/core/spring-boot-property</module>
-    <module>codes/core/spring-boot-profile</module>
-    <module>codes/core/spring-boot-actuator</module>
+    <module>codes/core</module>
 
     <!-- 存储示例 -->
     <module>codes/data</module>
