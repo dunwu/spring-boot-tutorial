@@ -1,8 +1,8 @@
 package io.github.dunwu.springboot;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.github.dunwu.springboot.entity.User;
 import io.github.dunwu.springboot.mapper.UserMapper;
-import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -16,7 +16,6 @@ import java.util.List;
  * @since 2019-10-12
  */
 @SpringBootApplication
-@MapperScan("io.github.dunwu.springboot.mapper")
 public class SpringBootDataMybatisPlusApplication implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(SpringBootDataMybatisPlusApplication.class);
@@ -39,7 +38,18 @@ public class SpringBootDataMybatisPlusApplication implements CommandLineRunner {
             return;
         }
 
-        List<User> userList = userMapper.selectList(null);
+        List<User> userList = null;
+        try {
+            QueryWrapper<User> wrapper = new QueryWrapper<>();
+            wrapper.eq("desc", 1);
+            userList = userMapper.selectList(wrapper);
+            for (User user : userList) {
+                user.setDesc("12345");
+                userMapper.updateById(user);
+            }
+        } catch (Exception e) {
+            log.error("error", e);
+        }
         log.info("======= 打印 user 表所有数据 =======");
         userList.forEach(user -> {
             log.info(user.toString());
