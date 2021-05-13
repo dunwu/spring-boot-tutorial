@@ -2,7 +2,7 @@
 
 > **本项目演示 Spring Boot + JDBC 访问关系型数据库，执行基本的 CRUD 操作。**
 >
-> ***本项目只适用于 Mysql***，其他关系型数据库可能会因为 SQL 语法问题不能访问。
+> **_本项目只适用于 Mysql_**，其他关系型数据库可能会因为 SQL 语法问题不能访问。
 >
 > 依赖环境：
 >
@@ -64,15 +64,15 @@ java -jar spring-boot-data-jdbc-1.0.0.jar
 
 ### 单元测试
 
-执行 `SpringBootDataJdbcTest`  可以更直观的看到 JDBC 模式下的 CRUD 操作。
+执行 `SpringBootDataJdbcTest` 可以更直观的看到 JDBC 模式下的 CRUD 操作。
 
 ## 版本兼容
 
-|                  Spring Data Release Train                   |                  Spring Data Elasticsearch                   | Elasticsearch |                         Spring Boot                          |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :-----------: | :----------------------------------------------------------: |
-|                            Moore                             |                            3.2.x                             |     6.8.4     |                            2.2.x                             |
-|                           Lovelace                           |                            3.1.x                             |     6.2.2     |                            2.1.x                             |
-| Kay[[1](https://docs.spring.io/spring-data/elasticsearch/docs/3.2.2.RELEASE/reference/html/#_footnotedef_1)] | 3.0.x[[1](https://docs.spring.io/spring-data/elasticsearch/docs/3.2.2.RELEASE/reference/html/#_footnotedef_1)] |     5.5.0     | 2.0.x[[1](https://docs.spring.io/spring-data/elasticsearch/docs/3.2.2.RELEASE/reference/html/#_footnotedef_1)] |
+|                                            Spring Data Release Train                                             |                                           Spring Data Elasticsearch                                            | Elasticsearch |                                                  Spring Boot                                                   |
+| :--------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: | :-----------: | :------------------------------------------------------------------------------------------------------------: |
+|                                                      Moore                                                       |                                                     3.2.x                                                      |     6.8.4     |                                                     2.2.x                                                      |
+|                                                     Lovelace                                                     |                                                     3.1.x                                                      |     6.2.2     |                                                     2.1.x                                                      |
+|   Kay[[1](https://docs.spring.io/spring-data/elasticsearch/docs/3.2.2.RELEASE/reference/html/#_footnotedef_1)]   | 3.0.x[[1](https://docs.spring.io/spring-data/elasticsearch/docs/3.2.2.RELEASE/reference/html/#_footnotedef_1)] |     5.5.0     | 2.0.x[[1](https://docs.spring.io/spring-data/elasticsearch/docs/3.2.2.RELEASE/reference/html/#_footnotedef_1)] |
 | Ingalls[[1](https://docs.spring.io/spring-data/elasticsearch/docs/3.2.2.RELEASE/reference/html/#_footnotedef_1)] | 2.1.x[[1](https://docs.spring.io/spring-data/elasticsearch/docs/3.2.2.RELEASE/reference/html/#_footnotedef_1)] |     2.4.0     | 1.5.x[[1](https://docs.spring.io/spring-data/elasticsearch/docs/3.2.2.RELEASE/reference/html/#_footnotedef_1)] |
 
 ## 扩展学习

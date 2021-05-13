@@ -34,7 +34,6 @@ import static org.hamcrest.Matchers.*;
 
 /**
  * Integration test for {@link CustomerRepository}.
- *
  * @author Oliver Gierke
  */
 @RunWith(SpringRunner.class)

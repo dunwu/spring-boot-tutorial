@@ -9,7 +9,7 @@
     <version>2.3.3.RELEASE</version>
   </parent>
 
-  <groupId>io.github.dunwu.springboot</groupId>
+  <groupId>io.github.dunwu.spring</groupId>
   <artifactId>spring-boot-data-mongodb</artifactId>
   <version>1.0.0</version>
 

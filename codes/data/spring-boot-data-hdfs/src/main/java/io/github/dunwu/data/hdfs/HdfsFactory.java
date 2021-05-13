@@ -10,7 +10,6 @@ import java.io.IOException;
 
 /**
  * HDFS 工厂类，需要配合 {@link HdfsPool} 使用
- *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @since 2020-03-21
  */

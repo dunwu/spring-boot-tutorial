@@ -59,7 +59,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> list() {
-        return jdbcTemplate.query("select * from USER", new BeanPropertyRowMapper(User.class));
+        return jdbcTemplate.query("SELECT * FROM user", new BeanPropertyRowMapper(User.class));
     }
 
     @Override
@@ -81,18 +81,21 @@ public class UserDaoImpl implements UserDao {
         jdbcTemplate.execute("DROP TABLE IF EXISTS user");
 
         String sqlStatement =
-            "CREATE TABLE user (\n" + "    id      BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Id',\n"
-                + "    name    VARCHAR(10)         NOT NULL DEFAULT '' COMMENT '用户名',\n"
-                + "    age     TINYINT(3)          NOT NULL DEFAULT 0 COMMENT '年龄',\n"
-                + "    address VARCHAR(32)         NOT NULL DEFAULT '' COMMENT '地址',\n"
-                + "    email   VARCHAR(32)         NOT NULL DEFAULT '' COMMENT '邮件',\n" + "    PRIMARY KEY (id)\n"
-                + ") COMMENT = '用户表';";
+            "CREATE TABLE user (\n"
+                + "    id      BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',\n"
+                + "    name    VARCHAR(255)        NOT NULL DEFAULT '' COMMENT '用户名',\n"
+                + "    age     INT(3)              NOT NULL DEFAULT 0 COMMENT '年龄',\n"
+                + "    address VARCHAR(255)        NOT NULL DEFAULT '' COMMENT '地址',\n"
+                + "    email   VARCHAR(255)        NOT NULL DEFAULT '' COMMENT '邮件',\n"
+                + "    PRIMARY KEY (id),\n"
+                + "    UNIQUE (name)\n"
+                + ");";
         jdbcTemplate.execute(sqlStatement);
     }
 
     @Override
     public User update(User user) {
-        jdbcTemplate.update("UPDATE USER SET name=?, age=?, address=?, email=? WHERE id=?", user.getName(),
+        jdbcTemplate.update("UPDATE user SET name=?, age=?, address=?, email=? WHERE id=?", user.getName(),
             user.getAge(), user.getAddress(), user.getEmail(), user.getId());
         return user;
     }

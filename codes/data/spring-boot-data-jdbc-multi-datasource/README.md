@@ -31,7 +31,7 @@ CREATE DATABASE spring_boot_tutorial;
 
 ```properties
 # datasource01
-spring.datasource.mysql.jdbc-url = jdbc:mysql://localhost:3306/multi_connectors_db1?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+spring.datasource.mysql.jdbc-url = jdbc:mysql://localhost:3306/spring_boot_tutorial?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
 spring.datasource.mysql.driver-class-name = com.mysql.cj.jdbc.Driver
 spring.datasource.mysql.username = root
 spring.datasource.mysql.password = root
@@ -115,8 +115,8 @@ java -jar spring-boot-data-jdbc-multi-datasource-1.0.0.jar
 
 分别执行下面两个单元测试类，体验在同一个项目中访问多数据源的 CRUD 操作。
 
-- 执行 `DataJdbcMysqlDataSourceTest`  。
-- 执行 `DataJdbcH2DataSourceTest`  。
+- 执行 `DataJdbcMysqlDataSourceTest` 。
+- 执行 `DataJdbcH2DataSourceTest` 。
 
 ## 扩展学习
 

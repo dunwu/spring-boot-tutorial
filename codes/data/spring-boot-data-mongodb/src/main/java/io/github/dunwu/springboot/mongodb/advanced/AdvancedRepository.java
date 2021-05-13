@@ -23,26 +23,25 @@ import java.util.List;
 
 /**
  * Repository interface to manage {@link Customer} instances.
- *
  * @author Christoph Strobl
  */
 public interface AdvancedRepository extends CustomerRepository {
 
-	String META_COMMENT = "s2gx-2014-rocks!";
+    String META_COMMENT = "s2gx-2014-rocks!";
 
-	/**
-	 * Derived query using {@code $comment} meta attribute for quick lookup. <br />
-	 * Have a look at the {@literal mongodb shell} and execute:
-	 *
-	 * <pre>
-	 * <code>
-	 *  db['system.profile'].find({'query.$comment':'s2gx-2014-rocks!'})
-	 * </code>
-	 * </pre>
-	 *
-	 * @param firstname
-	 * @return
-	 */
-	@Meta(comment = META_COMMENT)
-	List<Customer> findByFirstname(String firstname);
+    /**
+     * Derived query using {@code $comment} meta attribute for quick lookup. <br /> Have a look at the {@literal mongodb
+     * shell} and execute:
+     *
+     * <pre>
+     * <code>
+     *  db['system.profile'].find({'query.$comment':'s2gx-2014-rocks!'})
+     * </code>
+     * </pre>
+     * @param firstname
+     * @return
+     */
+    @Meta(comment = META_COMMENT)
+    List<Customer> findByFirstname(String firstname);
+
 }

@@ -9,7 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * JPA Rest 接口，对应 user 表
  * <p>
  * 启动 Application 后，直接访问：http://<host:ip>/user
- *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @since 2019-10-12
  */
@@ -20,15 +19,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * 根据用户名查找用户
      * <p>
      * 示例：http://localhost:8080/user/search/findByName?name=lisi
-     *
-     * @param username 用户名
+     * @param name 用户名
      * @return {@link User}
      */
-    User findByUsername(@Param("username") String username);
+    User findByName(@Param("name") String name);
 
     /**
      * 根据邮箱查找用户
-     *
      * @param email 邮箱
      * @return {@link User}
      */
@@ -37,9 +34,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     /**
      * 根据用户名删除用户
-     *
-     * @param username 用户名
+     * @param name 用户名
      */
-    void deleteByUsername(@Param("username") String username);
+    void deleteByName(@Param("name") String name);
 
 }

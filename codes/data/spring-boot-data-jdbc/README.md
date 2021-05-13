@@ -2,7 +2,7 @@
 
 > **本项目演示 Spring Boot + JDBC 访问关系型数据库，执行基本的 CRUD 操作。**
 >
-> ***本项目只适用于 Mysql***，其他关系型数据库可能会因为 SQL 语法问题不能访问。
+> **_本项目只适用于 Mysql_**，其他关系型数据库可能会因为 SQL 语法问题不能访问。
 >
 > 依赖环境：
 >
@@ -64,7 +64,7 @@ java -jar spring-boot-data-jdbc-1.0.0.jar
 
 ### 单元测试
 
-执行 `SpringBootDataJdbcTest`  可以更直观的看到 JDBC 模式下的 CRUD 操作。
+执行 `SpringBootDataJdbcTest` 可以更直观的看到 JDBC 模式下的 CRUD 操作。
 
 ## 扩展学习
 

@@ -22,7 +22,6 @@ import org.bson.types.ObjectId;
 
 /**
  * Immutable object.
- *
  * @author Mark Paluch
  */
 @With

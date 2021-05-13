@@ -15,11 +15,6 @@
  */
 package io.github.dunwu.springboot.mongodb.projections;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
-
-import java.util.Collection;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,87 +29,93 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.projection.TargetAware;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Collection;
+
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertThat;
+
 /**
  * Integration tests for {@link CustomerRepository} to show projection capabilities.
- *
  * @author Oliver Gierke
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class CustomerRepositoryIntegrationTest {
 
-	@Configuration
-	@EnableAutoConfiguration
-	static class Config {}
+    @Configuration
+    @EnableAutoConfiguration
+    static class Config {}
 
-	@Autowired CustomerRepository customers;
+    @Autowired
+    CustomerRepository customers;
 
-	Customer dave, carter;
+    Customer dave, carter;
 
-	@Before
-	public void setUp() {
+    @Before
+    public void setUp() {
 
-		customers.deleteAll();
+        customers.deleteAll();
 
-		this.dave = customers.save(new Customer("Dave", "Matthews"));
-		this.carter = customers.save(new Customer("Carter", "Beauford"));
-	}
+        this.dave = customers.save(new Customer("Dave", "Matthews"));
+        this.carter = customers.save(new Customer("Carter", "Beauford"));
+    }
 
-	@Test
-	public void projectsEntityIntoInterface() {
+    @Test
+    public void projectsEntityIntoInterface() {
 
-		Collection<CustomerProjection> result = customers.findAllProjectedBy();
+        Collection<CustomerProjection> result = customers.findAllProjectedBy();
 
-		assertThat(result, hasSize(2));
-		assertThat(result.iterator().next().getFirstname(), is("Dave"));
-	}
+        assertThat(result, hasSize(2));
+        assertThat(result.iterator().next().getFirstname(), is("Dave"));
+    }
 
-	@Test
-	public void projectsToDto() {
+    @Test
+    public void projectsToDto() {
 
-		Collection<CustomerDto> result = customers.findAllDtoedBy();
+        Collection<CustomerDto> result = customers.findAllDtoedBy();
 
-		assertThat(result, hasSize(2));
-		assertThat(result.iterator().next().getFirstname(), is("Dave"));
-	}
+        assertThat(result, hasSize(2));
+        assertThat(result.iterator().next().getFirstname(), is("Dave"));
+    }
 
-	@Test
-	public void projectsDynamically() {
+    @Test
+    public void projectsDynamically() {
 
-		Collection<CustomerProjection> result = customers.findByFirstname("Dave", CustomerProjection.class);
+        Collection<CustomerProjection> result = customers.findByFirstname("Dave", CustomerProjection.class);
 
-		assertThat(result, hasSize(1));
-		assertThat(result.iterator().next().getFirstname(), is("Dave"));
-	}
+        assertThat(result, hasSize(1));
+        assertThat(result.iterator().next().getFirstname(), is("Dave"));
+    }
 
-	@Test
-	public void projectsIndividualDynamically() {
+    @Test
+    public void projectsIndividualDynamically() {
 
-		CustomerSummary result = customers.findProjectedById(dave.getId(), CustomerSummary.class);
+        CustomerSummary result = customers.findProjectedById(dave.getId(), CustomerSummary.class);
 
-		assertThat(result, is(notNullValue()));
-		assertThat(result.getFullName(), is("Dave Matthews"));
+        assertThat(result, is(notNullValue()));
+        assertThat(result.getFullName(), is("Dave Matthews"));
 
-		// Proxy backed by original instance as the projection uses dynamic elements
-		assertThat(((TargetAware) result).getTarget(), is(instanceOf(Customer.class)));
-	}
+        // Proxy backed by original instance as the projection uses dynamic elements
+        assertThat(((TargetAware) result).getTarget(), is(instanceOf(Customer.class)));
+    }
 
-	@Test
-	public void projectIndividualInstance() {
+    @Test
+    public void projectIndividualInstance() {
 
-		CustomerProjection result = customers.findProjectedById(dave.getId());
+        CustomerProjection result = customers.findProjectedById(dave.getId());
 
-		assertThat(result, is(notNullValue()));
-		assertThat(result.getFirstname(), is("Dave"));
-		assertThat(((TargetAware) result).getTarget(), is(instanceOf(Customer.class)));
-	}
+        assertThat(result, is(notNullValue()));
+        assertThat(result.getFirstname(), is("Dave"));
+        assertThat(((TargetAware) result).getTarget(), is(instanceOf(Customer.class)));
+    }
 
-	@Test
-	public void supportsProjectionInCombinationWithPagination() {
+    @Test
+    public void supportsProjectionInCombinationWithPagination() {
 
-		Page<CustomerProjection> page = customers
-				.findPagedProjectedBy(PageRequest.of(0, 1, Sort.by(Direction.ASC, "lastname")));
+        Page<CustomerProjection> page = customers
+            .findPagedProjectedBy(PageRequest.of(0, 1, Sort.by(Direction.ASC, "lastname")));
 
-		assertThat(page.getContent().get(0).getFirstname(), is("Carter"));
-	}
+        assertThat(page.getContent().get(0).getFirstname(), is("Carter"));
+    }
+
 }

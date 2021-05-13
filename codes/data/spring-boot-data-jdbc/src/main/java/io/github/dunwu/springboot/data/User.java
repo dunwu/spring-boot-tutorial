@@ -21,21 +21,24 @@ public class User {
 
     private Long id;
 
-    private String username;
+    private String name;
 
-    private String password;
+    private Integer age;
+
+    private String address;
 
     private String email;
 
-    public User(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
+    public User(String name, Integer age, String address, String email) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
         this.email = email;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username);
+        return Objects.hash(id, name);
     }
 
     @Override
@@ -54,7 +57,7 @@ public class User {
             return true;
         }
 
-        return username.equals(user.username);
+        return name.equals(user.name);
     }
 
 }

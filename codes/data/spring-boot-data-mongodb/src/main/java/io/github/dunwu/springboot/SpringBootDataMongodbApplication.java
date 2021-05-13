@@ -1,7 +1,7 @@
 package io.github.dunwu.springboot;
 
-import io.github.dunwu.springboot.mongodb.Person;
 import io.github.dunwu.springboot.mongodb.CustomerRepository;
+import io.github.dunwu.springboot.mongodb.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

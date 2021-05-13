@@ -25,6 +25,4 @@ java -jar spring-boot-swagger-1.0.0.jar
 
 ## 扩展知识
 
-- [Kafka 应用指南基础篇](https://dunwu.github.io/javatech/#/technology/mq/kafka-basic)
-- [Kafka 应用指南进阶篇](https://dunwu.github.io/javatech/#/technology/mq/kafka-advance)
 - [Kafka 运维指南](https://dunwu.github.io/javatech/#/technology/mq/kafka-ops)

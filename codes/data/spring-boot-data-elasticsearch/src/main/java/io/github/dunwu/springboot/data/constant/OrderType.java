@@ -15,7 +15,6 @@ public enum OrderType {
     /**
      * Returns the {@link OrderType} enum for the given {@link String} or null if it cannot be parsed into an enum
      * value.
-     *
      * @param value
      * @return
      */
@@ -30,7 +29,6 @@ public enum OrderType {
 
     /**
      * Returns the {@link OrderType} enum for the given {@link String} value.
-     *
      * @param value
      * @return
      * @throws IllegalArgumentException in case the given value cannot be parsed into an enum value.
@@ -47,7 +45,6 @@ public enum OrderType {
 
     /**
      * Returns whether the direction is ascending.
-     *
      * @return
      * @since 1.13
      */
@@ -57,7 +54,6 @@ public enum OrderType {
 
     /**
      * Returns whether the direction is descending.
-     *
      * @return
      * @since 1.13
      */

@@ -25,41 +25,42 @@ import javax.annotation.PreDestroy;
 
 /**
  * Test configuration to connect to a MongoDB named "test" and using a {@code MongoClient} with profiling enabled.
- *
  * @author Christoph Strobl
  */
 @SpringBootApplication
 class ApplicationConfiguration {
 
-	static final String SYSTEM_PROFILE_DB = "system.profile";
+    static final String SYSTEM_PROFILE_DB = "system.profile";
 
-	@Autowired MongoOperations operations;
+    @Autowired
+    MongoOperations operations;
 
-	/**
-	 * Initialize db instance with defaults.
-	 */
-	@PostConstruct
-	public void initializeWithDefaults() {
+    /**
+     * Initialize db instance with defaults.
+     */
+    @PostConstruct
+    public void initializeWithDefaults() {
 
-		// Enable profiling
-		setProfilingLevel(2);
-	}
+        // Enable profiling
+        setProfilingLevel(2);
+    }
 
-	/**
-	 * Clean up resources on shutdown
-	 */
-	@PreDestroy
-	public void cleanUpWhenShuttingDown() {
+    /**
+     * Clean up resources on shutdown
+     */
+    @PreDestroy
+    public void cleanUpWhenShuttingDown() {
 
-		// Disable profiling
-		setProfilingLevel(0);
+        // Disable profiling
+        setProfilingLevel(0);
 
-		if (operations.collectionExists(SYSTEM_PROFILE_DB)) {
-			operations.dropCollection(SYSTEM_PROFILE_DB);
-		}
-	}
+        if (operations.collectionExists(SYSTEM_PROFILE_DB)) {
+            operations.dropCollection(SYSTEM_PROFILE_DB);
+        }
+    }
 
-	private void setProfilingLevel(int level) {
-		operations.executeCommand(new Document("profile", level));
-	}
+    private void setProfilingLevel(int level) {
+        operations.executeCommand(new Document("profile", level));
+    }
+
 }

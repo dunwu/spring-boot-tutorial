@@ -17,10 +17,10 @@ package io.github.dunwu.springboot.mongodb.projections;
 
 /**
  * An example projection interface containing only the firstname.
- *
  * @author Oliver Gierke
  */
 interface CustomerProjection {
 
-	String getFirstname();
+    String getFirstname();
+
 }

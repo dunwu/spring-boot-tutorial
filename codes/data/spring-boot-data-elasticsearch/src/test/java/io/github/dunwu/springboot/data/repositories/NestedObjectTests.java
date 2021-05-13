@@ -1,7 +1,12 @@
 package io.github.dunwu.springboot.data.repositories;
 
+import io.github.dunwu.springboot.data.entities.Author;
+import io.github.dunwu.springboot.data.entities.Book;
+import io.github.dunwu.springboot.data.entities.Car;
+import io.github.dunwu.springboot.data.entities.GirlFriend;
+import io.github.dunwu.springboot.data.entities.Person;
+import io.github.dunwu.springboot.data.entities.PersonMultipleLevelNested;
 import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
-import io.github.dunwu.springboot.data.entities.*;
 import io.github.dunwu.tool.util.RandomUtil;
 import org.apache.lucene.search.join.ScoreMode;
 import org.elasticsearch.index.query.BoolQueryBuilder;

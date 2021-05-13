@@ -1,10 +1,10 @@
 package io.github.dunwu.springboot.data.repositories;
 
-import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.springboot.data.common.QueryLogicType;
 import io.github.dunwu.springboot.data.elasticsearch.ElasticSearchUtil;
 import io.github.dunwu.springboot.data.entities.User;
 import io.github.dunwu.springboot.data.entities.UserQuery;
+import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.tool.util.RandomUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;

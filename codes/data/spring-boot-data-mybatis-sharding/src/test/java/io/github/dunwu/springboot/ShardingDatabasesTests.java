@@ -1,7 +1,7 @@
 package io.github.dunwu.springboot;
 
-import io.github.dunwu.springboot.entity.User;
-import io.github.dunwu.springboot.mapper.UserMapper;
+import io.github.dunwu.springboot.data.entity.User;
+import io.github.dunwu.springboot.data.mapper.UserMapper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +18,6 @@ import java.util.List;
 
 /**
  * 分库案例测试
- *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @since 2019-10-17
  */

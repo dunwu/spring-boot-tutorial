@@ -11,7 +11,6 @@ import java.util.List;
 
 /**
  * user 表 Dao 接口实现类
- *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @since 2019-11-18
  */
@@ -56,7 +55,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void update(User user) {
-        jdbcTemplate.update("UPDATE USER SET username=?, password=?, email=? WHERE id=?",
+        jdbcTemplate.update("UPDATE user SET username=?, password=?, email=? WHERE id=?",
             user.getUsername(), user.getPassword(), user.getEmail(), user.getId());
     }
 
@@ -71,7 +70,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> list() {
-        return jdbcTemplate.query("select * from USER", new BeanPropertyRowMapper(User.class));
+        return jdbcTemplate.query("SELECT * FROM user", new BeanPropertyRowMapper(User.class));
     }
 
     @Override
@@ -99,14 +98,14 @@ public class UserDaoImpl implements UserDao {
         jdbcTemplate.execute("DROP TABLE IF EXISTS user");
 
         String sqlStatement =
-            "CREATE TABLE `user` (\n"
-                + "    `id`       INT(20)             NOT NULL AUTO_INCREMENT COMMENT 'ID',\n"
-                + "    `username` VARCHAR(30)         NOT NULL COMMENT '用户名',\n"
-                + "    `password` VARCHAR(60)         NOT NULL COMMENT '密码',\n"
-                + "    `email`    VARCHAR(100)        NOT NULL COMMENT '邮箱',\n"
-                + "    PRIMARY KEY (`id`),\n"
-                + "    UNIQUE KEY `uk_username`(`username`),\n"
-                + "    UNIQUE KEY `uk_email`(`email`)\n"
+            "CREATE TABLE user (\n"
+                + "    id       INT(20)             NOT NULL AUTO_INCREMENT COMMENT 'ID',\n"
+                + "    username VARCHAR(30)         NOT NULL COMMENT '用户名',\n"
+                + "    password VARCHAR(60)         NOT NULL COMMENT '密码',\n"
+                + "    email    VARCHAR(100)        NOT NULL COMMENT '邮箱',\n"
+                + "    PRIMARY KEY (id),\n"
+                + "    UNIQUE KEY uk_username(username),\n"
+                + "    UNIQUE KEY uk_email(email)\n"
                 + ") ENGINE = INNODB COMMENT ='用户表';\n";
         jdbcTemplate.execute(sqlStatement);
     }

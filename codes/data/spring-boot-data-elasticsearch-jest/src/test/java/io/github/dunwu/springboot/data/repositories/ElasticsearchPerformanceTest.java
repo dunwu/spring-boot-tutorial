@@ -1,7 +1,7 @@
 package io.github.dunwu.springboot.data.repositories;
 
-import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.springboot.data.entities.User;
+import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.tool.util.RandomUtil;
 import org.junit.Before;
 import org.junit.Test;

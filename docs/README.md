@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener noreferrer">
-        <img src="http://dunwu.test.upcdn.net/common/logo/spring-boot.svg" alt="spring-boot-logo">
+        <img src="https://raw.githubusercontent.com/dunwu/images/dev/common/logo/spring-boot.svg" alt="spring-boot-logo">
     </a>
 </p>
 

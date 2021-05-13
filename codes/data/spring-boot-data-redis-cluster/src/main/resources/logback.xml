@@ -7,9 +7,9 @@
     </encoder>
   </appender>
 
-  <logger name="io.github.dunwu.springboot" level="INFO" />
+  <logger name="io.github.dunwu.spring" level="INFO" />
 
-  <root level="WARN">
+  <root level="INFO">
     <appender-ref ref="CONSOLE" />
   </root>
 </configuration>

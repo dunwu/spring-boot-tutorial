@@ -1,9 +1,9 @@
 package io.github.dunwu.springboot.data.repositories;
 
-import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.springboot.data.entities.User;
 import io.github.dunwu.springboot.data.entities.UserQuery;
 import io.github.dunwu.springboot.data.util.QueryFeildToQueryBuilderUtil;
+import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.tool.util.RandomUtil;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Before;

@@ -64,7 +64,7 @@ java -jar spring-boot-data-jpa-1.0.0.jar
 
 打开浏览器，访问 http://localhost:8080/user 可以看到，JPA 帮我们自动生成了 REST 应答内容。
 
-![image-20191118203305320](http://dunwu.test.upcdn.net/snap/image-20191118203305320.png)
+![image-20191118203305320](https://raw.githubusercontent.com/dunwu/images/dev/snap/image-20191118203305320.png)
 
 这个 REST 接口是根据本项目中的 `io.github.dunwu.springboot.data.UserRepository` 类中的如下代码定义自动生成的：
 
@@ -74,8 +74,8 @@ java -jar spring-boot-data-jpa-1.0.0.jar
 
 ### 单元测试
 
-- 执行 `SpringBootDataJpaTest`  可以更直观的看到 JPA 模式下的 CRUD 操作。
-- 执行 `SpringBootDataJpaRestTest`  可以更直观的看到 REST JPA 模式下的 CRUD 操作。
+- 执行 `SpringBootDataJpaTest` 可以更直观的看到 JPA 模式下的 CRUD 操作。
+- 执行 `SpringBootDataJpaRestTest` 可以更直观的看到 REST JPA 模式下的 CRUD 操作。
 
 ## 扩展学习
 

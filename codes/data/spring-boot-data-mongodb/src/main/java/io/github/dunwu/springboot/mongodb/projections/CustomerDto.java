@@ -19,11 +19,11 @@ import lombok.Value;
 
 /**
  * A sample DTO only containing the firstname.
- *
  * @author Oliver Gierke
  */
 @Value
 class CustomerDto {
 
-	String firstname;
+    String firstname;
+
 }

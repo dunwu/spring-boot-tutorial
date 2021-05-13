@@ -30,7 +30,6 @@ import java.util.List;
 
 /**
  * {@link QueryDocument} 和 {@link QueryField}
- *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @since 2019-12-18
  */
@@ -204,7 +203,6 @@ public class ElasticSearchUtil {
 
     /**
      * 将 {@link QueryDocument} 和 {@link QueryField} 修饰的查询实体转化为 ElasticSearch Client 包所识别的查询条件
-     *
      * @param queryBean 被 {@link QueryDocument} 和 {@link QueryField} 修饰的 Bean
      * @return List<QueryBuilder>
      * @throws IllegalAccessException

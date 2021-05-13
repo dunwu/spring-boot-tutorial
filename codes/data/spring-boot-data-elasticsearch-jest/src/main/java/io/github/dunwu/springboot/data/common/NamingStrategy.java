@@ -2,7 +2,6 @@ package io.github.dunwu.springboot.data.common;
 
 /**
  * 关键字命名策略枚举
- *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @since 2019-12-18
  */

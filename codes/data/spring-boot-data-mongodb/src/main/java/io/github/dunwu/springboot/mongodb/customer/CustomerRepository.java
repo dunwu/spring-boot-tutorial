@@ -25,26 +25,24 @@ import java.util.List;
 
 /**
  * Repository interface to manage {@link Customer} instances.
- *
  * @author Oliver Gierke
  */
 public interface CustomerRepository extends CrudRepository<Customer, String> {
 
-	/**
-	 * Derived query using dynamic sort information.
-	 *
-	 * @param lastname
-	 * @param sort
-	 * @return
-	 */
-	List<Customer> findByLastname(String lastname, Sort sort);
+    /**
+     * Derived query using dynamic sort information.
+     * @param lastname
+     * @param sort
+     * @return
+     */
+    List<Customer> findByLastname(String lastname, Sort sort);
 
-	/**
-	 * Show case for a repository query using geo-spatial functionality.
-	 *
-	 * @param point
-	 * @param distance
-	 * @return
-	 */
-	GeoResults<Customer> findByAddressLocationNear(Point point, Distance distance);
+    /**
+     * Show case for a repository query using geo-spatial functionality.
+     * @param point
+     * @param distance
+     * @return
+     */
+    GeoResults<Customer> findByAddressLocationNear(Point point, Distance distance);
+
 }

@@ -2,15 +2,28 @@ package io.github.dunwu.data.hdfs;
 
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.io.StreamProgress;
+import org.apache.hadoop.fs.BlockLocation;
+import org.apache.hadoop.fs.ContentSummary;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FSDataOutputStream;
+import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.*;
+import org.apache.hadoop.fs.LocatedFileStatus;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.fs.RemoteIterator;
 import org.apache.hadoop.fs.permission.FsPermission;
 import org.apache.hadoop.io.IOUtils;
 import org.apache.hadoop.util.Progressable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.NotBlank;
@@ -18,7 +31,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * HDFS 客户端助手
- *
  * @author Zhang Peng
  * @since 2019-03-01
  */
@@ -38,7 +50,6 @@ public class HdfsUtil {
 
     /**
      * 上传文件
-     *
      * @param sourcePath 原文件路径
      * @param targetPath 目标路径
      * @throws IOException
@@ -61,7 +72,6 @@ public class HdfsUtil {
      * 上传文件
      * <p>
      * 如果 {@link File}存在，读取文件内容，并上传到 targetPath
-     *
      * @param file       原文件
      * @param targetPath 文件路径
      * @throws IOException
@@ -90,7 +100,6 @@ public class HdfsUtil {
 
     /**
      * 上传文件
-     *
      * @param inputStream 输入流
      * @param targetPath  文件路径
      * @throws IOException
@@ -114,7 +123,6 @@ public class HdfsUtil {
 
     /**
      * 上传大文件
-     *
      * @param sourcePath 原文件路径
      * @param targetPath 文件路径
      * @throws IOException
@@ -169,7 +177,6 @@ public class HdfsUtil {
 
     /**
      * 下载文件
-     *
      * @param sourcePath 原文件路径（HDFS 中的路径）
      * @param targetPath 目标路径
      * @throws Exception
@@ -187,7 +194,6 @@ public class HdfsUtil {
 
     /**
      * 复制文件
-     *
      * @param sourcePath 原文件路径
      * @param targetPath 目标文件路径
      * @throws Exception
@@ -214,7 +220,6 @@ public class HdfsUtil {
 
     /**
      * 删除文件
-     *
      * @param path
      * @return true / false
      * @throws Exception
@@ -231,7 +236,6 @@ public class HdfsUtil {
 
     /**
      * 读取文件内容
-     *
      * @param path 文件路径
      * @return
      * @throws Exception
@@ -280,7 +284,6 @@ public class HdfsUtil {
 
     /**
      * 获取某个文件在 HDFS 的集群位置
-     *
      * @param path
      * @return
      * @throws Exception
@@ -302,7 +305,6 @@ public class HdfsUtil {
 
     /**
      * 重命名文件
-     *
      * @param oldName 旧路径名
      * @param newName 新路径名
      * @return true / false
@@ -320,7 +322,6 @@ public class HdfsUtil {
 
     /**
      * 创建文件夹
-     *
      * @param path 文件夹路径
      * @return true / false
      * @throws IOException
@@ -341,7 +342,6 @@ public class HdfsUtil {
 
     /**
      * 创建文件夹，并为其设置访问权限
-     *
      * @param path       文件夹路径
      * @param permission 权限
      * @return true / false
@@ -364,7 +364,6 @@ public class HdfsUtil {
 
     /**
      * 读取目录信息
-     *
      * @param path HDFS 目录路径
      * @return {@link FileStatus[]}
      * @throws Exception
@@ -385,7 +384,6 @@ public class HdfsUtil {
 
     /**
      * 读取文件列表
-     *
      * @param path
      * @return
      * @throws Exception
@@ -413,7 +411,6 @@ public class HdfsUtil {
 
     /**
      * 删除文件或文件夹
-     *
      * @param path 文件夹路径
      * @return true / false
      * @throws Exception
@@ -431,7 +428,6 @@ public class HdfsUtil {
 
     /**
      * 判断文件或文件夹是否存在
-     *
      * @param path 路径
      * @return true / false
      * @throws Exception

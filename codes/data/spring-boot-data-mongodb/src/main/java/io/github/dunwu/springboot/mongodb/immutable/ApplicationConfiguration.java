@@ -22,32 +22,30 @@ import org.springframework.data.mongodb.core.mapping.event.BeforeConvertCallback
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Test configuration to connect to a MongoDB named "test" using a {@code MongoClient}. <br />
- * Also enables Spring Data repositories for MongoDB.
- *
+ * Test configuration to connect to a MongoDB named "test" using a {@code MongoClient}. <br /> Also enables Spring Data
+ * repositories for MongoDB.
  * @author Mark Paluch
  * @author Christoph Strobl
  */
 @SpringBootApplication
 class ApplicationConfiguration {
 
-	/**
-	 * Register the {@link BeforeConvertCallback} used to update an {@link ImmutablePerson} before handing over the newly
-	 * created instance to the actual mapping layer performing the conversion into the store native
-	 * {@link org.bson.Document} representation.
-	 *
-	 * @return a {@link BeforeConvertCallback} for {@link ImmutablePerson}.
-	 */
-	@Bean
-	BeforeConvertCallback<ImmutablePerson> beforeConvertCallback() {
+    /**
+     * Register the {@link BeforeConvertCallback} used to update an {@link ImmutablePerson} before handing over the
+     * newly created instance to the actual mapping layer performing the conversion into the store native {@link
+     * org.bson.Document} representation.
+     * @return a {@link BeforeConvertCallback} for {@link ImmutablePerson}.
+     */
+    @Bean
+    BeforeConvertCallback<ImmutablePerson> beforeConvertCallback() {
 
-		return (immutablePerson, collection) -> {
+        return (immutablePerson, collection) -> {
 
-			int randomNumber = ThreadLocalRandom.current().nextInt(1, 100);
+            int randomNumber = ThreadLocalRandom.current().nextInt(1, 100);
 
-			// withRandomNumber is a so called wither method returning a new instance of the entity with a new value assigned
-			return immutablePerson.withRandomNumber(randomNumber);
-		};
-	}
+            // withRandomNumber is a so called wither method returning a new instance of the entity with a new value assigned
+            return immutablePerson.withRandomNumber(randomNumber);
+        };
+    }
 
 }

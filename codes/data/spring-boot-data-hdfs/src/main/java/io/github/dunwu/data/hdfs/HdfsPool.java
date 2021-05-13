@@ -7,7 +7,6 @@ import org.apache.hadoop.fs.FileSystem;
 
 /**
  * Hdfs 连接池工具，基于 common-pool2 的 {@link GenericObjectPool} 实现，需要配合 {@link HdfsFactory} 使用
- *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @since 2020-03-21
  */

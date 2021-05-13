@@ -15,8 +15,6 @@
  */
 package io.github.dunwu.springboot.mongodb.immutable;
 
-import static org.assertj.core.api.Assertions.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,9 +23,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * Integration test for {@link ImmutablePerson} showing features around immutable object support.
- *
  * @author Mark Paluch
  * @author Christoph Strobl
  */
@@ -35,26 +34,28 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ImmutableEntityIntegrationTest {
 
-	@Autowired MongoOperations operations;
+    @Autowired
+    MongoOperations operations;
 
-	@Before
-	public void setUp() {
-		operations.dropCollection(ImmutablePerson.class);
-	}
+    @Before
+    public void setUp() {
+        operations.dropCollection(ImmutablePerson.class);
+    }
 
-	/**
-	 * Test case to show that automatically generated ids are assigned to the immutable domain object and how the
-	 * {@link ImmutablePerson#getRandomNumber()} gets set via {@link ApplicationConfiguration#beforeConvertCallback()}.
-	 */
-	@Test
-	public void setsRandomNumberOnSave() {
+    /**
+     * Test case to show that automatically generated ids are assigned to the immutable domain object and how the {@link
+     * ImmutablePerson#getRandomNumber()} gets set via {@link ApplicationConfiguration#beforeConvertCallback()}.
+     */
+    @Test
+    public void setsRandomNumberOnSave() {
 
-		ImmutablePerson unsaved = new ImmutablePerson();
-		assertThat(unsaved.getRandomNumber()).isZero();
+        ImmutablePerson unsaved = new ImmutablePerson();
+        assertThat(unsaved.getRandomNumber()).isZero();
 
-		ImmutablePerson saved = operations.save(unsaved);
+        ImmutablePerson saved = operations.save(unsaved);
 
-		assertThat(saved.getId()).isNotNull();
-		assertThat(saved.getRandomNumber()).isNotZero();
-	}
+        assertThat(saved.getId()).isNotNull();
+        assertThat(saved.getRandomNumber()).isNotZero();
+    }
+
 }

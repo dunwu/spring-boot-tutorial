@@ -28,11 +28,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 class Customer {
 
-	@Id ObjectId id = new ObjectId();
-	String firstname, lastname;
+    @Id
+    ObjectId id = new ObjectId();
+    String firstname, lastname;
 
-	public Customer(String firstname, String lastname) {
-		this.firstname = firstname;
-		this.lastname = lastname;
-	}
+    public Customer(String firstname, String lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
 }

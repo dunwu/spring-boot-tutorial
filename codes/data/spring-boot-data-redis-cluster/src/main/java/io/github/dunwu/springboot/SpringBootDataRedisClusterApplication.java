@@ -56,7 +56,12 @@ public class SpringBootDataRedisClusterApplication implements CommandLineRunner 
     }
 
     enum Location {
-        Nanjing, Beijing, Shanghai, Hangzhou, Guangzhou, Shenzhen
+        Nanjing,
+        Beijing,
+        Shanghai,
+        Hangzhou,
+        Guangzhou,
+        Shenzhen
     }
 
 }

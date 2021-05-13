@@ -6,9 +6,9 @@
 - [API](#api)
 - [配置](#配置)
 - [实战](#实战)
-    - [引入依赖](#引入依赖)
-    - [配置邮件属性](#配置邮件属性)
-    - [Java 代码](#java-代码)
+  - [引入依赖](#引入依赖)
+  - [配置邮件属性](#配置邮件属性)
+  - [Java 代码](#java-代码)
 - [完整示例](#完整示例)
 - [引申和引用](#引申和引用)
 
@@ -33,7 +33,7 @@ Spring Framework 提供了一个使用 `JavaMailSender` 接口发送电子邮件
 
 `JavaMailSender` 接口提供的 API 如下：
 
-![img](http://dunwu.test.upcdn.net/snap/20190110111102.png!zp)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20190110111102.png)
 
 ## 配置
 

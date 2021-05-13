@@ -1,8 +1,8 @@
 package io.github.dunwu.springboot.data.repositories;
 
 import cn.hutool.core.util.IdUtil;
-import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.springboot.data.entities.Book;
+import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.tool.util.RandomUtil;
 import org.apache.lucene.search.join.ScoreMode;
 import org.assertj.core.api.Assertions;
@@ -19,7 +19,13 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Resource;
 
 import static java.util.Arrays.asList;

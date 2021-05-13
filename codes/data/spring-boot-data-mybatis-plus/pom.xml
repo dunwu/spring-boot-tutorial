@@ -10,7 +10,7 @@
     <version>2.2.1.RELEASE</version>
   </parent>
 
-  <groupId>io.github.dunwu.springboot</groupId>
+  <groupId>io.github.dunwu.spring</groupId>
   <artifactId>spring-boot-data-mybatis-plus</artifactId>
   <version>1.0.0</version>
 
@@ -40,7 +40,7 @@
     <dependency>
       <groupId>com.baomidou</groupId>
       <artifactId>mybatis-plus-boot-starter</artifactId>
-      <version>3.4.2</version>
+      <version>3.1.2</version>
     </dependency>
   </dependencies>
 

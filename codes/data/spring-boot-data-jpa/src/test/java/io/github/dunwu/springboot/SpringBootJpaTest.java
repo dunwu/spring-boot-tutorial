@@ -44,7 +44,7 @@ public class SpringBootJpaTest {
 
     @Test
     public void insert() {
-        User user = new User("张三", "123456", "user1@163.com");
+        User user = new User("张三", 18, "北京", "user1@163.com");
         repository.save(user);
         Optional<User> optional = repository.findById(user.getId());
         assertThat(optional).isNotNull();
@@ -54,10 +54,10 @@ public class SpringBootJpaTest {
     @Test
     public void batchInsert() {
         List<User> users = new ArrayList<>();
-        users.add(new User("张三", "123456", "user1@163.com"));
-        users.add(new User("李四", "123456", "user2@163.com"));
-        users.add(new User("王五", "123456", "user3@163.com"));
-        users.add(new User("赵六", "123456", "user4@163.com"));
+        users.add(new User("张三", 18, "北京", "user1@163.com"));
+        users.add(new User("李四", 19, "上海", "user1@163.com"));
+        users.add(new User("王五", 18, "南京", "user1@163.com"));
+        users.add(new User("赵六", 20, "武汉", "user1@163.com"));
         repository.saveAll(users);
 
         long count = repository.count();
@@ -73,14 +73,14 @@ public class SpringBootJpaTest {
     @Test
     public void delete() {
         List<User> users = new ArrayList<>();
-        users.add(new User("张三", "123456", "user1@163.com"));
-        users.add(new User("李四", "123456", "user2@163.com"));
-        users.add(new User("王五", "123456", "user3@163.com"));
-        users.add(new User("赵六", "123456", "user4@163.com"));
+        users.add(new User("张三", 18, "北京", "user1@163.com"));
+        users.add(new User("李四", 19, "上海", "user1@163.com"));
+        users.add(new User("王五", 18, "南京", "user1@163.com"));
+        users.add(new User("赵六", 20, "武汉", "user1@163.com"));
         repository.saveAll(users);
 
-        repository.deleteByUsername("张三");
-        assertThat(repository.findByUsername("张三")).isNull();
+        repository.deleteByName("张三");
+        assertThat(repository.findByName("张三")).isNull();
 
         repository.deleteAll();
         List<User> list = repository.findAll();
@@ -90,10 +90,10 @@ public class SpringBootJpaTest {
     @Test
     public void findAllInPage() {
         List<User> users = new ArrayList<>();
-        users.add(new User("张三", "123456", "user1@163.com"));
-        users.add(new User("李四", "123456", "user2@163.com"));
-        users.add(new User("王五", "123456", "user3@163.com"));
-        users.add(new User("赵六", "123456", "user4@163.com"));
+        users.add(new User("张三", 18, "北京", "user1@163.com"));
+        users.add(new User("李四", 19, "上海", "user1@163.com"));
+        users.add(new User("王五", 18, "南京", "user1@163.com"));
+        users.add(new User("赵六", 20, "武汉", "user1@163.com"));
         repository.saveAll(users);
 
         PageRequest pageRequest = PageRequest.of(1, 2);
@@ -110,11 +110,11 @@ public class SpringBootJpaTest {
 
     @Test
     public void update() {
-        User oldUser = repository.save(new User("张三", "123456", "user1@163.com"));
-        oldUser.setUsername("张三丰");
+        User oldUser = new User("张三", 18, "北京", "user1@163.com");
+        oldUser.setName("张三丰");
         repository.save(oldUser);
 
-        User newUser = repository.findByUsername("张三丰");
+        User newUser = repository.findByName("张三丰");
         assertThat(newUser).isNotNull();
     }
 

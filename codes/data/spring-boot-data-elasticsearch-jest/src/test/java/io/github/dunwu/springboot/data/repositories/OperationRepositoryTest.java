@@ -1,9 +1,9 @@
 package io.github.dunwu.springboot.data.repositories;
 
 import cn.hutool.core.collection.CollectionUtil;
-import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.springboot.data.entities.Operation;
 import io.github.dunwu.springboot.data.entities.Sector;
+import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
 import io.github.dunwu.tool.util.RandomUtil;
 import org.junit.Before;
 import org.junit.Test;

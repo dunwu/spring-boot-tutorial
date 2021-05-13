@@ -9,7 +9,7 @@
     <version>2.2.1.RELEASE</version>
   </parent>
 
-  <groupId>io.github.dunwu.springboot</groupId>
+  <groupId>io.github.dunwu.spring</groupId>
   <artifactId>spring-boot-data-elasticsearch</artifactId>
   <version>1.0.0</version>
 
