@@ -22,8 +22,7 @@ public class ServiceAspect {
 
     @Before("execute()")
     public void before(JoinPoint joinPoint) {
-        log.info("call @Before, joinPoint: {}", joinPoint);
-        log.info("execute args: {}", joinPoint.getArgs());
+        log.info("call @Before, joinPoint: {}, execute args: {}", joinPoint, joinPoint.getArgs());
     }
 
     @After("execute()")

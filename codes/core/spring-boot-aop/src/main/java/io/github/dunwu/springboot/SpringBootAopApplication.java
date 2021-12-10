@@ -6,7 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
+@EnableAspectJAutoProxy
 @SpringBootApplication
 public class SpringBootAopApplication implements CommandLineRunner {
 
@@ -26,9 +28,7 @@ public class SpringBootAopApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.info(welcomeService.getMessage());
         welcomeService.getException();
-        welcomeService.print("HELLO 01");
-        welcomeService.print("HELLO 02");
-        welcomeService.print("HELLO 03");
+        welcomeService.print("HELLO");
     }
 
 }

@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot;
+package io.github.dunwu.springboot.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParser;
@@ -25,7 +25,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
- * Spring Boot 集成 MyBatis-Plus 配置
+ * 自定义配置
  *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @see <a href="https://mybatis.plus/">MyBatis-Plus</a>
@@ -82,8 +82,8 @@ public class CustomConfig {
         timeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-            .registerModule(timeModule).registerModule(new ParameterNamesModule())
-            .registerModule(new Jdk8Module());
+                    .registerModule(timeModule).registerModule(new ParameterNamesModule())
+                    .registerModule(new Jdk8Module());
     }
 
 }

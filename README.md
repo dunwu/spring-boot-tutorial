@@ -108,7 +108,7 @@
 
 ## 📖 文档
 
-- [SpringBoot 教程之 HelloWorld](docs/spring-boot-helloworld.md)
+- [SpringBoot 教程之快速入门](docs/SpringBoot教程之快速入门.md)
 - [SpringBoot 教程之处理异步请求](docs/spring-boot-async.md)
 - [SpringBoot 教程之 banner 定制](docs/spring-boot-banner.md)
 - [SpringBoot 教程之属性加载详解](docs/spring-boot-property.md)
