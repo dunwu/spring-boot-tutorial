@@ -37,9 +37,9 @@
       <artifactId>lombok</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.github.dunwu</groupId>
-      <artifactId>dunwu-common-data</artifactId>
-      <version>0.5.7</version>
+      <groupId>io.github.dunwu.tool</groupId>
+      <artifactId>dunwu-tool-data</artifactId>
+      <version>1.0.6</version>
     </dependency>
   </dependencies>
 

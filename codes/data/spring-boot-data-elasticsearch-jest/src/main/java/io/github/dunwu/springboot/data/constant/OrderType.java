@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.data.common;
+package io.github.dunwu.springboot.data.constant;
 
 import java.util.Locale;
 import java.util.Optional;

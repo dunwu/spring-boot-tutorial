@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 @ToString
 @Accessors(chain = true)
-class KafkaTestBean<T> {
+public class KafkaTestBean<T> {
 
     Date timestamp;
 

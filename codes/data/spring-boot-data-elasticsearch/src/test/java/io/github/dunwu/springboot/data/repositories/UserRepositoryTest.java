@@ -1,9 +1,10 @@
 package io.github.dunwu.springboot.data.repositories;
 
+import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
+import io.github.dunwu.springboot.data.constant.QueryLogicType;
 import io.github.dunwu.springboot.data.entities.User;
 import io.github.dunwu.springboot.data.entities.UserQuery;
-import io.github.dunwu.springboot.data.util.QueryFeildToQueryBuilderUtil;
-import io.github.dunwu.springboot.SpringBootDataElasticsearchApplication;
+import io.github.dunwu.springboot.data.util.ElasticSearchUtil;
 import io.github.dunwu.tool.util.RandomUtil;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Before;
@@ -12,7 +13,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
-import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -96,9 +96,12 @@ public class UserRepositoryTest {
 
         UserQuery userQuery = new UserQuery();
         userQuery.setUsername("张");
-        SearchQuery searchQuery = QueryFeildToQueryBuilderUtil.transQueryDto2Condition(userQuery);
-
-        Page<User> page = userRepository.search(searchQuery);
+        Page<User> page = null;
+        try {
+            page = ElasticSearchUtil.pageSearch(userRepository, userQuery, QueryLogicType.AND);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
         System.out.println("Total Match: " + page.getTotalElements());
         page.getContent().forEach(System.out::println);
     }

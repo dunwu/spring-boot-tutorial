@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.data.elasticsearch;
+package io.github.dunwu.springboot.data.util;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.comparator.ComparatorChain;
@@ -7,10 +7,13 @@ import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.CharUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
+import io.github.dunwu.springboot.data.annotation.QueryDocument;
+import io.github.dunwu.springboot.data.annotation.QueryField;
 import io.github.dunwu.springboot.data.constant.NamingStrategy;
 import io.github.dunwu.springboot.data.constant.OrderType;
 import io.github.dunwu.springboot.data.constant.QueryJudgeType;
 import io.github.dunwu.springboot.data.constant.QueryLogicType;
+import io.github.dunwu.tool.data.Pagination;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.RegexpQueryBuilder;
@@ -30,6 +33,7 @@ import java.util.List;
 
 /**
  * {@link QueryDocument} 和 {@link QueryField}
+ *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @since 2019-12-18
  */
@@ -83,23 +87,21 @@ public class ElasticSearchUtil {
 
         // 分页信息
         // Map<String, Field> fieldMap = ReflectUtil.getFieldMap(queryBean.getClass());
-        Object currentField = ReflectUtil.getFieldValue(queryBean, "current");
-        if (currentField == null) {
-            throw new IllegalArgumentException("未设置 current");
-        }
+        // Object currentField = ReflectUtil.getFieldValue(queryBean, "current");
+        // if (currentField == null) {
+        //     throw new IllegalArgumentException("未设置 current");
+        // }
+        //
+        // Object sizeField = ReflectUtil.getFieldValue(queryBean, "size");
+        // if (sizeField == null) {
+        //     throw new IllegalArgumentException("未设置 size");
+        // }
 
-        Object sizeField = ReflectUtil.getFieldValue(queryBean, "size");
-        if (sizeField == null) {
-            throw new IllegalArgumentException("未设置 size");
-        }
+        // long current = (long) currentField;
+        // long size = (long) sizeField;
 
-        long current = (long) currentField;
-        long size = (long) sizeField;
-
-        PageRequest pageRequest = PageRequest.of((int) current, (int) size);
-        if (pageRequest == null) {
-            throw new IllegalAccessException("获取分页信息失败");
-        }
+        Pagination pagination = (Pagination) queryBean;
+        PageRequest pageRequest = PageRequest.of((int) pagination.getNumber(), (int) pagination.getSize());
         NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
         nativeSearchQueryBuilder.withPageable(pageRequest);
 
@@ -203,6 +205,7 @@ public class ElasticSearchUtil {
 
     /**
      * 将 {@link QueryDocument} 和 {@link QueryField} 修饰的查询实体转化为 ElasticSearch Client 包所识别的查询条件
+     *
      * @param queryBean 被 {@link QueryDocument} 和 {@link QueryField} 修饰的 Bean
      * @return List<QueryBuilder>
      * @throws IllegalAccessException

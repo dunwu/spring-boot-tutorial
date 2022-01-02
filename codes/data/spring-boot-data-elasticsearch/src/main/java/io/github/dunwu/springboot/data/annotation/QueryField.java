@@ -1,15 +1,13 @@
 package io.github.dunwu.springboot.data.annotation;
 
 import io.github.dunwu.springboot.data.constant.QueryJudgeType;
-import io.github.dunwu.springboot.data.constant.QueryLogicType;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
+/**
+ * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
+ * @since 2019-12-17
+ */
 @Documented
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
@@ -17,8 +15,6 @@ import java.lang.annotation.Target;
 public @interface QueryField {
 
     String value() default "";
-
-    QueryLogicType logicType() default QueryLogicType.AND;
 
     QueryJudgeType judgeType() default QueryJudgeType.Equals;
 

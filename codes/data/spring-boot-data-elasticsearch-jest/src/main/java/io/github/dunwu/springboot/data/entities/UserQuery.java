@@ -1,13 +1,14 @@
 package io.github.dunwu.springboot.data.entities;
 
-import io.github.dunwu.data.core.Pagination;
-import io.github.dunwu.springboot.data.common.OrderType;
-import io.github.dunwu.springboot.data.common.QueryJudgeType;
+import io.github.dunwu.springboot.data.constant.OrderType;
+import io.github.dunwu.springboot.data.constant.QueryJudgeType;
 import io.github.dunwu.springboot.data.elasticsearch.QueryDocument;
 import io.github.dunwu.springboot.data.elasticsearch.QueryField;
+import io.github.dunwu.tool.data.Pagination;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.springframework.data.annotation.Id;
 
 /**
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
@@ -21,6 +22,9 @@ import lombok.ToString;
     @QueryDocument.Order(value = "email", type = OrderType.DESC)
 })
 public class UserQuery extends Pagination<User> {
+
+    @Id
+    private String id;
 
     @QueryField(judgeType = QueryJudgeType.Like)
     private String userName;

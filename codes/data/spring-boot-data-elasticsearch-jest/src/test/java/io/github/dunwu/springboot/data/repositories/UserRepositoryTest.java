@@ -1,6 +1,6 @@
 package io.github.dunwu.springboot.data.repositories;
 
-import io.github.dunwu.springboot.data.common.QueryLogicType;
+import io.github.dunwu.springboot.data.constant.QueryLogicType;
 import io.github.dunwu.springboot.data.elasticsearch.ElasticSearchUtil;
 import io.github.dunwu.springboot.data.entities.User;
 import io.github.dunwu.springboot.data.entities.UserQuery;

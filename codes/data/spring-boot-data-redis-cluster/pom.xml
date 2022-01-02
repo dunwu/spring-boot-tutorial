@@ -37,9 +37,9 @@
       <version>2.7.0</version>
     </dependency>
     <dependency>
-      <groupId>io.github.dunwu</groupId>
-      <artifactId>dunwu-common-data</artifactId>
-      <version>0.5.6</version>
+      <groupId>io.github.dunwu.tool</groupId>
+      <artifactId>dunwu-tool-data</artifactId>
+      <version>1.0.6</version>
     </dependency>
   </dependencies>
 

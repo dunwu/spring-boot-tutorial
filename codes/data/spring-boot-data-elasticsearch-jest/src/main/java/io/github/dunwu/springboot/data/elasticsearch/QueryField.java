@@ -1,6 +1,6 @@
 package io.github.dunwu.springboot.data.elasticsearch;
 
-import io.github.dunwu.springboot.data.common.QueryJudgeType;
+import io.github.dunwu.springboot.data.constant.QueryJudgeType;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

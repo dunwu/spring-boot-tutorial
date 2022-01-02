@@ -28,8 +28,9 @@
       <artifactId>lombok</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.github.dunwu</groupId>
-      <artifactId>dunwu-common-data</artifactId>
+      <groupId>io.github.dunwu.tool</groupId>
+      <artifactId>dunwu-tool-data</artifactId>
+      <version>1.0.6</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>

@@ -1,7 +1,7 @@
 package io.github.dunwu.springboot.shell;
 
 import com.alibaba.fastjson.JSON;
-import io.github.dunwu.tool.io.AnsiSystem;
+import io.github.dunwu.tool.io.AnsiColorUtil;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
@@ -16,7 +16,7 @@ public class JsonCommand {
 
     @ShellMethod("JSON 序列化")
     public void tojson(Map<String, Object> map) {
-        AnsiSystem.BLUE.println(JSON.toJSONString(map));
+        AnsiColorUtil.BLUE.println(JSON.toJSONString(map));
     }
 
 }

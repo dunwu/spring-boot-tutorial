@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.data.common;
+package io.github.dunwu.springboot.data.constant;
 
 /**
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>

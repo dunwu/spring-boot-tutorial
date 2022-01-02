@@ -4,7 +4,7 @@ import io.github.dunwu.springboot.data.annotation.QueryDocument;
 import io.github.dunwu.springboot.data.annotation.QueryField;
 import io.github.dunwu.springboot.data.constant.OrderType;
 import io.github.dunwu.springboot.data.constant.QueryJudgeType;
-import io.github.dunwu.springboot.data.constant.QueryLogicType;
+import io.github.dunwu.tool.data.Pagination;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
@@ -15,19 +15,22 @@ import org.springframework.data.annotation.Id;
  */
 @Data
 @ToString
-@QueryDocument(value = User.class, orderType = OrderType.DESC, orderItem = "age")
-public class UserQuery {
+@QueryDocument(orders = {
+    @QueryDocument.Order(value = "age", type = OrderType.ASC),
+    @QueryDocument.Order(value = "email", type = OrderType.DESC)
+})
+public class UserQuery extends Pagination<User> {
 
     @Id
     private String id;
 
-    @QueryField(logicType = QueryLogicType.OR, judgeType = QueryJudgeType.Like)
+    @QueryField(judgeType = QueryJudgeType.Like)
     private String username;
 
-    @QueryField(logicType = QueryLogicType.AND, judgeType = QueryJudgeType.Equals)
+    @QueryField(judgeType = QueryJudgeType.Equals)
     private Integer age;
 
-    @QueryField(logicType = QueryLogicType.OR, judgeType = QueryJudgeType.Equals)
+    @QueryField(judgeType = QueryJudgeType.Equals)
     private String email;
 
 }

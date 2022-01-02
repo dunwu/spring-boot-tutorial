@@ -35,8 +35,8 @@ public class MenuDTO implements Cloneable, Comparable<MenuDTO> {
     @Override
     public int compareTo(MenuDTO otherMenuDTO) {
         return new CompareToBuilder().append(key, otherMenuDTO.getKey())
-            .append(url, otherMenuDTO.getUrl())
-            .toComparison();
+                                     .append(url, otherMenuDTO.getUrl())
+                                     .toComparison();
     }
 
     public String getKey() {

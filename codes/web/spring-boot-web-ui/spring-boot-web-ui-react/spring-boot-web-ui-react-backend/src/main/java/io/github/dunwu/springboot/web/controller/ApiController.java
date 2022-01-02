@@ -1,16 +1,18 @@
 package io.github.dunwu.springboot.web.controller;
 
 import cn.hutool.core.util.StrUtil;
-import io.github.dunwu.data.core.BaseResult;
-import io.github.dunwu.data.core.DataListResult;
-import io.github.dunwu.data.core.DataResult;
-import io.github.dunwu.data.core.constant.ResultStatus;
 import io.github.dunwu.springboot.web.dto.MenuDTO;
+import io.github.dunwu.tool.core.constant.enums.ResultStatus;
+import io.github.dunwu.tool.data.DataListResult;
+import io.github.dunwu.tool.data.DataResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -29,7 +31,7 @@ public class ApiController {
     public DataListResult<MenuDTO> getAll(HttpServletRequest request) {
         String data = request.getParameter("data");
         log.debug("recv data = {}", data);
-        return DataListResult.success(getAll());
+        return DataListResult.ok(getAll());
     }
 
     private static List<MenuDTO> getAll() {
@@ -71,16 +73,16 @@ public class ApiController {
             result.put("name", "admin");
             result.put("role", "ADMIN");
             result.put("uid", "1");
-            return DataResult.success(result);
+            return DataResult.ok(result);
         } else {
-            return DataResult.failData(ResultStatus.FAIL);
+            return DataResult.fail(ResultStatus.FAIL);
         }
     }
 
     @ResponseBody
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public BaseResult logout() {
-        return BaseResult.success();
+    public DataResult<?> logout() {
+        return DataResult.ok();
     }
 
     @ResponseBody
@@ -90,7 +92,7 @@ public class ApiController {
         map.put("name", "admin");
         map.put("role", "ADMIN");
         map.put("uid", "1");
-        return DataResult.success(map);
+        return DataResult.ok(map);
     }
 
 }

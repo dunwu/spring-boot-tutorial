@@ -6,5 +6,6 @@ package io.github.dunwu.springboot.data.constant;
  */
 public enum QueryLogicType {
     AND,
-    OR
+    OR,
+    NOT
 }

@@ -1,6 +1,6 @@
 package io.github.dunwu.springboot.shell;
 
-import io.github.dunwu.tool.io.AnsiSystem;
+import io.github.dunwu.tool.io.AnsiColorUtil;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
@@ -15,7 +15,7 @@ public class DateCommand {
 
     @ShellMethod("当前时间")
     public void date() {
-        AnsiSystem.BLUE.println(new Date().toString());
+        AnsiColorUtil.BLUE.println(new Date().toString());
     }
 
 }

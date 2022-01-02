@@ -1,8 +1,7 @@
 package io.github.dunwu.springboot;
 
 import com.alibaba.fastjson.JSON;
-import io.github.dunwu.springboot.msg.StringStringKafkaConsumer;
-import io.github.dunwu.tool.io.AnsiSystem;
+import io.github.dunwu.tool.io.AnsiColorUtil;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,7 +33,7 @@ public class KafkaProducerTest {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     /**
-     * 与 {@link StringStringKafkaConsumer} 绑定相同的 Topic，SimpleKafkaDemo 中有监听器负责消费 Topic
+     * 绑定相同的 Topic，SimpleKafkaDemo 中有监听器负责消费 Topic
      */
     @Value("${dunwu.kafka.string-string-topic}")
     private String stringStringTopic;
@@ -56,7 +55,7 @@ public class KafkaProducerTest {
             kafkaTemplate.send(stringStringTopic, "no-sequence", JSON.toJSONString(bean));
         }
         long end = System.currentTimeMillis();
-        AnsiSystem.BLUE.println("耗时：" + (end - begin));
+        AnsiColorUtil.BLUE.println("耗时：" + (end - begin));
     }
 
     /**
@@ -80,7 +79,7 @@ public class KafkaProducerTest {
             }
         }
         long end = System.currentTimeMillis();
-        AnsiSystem.BLUE.println("耗时：" + (end - begin));
+        AnsiColorUtil.BLUE.println("耗时：" + (end - begin));
     }
 
     /**
@@ -112,7 +111,7 @@ public class KafkaProducerTest {
             kafkaTemplate.send(stringStringTopic, "no-sequence", JSON.toJSONString(bean));
         }
         long end = System.currentTimeMillis();
-        AnsiSystem.BLUE.println("耗时：" + (end - begin));
+        AnsiColorUtil.BLUE.println("耗时：" + (end - begin));
     }
 
 }

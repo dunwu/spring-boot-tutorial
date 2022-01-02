@@ -1,4 +1,4 @@
-package io.github.dunwu.springboot.data.common;
+package io.github.dunwu.springboot.data.constant;
 
 /**
  * 关键字命名策略枚举
