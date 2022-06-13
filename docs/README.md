@@ -1,21 +1,34 @@
-<p align="center">
-    <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener noreferrer">
-        <img src="https://raw.githubusercontent.com/dunwu/images/dev/common/logo/spring-boot.svg" alt="spring-boot-logo">
-    </a>
-</p>
+---
+home: true
+heroImage: img/bg.gif
+heroText: Spring Boot Tutorial
+tagline: ☕ `spring-boot-tutorial` 是一个 Spring Boot 实战教程，通过大量丰富的示例，展示 Spring Boot 在各个应用领域的应用。本项目旨在覆盖 Java 应用的各领域。
+bannerBg: none
+postList: none
+footer: CC-BY-SA-4.0 Licensed | Copyright © 2018-Now Dunwu
+---
 
 <p align="center">
-    <a href="https://lbesson.mit-license.org/" target="_blank" rel="noopener noreferrer">
-        <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT license">
-    </a>
-    <img alt="Spring Boot Version" src="https://img.shields.io/maven-central/v/org.springframework.boot/spring-boot-starter-parent/2.2.1.RELEASE?label=spring-boot">
-    <img src="https://img.shields.io/badge/maven-v3.6.0-blue" alt="maven">
-    <a href="https://travis-ci.com/dunwu/spring-boot-tutorial"><img src="https://api.travis-ci.com/dunwu/spring-boot-tutorial.svg?branch=master" alt="build"></a>
+
+  <a href="https://github.com/dunwu/spring-boot-tutorial">
+      <img alt="star" class="no-zoom" src="https://img.shields.io/github/stars/dunwu/spring-boot-tutorial?style=for-the-badge">
+  </a>
+
+  <a href="https://github.com/dunwu/spring-boot-tutorial">
+      <img alt="fork" class="no-zoom" src="https://img.shields.io/github/forks/dunwu/spring-boot-tutorial?style=for-the-badge">
+  </a>
+
+  <a href="https://github.com/dunwu/spring-boot-tutorial/commits/master">
+      <img alt="commit" class="no-zoom" src="https://img.shields.io/github/workflow/status/dunwu/spring-boot-tutorial/CI?style=for-the-badge">
+  </a>
+
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">
+      <img alt="code style" class="no-zoom" src="https://img.shields.io/github/license/dunwu/spring-boot-tutorial?style=for-the-badge">
+  </a>
+
 </p>
 
-<h1 align="center">Spring Boot Tutorial</h1>
-
-> **`spring-boot-tutorial`** 是一个 Spring Boot 实战教程，通过大量丰富的示例，展示 Spring Boot 在各个应用领域的应用。本项目旨在覆盖 Java 应用的各领域。
+> `spring-boot-tutorial` 是一个 Spring Boot 实战教程，通过大量丰富的示例，展示 Spring Boot 在各个应用领域的应用。本项目旨在覆盖 Java 应用的各领域。
 >
 > 本项目的源码使用 maven 进行构建管理，任意 maven module 都可以独立编译运行。
 >
@@ -108,12 +121,29 @@
 
 ## 📖 文档
 
-- [SpringBoot 教程之快速入门](SpringBoot教程之快速入门.md)
-- [SpringBoot 教程之处理异步请求](spring-boot-async.md)
-- [SpringBoot 教程之 banner 定制](spring-boot-banner.md)
-- [SpringBoot 教程之属性加载详解](spring-boot-property.md)
-- [SpringBoot 教程之 profile 的应用](spring-boot-profile.md)
-- [SpringBoot 教程之发送邮件](spring-boot-mail.md)
+### Spring Boot 基础篇
+
+- [SpringBoot 知识图谱](10.Java/13.框架/02.SpringBoot/00.SpringBoot综合/01.SpringBoot知识图谱.md)
+- [SpringBoot 基本原理](10.Java/13.框架/02.SpringBoot/00.SpringBoot综合/02.SpringBoot基本原理.md)
+
+### Spring Boot 基础篇
+
+- [SpringBoot 教程之快速入门](10.Java/13.框架/02.SpringBoot/01.SpringBoot基础/01.SpringBoot之快速入门.md)
+- [SpringBoot 之属性加载](10.Java/13.框架/02.SpringBoot/01.SpringBoot基础/02.SpringBoot之属性加载.md)
+- [SpringBoot 之 Profile](10.Java/13.框架/02.SpringBoot/01.SpringBoot基础/03.SpringBoot之Profile.md)
+
+### Spring Boot 数据篇
+
+- [SpringBoot 之 JDBC](10.Java/13.框架/02.SpringBoot/03.SpringBoot数据/01.SpringBoot之JDBC.md)
+- [SpringBoot 之 Mybatis](10.Java/13.框架/02.SpringBoot/03.SpringBoot数据/11.SpringBoot之Mybatis.md)
+- [SpringBoot 之 Elasticsearch](10.Java/13.框架/02.SpringBoot/03.SpringBoot数据/22.SpringBoot之Elasticsearch.md)
+- [SpringBoot 之 MongoDB](10.Java/13.框架/02.SpringBoot/03.SpringBoot数据/23.SpringBoot之MongoDB.md)
+
+### Spring Boot IO 篇
+
+- [SpringBoot 之异步请求](10.Java/13.框架/02.SpringBoot/04.SpringBootIO/01.SpringBoot之异步请求.md)
+- [SpringBoot 之 Json](10.Java/13.框架/02.SpringBoot/04.SpringBootIO/02.SpringBoot之Json.md)
+- [SpringBoot 之邮件](10.Java/13.框架/02.SpringBoot/04.SpringBootIO/03.SpringBoot之邮件.md)
 
 ## License
 
